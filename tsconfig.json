@@ -3,8 +3,12 @@
     "target": "es2018",
     "module": "esnext",
     "lib": ["esnext"],
+    "jsx": "preserve",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
+    "outDir": "${configDir}/node_modules/.cache/tsc",
     "strict": true,
     "allowJs": true,
     "strictNullChecks": true,
@@ -13,5 +17,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
-  }
+  },
+  "references": [
+    {
+      "path": "./playground"
+    }
+  ]
 }
