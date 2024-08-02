@@ -1,5 +1,5 @@
 {
-  "name": "astrobook",
+  "name": "@astrobook/core",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -38,9 +38,6 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
-  },
-  "dependencies": {
-    "@astrobook/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.13",

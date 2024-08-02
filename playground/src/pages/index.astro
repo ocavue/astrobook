@@ -11,8 +11,16 @@ import SolidCounter from '../components/solid/SolidCounter';
 import VueCounter from '../components/vue/VueCounter.vue';
 import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
 
+
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
+
+
+// @ts-expect-error: virtual module
+import VirtualAstro from 'virtual:my-module'
+
+
 ---
 
 <html lang="en">
@@ -43,6 +51,9 @@ import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
 			<SvelteCounter client:visible>
 				<h1>Hello from Svelte!</h1>
 			</SvelteCounter>
+
+			<VirtualAstro/>
+
 		</main>
 	</body>
 </html>

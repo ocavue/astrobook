@@ -11,6 +11,7 @@
     "outDir": "${configDir}/node_modules/.cache/tsc",
     "strict": true,
     "allowJs": true,
+    "composite": true,
     "strictNullChecks": true,
     "verbatimModuleSyntax": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,9 +19,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
+  "include": ["./*.js", "./*.ts"],
+  "files": [],
   "references": [
     {
       "path": "./playground"
+    },
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/astrobook"
     }
   ]
 }

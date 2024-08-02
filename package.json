@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.15.9",
+  "packageManager": "pnpm@9.6.0",
   "description": "",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
@@ -38,21 +38,22 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "pnpm -r --filter=./packages/* build",
     "dev": "tsup --watch",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
-    "test": "vitest",
+    "test": "echo 'TODO: add tests'",
     "typecheck": "tsc --build ."
   },
   "devDependencies": {
     "@antfu/ni": "^0.22.0",
+    "@microsoft/api-extractor": "^7.47.4",
     "@ocavue/eslint-config": "^2.0.0",
     "@types/node": "^20.14.13",
     "eslint": "^9.0.0",
     "prettier": "^3.3.3",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
     "vitest": "^2.0.5"
