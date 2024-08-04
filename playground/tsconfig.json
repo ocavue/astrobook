@@ -3,5 +3,5 @@
   "compilerOptions": {
     "composite": true
   },
-  "include": ["./src", "./*.js", "./*.mjs"]
+  "include": ["./src", "./*.js", "./*.mjs", "./*.ts"]
 }

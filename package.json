@@ -39,7 +39,6 @@
   ],
   "scripts": {
     "build": "pnpm -r --filter=./packages/* build",
-    "dev": "tsup --watch",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
@@ -53,7 +52,6 @@
     "@types/node": "^20.14.13",
     "eslint": "^9.0.0",
     "prettier": "^3.3.3",
-    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
     "vitest": "^2.0.5"
