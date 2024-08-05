@@ -1,0 +1,53 @@
+---
+interface Props {
+  step?: number
+}
+const step = Astro.props.step || 1
+---
+
+<astro-counter data-step={step}>
+  <div class="counter">
+    <button data-sub>-</button>
+    <pre data-value>0</pre>
+    <button data-add>+</button>
+  </div>
+  <div class="counter-message">
+    <slot />
+  </div>
+</astro-counter>
+
+<script>
+  class AstroCounter extends HTMLElement {
+    constructor() {
+      super()
+
+      // Read the message from the data attribute.
+      const step = Number.parseInt(this.dataset.step || '1')
+
+      const addButton = this.querySelector('[data-add]')
+      const subButton = this.querySelector('[data-sub]')
+
+      addButton?.addEventListener('click', () => {
+        this.updateValue(this.getValue() + step)
+      })
+
+      subButton?.addEventListener('click', () => {
+        this.updateValue(this.getValue() - step)
+      })
+    }
+
+    getValue() {
+      const element = this.querySelector('[data-value]')
+      return Number.parseInt(element?.textContent || '0')
+    }
+
+    updateValue(value: number) {
+      const element = this.querySelector('[data-value]')
+      if (element) {
+        element.textContent = String(value)
+      }
+    }
+  }
+
+  customElements.define('astro-counter', AstroCounter)
+</script>
