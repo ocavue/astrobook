@@ -3,10 +3,13 @@
 import { createSignal, type JSX } from 'solid-js'
 
 /** A counter written with Solid */
-export default function SolidCounter(props: { children?: JSX.Element }) {
+export default function SolidCounter(props: {
+  step?: number
+  children?: JSX.Element
+}) {
   const [count, setCount] = createSignal(0)
-  const add = () => setCount(count() + 1)
-  const subtract = () => setCount(count() - 1)
+  const add = () => setCount(count() + (props.step || 1))
+  const subtract = () => setCount(count() - (props.step || 1))
 
   return (
     <>

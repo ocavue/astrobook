@@ -1,0 +1,8 @@
+---
+import { navItems } from '@astrobook/core/components/navigation'
+import NavigationList from './navigation-list.astro'
+---
+
+<nav transition:persist>
+  <NavigationList items={navItems} />
+</nav>

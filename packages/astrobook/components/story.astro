@@ -1,0 +1,19 @@
+---
+import { getStaticPaths } from '@astrobook/core/components/story'
+import StoryComponent from 'virtual:astrobook/component.astro'
+import Layout from './layout.astro'
+import Navigation from './navigation.astro'
+
+const params = Astro.params
+
+export { getStaticPaths }
+---
+
+<Layout>
+  <Navigation />
+  <main>
+    <h1>Astrobook Story</h1>
+    {JSON.stringify(Astro.params)}
+    <StoryComponent story={params.story} />
+  </main>
+</Layout>

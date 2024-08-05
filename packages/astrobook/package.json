@@ -21,20 +21,25 @@
   "exports": {
     ".": {
       "default": "./src/index.ts"
+    },
+    "./components/*.astro": {
+      "default": "./components/*.astro"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "components"
   ],
   "scripts": {
     "build": "tsup"
   },
   "dependencies": {
-    "@astrobook/core": "workspace:*"
+    "@astrobook/core": "workspace:*",
+    "@astrobook/types": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.13",
-    "astro": "^4.13.0",
+    "astro": "^4.13.1",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
@@ -47,15 +52,18 @@
         "import": "./dist/index.js",
         "default": "./dist/index.js"
       },
-      "main": "./dist/index.js",
-      "module": "./dist/index.js",
-      "types": "./dist/index.d.ts",
-      "typesVersions": {
-        "*": {
-          ".": [
-            "./dist/index.d.ts"
-          ]
-        }
+      "./components/*.astro": {
+        "default": "./components/*.astro"
+      }
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "./dist/index.d.ts"
+        ]
       }
     }
   }

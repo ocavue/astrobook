@@ -1,14 +1,8 @@
 <template>
-  <!--
-		Seeing type errors on the word `class`?
-		This unfortunately happens because @types/react's JSX definitions leak into every file due to being declared globally.
-		There's currently no way to prevent this when using both Vue and React with TypeScript in the same project.
-		You can read more about this issue here: https://github.com/johnsoncodehk/volar/discussions/592
-	-->
   <div class="counter">
-    <button @click="subtract()">-</button>
+    <button @click="subtract">-</button>
     <pre>{{ count }}</pre>
-    <button @click="add()">+</button>
+    <button @click="add">+</button>
   </div>
   <div class="counter-message">
     <slot />
@@ -16,12 +10,20 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
-export default {
-  setup() {
+import { ref, defineComponent } from 'vue'
+
+/** A counter written with Vue */
+export default defineComponent({
+  props: {
+    step: {
+      type: Number,
+      default: 1,
+    },
+  },
+  setup(props) {
     const count = ref(0)
-    const add = () => (count.value = count.value + 1)
-    const subtract = () => (count.value = count.value - 1)
+    const add = () => (count.value += props.step)
+    const subtract = () => (count.value -= props.step)
 
     return {
       count,
@@ -29,5 +31,5 @@ export default {
       subtract,
     }
   },
-}
+})
 </script>

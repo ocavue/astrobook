@@ -21,17 +21,32 @@
   "exports": {
     ".": {
       "default": "./src/index.ts"
+    },
+    "./components/*": {
+      "default": "./src/components/*.ts"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "components"
   ],
   "scripts": {
     "build": "tsup"
   },
+  "dependencies": {
+    "@astrobook/types": "workspace:*",
+    "acorn": "^8.12.1",
+    "acorn-jsx": "^5.3.2",
+    "fdir": "^6.2.0",
+    "picomatch": "^4.0.2",
+    "slash": "^5.1.0"
+  },
   "devDependencies": {
     "@types/node": "^20.14.13",
-    "astro": "^4.13.0",
+    "@types/picomatch": "^3.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.13.1",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
@@ -44,15 +59,21 @@
         "import": "./dist/index.js",
         "default": "./dist/index.js"
       },
-      "main": "./dist/index.js",
-      "module": "./dist/index.js",
-      "types": "./dist/index.d.ts",
-      "typesVersions": {
-        "*": {
-          ".": [
-            "./dist/index.d.ts"
-          ]
-        }
+      "./components/*": {
+        "default": "./dist/components/*.ts"
+      }
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "./dist/index.d.ts"
+        ],
+        "./components/*": [
+          "./dist/components/*.d.ts"
+        ]
       }
     }
   }

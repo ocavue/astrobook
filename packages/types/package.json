@@ -1,0 +1,32 @@
+{
+  "name": "@astrobook/types",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "ocavue <ocavue@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ocavue",
+  "homepage": "https://github.com/ocavue/astrobook#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ocavue/astrobook.git"
+  },
+  "bugs": "https://github.com/ocavue/astrobook/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "./lib/index.d.ts",
+  "module": "./lib/index.d.ts",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./lib/index.d.ts"
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
