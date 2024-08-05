@@ -12,16 +12,16 @@ importers:
         specifier: ^0.22.0
         version: 0.22.0
       '@microsoft/api-extractor':
-        specifier: ^7.47.5
+        specifier: ^7.47.4
         version: 7.47.5(@types/node@20.14.13)
       '@ocavue/eslint-config':
-        specifier: ^2.1.0
+        specifier: ^2.0.0
         version: 2.1.0(@typescript-eslint/parser@8.0.0(eslint@9.8.0)(typescript@5.5.4))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0))(eslint@9.8.0)(typescript@5.5.4)
       '@types/node':
         specifier: ^20.14.13
         version: 20.14.13
       eslint:
-        specifier: ^9.8.0
+        specifier: ^9.0.0
         version: 9.8.0
       prettier:
         specifier: ^3.3.3
@@ -51,33 +51,9 @@ importers:
       '@types/node':
         specifier: ^20.14.13
         version: 20.14.13
-      '@types/picomatch':
-        specifier: ^3.0.0
-        version: 3.0.0
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
-      acorn:
-        specifier: ^8.12.1
-        version: 8.12.1
-      acorn-jsx:
-        specifier: ^5.3.2
-        version: 5.3.2(acorn@8.12.1)
       astro:
         specifier: ^4.13.1
         version: 4.13.1(@types/node@20.14.13)(typescript@5.5.4)
-      preact:
-        specifier: ^10.23.1
-        version: 10.23.1
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(@microsoft/api-extractor@7.47.5(@types/node@20.14.13))(postcss@8.4.40)(typescript@5.5.4)
@@ -127,12 +103,6 @@ importers:
       astro:
         specifier: ^4.13.1
         version: 4.13.1(@types/node@20.14.13)(typescript@5.5.4)
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(@microsoft/api-extractor@7.47.5(@types/node@20.14.13))(postcss@8.4.40)(typescript@5.5.4)
@@ -176,7 +146,7 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       astro:
-        specifier: ^4.13.1
+        specifier: ^4.13.0
         version: 4.13.1(@types/node@20.14.13)(typescript@5.5.4)
       astrobook:
         specifier: workspace:*
