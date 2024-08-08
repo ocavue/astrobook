@@ -21,8 +21,6 @@ export async function loadStoryComponent(): Promise<string> {
     )
   }
 
-  importCode.push()
-
   const result = [
     `---`,
     `import { isAstroComponent } from 'astrobook/client';`,
