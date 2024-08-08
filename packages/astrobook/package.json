@@ -58,10 +58,10 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^20.14.13",
-    "astro": "^4.13.1",
+    "@types/node": "^20.14.14",
+    "astro": "^4.13.2",
     "typescript": "^5.5.4",
-    "vite": "^5.3.5",
+    "vite": "^5.4.0",
     "vitest": "^2.0.5"
   }
 }
