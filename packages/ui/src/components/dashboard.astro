@@ -1,0 +1,15 @@
+---
+/// <reference types="@astrobook/types" />
+import StoryComponent from 'virtual:astrobook/component.astro'
+import Layout from './layout.astro'
+
+interface Props {
+  story: string
+}
+---
+
+<Layout>
+  <h1>Astrobook Dashboard</h1>
+  {JSON.stringify(Astro.props)}
+  <StoryComponent story={Astro.props.story} />
+</Layout>

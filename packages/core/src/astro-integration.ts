@@ -14,12 +14,12 @@ export function createAstrobookIntegration(): AstroIntegration {
         })
         injectRoute({
           pattern: '/[...story]',
-          entrypoint: 'astrobook/components/story.astro',
+          entrypoint: 'astrobook/pages/dashboard.astro',
           prerender: true,
         })
         injectRoute({
           pattern: '/',
-          entrypoint: 'astrobook/components/app.astro',
+          entrypoint: 'astrobook/pages/app.astro',
           prerender: true,
         })
       },

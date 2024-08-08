@@ -1,3 +1,4 @@
+/// <reference types="@astrobook/types" />
 import stories from 'virtual:astrobook/stories.mjs'
 
 export interface NavItem {

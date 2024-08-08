@@ -21,14 +21,10 @@
   "exports": {
     ".": {
       "default": "./src/index.ts"
-    },
-    "./components/*": {
-      "default": "./src/components/*.ts"
     }
   },
   "files": [
-    "dist",
-    "components"
+    "dist"
   ],
   "scripts": {
     "build": "tsup"
@@ -58,9 +54,6 @@
         "types": "./dist/index.d.ts",
         "import": "./dist/index.js",
         "default": "./dist/index.js"
-      },
-      "./components/*": {
-        "default": "./dist/components/*.ts"
       }
     },
     "main": "./dist/index.js",
@@ -70,9 +63,6 @@
       "*": {
         ".": [
           "./dist/index.d.ts"
-        ],
-        "./components/*": [
-          "./dist/components/*.d.ts"
         ]
       }
     }

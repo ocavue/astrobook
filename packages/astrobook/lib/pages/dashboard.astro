@@ -1,3 +1,7 @@
+---
+import '@astrobook/ui/style.css'
+
+import DashboardComponent from '@astrobook/ui/components/dashboard.astro'
 import type { GetStaticPathsResult } from 'astro'
 import stories from 'virtual:astrobook/stories.mjs'
 
@@ -5,7 +9,7 @@ interface Params {
   story: string
 }
 
-function getStaticPaths() {
+export function getStaticPaths() {
   return stories.map((story) => {
     return {
       params: {
@@ -15,4 +19,7 @@ function getStaticPaths() {
   }) satisfies GetStaticPathsResult
 }
 
-export { getStaticPaths, type Params }
+const params: Params = Astro.params
+---
+
+<DashboardComponent story={params.story} />

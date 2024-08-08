@@ -1,10 +1,13 @@
 import { defineConfig } from 'tsup'
 
-export default defineConfig({
+const config: unknown = defineConfig({
   entry: {
     index: 'src/index.ts',
   },
   format: ['esm'],
   clean: true,
   experimentalDts: true,
+  external: [/^virtual:/],
 })
+
+export default config
