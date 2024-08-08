@@ -26,7 +26,7 @@
 
    // https://astro.build/config
    export default defineConfig({
-     integrations: [react(), astrobook({ framework: 'react' })],
+     integrations: [react(), astrobook()],
    })
    ```
 
@@ -39,7 +39,7 @@
    }
    ```
 
-4. Write your stories!
+4. Write stories
 
    ```ts
    // components/Button.stories.ts
@@ -62,9 +62,7 @@
    }
    ```
 
-## Usage
-
-Add
+5. Run `npm run dev` and open `http://localhost:4321`
 
 ## License
 
