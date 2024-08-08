@@ -1,0 +1,43 @@
+---
+import { componentInfos } from './navigation'
+
+interface Props {
+  storyId: string | null
+}
+---
+
+<div class=":uno: flex flex-col gap-4 border-0 px-2 pt-4">
+  {
+    componentInfos.map((info) => (
+      <div class=":uno: flex flex-col gap-0.5">
+        {info.directory && (
+          <div class=":uno: px-2 text-sm opacity-50">{info.directory}</div>
+        )}
+
+        <a
+          class=":uno: block flex items-center gap-2 rounded px-2 py-1 text-base text-sm text-gray-900 no-underline transition-colors hover:bg-gray-200"
+          href={`/${info.stories[0]?.id}`}
+        >
+          <span class=":uno: i-lucide-box inline-block size-4 text-gray-400" />
+          <span>{info.name}</span>
+        </a>
+
+        {info.stories.map((story) => (
+          <a
+            class:list={[
+              ':uno: block flex items-center gap-2 rounded py-1 pl-5 pr-2 text-base text-sm no-underline transition-colors',
+              Astro.props.storyId === story.id
+                ? ':uno: bg-gray-800 text-white hover:bg-gray-700'
+                : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800',
+            ]}
+            href={`/${story.id}`}
+            data-active={Astro.props.storyId === story.id ? '' : undefined}
+          >
+            <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400" />
+            <span>{story.name}</span>
+          </a>
+        ))}
+      </div>
+    ))
+  }
+</div>

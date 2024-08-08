@@ -1,0 +1,13 @@
+---
+import '@astrobook/types'
+
+import StoryComponent from 'virtual:astrobook/component.astro'
+
+interface Props {
+  story: string
+}
+---
+
+<div class=":uno: p-4 box-border">
+  <StoryComponent story={Astro.props.story} />
+</div>

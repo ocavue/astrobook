@@ -1,70 +1,41 @@
-/// <reference types="@astrobook/types" />
+import '@astrobook/types'
+
+import type { StoryEntry } from '@astrobook/types'
 import stories from 'virtual:astrobook/stories.mjs'
 
-export interface NavItem {
-  /**
-   * A string that doesn't contain slashes.
-   * @example 'components'
-   */
-  label: string
-
-  /**
-   * The leaf node in the path should have an id.
-   * @example 'components/ui/button'
-   */
-  id?: string
-
-  /**
-   * The children of this node.
-   */
-  children?: NavItem[]
-}
-
-interface Story {
-  /**
-   * @example 'components/ui/button'
-   */
-  id: string
+export interface ComponentInfo {
+  directory?: string
+  name: string
+  stories: StoryEntry[]
 }
 
 /**
  * Group stories by their parent directory. Return a tree of NavItems.
  */
-function getNavItems(stories: Story[]): NavItem[] {
-  const root: NavItem = { label: 'root', children: [] }
+function getComponentInfos(stories: StoryEntry[]): ComponentInfo[] {
+  const components: Record<string, ComponentInfo> = {}
 
-  stories.forEach((story) => {
-    const parts = story.id.split('/')
-    let currentNode = root
+  for (const story of stories) {
+    const parts = story.id.split('/').filter(Boolean)
+    parts.pop() // Remove the story name
+    const name = parts.pop() // Get the component name
+    const directory = parts.join('/') || undefined
 
-    parts.forEach((part, index) => {
-      let child = currentNode.children?.find((c) => c.label === part)
+    if (!name) {
+      throw new Error(
+        `Unable to find the component name for story ${story.id}. Please open an issue on GitHub.`,
+      )
+    }
 
-      if (!child) {
-        child = { label: part }
-        if (index === parts.length - 1) {
-          child.id = story.id
-        } else {
-          child.children = []
-        }
-        currentNode.children = currentNode.children || []
-        currentNode.children.push(child)
-      }
-
-      currentNode = child
+    const component = (components[story.modulePath] ??= {
+      name,
+      directory,
+      stories: [],
     })
-  })
-
-  return root.children || []
-}
-
-function expandNavItems(items: NavItem[]): NavItem[] {
-  if (items.length === 1) {
-    return expandNavItems(items[0].children || [])
+    component.stories.push(story)
   }
-  return items
+
+  return Object.values(components)
 }
 
-const navItems = expandNavItems(getNavItems(stories))
-
-export { navItems }
+export const componentInfos = getComponentInfos(stories)

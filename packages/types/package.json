@@ -15,12 +15,13 @@
   "bugs": "https://github.com/ocavue/astrobook/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./lib/index.d.ts",
-  "module": "./lib/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "default": "./lib/index.d.ts"
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
     }
   },
   "files": [

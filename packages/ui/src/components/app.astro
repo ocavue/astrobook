@@ -2,6 +2,19 @@
 import Layout from './layout.astro'
 ---
 
-<Layout>
-  <h1>Astrobook App</h1>
+<Layout storyId={null} hasSidebar={true}>
+  <div
+    class=":uno: flex h-full w-full flex-col items-center justify-center gap-4"
+  >
+    <h1>Astrobook</h1>
+    <footer class=":uno: text-sm text-gray-500">
+      <span
+        >built by <a
+          href="https://github.com/ocavue"
+          class=":uno: text-gray-400 no-underline hover:text-gray-500"
+          >@ocavue</a
+        ></span
+      >
+    </footer>
+  </div>
 </Layout>

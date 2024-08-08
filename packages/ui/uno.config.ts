@@ -1,4 +1,9 @@
-import { defineConfig, transformerCompileClass, presetWind } from 'unocss'
+import {
+  defineConfig,
+  transformerCompileClass,
+  presetWind,
+  presetIcons,
+} from 'unocss'
 
 const config: unknown = defineConfig({
   cli: {
@@ -12,6 +17,7 @@ const config: unknown = defineConfig({
       variablePrefix: 'astrobook-',
       preflight: false,
     }),
+    presetIcons(),
   ],
   transformers: [
     transformerCompileClass({

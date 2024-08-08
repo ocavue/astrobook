@@ -1,15 +1,14 @@
 ---
-/// <reference types="@astrobook/types" />
-import StoryComponent from 'virtual:astrobook/component.astro'
+import '@astrobook/types'
+
 import Layout from './layout.astro'
+import StoryWrapper from './story-wrapper.astro'
 
 interface Props {
   story: string
 }
 ---
 
-<Layout>
-  <h1>Astrobook Dashboard</h1>
-  {JSON.stringify(Astro.props)}
-  <StoryComponent story={Astro.props.story} />
+<Layout storyId={Astro.props.story} hasSidebar={true}>
+  <StoryWrapper story={Astro.props.story} />
 </Layout>
