@@ -2,6 +2,9 @@ import SolidCounter from './SolidCounter'
 
 export default {
   component: SolidCounter,
+  parameters: {
+    framework: 'solid-js',
+  },
 }
 
 export const Default = {

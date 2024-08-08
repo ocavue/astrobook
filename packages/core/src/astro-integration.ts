@@ -1,15 +1,18 @@
+import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
 
 import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 
-export function createAstrobookIntegration(): AstroIntegration {
+export function createAstrobookIntegration(
+  options: IntegrationOptions = {},
+): AstroIntegration {
   return {
     name: 'astrobook/core',
     hooks: {
       'astro:config:setup': ({ updateConfig, injectRoute }) => {
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin()],
+            plugins: [createVirtualFilesPlugin(options)],
           },
         })
         injectRoute({

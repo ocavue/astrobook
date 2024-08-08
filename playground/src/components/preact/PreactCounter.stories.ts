@@ -2,6 +2,9 @@ import { PreactCounter } from './PreactCounter'
 
 export default {
   component: PreactCounter,
+  parameters: {
+    framework: 'preact',
+  },
 }
 
 export const Default = {

@@ -38,5 +38,5 @@ export async function collectStoryEntries(
     }
   }
 
-  return entries
+  return entries.sort((a, b) => a.id.localeCompare(b.id))
 }

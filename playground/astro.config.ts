@@ -10,9 +10,9 @@ import astrobook from 'astrobook'
 export default defineConfig({
   // Enable many frameworks to support all different kinds of components.
   integrations: [
+    react({ include: ['**/react/*'] }),
     preact({ include: ['**/preact/*'] }),
     solid({ include: ['**/solid/*'] }),
-    react({ include: ['**/react/*'] }),
     svelte(),
     vue(),
     astrobook(),

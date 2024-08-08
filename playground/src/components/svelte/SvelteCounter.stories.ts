@@ -2,6 +2,9 @@ import SvelteCounter from './SvelteCounter.svelte'
 
 export default {
   component: SvelteCounter,
+  parameters: {
+    framework: 'svelte',
+  },
 }
 
 export const Default = {
