@@ -36,7 +36,7 @@ jobs:
       - name: Test
         run: nr test
 
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     env:
@@ -49,18 +49,4 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Build
-        run: pnpm run build:website
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        # Only run this step if the CLOUDFLARE_PAGES_API_TOKEN is set (i.e. it's
-        # not from a fork). Notice that secrets cannot be directly referenced in
-        # `if:` conditionals.
-        if: ${{ env.CLOUDFLARE_PAGES_API_TOKEN != '' }}
-        with:
-          apiToken: ${{ env.CLOUDFLARE_PAGES_API_TOKEN }}
-          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: prosekit-dev
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          directory: playground/dist
-        timeout-minutes: 5
+        run: pnpm run build
