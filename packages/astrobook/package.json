@@ -42,8 +42,7 @@
     }
   },
   "files": [
-    "dist",
-    "pages"
+    "lib"
   ],
   "dependencies": {
     "@astrobook/core": "workspace:*",
