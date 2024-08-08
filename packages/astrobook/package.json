@@ -22,6 +22,9 @@
     ".": {
       "default": "./lib/index.ts"
     },
+    "./client": {
+      "default": "./lib/client.ts"
+    },
     "./pages/*": {
       "default": "./lib/pages/*"
     }
@@ -30,6 +33,9 @@
     "*": {
       ".": [
         "./lib/index.ts"
+      ],
+      "./client": [
+        "./lib/client.ts"
       ],
       "./pages/*": [
         "./lib/pages/*"
