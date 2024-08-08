@@ -7,8 +7,5 @@
   "access": "restricted",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "astrobook-playground",
-    "astrobook-monorepo"
-  ]
+  "ignore": ["astrobook-playground", "astrobook-monorepo"]
 }

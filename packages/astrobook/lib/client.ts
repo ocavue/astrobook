@@ -1,1 +1,1 @@
-export * from '@astrobook/core/client';
+export * from '@astrobook/core/client'
