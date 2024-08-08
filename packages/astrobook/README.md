@@ -62,7 +62,7 @@
    }
    ```
 
-5. Run `npm run dev` and open `http://localhost:4321`
+5. Run `npm run dev` and open `http://localhost:4321` to see your stories.
 
 ## License
 
