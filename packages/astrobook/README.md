@@ -4,6 +4,8 @@
 
 > Minimal and fast component playgrounds. Powered by [Astro](https://astro.build/).
 
+![astrobook](https://github.com/user-attachments/assets/dbaa6243-4ce2-45da-b760-44543f59bb63)
+
 ## License
 
 MIT
