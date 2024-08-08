@@ -2,30 +2,21 @@ export interface StoryEntry {
   /**
    * The id of the story.
    *
-   * @example
-   * ```ts
-   * "components/ui/button/PrimaryButton"
-   * ```
+   * @example 'components/ui/button/PrimaryButton'
    */
   id: string
 
   /**
    * The name of the story.
    *
-   * @example
-   * ```ts
-   * "PrimaryButton"
-   * ```
+   * @example 'PrimaryButton'
    */
   name: string
 
   /**
    * The import path of the story module.
    *
-   * @example
-   * ```ts
-   * "./components/ui/button/PrimaryButton.stories.js"
-   * ```
+   * @example './components/ui/button.stories.js'
    */
   modulePath: string
 }

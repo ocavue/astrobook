@@ -1,15 +1,21 @@
 ---
+import './layout.css'
 import { ViewTransitions } from 'astro:transitions'
 import Sidebar from './sidebar.astro'
 
 interface Props {
-  hasSidebar?: boolean
+  storyId: string | null
+  hasSidebar: boolean
 }
 
 const hasSidebar = Astro.props.hasSidebar ?? true
 ---
 
-<html lang="en" transition:animate="none" class=":uno: h-full">
+<html
+  lang="en"
+  transition:animate="none"
+  class=":uno: box-border h-full max-h-screen overflow-hidden"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -18,15 +24,17 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <title>Astrobook</title>
     <ViewTransitions />
   </head>
-  <body class=":uno: flex flex-row m-0 p-0 min-h-full">
+  <body
+    class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
+  >
     {
       hasSidebar && (
-        <div class=":uno: w-64 min-w-64 max-w-64 border-0 border-r border-gray-200 border-solid">
-          <Sidebar />
+        <div class=":uno: flex w-64 min-w-64 max-w-64 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50">
+          <Sidebar storyId={Astro.props.storyId} />
         </div>
       )
     }
-    <main class=":uno: flex-1">
+    <main class=":uno: box-border flex-1">
       <slot />
     </main>
   </body>

@@ -1,7 +1,68 @@
 ---
-import Navigation from './navigation.astro'
+import ComponentList from './component-list.astro'
+
+interface Props {
+  storyId: string | null
+}
 ---
 
-<div class=":uno: bg-red-200">
-  <Navigation />
-</div>
+<nav
+  id="astrobook-navigation"
+  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-auto px-0 pb-8"
+>
+  <div class=":uno: px-2 py-4">
+    <a
+      class=":uno: inline-block p-2 font-semibold text-gray-800 no-underline hover:text-gray-600"
+      href="/">Astrobook</a
+    >
+  </div>
+  <ComponentList storyId={Astro.props.storyId} />
+</nav>
+
+<script is:inline>
+  ;(() => {
+    const elementId = 'astrobook-navigation'
+    const sessionKey = 'astrobook-navigation-scroll-position'
+
+    const save = () => {
+      const el = document.getElementById(elementId)
+      if (!el) return
+
+      sessionStorage.setItem(sessionKey, String(el.scrollTop))
+    }
+
+    const throttle = (func, limit) => {
+      let pending
+
+      return () => {
+        if (pending) return
+
+        pending = 1
+        setTimeout(() => {
+          pending = 0
+          func()
+        }, limit)
+      }
+    }
+
+    const throttledSave = throttle(save, 100)
+
+    const load = () => {
+      const el = document.getElementById(elementId)
+      if (!el) return
+
+      const scrollPosition = sessionStorage.getItem(sessionKey) || ''
+      if (scrollPosition.match(/^\d+(\.\d*)?$/)) {
+        el.scrollTop = parseFloat(scrollPosition)
+      }
+
+      el.addEventListener('scroll', throttledSave)
+    }
+
+    load()
+
+    document.addEventListener('astro:page-load', () => {
+      load()
+    })
+  })()
+</script>
