@@ -8,14 +8,14 @@
 
 ## Quick start
 
+> [!NOTE]
+> Astrobook supports **React**, **Vue**, **Preact**, **Svelte**, **Solid** and **Astro** components out of the box. We use React as an example here. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
+
 1. Install the packages
 
    ```bash
    npm install astro astrobook @astrojs/react
    ```
-
-   > [!NOTE]
-   > Astrobook supports React, Vue, Preact, Svelte, Solid and Astro components. We use React as an example here. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
 
 2. Create `astro.config.mjs`
 
