@@ -1,7 +1,23 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "composite": true
+    "target": "es2018",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "jsx": "preserve",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "outDir": "${configDir}/node_modules/.cache/tsc",
+    "strict": true,
+    "allowJs": true,
+    "composite": true,
+    "strictNullChecks": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
   },
   "include": ["./src", "./*.js", "./*.mjs", "./*.ts"]
 }
