@@ -18,7 +18,7 @@
     "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm run build:package && pnpm publish --access public -r --no-git-checks --tag latest",
-    "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --no-template"
+    "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --template ./playground"
   },
   "renovate": {
     "extends": [
