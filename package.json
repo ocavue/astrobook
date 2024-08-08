@@ -9,14 +9,19 @@
     "dev": "turbo --filter astrobook-playground watch dev",
     "postinstall": "pnpm --filter=./packages/ui build",
     "build": "turbo run build",
+    "build:package": "turbo build --filter='./packages/*' --concurrency=1",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
     "test": "echo 'TODO: add tests'",
-    "typecheck": "tsc --build ."
+    "typecheck": "tsc --build .",
+    "change": "changeset",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
+    "ci:publish": "pnpm run build:package && pnpm publish --access public -r --no-git-checks --tag latest"
   },
   "devDependencies": {
     "@antfu/ni": "^0.22.0",
+    "@changesets/cli": "^2.27.7",
     "@microsoft/api-extractor": "^7.47.4",
     "@ocavue/eslint-config": "^2.2.0",
     "@types/node": "^20.14.13",
