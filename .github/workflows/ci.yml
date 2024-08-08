@@ -39,10 +39,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      CLOUDFLARE_PAGES_API_TOKEN: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
     steps:
       - uses: actions/checkout@v4
 
