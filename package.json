@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "turbo --filter astrobook-playground watch dev",
     "postinstall": "pnpm --filter=./packages/ui build",
-    "build": "pnpm -r --filter=./packages/* build",
+    "build": "turbo run build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
