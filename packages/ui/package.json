@@ -46,7 +46,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rsync -av --delete src/ temp/ && unocss --write-transformed && ./minify-inline-script.ts && rsync -av --delete temp/ dist/"
+    "build": "cpx 'src/**/*' temp/ && unocss --write-transformed && ./minify-inline-script.ts && cpx 'temp/**/*' dist/"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
@@ -65,6 +65,7 @@
     "@types/node": "^20.14.13",
     "@unocss/cli": "^0.61.9",
     "astro": "^4.13.1",
+    "cpx2": "^7.0.1",
     "esbuild": "^0.23.0",
     "fdir": "^6.2.0",
     "tsx": "^4.17.0",
