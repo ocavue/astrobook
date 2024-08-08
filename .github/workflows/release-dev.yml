@@ -2,7 +2,7 @@ name: Release (dev)
 on: [pull_request]
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
 
     steps:
