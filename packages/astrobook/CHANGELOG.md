@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.1.1
+
+### Patch Changes
+
+- [`de4ac26`](https://github.com/ocavue/astrobook/commit/de4ac26393aeaccfdd154ca47e7b828fdeedff6d) Fix incorrect `package.json` `files` field.
+
 ## 0.1.0
 
 ### Minor Changes
