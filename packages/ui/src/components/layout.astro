@@ -1,0 +1,33 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import Sidebar from './sidebar.astro'
+
+interface Props {
+  hasSidebar?: boolean
+}
+
+const hasSidebar = Astro.props.hasSidebar ?? true
+---
+
+<html lang="en" transition:animate="none" class=":uno: h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Astrobook</title>
+    <ViewTransitions />
+  </head>
+  <body class=":uno: flex flex-row m-0 p-0 min-h-full">
+    {
+      hasSidebar && (
+        <div class=":uno: w-64 min-w-64 max-w-64 border-0 border-r border-gray-200 border-solid">
+          <Sidebar />
+        </div>
+      )
+    }
+    <main class=":uno: flex-1">
+      <slot />
+    </main>
+  </body>
+</html>

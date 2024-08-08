@@ -4,40 +4,10 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.6.0",
-  "description": "",
-  "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/ocavue",
-  "homepage": "https://github.com/ocavue/astrobook#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ocavue/astrobook.git"
-  },
-  "bugs": "https://github.com/ocavue/astrobook/issues",
-  "keywords": [],
-  "sideEffects": false,
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
+    "dev": "turbo --filter astrobook-playground watch dev",
+    "postinstall": "pnpm --filter=./packages/ui build",
     "build": "pnpm -r --filter=./packages/* build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
@@ -53,6 +23,7 @@
     "eslint": "^9.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "turbo": "^2.0.12",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
     "vitest": "^2.0.5"

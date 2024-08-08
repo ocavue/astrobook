@@ -1,0 +1,18 @@
+---
+import '@astrobook/ui/style.css'
+
+import AppComponent from '@astrobook/ui/components/app.astro'
+import type { GetStaticPathsResult } from 'astro'
+
+export function getStaticPaths(): GetStaticPathsResult {
+  return [
+    {
+      params: {
+        path: undefined,
+      },
+    },
+  ]
+}
+---
+
+<AppComponent />

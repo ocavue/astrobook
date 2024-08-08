@@ -1,5 +1,5 @@
 {
-  "name": "astrobook",
+  "name": "@astrobook/ui",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -15,35 +15,42 @@
   "bugs": "https://github.com/ocavue/astrobook/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./lib/index.ts",
-  "module": "./lib/index.ts",
-  "types": "./lib/index.ts",
+  "main": "./dist/index.ts",
+  "module": "./dist/index.ts",
+  "types": "./dist/index.ts",
   "exports": {
     ".": {
-      "default": "./lib/index.ts"
+      "default": "./dist/index.ts"
     },
-    "./pages/*": {
-      "default": "./lib/pages/*"
+    "./components/*": {
+      "default": "./dist/components/*"
+    },
+    "./style.css": {
+      "default": "./dist/style.css"
     }
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./lib/index.ts"
+        "./dist/index.ts"
       ],
-      "./pages/*": [
-        "./lib/pages/*"
+      "./components/*": [
+        "./dist/components/*"
+      ],
+      "./style.css": [
+        "./dist/style.css"
       ]
     }
   },
   "files": [
-    "dist",
-    "pages"
+    "dist"
   ],
+  "scripts": {
+    "build": "rsync -av --delete src/ temp/ && unocss --write-transformed && rsync -av --delete temp/ dist/ && rm -rf temp"
+  },
   "dependencies": {
     "@astrobook/core": "workspace:*",
-    "@astrobook/types": "workspace:*",
-    "@astrobook/ui": "workspace:*"
+    "@astrobook/types": "workspace:*"
   },
   "peerDependencies": {
     "astro": ">=4.0.0"
@@ -55,8 +62,11 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.13",
+    "@unocss/cli": "^0.61.9",
     "astro": "^4.13.1",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
+    "unocss": "^0.61.9",
     "vite": "^5.3.5",
     "vitest": "^2.0.5"
   }
