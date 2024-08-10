@@ -14,12 +14,13 @@
 1. Install the packages
 
    ```bash
-   npm install astro astrobook @astrojs/react
+   npm install astro @astrojs/react astrobook
    ```
 
-2. Create `astro.config.mjs`
+2. Create `astro.config.mjs` and add the `astrobook` integration
 
    ```js
+   // astro.config.mjs
    import { defineConfig } from 'astro/config'
    import react from '@astrojs/react'
    import astrobook from 'astrobook'
@@ -42,7 +43,7 @@
 4. Write stories
 
    ```ts
-   // components/Button.stories.ts
+   // src/components/Button.stories.ts
    import { Button, type ButtonProps } from './Button.tsx'
 
    export default {
@@ -63,6 +64,25 @@
    ```
 
 5. Run `npm run dev` and open `http://localhost:4321` to see your stories.
+
+## Options
+
+You can use the `directory` option to specify the directory to scan for stories. The default directory is current working directory.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      directory: 'src/components',
+    }),
+    /* ...other integrations */
+  ],
+})
+```
 
 ## License
 
