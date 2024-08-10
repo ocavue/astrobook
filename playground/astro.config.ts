@@ -15,6 +15,6 @@ export default defineConfig({
     solid({ include: ['**/solid/*'] }),
     svelte(),
     vue(),
-    astrobook(),
+    astrobook({ directory: 'src/components' }),
   ],
 })
