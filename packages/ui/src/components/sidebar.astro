@@ -15,6 +15,16 @@ interface Props {
       class=":uno: inline-block p-2 font-semibold text-gray-800 no-underline hover:text-gray-600"
       href="/">Astrobook</a
     >
+    {
+      Astro.props.storyId ? (
+        <a
+          href={`/stories/${Astro.props.storyId}`}
+          class=":uno: inline-block p-2 font-semibold text-gray-800 no-underline hover:text-gray-600"
+        >
+          Fullscreen
+        </a>
+      ) : null
+    }
   </div>
   <ComponentList storyId={Astro.props.storyId} />
 </nav>
