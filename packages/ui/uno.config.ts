@@ -15,7 +15,7 @@ const config: unknown = defineConfig({
   presets: [
     presetWind({
       variablePrefix: 'astrobook-',
-      preflight: false,
+      preflight: true,
     }),
     presetIcons(),
   ],
