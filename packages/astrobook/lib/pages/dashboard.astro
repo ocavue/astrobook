@@ -3,13 +3,15 @@ import '@astrobook/ui/style.css'
 
 import DashboardComponent from '@astrobook/ui/components/dashboard.astro'
 import type { GetStaticPathsResult } from 'astro'
-import stories from 'virtual:astrobook/stories.mjs'
+import modules from 'virtual:astrobook/story-modules.mjs'
+import type { Story } from '@astrobook/types'
 
 interface Params {
   story: string
 }
 
 export function getStaticPaths() {
+  const stories: Story[] = modules.map((module) => module.stories).flat()
   return stories.map((story) => {
     return {
       params: {

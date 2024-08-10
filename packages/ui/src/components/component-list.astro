@@ -1,5 +1,5 @@
 ---
-import { componentInfos } from './navigation'
+import modules from 'virtual:astrobook/story-modules.mjs'
 
 interface Props {
   storyId: string | null
@@ -8,21 +8,21 @@ interface Props {
 
 <div class=":uno: flex flex-col gap-4 border-0 px-2 pt-4">
   {
-    componentInfos.map((info) => (
+    modules.map((module) => (
       <div class=":uno: flex flex-col gap-0.5">
-        {info.directory && (
-          <div class=":uno: px-2 text-sm opacity-50">{info.directory}</div>
+        {module.directory && (
+          <div class=":uno: px-2 text-sm opacity-50">{module.directory}</div>
         )}
 
         <a
           class=":uno: block flex items-center gap-2 rounded px-2 py-1 text-base text-sm text-gray-900 no-underline transition-colors hover:bg-gray-200"
-          href={`/${info.stories[0]?.id}`}
+          href={`/${module.stories[0]?.id}`}
         >
           <span class=":uno: i-lucide-box inline-block size-4 text-gray-400" />
-          <span>{info.name}</span>
+          <span>{module.name}</span>
         </a>
 
-        {info.stories.map((story) => (
+        {module.stories.map((story) => (
           <a
             class:list={[
               ':uno: block flex items-center gap-2 rounded py-1 pl-5 pr-2 text-base text-sm no-underline transition-colors',

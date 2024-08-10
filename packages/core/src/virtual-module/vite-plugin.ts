@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 
 import { loadStoryComponent } from './story-component'
-import { loadStoryEntries } from './story-entries'
+import { loadStoryModules } from './story-modules'
 import { VirtualModuleIds } from './virtual-module-ids'
 
 export function createVirtualFilesPlugin(rootDir: string): Plugin {
@@ -9,18 +9,18 @@ export function createVirtualFilesPlugin(rootDir: string): Plugin {
     name: 'astrobook/virtual-files',
     resolveId(id) {
       switch (id) {
-        case VirtualModuleIds.COMPONENT_ID:
-          return VirtualModuleIds.COMPONENT_RESOLVED_ID
-        case VirtualModuleIds.ENTRIES_ID:
-          return VirtualModuleIds.ENTRIES_RESOLVED_ID
+        case VirtualModuleIds.STORY_COMPONENT_ID:
+          return VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID
+        case VirtualModuleIds.STORY_MODULES_ID:
+          return VirtualModuleIds.STORY_MODULES_RESOLVED_ID
       }
     },
     load(id) {
       switch (id) {
-        case VirtualModuleIds.COMPONENT_RESOLVED_ID:
+        case VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID:
           return loadStoryComponent(rootDir)
-        case VirtualModuleIds.ENTRIES_RESOLVED_ID:
-          return loadStoryEntries(rootDir)
+        case VirtualModuleIds.STORY_MODULES_RESOLVED_ID:
+          return loadStoryModules(rootDir)
       }
     },
   }

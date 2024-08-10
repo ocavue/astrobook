@@ -1,7 +1,7 @@
 export const enum VirtualModuleIds {
-  COMPONENT_ID = 'virtual:astrobook/component.astro',
-  COMPONENT_RESOLVED_ID = '__virtual_astrobook_component__.astro',
+  STORY_COMPONENT_ID = 'virtual:astrobook/story-component.astro',
+  STORY_COMPONENT_RESOLVED_ID = '__virtual_astrobook_story_component__.astro',
 
-  ENTRIES_ID = 'virtual:astrobook/stories.mjs',
-  ENTRIES_RESOLVED_ID = '__virtual_astrobook_stories__.mjs',
+  STORY_MODULES_ID = 'virtual:astrobook/story-modules.mjs',
+  STORY_MODULES_RESOLVED_ID = '__virtual_astrobook_story_modules__.mjs',
 }
