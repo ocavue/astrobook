@@ -10,11 +10,25 @@ interface Props {
   id="astrobook-navigation"
   class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-auto px-0 pb-8"
 >
-  <div class=":uno: px-2 py-4">
+  <div class=":uno: inline-flex items-center justify-between px-2 py-4">
     <a
-      class=":uno: inline-block p-2 font-semibold text-gray-800 no-underline hover:text-gray-600"
-      href="/">Astrobook</a
+      class=":uno: p-2 font-semibold text-gray-500 no-underline transition hover:text-gray-800"
+      href="/"
     >
+      Astrobook
+    </a>
+    {
+      Astro.props.storyId ? (
+        <a
+          href={`/stories/${Astro.props.storyId}`}
+          class=":uno: block inline-block p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800"
+          title="Go full screen"
+        >
+          <span class=":uno: sr-only">Go full screen</span>
+          <span class=":uno: i-lucide-expand block size-4" />
+        </a>
+      ) : null
+    }
   </div>
   <ComponentList storyId={Astro.props.storyId} />
 </nav>

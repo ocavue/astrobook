@@ -23,7 +23,7 @@ async function listStoryFiles(rootDir: string): Promise<string[]> {
     .crawl(rootDir)
     .withPromise()
 
-  return filePaths.map(normalizePath)
+  return filePaths.map(normalizePath).sort()
 }
 
 type ParsedStoryFile = {

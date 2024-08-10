@@ -20,8 +20,8 @@ export function createAstrobookIntegration(
           },
         })
         injectRoute({
-          pattern: '/[...story]',
-          entrypoint: 'astrobook/pages/dashboard.astro',
+          pattern: '/[type]/[...story]',
+          entrypoint: 'astrobook/pages/story.astro',
           prerender: true,
         })
         injectRoute({
