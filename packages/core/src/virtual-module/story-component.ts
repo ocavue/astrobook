@@ -1,24 +1,27 @@
-import { collectStoryEntries } from '../story-file/collect-story-entries'
+import { getStoryModules } from './get-story-modules'
 
 export async function loadStoryComponent(rootDir: string): Promise<string> {
   const importCode: string[] = []
   const templateCode: string[] = []
 
-  const stories = await collectStoryEntries(rootDir)
+  const modules = await getStoryModules(rootDir)
 
-  for (const [index, story] of stories.entries()) {
-    importCode.push(`import * as m${index} from '${story.modulePath}';`)
-    templateCode.push(
-      [
-        `{`,
-        `id === '${story.id}' ?`,
-        `isAstroComponent(m${index}) ?`,
-        `(<m${index}.default.component { ...m${index}?.['${story.name}']?.args } />) :`,
-        `(<m${index}.default.component { ...m${index}?.['${story.name}']?.args } client:load />) :`,
-        `null`,
-        `}`,
-      ].join(' '),
-    )
+  for (const [index, module] of modules.entries()) {
+    importCode.push(`import * as m${index} from '${module.importPath}';`)
+
+    for (const story of module.stories) {
+      templateCode.push(
+        [
+          `{`,
+          `id === '${story.id}' ?`,
+          `isAstroComponent(m${index}) ?`,
+          `(<m${index}.default.component { ...m${index}?.['${story.name}']?.args } />) :`,
+          `(<m${index}.default.component { ...m${index}?.['${story.name}']?.args } client:load />) :`,
+          `null`,
+          `}`,
+        ].join(' '),
+      )
+    }
   }
 
   const result = [

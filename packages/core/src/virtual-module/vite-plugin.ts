@@ -11,15 +11,15 @@ export function createVirtualFilesPlugin(rootDir: string): Plugin {
       switch (id) {
         case VirtualModuleIds.STORY_COMPONENT_ID:
           return VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID
-        case VirtualModuleIds.ENTRIES_ID:
-          return VirtualModuleIds.ENTRIES_RESOLVED_ID
+        case VirtualModuleIds.STORY_MODULES_ID:
+          return VirtualModuleIds.STORY_MODULES_RESOLVED_ID
       }
     },
     load(id) {
       switch (id) {
         case VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID:
           return loadStoryComponent(rootDir)
-        case VirtualModuleIds.ENTRIES_RESOLVED_ID:
+        case VirtualModuleIds.STORY_MODULES_RESOLVED_ID:
           return loadStoryEntries(rootDir)
       }
     },

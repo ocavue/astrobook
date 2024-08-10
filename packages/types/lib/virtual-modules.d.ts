@@ -1,5 +1,5 @@
-declare module 'virtual:astrobook/stories.mjs' {
-  const entries: import('./story-entry').StoryEntry[]
+declare module 'virtual:astrobook/story-modules.mjs' {
+  const entries: import('./types').StoryModule[]
   export default entries
 }
 
