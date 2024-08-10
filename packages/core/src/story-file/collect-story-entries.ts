@@ -34,7 +34,7 @@ export async function collectStoryEntries(
       entries.push({
         id: storyId,
         name: storyName,
-        modulePath: file.filePath
+        modulePath: file.filePath,
       })
     }
   }
