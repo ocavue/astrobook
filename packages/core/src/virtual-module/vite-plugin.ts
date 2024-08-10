@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 
 import { loadStoryComponent } from './story-component'
-import { loadStoryEntries } from './story-entries'
+import { loadStoryModules } from './story-modules'
 import { VirtualModuleIds } from './virtual-module-ids'
 
 export function createVirtualFilesPlugin(rootDir: string): Plugin {
@@ -20,7 +20,7 @@ export function createVirtualFilesPlugin(rootDir: string): Plugin {
         case VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID:
           return loadStoryComponent(rootDir)
         case VirtualModuleIds.STORY_MODULES_RESOLVED_ID:
-          return loadStoryEntries(rootDir)
+          return loadStoryModules(rootDir)
       }
     },
   }
