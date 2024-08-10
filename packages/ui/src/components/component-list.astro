@@ -16,7 +16,7 @@ interface Props {
 
         <a
           class=":uno: block flex items-center gap-2 rounded px-2 py-1 text-base text-sm text-gray-900 no-underline transition-colors hover:bg-gray-200"
-          href={`/${module.stories[0]?.id}`}
+          href={`/dashboard/${module.stories[0]?.id}`}
         >
           <span class=":uno: i-lucide-box inline-block size-4 text-gray-400" />
           <span>{module.name}</span>
@@ -30,7 +30,7 @@ interface Props {
                 ? ':uno: bg-gray-800 text-white hover:bg-gray-700'
                 : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800',
             ]}
-            href={`/${story.id}`}
+            href={`/dashboard/${story.id}`}
             data-active={Astro.props.storyId === story.id ? '' : undefined}
           >
             <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400" />

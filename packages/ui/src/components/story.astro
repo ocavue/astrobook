@@ -1,0 +1,14 @@
+---
+import '@astrobook/types'
+
+import Layout from './layout.astro'
+import StoryWrapper from './story-wrapper.astro'
+
+interface Props {
+  story: string
+}
+---
+
+<Layout storyId={Astro.props.story} hasSidebar={false}>
+  <StoryWrapper story={Astro.props.story} />
+</Layout>
