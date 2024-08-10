@@ -40,7 +40,7 @@
    }
    ```
 
-4. Write stories
+4. Write stories. Astrobook will scan all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files.
 
    ```ts
    // src/components/Button.stories.ts
