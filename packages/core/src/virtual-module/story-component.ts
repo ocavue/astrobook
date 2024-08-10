@@ -1,10 +1,10 @@
 import { collectStoryEntries } from '../story-file/collect-story-entries'
 
-export async function loadStoryComponent(): Promise<string> {
+export async function loadStoryComponent(rootDir: string): Promise<string> {
   const importCode: string[] = []
   const templateCode: string[] = []
 
-  const stories = await collectStoryEntries(process.cwd())
+  const stories = await collectStoryEntries(rootDir)
 
   for (const [index, story] of stories.entries()) {
     importCode.push(`import * as m${index} from '${story.modulePath}';`)

@@ -24,8 +24,9 @@ export async function collectStoryEntries(
       continue
     }
 
-    const relativePath = path.relative(rootDir, file.filePath)
-    const moduleId = relativePath.replace(/\.stories\.\w+$/i, '')
+    const moduleId = normalizePath(
+      path.relative(rootDir, file.filePath).replace(/\.stories\.\w+$/i, ''),
+    )
 
     for (const storyName of file.namedExports) {
       const storyId = `${moduleId}/${storyName}`
@@ -33,7 +34,7 @@ export async function collectStoryEntries(
       entries.push({
         id: storyId,
         name: storyName,
-        modulePath: './' + relativePath,
+        modulePath: file.filePath,
       })
     }
   }
