@@ -9,15 +9,15 @@ export function createVirtualFilesPlugin(rootDir: string): Plugin {
     name: 'astrobook/virtual-files',
     resolveId(id) {
       switch (id) {
-        case VirtualModuleIds.COMPONENT_ID:
-          return VirtualModuleIds.COMPONENT_RESOLVED_ID
+        case VirtualModuleIds.STORY_COMPONENT_ID:
+          return VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID
         case VirtualModuleIds.ENTRIES_ID:
           return VirtualModuleIds.ENTRIES_RESOLVED_ID
       }
     },
     load(id) {
       switch (id) {
-        case VirtualModuleIds.COMPONENT_RESOLVED_ID:
+        case VirtualModuleIds.STORY_COMPONENT_RESOLVED_ID:
           return loadStoryComponent(rootDir)
         case VirtualModuleIds.ENTRIES_RESOLVED_ID:
           return loadStoryEntries(rootDir)

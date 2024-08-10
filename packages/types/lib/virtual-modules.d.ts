@@ -3,7 +3,7 @@ declare module 'virtual:astrobook/stories.mjs' {
   export default entries
 }
 
-declare module 'virtual:astrobook/component.astro' {
+declare module 'virtual:astrobook/story-component.astro' {
   const StoryComponent = (_props: any) => any
   export default StoryComponent
 }
