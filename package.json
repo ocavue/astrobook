@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "fix": "manypkg fix && eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
-    "test": "echo 'TODO: add tests'",
+    "test": "vitest",
     "typecheck": "tsc --build .",
     "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
