@@ -1,5 +1,17 @@
 # astrobook
 
+## 0.3.0
+
+### Minor Changes
+
+- [`b135226`](https://github.com/ocavue/astrobook/commit/b13522691dde443facf567c889ecf512dfb18ed4) Make the URL prettier by turning the story name into kebab-case.
+
+- [`399f35e`](https://github.com/ocavue/astrobook/commit/399f35e4301319053aaa983534509ea78d10f856) Support Astro `base` option.
+
+### Patch Changes
+
+- [`e4b4b6e`](https://github.com/ocavue/astrobook/commit/e4b4b6e9151d3565574637e5dbf0d04227746adc) Enable scrolling in the main area.
+
 ## 0.2.0
 
 ### Minor Changes
