@@ -2,7 +2,7 @@
 
 import { ensureLeadingSlash, stripSlashes } from './path'
 
-const BASE_URL = stripSlashes(import.meta.env.BASE_URL)
+const BASE_URL = stripSlashes(import.meta.env.ASTROBOOK_BASE_URL as string)
 
 export function getPathWithBase(path: string, base: string = BASE_URL): string {
   return ensureLeadingSlash(
