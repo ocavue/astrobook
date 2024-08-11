@@ -18,7 +18,10 @@ interface Props {
 
         <a
           class=":uno: block flex items-center gap-2 rounded px-2 py-1 text-base text-sm text-gray-900 no-underline transition-colors hover:bg-gray-200"
-          href={getPathWithBase(`/dashboard/${module.stories[0]?.id}`, BASE_URL)}
+          href={getPathWithBase(
+            `/dashboard/${module.stories[0]?.id}`,
+            BASE_URL,
+          )}
         >
           <span class=":uno: i-lucide-box inline-block size-4 text-gray-400" />
           <span>{module.name}</span>
