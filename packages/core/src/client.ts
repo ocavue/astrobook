@@ -1,3 +1,5 @@
+export { getPathWithBase } from './utils/base'
+
 export function isAstroComponent(module: {
   default?: { component?: unknown }
 }) {

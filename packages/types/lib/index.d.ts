@@ -1,3 +1,3 @@
-/// <reference types="./virtual-modules.d.ts" />
+/// <reference types="./virtual.d.ts" />
 
 export * from './types'
