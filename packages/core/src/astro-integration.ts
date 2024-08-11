@@ -12,11 +12,11 @@ export function createAstrobookIntegration(
   return {
     name: 'astrobook/core',
     hooks: {
-      'astro:config:setup': ({ updateConfig, injectRoute }) => {
+      'astro:config:setup': ({ updateConfig, injectRoute, config }) => {
         const rootDir = getRootDir(options)
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir)],
+            plugins: [createVirtualFilesPlugin(rootDir, config.base || '')],
           },
         })
         injectRoute({
