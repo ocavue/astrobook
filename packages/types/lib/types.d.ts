@@ -11,9 +11,7 @@ export interface StoryModule {
   /**
    * The id of the story module.
    *
-   * `id` is a combination of the story module's `directory` and its `name`.
-   *
-   * @example 'components/ui/Button'
+   * @example 'components/ui/button'
    */
   id: string
 
@@ -49,7 +47,7 @@ export interface Story {
   /**
    * The id of the story.
    *
-   * @example 'components/ui/Button/PrimaryButton'
+   * @example 'components/ui/button/primary-button'
    */
   id: string
 

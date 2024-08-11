@@ -2,8 +2,9 @@ import assert from 'node:assert'
 import fs from 'node:fs/promises'
 import path, { isAbsolute } from 'node:path/posix'
 
-import type { Story, StoryModule } from '@astrobook/types'
+import type { StoryModule } from '@astrobook/types'
 import { fdir } from 'fdir'
+import kebabCase from 'just-kebab-case'
 
 import { getExports } from '../utils/get-exports'
 import { normalizePath } from '../utils/normalize-path'
@@ -52,7 +53,7 @@ async function parseStoryFiles(filePath: string): Promise<ParsedStoryFile> {
   return { filePath, defaultExport, namedExports }
 }
 
-function convertStoryFileToModule(
+export function convertStoryFileToModule(
   rootDir: string,
   file: ParsedStoryFile,
 ): StoryModule | undefined {
@@ -66,20 +67,28 @@ function convertStoryFileToModule(
     return
   }
 
-  const moduleId = normalizePath(
-    path.relative(rootDir, file.filePath).replace(/\.stories\.\w+$/i, ''),
+  const relativePath = normalizePath(path.relative(rootDir, file.filePath))
+  const relativePathWithoutStories = relativePath.replace(
+    /\.stories\.\w+$/i,
+    '',
   )
 
-  const stories: Story[] = file.namedExports.map((name) => {
-    return { id: `${moduleId}/${name}`, name }
-  })
+  const directory = relativePathWithoutStories.split('/').slice(0, -1).join('/')
+  const name = relativePathWithoutStories.split('/').pop()
+  assert(name, `[astrobook] Unexpected file path: ${file.filePath}`)
+
+  const moduleId = directory
+    ? `${directory}/${kebabCase(name)}`
+    : kebabCase(name)
 
   return {
     id: moduleId,
-    name: path.basename(moduleId),
-    directory: moduleId.includes('/') ? path.dirname(moduleId) : '',
+    name,
+    directory,
     importPath: file.filePath,
-    stories,
+    stories: file.namedExports.map((name) => {
+      return { id: `${moduleId}/${kebabCase(name)}`, name }
+    }),
   }
 }
 
