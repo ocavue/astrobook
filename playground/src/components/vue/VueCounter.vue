@@ -10,6 +10,8 @@
 </template>
 
 <script lang="ts">
+import '../../styles/global.css'
+
 import { ref, defineComponent } from 'vue'
 
 /** A counter written with Vue */

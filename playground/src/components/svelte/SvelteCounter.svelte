@@ -2,19 +2,21 @@
 A counter written with Svelte
 -->
 <script lang="ts">
-	import { writable } from 'svelte/store';
+import '../../styles/global.css'
 
-	export let step = 1;
+import { writable } from 'svelte/store';
 
-	const count = writable(0);
+export let step = 1;
 
-	function add() {
-		count.update(n => n + step);
-	}
+const count = writable(0);
 
-	function subtract() {
-		count.update(n => n - step);
-	}
+function add() {
+	count.update(n => n + step);
+}
+
+function subtract() {
+	count.update(n => n - step);
+}
 </script>
 
 <div class="counter">

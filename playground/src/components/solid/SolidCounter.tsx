@@ -1,5 +1,7 @@
 /** @jsxImportSource solid-js */
 
+import '../../styles/global.css'
+
 import { createSignal, type JSX } from 'solid-js'
 
 /** A counter written with Solid */
