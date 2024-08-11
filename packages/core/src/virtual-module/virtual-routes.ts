@@ -1,4 +1,5 @@
 import assert from 'node:assert'
+import path from 'node:path/posix'
 
 import type { Story, StoryModule } from '@astrobook/types'
 
@@ -7,6 +8,14 @@ import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
 
 export interface VirtualRoute {
   pattern: string
+  /**
+   * The absolute path to the virtual entrypoint file.
+   *
+   * It's important to use an absolute path here because we must ensure that we
+   * only have one `id`, so that Astro's CSS plugin can find the correct CSS
+   * content in the following line.
+   * https://github.com/withastro/astro/blob/bc2796436dc3810e988c27b71b7a66fcb1ae8bda/packages/astro/src/core/build/plugins/plugin-css.ts#L144
+   */
   entrypoint: string
   storyModule: StoryModule
   story: Story
@@ -29,14 +38,14 @@ export async function getVirtualRoutes(
       routes.push(
         {
           pattern: '/dashboard/' + story.id,
-          entrypoint: ROUTE_DASHBOARD_DIR + story.id + '.astro',
+          entrypoint: path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
           storyModule,
           story,
           props: { hasSidebar: true, story: story.id },
         },
         {
           pattern: '/stories/' + story.id,
-          entrypoint: ROUTE_STORIES_DIR + story.id + '.astro',
+          entrypoint: path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
           storyModule,
           story,
           props: { hasSidebar: false, story: story.id },
@@ -48,7 +57,7 @@ export async function getVirtualRoutes(
   return new Map(routes.map((route) => [route.pattern, route]))
 }
 
-function resolveVirtualRoute(
+export function resolveVirtualRoute(
   path: string,
   routes: Map<string, VirtualRoute>,
 ): VirtualRoute | undefined {
@@ -85,13 +94,6 @@ import * as m from '${route.storyModule.importPath}'
   }
 </StoryPage>
 `
-}
-
-export function isVirtualRoutePath(
-  path: string,
-  routes: Map<string, VirtualRoute>,
-): boolean {
-  return !!resolveVirtualRoute(path, routes)
 }
 
 export function resolveVirtualRouteComponent(
