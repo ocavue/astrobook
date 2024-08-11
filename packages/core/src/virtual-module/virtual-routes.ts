@@ -87,6 +87,13 @@ import * as m from '${route.storyModule.importPath}'
 `
 }
 
+export function isVirtualRoutePath(
+  path: string,
+  routes: Map<string, VirtualRoute>,
+): boolean {
+  return !!resolveVirtualRoute(path, routes)
+}
+
 export function resolveVirtualRouteComponent(
   path: string,
   routes: Map<string, VirtualRoute>,

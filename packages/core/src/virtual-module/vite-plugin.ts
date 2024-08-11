@@ -8,6 +8,7 @@ import {
   STORY_MODULES_RESOLVED_ID,
 } from './virtual-module-ids'
 import {
+  isVirtualRoutePath,
   resolveVirtualRouteComponent,
   type VirtualRoute,
 } from './virtual-routes'
@@ -25,6 +26,10 @@ export function createVirtualFilesPlugin(
           return STORY_MODULES_RESOLVED_ID
         case BASE_URL_ID:
           return BASE_URL_RESOLVED_ID
+      }
+
+      if (isVirtualRoutePath(id, routes)) {
+        return id
       }
     },
     load(id) {
