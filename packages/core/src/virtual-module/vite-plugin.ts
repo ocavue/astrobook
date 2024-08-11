@@ -3,10 +3,15 @@ import type { Plugin } from 'vite'
 import { loadStoryComponent } from './story-component'
 import { loadStoryModules } from './story-modules'
 import { VirtualModuleIds } from './virtual-module-ids'
+import {
+  resolveVirtualRouteComponent,
+  type VirtualRoute,
+} from './virtual-routes'
 
 export function createVirtualFilesPlugin(
   rootDir: string,
   baseUrl: string,
+  routes: Map<string, VirtualRoute>,
 ): Plugin {
   return {
     name: 'astrobook/virtual-files',
@@ -29,6 +34,9 @@ export function createVirtualFilesPlugin(
         case VirtualModuleIds.BASE_URL_RESOLVED_ID:
           return `const baseUrl = ${JSON.stringify(baseUrl)}; export default baseUrl`
       }
+
+      const routeComponent = resolveVirtualRouteComponent(id, routes)
+      if (routeComponent) return routeComponent
     },
   }
 }

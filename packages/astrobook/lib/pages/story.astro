@@ -1,26 +1,12 @@
 ---
 import '@astrobook/ui/style.css'
 
-import StoryComponent from '@astrobook/ui/components/story.astro'
-import modules from 'virtual:astrobook/story-modules.mjs'
-import type { Story } from '@astrobook/types'
+import LayoutComponent from '@astrobook/ui/components/layout.astro'
+import type { ComponentProps } from 'astro/types'
 
-interface Params {
-  type: 'stories' | 'dashboard'
-  story: string
-}
-
-export function getStaticPaths() {
-  const stories: Story[] = modules.map((module) => module.stories).flat()
-  const storyIds = stories.map((story) => story.id)
-  const paramsArray: Params[] = storyIds.flatMap((story) => [
-    { story, type: 'stories' },
-    { story, type: 'dashboard' },
-  ])
-  return paramsArray.map((params) => ({ params }))
-}
-
-const params: Params = Astro.params
+type Props = ComponentProps<typeof LayoutComponent>
 ---
 
-<StoryComponent story={params.story} hasSidebar={params.type === 'dashboard'} />
+<LayoutComponent {...Astro.props}>
+  <slot />
+</LayoutComponent>

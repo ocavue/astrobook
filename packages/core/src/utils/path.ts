@@ -5,10 +5,16 @@ export function stripSlashes(path: string): string {
 
 /** Ensure the passed path starts with a leading slash. */
 export function ensureLeadingSlash(path: string): string {
-  return '/' + stripSlashes(path)
+  if (path.startsWith('/')) {
+    return path
+  }
+  return '/' + path
 }
 
 /** Ensure the passed path ends with a trailing slash. */
 export function ensureTrailingSlash(path: string): string {
-  return stripSlashes(path) + '/'
+  if (path.endsWith('/')) {
+    return path
+  }
+  return path + '/'
 }
