@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.3.2
+
+### Patch Changes
+
+- [`b55c9ca`](https://github.com/ocavue/astrobook/commit/b55c9caf38b5eb57572bc088f074c3d17d714b2e) Remove favicon.
+
 ## 0.3.1
 
 ### Patch Changes

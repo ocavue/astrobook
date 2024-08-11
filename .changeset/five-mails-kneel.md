@@ -1,5 +1,0 @@
----
-'astrobook': patch
----
-
-Remove favicon.
