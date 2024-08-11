@@ -18,7 +18,7 @@ export function createAstrobookIntegration(
           vite: {
             plugins: [createVirtualFilesPlugin(rootDir)],
             define: {
-              'import.meta.env.ASTROBOOK_BASE_URL': JSON.stringify(
+              'import.meta.env.ASTROBOOK_BASE_URL2': JSON.stringify(
                 config.base || '',
               ),
             },
