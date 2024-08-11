@@ -1,6 +1,5 @@
 ---
 import './layout.css'
-import { ViewTransitions } from 'astro:transitions'
 import Sidebar from './sidebar.astro'
 
 interface Props {
@@ -11,18 +10,12 @@ interface Props {
 const hasSidebar = Astro.props.hasSidebar ?? true
 ---
 
-<html
-  lang="en"
-  transition:animate="none"
-  class=":uno: box-border h-full max-h-screen overflow-hidden"
->
+<html lang="en" class=":uno: box-border h-full max-h-screen overflow-hidden">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Astrobook</title>
-    <ViewTransitions />
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
