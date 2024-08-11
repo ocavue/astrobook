@@ -79,7 +79,7 @@ import * as m from '${route.storyModule.importPath}'
 
 <StoryPage storyId={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    isAstroComponent(m.default.component) 
+    isAstroComponent(m)
       ? (<m.default.component { ...m['${route.story.name}']?.args } />)
       : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
   }
