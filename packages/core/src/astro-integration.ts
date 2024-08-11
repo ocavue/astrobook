@@ -16,12 +16,7 @@ export function createAstrobookIntegration(
         const rootDir = getRootDir(options)
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir)],
-            define: {
-              'import.meta.env.ASTROBOOK_BASE_URL2': JSON.stringify(
-                config.base || '',
-              ),
-            },
+            plugins: [createVirtualFilesPlugin(rootDir, config.base || '')],
           },
         })
         injectRoute({
