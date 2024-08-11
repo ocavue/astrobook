@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.3.1
+
+### Patch Changes
+
+- [`8608ead`](https://github.com/ocavue/astrobook/commit/8608eadfe132d1470c2b592a7428ef9997de8c22) Refactor virtual routes to isolate each story in its own virtual component. This improves the performance and fixes style and script conflicts between stories.
+
 ## 0.3.0
 
 ### Minor Changes
