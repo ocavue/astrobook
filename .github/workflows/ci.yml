@@ -38,7 +38,9 @@ jobs:
         run: pnpm run test
 
       - name: Install Playwright
-        run: pnpm run test:e2e:install
+        run: |
+          cd playground
+          pnpm run test:install
 
       - name: E2E Tests in production mode
         run: |
