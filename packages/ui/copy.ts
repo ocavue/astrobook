@@ -22,7 +22,7 @@ async function copyFile(srcPath: string, destPath: string): Promise<void> {
     if (srcHash === destHash) {
       return
     }
-  } catch (error) {
+  } catch {
     // Destination file doesn't exist, we'll copy it
   }
 
