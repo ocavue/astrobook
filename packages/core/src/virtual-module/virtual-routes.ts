@@ -1,10 +1,11 @@
+import path from 'node:path'
+
 import type { Story, StoryModule } from '@astrobook/types'
 
 import { invariant } from '../utils/invariant'
 
 import { getStoryModules } from './get-story-modules'
 import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
-import path from 'path'
 
 export interface VirtualRoute {
   pattern: string
