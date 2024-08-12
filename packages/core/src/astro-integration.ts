@@ -24,13 +24,15 @@ export function createAstrobookIntegration(
         })
 
         for (const route of routes.values()) {
+          console.debug('[DEBUG] injectRoute route:', route)
+
           injectRoute({
             pattern: route.pattern,
             entrypoint: route.entrypoint,
             prerender: true,
           })
         }
-
+        console.debug('[DEBUG] injectRoute')
         injectRoute({
           pattern: '/',
           entrypoint: 'astrobook/pages/app.astro',
