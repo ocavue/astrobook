@@ -13,7 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:install": "playwright install",
+    "test:install": "playwright install --with-deps",
     "test": "playwright test"
   },
   "dependencies": {
