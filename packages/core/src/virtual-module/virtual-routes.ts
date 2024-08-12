@@ -11,7 +11,7 @@ import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
 export interface VirtualRoute {
   pattern: string
   /**
-   * The absolute path to the virtual entrypoint file.
+   * The absolute path to the virtual entrypoint file. Posix slash format.
    *
    * It's important to use an absolute path here because we must ensure that we
    * only have one `id`, so that Astro's CSS plugin can find the correct CSS

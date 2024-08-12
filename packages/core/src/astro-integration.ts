@@ -28,7 +28,7 @@ export function createAstrobookIntegration(
 
           injectRoute({
             pattern: route.pattern,
-            entrypoint: route.entrypoint,
+            entrypoint: path.relative('.', route.entrypoint),
             prerender: true,
           })
         }
