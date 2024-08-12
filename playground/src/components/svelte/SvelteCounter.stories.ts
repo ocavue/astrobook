@@ -10,6 +10,6 @@ export const Default = {
 
 export const LargeStep = {
   args: {
-    step: 10,
+    step: 5,
   },
 }

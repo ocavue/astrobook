@@ -10,6 +10,22 @@ on:
       - master
 
 jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup
+
+      - name: Build
+        run: pnpm run build
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -23,26 +39,47 @@ jobs:
       - name: Typecheck
         run: nr typecheck
 
-  test:
-    runs-on: ubuntu-latest
+  test-unit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup
-
-      - name: Build
-        run: nr build
 
       - name: Test
-        run: nr test
+        run: pnpm run test
 
-  build:
-    runs-on: ubuntu-latest
+  test-e2e:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        mode: [dev, preview]
+
+    runs-on: ${{ matrix.os }}
+    env:
+      ASTROBOOK_TEST_MODE: ${{ matrix.mode }}
 
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup
 
+      - name: Install Playwright
+        run: |
+          cd playground
+          pnpm run test:install
+
       - name: Build
+        if: ${{ matrix.mode == 'preview' }}
         run: pnpm run build
+
+      - name: Test
+        run: |
+          cd playground
+          pnpm run test
