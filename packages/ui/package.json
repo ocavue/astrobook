@@ -23,9 +23,6 @@
     },
     "./components/*": {
       "default": "./dist/components/*"
-    },
-    "./style.css": {
-      "default": "./dist/style.css"
     }
   },
   "typesVersions": {
@@ -35,9 +32,6 @@
       ],
       "./components/*": [
         "./dist/components/*"
-      ],
-      "./style.css": [
-        "./dist/style.css"
       ]
     }
   },
