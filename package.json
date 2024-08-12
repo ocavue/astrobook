@@ -14,6 +14,8 @@
     "fix": "manypkg fix && eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
     "test": "vitest",
+    "test:e2e": "pnpm run test --filter=./playground",
+    "test:e2e:install": "pnpm run test:install --filter=./playground",
     "typecheck": "tsc --build .",
     "change": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",

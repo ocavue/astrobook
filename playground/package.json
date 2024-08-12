@@ -12,7 +12,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:install": "playwright install",
+    "test": "playwright test"
   },
   "dependencies": {
     "@astrojs/preact": "^3.5.1",
@@ -30,5 +32,10 @@
     "solid-js": "^1.8.19",
     "svelte": "^4.2.18",
     "vue": "^3.4.37"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.0",
+    "@types/node": "^20.14.14",
+    "playwright": "^1.46.0"
   }
 }
