@@ -1,10 +1,10 @@
-import assert from 'node:assert'
-import path from 'node:path/posix'
-
 import type { Story, StoryModule } from '@astrobook/types'
+
+import { invariant } from '../utils/invariant'
 
 import { getStoryModules } from './get-story-modules'
 import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
+import path from 'path'
 
 export interface VirtualRoute {
   pattern: string
@@ -33,11 +33,11 @@ export async function getVirtualRoutes(
 
   for (const storyModule of storyModules) {
     for (const story of storyModule.stories) {
-      assert(
+      invariant(
         !story.id.startsWith('..'),
         `Story ID cannot start with '..', but got '${story.id}'`,
       )
-      assert(
+      invariant(
         !story.id.startsWith('/'),
         `Story ID cannot start with '/', but got '${story.id}'`,
       )

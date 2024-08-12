@@ -1,9 +1,8 @@
-import path from 'node:path/posix'
+import path from 'node:path'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
 
-import { normalizePath } from './utils/normalize-path'
 import { getVirtualRoutes } from './virtual-module/virtual-routes'
 import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 
@@ -14,7 +13,7 @@ export function createAstrobookIntegration(
     name: 'astrobook/core',
     hooks: {
       'astro:config:setup': async ({ updateConfig, injectRoute, config }) => {
-        const rootDir = normalizePath(path.resolve(options?.directory || '.'))
+        const rootDir = path.resolve(options?.directory || '.')
         const baseUrl = config.base || ''
         const routes = await getVirtualRoutes(rootDir)
 
