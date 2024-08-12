@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.3.3
+
+### Patch Changes
+
+- [`3e65d77`](https://github.com/ocavue/astrobook/commit/3e65d77a447ccffb9979d320ce97531a510807e9) Fix issues when running on Windows.
+
 ## 0.3.2
 
 ### Patch Changes
