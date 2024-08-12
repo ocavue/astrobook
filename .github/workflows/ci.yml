@@ -57,6 +57,9 @@ jobs:
         mode: [dev, preview]
 
     runs-on: ${{ matrix.os }}
+    env:
+      ASTROBOOK_TEST_MODE: ${{ matrix.mode }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -74,5 +77,4 @@ jobs:
       - name: Test
         run: |
           cd playground
-          export ASTROBOOK_TEST_MODE=${{ matrix.mode }}
           pnpm run test
