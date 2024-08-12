@@ -1,6 +1,7 @@
 import path from 'node:path'
 
 import type { Story, StoryModule } from '@astrobook/types'
+import slash from 'slash'
 
 import { invariant } from '../utils/invariant'
 
@@ -45,14 +46,18 @@ export async function getVirtualRoutes(
       routes.push(
         {
           pattern: '/dashboard/' + story.id,
-          entrypoint: path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+          entrypoint: slash(
+            path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+          ),
           storyModule,
           story,
           props: { hasSidebar: true, story: story.id },
         },
         {
           pattern: '/stories/' + story.id,
-          entrypoint: path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+          entrypoint: slash(
+            path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+          ),
           storyModule,
           story,
           props: { hasSidebar: false, story: story.id },
