@@ -34,7 +34,7 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: Unit Tests
+      - name: Unit tests
         run: pnpm run test
 
       - name: Install Playwright
@@ -42,17 +42,17 @@ jobs:
           cd playground
           pnpm run test:install
 
-      - name: E2E Tests in production mode
+      - name: E2E tests in dev mode
+        run: |
+          cd playground
+          export ASTROBOOK_TEST_MODE=dev
+          pnpm run test
+
+      - name: E2E tests in preview mode
         run: |
           cd playground
           pnpm run build
-          pnpm run preview &
-          pnpm run test
-
-      - name: E2E Tests in dev mode
-        run: |
-          cd playground
-          pnpm run dev & 
+          export ASTROBOOK_TEST_MODE=preview
           pnpm run test
 
   build:
