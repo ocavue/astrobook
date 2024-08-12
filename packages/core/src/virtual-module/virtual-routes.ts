@@ -33,8 +33,14 @@ export async function getVirtualRoutes(
 
   for (const storyModule of storyModules) {
     for (const story of storyModule.stories) {
-      assert(!story.id.startsWith('..'))
-      assert(!story.id.startsWith('/'))
+      assert(
+        !story.id.startsWith('..'),
+        `Story ID cannot start with '..', but got '${story.id}'`,
+      )
+      assert(
+        !story.id.startsWith('/'),
+        `Story ID cannot start with '/', but got '${story.id}'`,
+      )
       routes.push(
         {
           pattern: '/dashboard/' + story.id,

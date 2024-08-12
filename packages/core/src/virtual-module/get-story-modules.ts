@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 import fs from 'node:fs/promises'
-import path, { isAbsolute } from 'node:path/posix'
+import path from 'node:path/posix'
 
 import type { StoryModule } from '@astrobook/types'
 import { fdir } from 'fdir'
@@ -13,8 +13,6 @@ import { normalizePath } from '../utils/normalize-path'
  * List the absolute paths of all story files in the given directory.
  */
 async function listStoryFiles(rootDir: string): Promise<string[]> {
-  assert(isAbsolute(rootDir))
-
   const filePaths = await new fdir()
     .withSymlinks()
     .withFullPaths()
