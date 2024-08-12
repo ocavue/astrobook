@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -26,60 +26,60 @@ jobs:
       - name: Build
         run: pnpm run build
 
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - uses: ./.github/actions/setup
+      - uses: ./.github/actions/setup
 
-  #     - name: Lint
-  #       run: nr lint
+      - name: Lint
+        run: nr lint
 
-  #     - name: Typecheck
-  #       run: nr typecheck
+      - name: Typecheck
+        run: nr typecheck
 
-  # test-unit:
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       os: [ubuntu-latest, windows-latest, macos-latest]
+  test-unit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
-  #   runs-on: ${{ matrix.os }}
-  #   steps:
-  #     - uses: actions/checkout@v4
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - uses: ./.github/actions/setup
+      - uses: ./.github/actions/setup
 
-  #     - name: Test
-  #       run: pnpm run test
+      - name: Test
+        run: pnpm run test
 
-  # test-e2e:
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       os: [ubuntu-latest, windows-latest, macos-latest]
-  #       mode: [dev, preview]
+  test-e2e:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        mode: [dev, preview]
 
-  #   runs-on: ${{ matrix.os }}
-  #   env:
-  #     ASTROBOOK_TEST_MODE: ${{ matrix.mode }}
+    runs-on: ${{ matrix.os }}
+    env:
+      ASTROBOOK_TEST_MODE: ${{ matrix.mode }}
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - uses: ./.github/actions/setup
+      - uses: ./.github/actions/setup
 
-  #     - name: Install Playwright
-  #       run: |
-  #         cd playground
-  #         pnpm run test:install
+      - name: Install Playwright
+        run: |
+          cd playground
+          pnpm run test:install
 
-  #     - name: Build
-  #       if: ${{ matrix.mode == 'preview' }}
-  #       run: pnpm run build
+      - name: Build
+        if: ${{ matrix.mode == 'preview' }}
+        run: pnpm run build
 
-  #     - name: Test
-  #       run: |
-  #         cd playground
-  #         pnpm run test
+      - name: Test
+        run: |
+          cd playground
+          pnpm run test
