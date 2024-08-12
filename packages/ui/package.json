@@ -45,7 +45,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "cpx 'src/**/*' temp/ && unocss --write-transformed && ./minify-inline-script.ts && cpx 'temp/**/*' dist/"
+    "build": "cpx 'src/**/*' temp/ && unocss --write-transformed && tsx minify-inline-script.ts && cpx 'temp/**/*' dist/"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
