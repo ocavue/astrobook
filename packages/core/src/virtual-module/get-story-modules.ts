@@ -1,18 +1,23 @@
-import assert from 'node:assert'
 import fs from 'node:fs/promises'
-import path from 'node:path/posix'
+import path from 'node:path'
 
 import type { StoryModule } from '@astrobook/types'
 import { fdir } from 'fdir'
 import kebabCase from 'just-kebab-case'
+import slash from 'slash'
 
 import { getExports } from '../utils/get-exports'
-import { normalizePath } from '../utils/normalize-path'
+import { invariant } from '../utils/invariant'
 
 /**
  * List the absolute paths of all story files in the given directory.
  */
 async function listStoryFiles(rootDir: string): Promise<string[]> {
+  invariant(
+    path.isAbsolute(rootDir),
+    `Root directory must be absolute, but got '${rootDir}'`,
+  )
+
   const filePaths = await new fdir()
     .withSymlinks()
     .withFullPaths()
@@ -22,7 +27,7 @@ async function listStoryFiles(rootDir: string): Promise<string[]> {
     .crawl(rootDir)
     .withPromise()
 
-  return filePaths.map(normalizePath).sort()
+  return filePaths.sort()
 }
 
 type ParsedStoryFile = {
@@ -65,15 +70,16 @@ export function convertStoryFileToModule(
     return
   }
 
-  const relativePath = normalizePath(path.relative(rootDir, file.filePath))
+  const relativePath = path.normalize(path.relative(rootDir, file.filePath))
   const relativePathWithoutStories = relativePath.replace(
     /\.stories\.\w+$/i,
     '',
   )
+  const parts = relativePathWithoutStories.split(path.sep)
 
-  const directory = relativePathWithoutStories.split('/').slice(0, -1).join('/')
-  const name = relativePathWithoutStories.split('/').pop()
-  assert(name, `[astrobook] Unexpected file path: ${file.filePath}`)
+  const directory = parts.slice(0, -1).join('/')
+  const name = parts.pop()
+  invariant(name, `Unexpected file path: ${file.filePath}`)
 
   const moduleId = directory
     ? `${directory}/${kebabCase(name)}`
@@ -83,7 +89,7 @@ export function convertStoryFileToModule(
     id: moduleId,
     name,
     directory,
-    importPath: file.filePath,
+    importPath: slash(file.filePath),
     stories: file.namedExports.map((name) => {
       return { id: `${moduleId}/${kebabCase(name)}`, name }
     }),

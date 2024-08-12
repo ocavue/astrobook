@@ -23,9 +23,6 @@
     },
     "./components/*": {
       "default": "./dist/components/*"
-    },
-    "./style.css": {
-      "default": "./dist/style.css"
     }
   },
   "typesVersions": {
@@ -35,9 +32,6 @@
       ],
       "./components/*": [
         "./dist/components/*"
-      ],
-      "./style.css": [
-        "./dist/style.css"
       ]
     }
   },
@@ -45,7 +39,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "cpx 'src/**/*' temp/ && unocss --write-transformed && tsx minify-inline-script.ts && cpx 'temp/**/*' dist/"
+    "build": "tsx copy.ts src temp && unocss --write-transformed && tsx minify-inline-script.ts && tsx copy.ts temp dist"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
@@ -65,7 +59,6 @@
     "@types/node": "^20.14.14",
     "@unocss/cli": "^0.61.9",
     "astro": "^4.13.2",
-    "cpx2": "^7.0.1",
     "esbuild": "^0.23.0",
     "fdir": "^6.2.0",
     "tsx": "^4.17.0",

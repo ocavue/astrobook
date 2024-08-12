@@ -1,7 +1,9 @@
-import assert from 'node:assert'
-import path from 'node:path/posix'
+import path from 'node:path'
 
 import type { Story, StoryModule } from '@astrobook/types'
+import slash from 'slash'
+
+import { invariant } from '../utils/invariant'
 
 import { getStoryModules } from './get-story-modules'
 import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
@@ -9,7 +11,7 @@ import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
 export interface VirtualRoute {
   pattern: string
   /**
-   * The absolute path to the virtual entrypoint file.
+   * The absolute path to the virtual entrypoint file. Posix slash format.
    *
    * It's important to use an absolute path here because we must ensure that we
    * only have one `id`, so that Astro's CSS plugin can find the correct CSS
@@ -33,25 +35,29 @@ export async function getVirtualRoutes(
 
   for (const storyModule of storyModules) {
     for (const story of storyModule.stories) {
-      assert(
+      invariant(
         !story.id.startsWith('..'),
         `Story ID cannot start with '..', but got '${story.id}'`,
       )
-      assert(
+      invariant(
         !story.id.startsWith('/'),
         `Story ID cannot start with '/', but got '${story.id}'`,
       )
       routes.push(
         {
           pattern: '/dashboard/' + story.id,
-          entrypoint: path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+          entrypoint: slash(
+            path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+          ),
           storyModule,
           story,
           props: { hasSidebar: true, story: story.id },
         },
         {
           pattern: '/stories/' + story.id,
-          entrypoint: path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+          entrypoint: slash(
+            path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+          ),
           storyModule,
           story,
           props: { hasSidebar: false, story: story.id },

@@ -5,7 +5,7 @@ Minify inline script tags in all .astro files under ./temp
 */
 
 import fs from 'node:fs/promises'
-import path from 'node:path/posix'
+import path from 'node:path'
 
 import * as esbuild from 'esbuild'
 import { fdir } from 'fdir'
