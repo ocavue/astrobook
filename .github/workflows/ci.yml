@@ -24,17 +24,34 @@ jobs:
         run: nr typecheck
 
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup
 
-      - name: Build
-        run: nr build
+      - name: Unit Tests
+        run: pnpm run test
 
-      - name: Test
-        run: nr test
+      - name: Install Playwright
+        run: pnpm run test:e2e:install
+
+      - name: E2E Tests in production mode
+        run: |
+          cd playground
+          pnpm run build
+          pnpm run preview &
+          pnpm run test
+
+      - name: E2E Tests in dev mode
+        run: |
+          cd playground
+          pnpm run dev & 
+          pnpm run test
 
   build:
     runs-on: ubuntu-latest
