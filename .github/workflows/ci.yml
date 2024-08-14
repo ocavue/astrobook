@@ -34,10 +34,10 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
 
       - name: Typecheck
-        run: nr typecheck
+        run: pnpm run typecheck
 
   test-unit:
     strategy:

@@ -24,7 +24,11 @@ interface Props {
         )}
 
         <a
-          class=":uno: block flex items-center gap-2 rounded px-2 py-1 text-base text-sm text-gray-900 no-underline transition-colors hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+          class:list={[
+            ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+            ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
+            'astrobook-focus-ring',
+          ]}
           href={getPathWithBase(
             `/dashboard/${module.stories[0]?.id}`,
             BASE_URL,
@@ -37,7 +41,9 @@ interface Props {
         {module.stories.map((story) => (
           <a
             class:list={[
-              ':uno: block flex items-center gap-2 rounded py-1 pl-5 pr-2 text-base text-sm no-underline transition-colors',
+              ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+              ':uno: py-1 pl-5 pr-2',
+              'astrobook-focus-ring',
               Astro.props.story === story.id
                 ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
                 : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',

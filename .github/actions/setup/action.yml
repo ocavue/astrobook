@@ -21,10 +21,6 @@ runs:
         cache: pnpm
         registry-url: 'https://registry.npmjs.org'
 
-    - name: Setup ni
-      run: npm i -g @antfu/ni
-      shell: bash
-
     - name: Install
-      run: ni
+      run: pnpm install
       shell: bash

@@ -12,7 +12,7 @@
     "build:package": "turbo build --filter='./packages/*' --concurrency=1",
     "lint": "eslint .",
     "fix": "manypkg fix && eslint --fix . && prettier --write .",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest",
     "typecheck": "tsc --build .",
     "change": "changeset",
@@ -26,7 +26,6 @@
     ]
   },
   "dependencies": {
-    "@antfu/ni": "^0.22.0",
     "@changesets/cli": "^2.27.7",
     "@changesets/types": "^6.0.0",
     "@manypkg/cli": "^0.21.4",
