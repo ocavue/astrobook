@@ -58,3 +58,12 @@ export interface Story {
    */
   name: string
 }
+
+declare global {
+  interface Window {
+    astrobook?: {
+      setTheme?: (theme: 'dark' | 'light') => void
+      getTheme?: () => 'dark' | 'light'
+    }
+  }
+}
