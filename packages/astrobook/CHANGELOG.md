@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.4.2
+
+### Patch Changes
+
+- [`c1e8c88`](https://github.com/ocavue/astrobook/commit/c1e8c88671e2472c227495abaa7633ae082fea7f) Fix an issue where the theme toggle button was not focusable.
+
 ## 0.4.1
 
 ### Patch Changes
