@@ -4,7 +4,7 @@
 
 > A minimal and fast [Storybook](https://storybook.js.org/) alternative. Powered by [Astro](https://astro.build/).
 
-![astrobook](https://github.com/user-attachments/assets/7784b501-4c2f-44f7-bf21-e1264b6758bc)
+![astrobook](https://github.com/user-attachments/assets/02289aa9-df34-48f8-8aa5-42015c172443)
 
 ## Quick start
 
