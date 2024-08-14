@@ -133,19 +133,14 @@
       .getElementById(iconElementId)
       ?.addEventListener('click', handleClick)
 
-    console.log('[DEBUG] adding message event listener')
-
     // Add message event listener to toggle the theme
     window.addEventListener('message', (event) => {
-      console.log('[DEBUG] message', event)
-
       try {
         const { type, theme } = event.data
         if (
           type === 'astrobook:set-theme' &&
           (theme === 'dark' || theme === 'light')
         ) {
-          console.log('[DEBUG] setting theme to', theme)
           setTheme(theme)
         }
       } catch {
