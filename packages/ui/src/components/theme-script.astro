@@ -14,7 +14,7 @@
     /** @typedef {'dark' | 'light'} Theme */
 
     const iconElementId = 'astrobook-theme-icon'
-    const storageKey = 'astrobook-theme'
+    const sessionKey = 'astrobook-theme'
 
     /**
      * @returns {Theme}
@@ -29,7 +29,7 @@
      * @returns {Theme | null}
      */
     function getUserTheme() {
-      const theme = localStorage.getItem(storageKey)
+      const theme = sessionStorage.getItem(sessionKey)
       return theme === 'dark' || theme === 'light' ? theme : null
     }
 
@@ -45,9 +45,9 @@
      */
     function setUserTheme(theme) {
       if (theme === getSystemTheme()) {
-        localStorage.removeItem(storageKey)
+        sessionStorage.removeItem(sessionKey)
       } else {
-        localStorage.setItem(storageKey, theme)
+        sessionStorage.setItem(sessionKey, theme)
       }
     }
 
