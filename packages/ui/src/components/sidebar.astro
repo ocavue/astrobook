@@ -10,8 +10,7 @@ interface Props {
 ---
 
 <nav
-  id="astrobook-navigation"
-  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-auto px-0 pb-8 dark:divide-gray-700"
+  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-hidden p-0 dark:divide-gray-700"
 >
   <div class=":uno: inline-flex items-center px-2 py-4">
     <SidebarTitle />
@@ -21,62 +20,3 @@ interface Props {
   </div>
   <SidebarComponentList story={Astro.props.story} />
 </nav>
-
-<script is:inline>
-  // @ts-check
-  ;(() => {
-    const elementId = 'astrobook-navigation'
-    const sessionKey = 'astrobook-navigation-scroll-position'
-
-    /**
-     * Saves the current scroll position of the navigation element to sessionStorage
-     */
-    const save = () => {
-      const el = document.getElementById(elementId)
-      if (!el) return
-
-      sessionStorage.setItem(sessionKey, String(el.scrollTop))
-    }
-
-    /**
-     * Creates a throttled version of a function
-     * @param {() => void} func - The function to throttle
-     * @param {number} limit - The time limit in milliseconds
-     * @returns {() => void} - The throttled function
-     */
-    const throttle = (func, limit) => {
-      /** @type {number | null} */
-      let pending = null
-
-      return () => {
-        if (pending) return
-
-        pending = 1
-        setTimeout(() => {
-          pending = null
-          func()
-        }, limit)
-      }
-    }
-
-    const throttledSave = throttle(save, 100)
-
-    const load = () => {
-      const el = document.getElementById(elementId)
-      if (!el) return
-
-      const scrollPosition = sessionStorage.getItem(sessionKey) || ''
-      if (scrollPosition.match(/^\d+(\.\d*)?$/)) {
-        el.scrollTop = parseFloat(scrollPosition)
-      }
-
-      el.addEventListener('scroll', throttledSave)
-    }
-
-    load()
-
-    document.addEventListener('astro:page-load', () => {
-      load()
-    })
-  })()
-</script>
