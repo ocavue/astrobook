@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.4.1
+
+### Patch Changes
+
+- [`faa79f8`](https://github.com/ocavue/astrobook/commit/faa79f821ff63ee433f28aecd5fa261358d44c5a) Always show the theme button when scrolling down component list.
+
 ## 0.4.0
 
 ### Minor Changes
