@@ -21,7 +21,6 @@ runs:
         cache: pnpm
         registry-url: 'https://registry.npmjs.org'
 
-
     - name: Install
       run: pnpm install
       shell: bash
