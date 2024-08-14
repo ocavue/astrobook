@@ -26,7 +26,7 @@ const config: unknown = defineConfig({
   ],
   shortcuts: {
     'astrobook-focusable':
-      ' outline-gray-900 dark:outline-gray-100 outline-0 focus-visible:outline-2 outline-offset-2 focus-visible:z-20',
+      'outline-gray-900 dark:outline-gray-100 outline-0 focus-visible:outline-2 outline-offset-2 focus-visible:z-20',
   },
 })
 
