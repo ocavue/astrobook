@@ -1,10 +1,8 @@
-# astrobook
+# Astrobook
 
 [![NPM version](https://img.shields.io/npm/v/astrobook?color=a1b858&label=)](https://www.npmjs.com/package/astrobook)
 
 > A minimal and fast [Storybook](https://storybook.js.org/) alternative. Powered by [Astro](https://astro.build/).
-
-![astrobook](https://github.com/user-attachments/assets/dbaa6243-4ce2-45da-b760-44543f59bb63)
 
 ## Quick start
 
