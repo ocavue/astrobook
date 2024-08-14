@@ -84,15 +84,15 @@ export default defineConfig({
 })
 ```
 
-## Advanced 
+## Advanced
 
 ### Toggle theme via message
 
 If you're running Astrobook in an iframe, you can toggle the theme via a message.
 
 ```js
-const theme = "light" // or "dark"
-iframe.contentWindow.postMessage({ type: "astrobook:set-theme", theme },  "*")
+const theme = 'light' // or "dark"
+iframe.contentWindow.postMessage({ type: 'astrobook:set-theme', theme }, '*')
 ```
 
 ## License
