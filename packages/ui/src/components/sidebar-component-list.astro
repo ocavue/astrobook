@@ -10,7 +10,7 @@ interface Props {
 }
 ---
 
-<div class=":uno: flex flex-col gap-4 border-0 px-2 pt-4">
+<div class=":uno: flex flex-col gap-4 border-0 px-2 pt-4 overflow-y-auto pb-8" id="astrobook-sidebar-component-list">
   {
     modules.map((module) => (
       <div class=":uno: flex flex-col gap-0.5">
@@ -50,3 +50,63 @@ interface Props {
     ))
   }
 </div>
+
+
+<script is:inline>
+  // @ts-check
+  ;(() => {
+    const elementId = 'astrobook-sidebar-component-list'
+    const sessionKey = 'astrobook-navigation-scroll-position'
+
+    /**
+     * Saves the current scroll position of the navigation element to sessionStorage
+     */
+    const save = () => {
+      const el = document.getElementById(elementId)
+      if (!el) return
+
+      sessionStorage.setItem(sessionKey, String(el.scrollTop))
+    }
+
+    /**
+     * Creates a throttled version of a function
+     * @param {() => void} func - The function to throttle
+     * @param {number} limit - The time limit in milliseconds
+     * @returns {() => void} - The throttled function
+     */
+    const throttle = (func, limit) => {
+      /** @type {number | null} */
+      let pending = null
+
+      return () => {
+        if (pending) return
+
+        pending = 1
+        setTimeout(() => {
+          pending = null
+          func()
+        }, limit)
+      }
+    }
+
+    const throttledSave = throttle(save, 100)
+
+    const load = () => {
+      const el = document.getElementById(elementId)
+      if (!el) return
+
+      const scrollPosition = sessionStorage.getItem(sessionKey) || ''
+      if (scrollPosition.match(/^\d+(\.\d*)?$/)) {
+        el.scrollTop = parseFloat(scrollPosition)
+      }
+
+      el.addEventListener('scroll', throttledSave)
+    }
+
+    load()
+
+    document.addEventListener('astro:page-load', () => {
+      load()
+    })
+  })()
+</script>
