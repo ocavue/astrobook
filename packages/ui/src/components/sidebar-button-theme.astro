@@ -1,4 +1,5 @@
 ---
+import '@astrobook/types'
 import SidebarButton from './sidebar-button.astro'
 ---
 
@@ -13,62 +14,10 @@ import SidebarButton from './sidebar-button.astro'
     /** @typedef {'dark' | 'light'} Theme */
 
     const iconElementId = 'astrobook-theme-icon'
-    const storageKey = 'astrobook-theme'
-
-    /**
-     * @returns {Theme}
-     */
-    function getSystemTheme() {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-    }
-
-    /**
-     * @returns {Theme | null}
-     */
-    function getUserTheme() {
-      const theme = localStorage.getItem(storageKey)
-      return theme === 'dark' || theme === 'light' ? theme : null
-    }
-
-    /**
-     * @returns {'dark' | 'light'}
-     */
-    function getTheme() {
-      return getUserTheme() || getSystemTheme()
-    }
-
-    /**
-     * @param {Theme} theme
-     */
-    function setUserTheme(theme) {
-      if (theme === getSystemTheme()) {
-        localStorage.removeItem(storageKey)
-      } else {
-        localStorage.setItem(storageKey, theme)
-      }
-    }
-
-    /**
-     * @param {Theme} theme
-     */
-    function setStyle(theme) {
-      const root = document.documentElement
-      root.classList.toggle('dark', theme === 'dark')
-      root.style.colorScheme = theme
-    }
-
-    /**
-     * @param {Theme} theme
-     */
-    function setTheme(theme) {
-      setUserTheme(theme)
-      setStyle(theme)
-    }
 
     function toggleTheme() {
-      setTheme(getTheme() === 'light' ? 'dark' : 'light')
+      const theme = window.astrobook?.getTheme?.()
+      window.astrobook?.setTheme?.(theme === 'light' ? 'dark' : 'light')
     }
 
     const gradientOffset = 0.7
@@ -124,27 +73,9 @@ import SidebarButton from './sidebar-button.astro'
       startCircleAnimation(toggleTheme, event.clientX, event.clientY)
     }
 
-    // Set the theme on load
-    setTheme(getTheme())
-
     // Add click event listener to toggle the theme
     document
       .getElementById(iconElementId)
       ?.addEventListener('click', handleClick)
-
-    // Add message event listener to toggle the theme
-    window.addEventListener('message', (event) => {
-      try {
-        const { type, theme } = event.data
-        if (
-          type === 'astrobook:set-theme' &&
-          (theme === 'dark' || theme === 'light')
-        ) {
-          setTheme(theme)
-        }
-      } catch {
-        // ignore
-      }
-    })
   })()
 </script>
