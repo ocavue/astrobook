@@ -98,7 +98,7 @@ import { isAstroComponent } from 'astrobook/client'
 import * as m from '${route.storyModule.importPath}'
 ---
 
-<StoryPage storyId={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
+<StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
     isAstroComponent(m)
       ? (<m.default.component { ...m['${route.story.name}']?.args } />)

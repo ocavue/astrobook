@@ -42,7 +42,11 @@ async function update(filePath: string) {
 }
 
 async function minify(script: string): Promise<string> {
-  return (await esbuild.transform(script, { minify: true })).code
+  const result = await esbuild.transform(script, {
+    minify: true,
+    target: 'es2018',
+  })
+  return result.code
 }
 
 await main()

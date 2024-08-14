@@ -1,0 +1,19 @@
+---
+interface Props {
+  id?: string
+  href?: string
+  title: string
+}
+---
+
+
+<a
+  id={Astro.props.id}
+  href={Astro.props.href}
+  class=":uno: block inline-block cursor-pointer p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+  target="”_blank”"
+  title={Astro.props.title}
+>
+  <span class=":uno: sr-only">{Astro.props.title}</span>
+  <slot />
+</a>

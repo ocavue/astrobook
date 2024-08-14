@@ -1,0 +1,22 @@
+---
+import '@astrobook/types'
+import BASE_URL from 'virtual:astrobook/base-url.mjs'
+
+import { getPathWithBase } from '@astrobook/core/client'
+import SidebarButton from './sidebar-button.astro'
+
+interface Props {
+  story?: string
+}
+---
+
+{
+  Astro.props.story ? (
+    <SidebarButton
+      href={getPathWithBase(`/stories/${Astro.props.story}`, BASE_URL)}
+      title="Go full screen"
+    >
+      <span class=":uno: i-lucide:square-arrow-out-up-right block size-4" />
+    </SidebarButton>
+  ) : null
+}
