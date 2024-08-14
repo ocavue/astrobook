@@ -144,11 +144,12 @@ import SidebarButton from './sidebar-button.astro'
     // Add message event listener to toggle the theme
     window.addEventListener('message', (event) => {
       try {
-        if (event.data.type === 'astrobook:set-theme') {
-          const theme = event.data.theme
-          if (theme === 'dark' || theme === 'light') {
-            setTheme(theme)
-          }
+        const { type, theme } = event.data
+        if (
+          type === 'astrobook:set-theme' &&
+          (theme === 'dark' || theme === 'light')
+        ) {
+          setTheme(theme)
         }
       } catch {
         // ignore
