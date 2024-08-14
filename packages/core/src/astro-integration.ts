@@ -27,16 +27,12 @@ export function createAstrobookIntegration(
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
-          console.debug('[DEBUG] injectRoute route:', route)
-          console.debug('[DEBUG] injectRoute entrypoint:', entrypoint)
-
           injectRoute({
             pattern: route.pattern,
             entrypoint,
             prerender: true,
           })
         }
-        console.debug('[DEBUG] injectRoute')
         injectRoute({
           pattern: '/',
           entrypoint: 'astrobook/pages/app.astro',

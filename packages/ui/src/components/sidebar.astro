@@ -1,45 +1,36 @@
 ---
-import ComponentList from './component-list.astro'
-import { getPathWithBase } from '@astrobook/core/client'
-import BASE_URL from 'virtual:astrobook/base-url.mjs'
+import SidebarButtonFullscreen from './sidebar-button-fullscreen.astro'
+import SidebarButtonTheme from './sidebar-button-theme.astro'
+import SidebarComponentList from './sidebar-component-list.astro'
+import SidebarTitle from './sidebar-title.astro'
 
 interface Props {
-  storyId: string | null
+  story?: string
 }
 ---
 
 <nav
   id="astrobook-navigation"
-  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-auto px-0 pb-8"
+  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-auto px-0 pb-8 dark:divide-gray-700"
 >
-  <div class=":uno: inline-flex items-center justify-between px-2 py-4">
-    <a
-      class=":uno: p-2 font-semibold text-gray-500 no-underline transition hover:text-gray-800"
-      href={getPathWithBase('/', BASE_URL)}
-    >
-      Astrobook
-    </a>
-    {
-      Astro.props.storyId ? (
-        <a
-          href={getPathWithBase(`/stories/${Astro.props.storyId}`, BASE_URL)}
-          class=":uno: block inline-block p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800"
-          title="Go full screen"
-        >
-          <span class=":uno: sr-only">Go full screen</span>
-          <span class=":uno: i-lucide-expand block size-4" />
-        </a>
-      ) : null
-    }
+  <div class=":uno: inline-flex items-center px-2 py-4">
+    <SidebarTitle />
+    <span class=":uno: flex-1"></span>
+    <SidebarButtonFullscreen story={Astro.props.story} />
+    <SidebarButtonTheme />
   </div>
-  <ComponentList storyId={Astro.props.storyId} />
+  <SidebarComponentList story={Astro.props.story} />
 </nav>
 
 <script is:inline>
+  // @ts-check
   ;(() => {
     const elementId = 'astrobook-navigation'
     const sessionKey = 'astrobook-navigation-scroll-position'
 
+    /**
+     * Saves the current scroll position of the navigation element to sessionStorage
+     */
     const save = () => {
       const el = document.getElementById(elementId)
       if (!el) return
@@ -47,15 +38,22 @@ interface Props {
       sessionStorage.setItem(sessionKey, String(el.scrollTop))
     }
 
+    /**
+     * Creates a throttled version of a function
+     * @param {() => void} func - The function to throttle
+     * @param {number} limit - The time limit in milliseconds
+     * @returns {() => void} - The throttled function
+     */
     const throttle = (func, limit) => {
-      let pending
+      /** @type {number | null} */
+      let pending = null
 
       return () => {
         if (pending) return
 
         pending = 1
         setTimeout(() => {
-          pending = 0
+          pending = null
           func()
         }, limit)
       }
