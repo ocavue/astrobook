@@ -10,7 +10,10 @@ interface Props {
 }
 ---
 
-<div class=":uno: flex flex-col gap-4 border-0 px-2 pt-4 overflow-y-auto pb-8" id="astrobook-sidebar-component-list">
+<div
+  class=":uno: flex flex-col gap-4 overflow-y-auto border-0 px-2 pb-8 pt-4"
+  id="astrobook-sidebar-component-list"
+>
   {
     modules.map((module) => (
       <div class=":uno: flex flex-col gap-0.5">
@@ -50,7 +53,6 @@ interface Props {
     ))
   }
 </div>
-
 
 <script is:inline>
   // @ts-check
