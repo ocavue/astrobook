@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.4.0
+
+### Minor Changes
+
+- [`ea040d1`](https://github.com/ocavue/astrobook/commit/ea040d14585193f24ec50b89073bc18dc1837658) Add a button to toggle the color theme.
+
 ## 0.3.3
 
 ### Patch Changes
