@@ -18,6 +18,7 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astrobook</title>
+    <ThemeScript />
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
@@ -32,6 +33,5 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <main class=":uno: box-border flex-1 overflow-auto">
       <slot />
     </main>
-    <ThemeScript />
   </body>
 </html>
