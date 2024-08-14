@@ -2,6 +2,7 @@
 import '../style.css'
 import './layout.css'
 import Sidebar from './sidebar.astro'
+import ThemeScript from './theme-script.astro'
 
 interface Props {
   story: string | undefined
@@ -31,5 +32,6 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <main class=":uno: box-border flex-1 overflow-auto">
       <slot />
     </main>
+    <ThemeScript />
   </body>
 </html>
