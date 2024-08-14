@@ -29,11 +29,11 @@ export class LitCounter extends LitElement {
     this.step = 1
   }
 
-  subtract() {
+  subtract = () => {
     this.count -= this.step
   }
 
-  add() {
+  add = () => {
     this.count += this.step
   }
 
