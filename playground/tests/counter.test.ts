@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 for (const dir of ['dashboard', 'stories']) {
   for (const framework of [
     'astro',
+    'lit',
     'preact',
     'react',
     'solid',
@@ -15,9 +16,25 @@ for (const dir of ['dashboard', 'stories']) {
         await page.goto(`/${path}`)
 
         const counter = page.locator('.counter')
+        await expect(counter).toBeVisible()
+
         const counterPre = counter.locator('pre')
         const counterAdd = counter.locator('button', { hasText: '+' })
         const counterSub = counter.locator('button', { hasText: '-' })
+
+        await expect(counterPre).toHaveText('0')
+
+        // Wait for the counter button to be clickable
+        await expect(async () => {
+          await counterAdd.click()
+          await expect(counterPre).not.toHaveText('0')
+        }).toPass()
+
+        // Reset the counter
+        await expect(async () => {
+          await counterSub.click()
+          await expect(counterPre).toHaveText('0')
+        }).toPass()
 
         await expect(counterPre).toHaveText('0')
 

@@ -9,7 +9,7 @@
 ## Quick start
 
 > [!NOTE]
-> Astrobook supports **React**, **Vue**, **Preact**, **Svelte**, **Solid** and **Astro** components out of the box. We use React as an example here. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
+> Astrobook supports **React**, **Vue**, **Preact**, **Svelte**, **Solid**, **Lit** and **Astro** components out of the box. We use React as an example here. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
 
 1. Install the packages
 
