@@ -54,17 +54,17 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.1.205",
+    "@iconify-json/lucide": "^1.1.209",
     "@iconify-json/mdi": "^1.1.68",
-    "@types/node": "^20.14.14",
-    "@unocss/cli": "^0.61.9",
-    "astro": "^4.13.2",
-    "esbuild": "^0.23.0",
-    "fdir": "^6.2.0",
-    "tsx": "^4.17.0",
+    "@types/node": "^20.16.2",
+    "@unocss/cli": "^0.62.3",
+    "astro": "^4.15.1",
+    "esbuild": "^0.23.1",
+    "fdir": "^6.3.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.5.4",
-    "unocss": "^0.61.9",
-    "vite": "^5.4.0",
+    "unocss": "^0.62.3",
+    "vite": "^5.4.2",
     "vitest": "^2.0.5"
   }
 }
