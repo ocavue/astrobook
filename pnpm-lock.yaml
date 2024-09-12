@@ -149,8 +149,8 @@ importers:
         specifier: workspace:*
         version: link:../types
       astro-theme-toggle:
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.3.1
+        version: 0.3.1
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.1.209
@@ -1839,8 +1839,8 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
-  astro-theme-toggle@0.3.0:
-    resolution: {integrity: sha512-UQ4z0p7JnxMpYDQuMUFjd9JuDWsIKbSVGuncS5p5LQ98RMx6yvjzGc3KDF9/IgKdiry0aUj0JFX0RUj7M23Bag==}
+  astro-theme-toggle@0.3.1:
+    resolution: {integrity: sha512-mSV2Fb63rt74IzkgkOU0X062VxhEcj7Iicd2EA6cfdX1oTabvcLG4fLMooqnaH9qkBAVEWDlTLeMj6aEpPH1Lg==}
 
   astro@4.15.1:
     resolution: {integrity: sha512-XvKZ2GaDbCsMfcJess4o+4D4cCKja45GJ/9o6EJ6n96xaen8HZMRoJn3YKL9TOjIrL2NuU4mBFMG2JivPJ0foA==}
@@ -6924,7 +6924,7 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  astro-theme-toggle@0.3.0: {}
+  astro-theme-toggle@0.3.1: {}
 
   astro@4.15.1(@types/node@20.16.2)(rollup@4.21.2)(typescript@5.5.4):
     dependencies:
