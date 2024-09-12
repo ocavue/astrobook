@@ -8,76 +8,10 @@ import SidebarButton from './sidebar-button.astro'
   ></span>
 </SidebarButton>
 
-<script is:inline>
-  // @ts-check
+<script>
+  import { handleToggleClick } from 'astro-theme-toggle'
 
-  // @unocss-skip-start
-
-  ;(() => {
-    const iconElementId = 'astrobook-theme-icon'
-
-    function toggleTheme() {
-      const theme = window.astrobook?.getTheme?.()
-      window.astrobook?.setTheme?.(theme === 'light' ? 'dark' : 'light')
-    }
-
-    const gradientOffset = 0.7
-    const maskSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><defs><radialGradient id="toggle-theme-gradient"><stop offset="${gradientOffset}"/><stop offset="1" stop-opacity="0"/></radialGradient></defs><circle cx="4" cy="4" r="4" fill="url(#toggle-theme-gradient)"/></svg>`
-    const maskUrl = `data:image/svg+xml;base64,${window.btoa(maskSvg)}`
-
-    /**
-     * @param {() => void} callback
-     * @param {number} x
-     * @param {number} y
-     */
-    async function startCircleAnimation(callback, x, y) {
-      // @ts-expect-error: startViewTransition is not typed
-      if (typeof document.startViewTransition !== 'function') {
-        callback()
-        return
-      }
-
-      // @ts-expect-error: startViewTransition is not typed
-      await document.startViewTransition(() => {
-        callback()
-      }).ready
-
-      const w = window.innerWidth
-      const h = window.innerHeight
-
-      const maxRadius = Math.ceil(
-        Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) / gradientOffset,
-      )
-
-      document.documentElement.animate(
-        {
-          maskImage: [`url('${maskUrl}')`, `url('${maskUrl}')`],
-          maskRepeat: ['no-repeat', 'no-repeat'],
-          maskPosition: [
-            `${x}px ${y}px`,
-            `${x - maxRadius}px ${y - maxRadius}px`,
-          ],
-          maskSize: ['0', `${2 * maxRadius}px`],
-        },
-        {
-          duration: 500,
-          easing: 'ease-in',
-          pseudoElement: '::view-transition-new(root)',
-        },
-      )
-    }
-
-    /**
-     * @param {MouseEvent} event
-     */
-    function handleClick(event) {
-      startCircleAnimation(toggleTheme, event.clientX, event.clientY)
-    }
-
-    // Add click event listener to toggle the theme
-    document
-      .getElementById(iconElementId)
-      ?.addEventListener('click', handleClick)
-  })()
-  // @unocss-skip-end
+  document
+    .getElementById('astrobook-theme-icon')
+    ?.addEventListener('click', handleToggleClick)
 </script>

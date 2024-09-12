@@ -2,7 +2,7 @@
 import '../style.css'
 import './layout.css'
 import Sidebar from './sidebar.astro'
-import ThemeScript from './theme-script.astro'
+import { ThemeScript } from 'astro-theme-toggle'
 
 interface Props {
   story: string | undefined
@@ -19,6 +19,7 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <meta name="generator" content={Astro.generator} />
     <title>Astrobook</title>
     <ThemeScript />
+    <script src="./theme-message.ts"></script>
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
