@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.4.4
+
+### Patch Changes
+
+- [`b15252f`](https://github.com/ocavue/astrobook/commit/b15252fecd4965ae2a3f0f6fe0dea20ae346c58d) Fix an issue where the theme toggle button doesn't work.
+
 ## 0.4.3
 
 ### Patch Changes
