@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.4.3
+
+### Patch Changes
+
+- [`dd343fb`](https://github.com/ocavue/astrobook/commit/dd343fba02ec12026192812f6c25940e9c360692) Update dependencies.
+
 ## 0.4.2
 
 ### Patch Changes
