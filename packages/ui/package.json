@@ -44,7 +44,7 @@
   "dependencies": {
     "@astrobook/core": "workspace:*",
     "@astrobook/types": "workspace:*",
-    "astro-theme-toggle": "^0.3.3"
+    "astro-theme-toggle": "^0.3.4"
   },
   "peerDependencies": {
     "astro": ">=4.0.0"
@@ -55,17 +55,17 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.3",
+    "@iconify-json/lucide": "^1.2.7",
     "@iconify-json/mdi": "^1.2.0",
-    "@types/node": "^20.16.5",
-    "@unocss/cli": "^0.62.3",
-    "astro": "^4.15.6",
-    "esbuild": "^0.23.1",
-    "fdir": "^6.3.0",
+    "@types/node": "^20.16.10",
+    "@unocss/cli": "^0.63.3",
+    "astro": "^4.15.11",
+    "esbuild": "^0.24.0",
+    "fdir": "^6.4.0",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
-    "unocss": "^0.62.3",
-    "vite": "^5.4.5",
-    "vitest": "^2.1.1"
+    "unocss": "^0.63.3",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.2"
   }
 }
