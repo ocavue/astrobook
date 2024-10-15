@@ -12,9 +12,19 @@ export function createAstrobookIntegration(
   return {
     name: 'astrobook/core',
     hooks: {
-      'astro:config:setup': async ({ updateConfig, injectRoute, config }) => {
+      'astro:config:setup': async ({
+        updateConfig,
+        injectRoute,
+        command,
+        config,
+      }) => {
+        if (command === 'build' && options?.onlyDev) {
+          return
+        }
+
         const rootDir = path.resolve(options?.directory || '.')
-        const baseUrl = config.base || ''
+        const baseUrl = options?.docsUrl || config.base || ''
+
         const routes = await getVirtualRoutes(rootDir)
 
         updateConfig({
@@ -34,7 +44,7 @@ export function createAstrobookIntegration(
           })
         }
         injectRoute({
-          pattern: '/',
+          pattern: `/${baseUrl}`,
           entrypoint: 'astrobook/pages/app.astro',
           prerender: true,
         })

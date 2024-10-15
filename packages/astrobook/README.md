@@ -91,6 +91,44 @@ export default defineConfig({
 })
 ```
 
+### `docsUrl`
+
+You can use the `docsUrl` option to specify the base URL to your stories docs. The default directory is the Astro base url.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      docsUrl: 'docs',
+    }),
+    /* ...other integrations */
+  ],
+})
+```
+
+### `onlyDev`
+
+You can use the `onlyDev` option to specify if you want to render the docs only on dev commands or also on the build command.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      onlyDev: true,
+    }),
+    /* ...other integrations */
+  ],
+})
+```
+
 ## Advanced
 
 ### Toggle theme via message

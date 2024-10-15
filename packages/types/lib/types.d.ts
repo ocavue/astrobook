@@ -5,6 +5,20 @@ export interface IntegrationOptions {
    * @default '.'
    */
   directory?: string
+
+  /**
+   * The base docs URL.
+   *
+   * @default ''
+   */
+  docsUrl?: string
+
+  /**
+   * Render the docs only if the command is not 'build'.
+   *
+   * @default ''
+   */
+  onlyDev?: boolean
 }
 
 export interface StoryModule {
