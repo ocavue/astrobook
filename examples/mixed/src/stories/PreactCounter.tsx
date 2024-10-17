@@ -1,5 +1,8 @@
 /** @jsxImportSource preact */
 
+import '../styles/global.css'
+
+
 import type { ComponentChildren } from 'preact'
 import { useState } from 'preact/hooks'
 
