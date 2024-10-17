@@ -10,7 +10,6 @@ export default defineConfig({
 
   base: '/base',
 
-  // Enable many frameworks to support all different kinds of components.
   integrations: [
     preact(),
     astrobook({ directory: 'src/stories', base: '/docs/components' }),
