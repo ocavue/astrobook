@@ -24,11 +24,13 @@ export function createAstrobookIntegration(
         })
 
         for (const route of routes.values()) {
+          const pattern = route.pattern
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
+          console.log('pattern', pattern, "entrypoint", entrypoint)
           injectRoute({
-            pattern: route.pattern,
+            pattern,
             entrypoint,
             prerender: true,
           })

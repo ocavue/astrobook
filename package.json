@@ -6,7 +6,7 @@
   "packageManager": "pnpm@9.12.0",
   "license": "MIT",
   "scripts": {
-    "dev": "turbo --filter astrobook-playground watch dev",
+    "dev": "turbo --filter example-playground watch dev",
     "postinstall": "pnpm --filter=./packages/ui build",
     "build": "turbo run build",
     "build:package": "turbo build --filter='./packages/*' --concurrency=1",
