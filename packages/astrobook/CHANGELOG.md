@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.5.0
+
+### Minor Changes
+
+- [`4155bdf`](https://github.com/ocavue/astrobook/commit/4155bdf838ee0c1382407cefbc546c5250aab13f) Add a new `subpath` option so that Astrobook can be added to an existing Astro project.
+
 ## 0.4.4
 
 ### Patch Changes
