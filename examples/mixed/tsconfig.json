@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "esnext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "jsx": "react-jsx",
     "declaration": true,
     "emitDeclarationOnly": true,
@@ -22,10 +20,5 @@
     "skipDefaultLibCheck": true,
     "jsxImportSource": "preact"
   },
-  "include": [
-    "./src",
-    "./*.js",
-    "./*.mjs",
-    "./*.ts"
-  ]
+  "include": ["./src", "./*.js", "./*.mjs", "./*.ts"]
 }
