@@ -16,7 +16,7 @@ export function createAstrobookIntegration(
       'astro:config:setup': async ({ updateConfig, injectRoute, config }) => {
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
-        const astrobookBaseUrl = options?.base || ''
+        const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
         const routes = await getVirtualRoutes(rootDir)
 

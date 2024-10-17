@@ -12,6 +12,6 @@ export default defineConfig({
 
   integrations: [
     preact(),
-    astrobook({ directory: 'src/stories', base: '/docs/components' }),
+    astrobook({ directory: 'src/stories', subpath: '/docs/components' }),
   ],
 })

@@ -91,9 +91,9 @@ export default defineConfig({
 })
 ```
 
-### `base`
+### `subpath`
 
-You can run Astrobook as a standalone app. You can also add it to your existing Astro project. In the latter case, you can use the `base` option to specify the subpath of Astrobook.
+You can run Astrobook as a standalone app. You can also add it to your existing Astro project. In the latter case, you can use the `subpath` option to specify the subpath of Astrobook.
 
 ```js
 // astro.config.mjs
@@ -101,13 +101,13 @@ import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
 export default defineConfig({
-  integrations: [astrobook({ base: '/docs/components' })],
+  integrations: [astrobook({ subpath: '/docs/components' })],
 })
 ```
 
 In the example above, Astrobook will be available at `http://localhost:4321/docs/components`.
 
-Notice that the `base` option is relative to the base URL of your Astro project. For example, if you configure both Astro's `base` and `astrobook`'s `base`, like so:
+Notice that the `subpath` option is relative to the [base URL](https://docs.astro.build/en/reference/configuration-reference/#base) of your Astro project. For example, if you configure both Astro's `base` and `astrobook`'s `subpath`, like so:
 
 ```js
 // astro.config.mjs
@@ -116,7 +116,7 @@ import astrobook from 'astrobook'
 
 export default defineConfig({
   base: '/base',
-  integrations: [astrobook({ base: '/docs/components' })],
+  integrations: [astrobook({ subpath: '/docs/components' })],
 })
 ```
 
