@@ -60,6 +60,21 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2(@types/node@20.16.10)
 
+  examples/mixed:
+    dependencies:
+      '@astrojs/preact':
+        specifier: ^3.5.3
+        version: 3.5.3(@babel/core@7.25.8)(preact@10.24.2)(vite@5.4.9(@types/node@20.16.10))
+      astro:
+        specifier: ^4.16.5
+        version: 4.16.5(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2)
+      astrobook:
+        specifier: workspace:*
+        version: link:../../packages/astrobook
+      preact:
+        specifier: ^10.24.2
+        version: 10.24.2
+
   examples/playground:
     dependencies:
       '@astrojs/lit':

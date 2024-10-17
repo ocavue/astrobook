@@ -7,5 +7,5 @@
   "access": "restricted",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": ["astrobook-playground"]
+  "ignore": ["example-playground", "example-mixed"]
 }

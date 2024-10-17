@@ -1,4 +1,5 @@
 import path from 'node:path'
+import pathPosix from 'node:path/posix'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
@@ -14,7 +15,9 @@ export function createAstrobookIntegration(
     hooks: {
       'astro:config:setup': async ({ updateConfig, injectRoute, config }) => {
         const rootDir = path.resolve(options?.directory || '.')
-        const baseUrl = config.base || ''
+        const astroBaseUrl = config.base || '/'
+        const astrobookBaseUrl = options?.subpath || ''
+        const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
         const routes = await getVirtualRoutes(rootDir)
 
         updateConfig({
@@ -24,17 +27,18 @@ export function createAstrobookIntegration(
         })
 
         for (const route of routes.values()) {
+          const pattern = pathPosix.join(astrobookBaseUrl, route.pattern)
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
           injectRoute({
-            pattern: route.pattern,
+            pattern,
             entrypoint,
             prerender: true,
           })
         }
         injectRoute({
-          pattern: '/',
+          pattern: astrobookBaseUrl,
           entrypoint: 'astrobook/pages/app.astro',
           prerender: true,
         })

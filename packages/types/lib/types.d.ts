@@ -5,6 +5,16 @@ export interface IntegrationOptions {
    * @default '.'
    */
   directory?: string
+
+  /**
+   * The subpath to deploy Astrobook to relative to the [base
+   * URL](https://docs.astro.build/en/reference/configuration-reference/#base)
+   * of your Astro project. This is useful if you want to use Astrobook in your
+   * existing Astro project.
+   *
+   * @example '/docs/components'
+   */
+  subpath?: string
 }
 
 export interface StoryModule {

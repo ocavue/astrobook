@@ -75,7 +75,7 @@ jobs:
 
       - name: Build
         if: ${{ matrix.mode == 'preview' }}
-        run: cd examples/playground && pnpm run build
+        run: pnpm run build
 
       - name: Test
         run: pnpm run test:e2e

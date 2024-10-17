@@ -9,6 +9,10 @@ import astrobook from 'astrobook'
 
 // https://astro.build/config
 export default defineConfig({
+  server: {
+    port: 4321,
+  },
+
   // Enable many frameworks to support all different kinds of components.
   integrations: [
     lit(),
