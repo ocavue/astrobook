@@ -23,6 +23,9 @@ importers:
       '@ocavue/eslint-config':
         specifier: ^2.8.1
         version: 2.8.1(@typescript-eslint/parser@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.8.0(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2))(eslint@9.11.1(jiti@1.21.6)))(eslint@9.11.1(jiti@1.21.6))(typescript@5.6.2)
+      '@playwright/test':
+        specifier: ^1.47.2
+        version: 1.48.1
       '@types/node':
         specifier: ^20.16.10
         version: 20.16.10
@@ -32,6 +35,9 @@ importers:
       pkg-pr-new:
         specifier: ^0.0.29
         version: 0.0.29
+      playwright:
+        specifier: ^1.47.2
+        version: 1.48.1
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -53,6 +59,63 @@ importers:
       vitest:
         specifier: ^2.1.2
         version: 2.1.2(@types/node@20.16.10)
+
+  examples/playground:
+    dependencies:
+      '@astrojs/lit':
+        specifier: ^4.3.0
+        version: 4.3.0(@webcomponents/template-shadowroot@0.2.1)(lit@3.2.0)
+      '@astrojs/preact':
+        specifier: ^3.5.3
+        version: 3.5.3(@babel/core@7.25.2)(preact@10.24.2)(vite@5.4.8(@types/node@20.16.10))
+      '@astrojs/react':
+        specifier: ^3.6.2
+        version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@20.16.10))
+      '@astrojs/solid-js':
+        specifier: ^4.4.2
+        version: 4.4.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10))
+      '@astrojs/svelte':
+        specifier: ^5.7.1
+        version: 5.7.1(astro@4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2))(svelte@4.2.19)(typescript@5.6.2)(vite@5.4.8(@types/node@20.16.10))
+      '@astrojs/vue':
+        specifier: ^4.5.1
+        version: 4.5.1(astro@4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2))(rollup@4.21.2)(vite@5.4.8(@types/node@20.16.10))(vue@3.5.11(typescript@5.6.2))
+      '@types/react':
+        specifier: ^18.3.11
+        version: 18.3.11
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@webcomponents/template-shadowroot':
+        specifier: ^0.2.1
+        version: 0.2.1
+      astro:
+        specifier: ^4.15.11
+        version: 4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2)
+      astrobook:
+        specifier: workspace:*
+        version: link:../../packages/astrobook
+      lit:
+        specifier: ^3.2.0
+        version: 3.2.0
+      preact:
+        specifier: ^10.24.2
+        version: 10.24.2
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      solid-js:
+        specifier: ^1.9.1
+        version: 1.9.1
+      svelte:
+        specifier: ^4.2.19
+        version: 4.2.19
+      vue:
+        specifier: ^3.5.11
+        version: 3.5.11(typescript@5.6.2)
 
   packages/astrobook:
     dependencies:
@@ -188,73 +251,6 @@ importers:
       vitest:
         specifier: ^2.1.2
         version: 2.1.2(@types/node@20.16.10)
-
-  playground:
-    dependencies:
-      '@astrojs/lit':
-        specifier: ^4.3.0
-        version: 4.3.0(@webcomponents/template-shadowroot@0.2.1)(lit@3.2.0)
-      '@astrojs/preact':
-        specifier: ^3.5.3
-        version: 3.5.3(@babel/core@7.25.2)(preact@10.24.2)(vite@5.4.8(@types/node@20.16.10))
-      '@astrojs/react':
-        specifier: ^3.6.2
-        version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.8(@types/node@20.16.10))
-      '@astrojs/solid-js':
-        specifier: ^4.4.2
-        version: 4.4.2(solid-js@1.9.1)(vite@5.4.8(@types/node@20.16.10))
-      '@astrojs/svelte':
-        specifier: ^5.7.1
-        version: 5.7.1(astro@4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2))(svelte@4.2.19)(typescript@5.6.2)(vite@5.4.8(@types/node@20.16.10))
-      '@astrojs/vue':
-        specifier: ^4.5.1
-        version: 4.5.1(astro@4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2))(rollup@4.21.2)(vite@5.4.8(@types/node@20.16.10))(vue@3.5.11(typescript@5.6.2))
-      '@types/react':
-        specifier: ^18.3.11
-        version: 18.3.11
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
-      '@webcomponents/template-shadowroot':
-        specifier: ^0.2.1
-        version: 0.2.1
-      astro:
-        specifier: ^4.15.11
-        version: 4.15.11(@types/node@20.16.10)(rollup@4.21.2)(typescript@5.6.2)
-      astrobook:
-        specifier: workspace:*
-        version: link:../packages/astrobook
-      lit:
-        specifier: ^3.2.0
-        version: 3.2.0
-      preact:
-        specifier: ^10.24.2
-        version: 10.24.2
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
-      solid-js:
-        specifier: ^1.9.1
-        version: 1.9.1
-      svelte:
-        specifier: ^4.2.19
-        version: 4.2.19
-      vue:
-        specifier: ^3.5.11
-        version: 3.5.11(typescript@5.6.2)
-    devDependencies:
-      '@playwright/test':
-        specifier: ^1.47.2
-        version: 1.47.2
-      '@types/node':
-        specifier: ^20.16.10
-        version: 20.16.10
-      playwright:
-        specifier: ^1.47.2
-        version: 1.47.2
 
 packages:
 
@@ -1339,8 +1335,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.47.2':
-    resolution: {integrity: sha512-jTXRsoSPONAs8Za9QEQdyjFn+0ZQFjCiIztAIF6bi1HqhBzG9Ma7g1WotyiGqFSBRZjIEqMdT8RUlbk1QVhzCQ==}
+  '@playwright/test@1.48.1':
+    resolution: {integrity: sha512-s9RtWoxkOLmRJdw3oFvhFbs9OJS0BzrLUc8Hf6l2UdCNd1rqeEyD4BhCJkvzeEoD1FsK4mirsWwGerhVmYKtZg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3940,13 +3936,13 @@ packages:
   pkg-types@1.1.3:
     resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
 
-  playwright-core@1.47.2:
-    resolution: {integrity: sha512-3JvMfF+9LJfe16l7AbSmU555PaTl2tPyQsVInqm3id16pdDfvZ8TTZ/pyzmkbDrZTQefyzU7AIHlZqQnxpqHVQ==}
+  playwright-core@1.48.1:
+    resolution: {integrity: sha512-Yw/t4VAFX/bBr1OzwCuOMZkY1Cnb4z/doAFSwf4huqAGWmf9eMNjmK7NiOljCdLmxeRYcGPPmcDgU0zOlzP0YA==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.47.2:
-    resolution: {integrity: sha512-nx1cLMmQWqmA3UsnjaaokyoUpdVaaDhJhMoxX2qj3McpjnsqFHs516QAKYhqHAgOP+oCFTEOCOAaD1RgD/RQfA==}
+  playwright@1.48.1:
+    resolution: {integrity: sha512-j8CiHW/V6HxmbntOfyB4+T/uk08tBy6ph0MpBXwuoofkSnLmlfdYNNkFTYD6ofzzlSqLA1fwH4vwvVFvJgLN0w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6303,9 +6299,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.47.2':
+  '@playwright/test@1.48.1':
     dependencies:
-      playwright: 1.47.2
+      playwright: 1.48.1
 
   '@pnpm/config.env-replace@1.1.0': {}
 
@@ -9587,11 +9583,11 @@ snapshots:
       mlly: 1.7.1
       pathe: 1.1.2
 
-  playwright-core@1.47.2: {}
+  playwright-core@1.48.1: {}
 
-  playwright@1.47.2:
+  playwright@1.48.1:
     dependencies:
-      playwright-core: 1.47.2
+      playwright-core: 1.48.1
     optionalDependencies:
       fsevents: 2.3.2
 
