@@ -11,9 +11,9 @@ for (const dir of ['dashboard', 'stories']) {
     'vue',
   ]) {
     for (const story of ['default', 'large-step']) {
-      const path = `${dir}/${framework}/${framework}-counter/${story}`
-      test(path, async ({ page }) => {
-        await page.goto(`/${path}`)
+      const url = `http://localhost:4321/${dir}/${framework}/${framework}-counter/${story}`
+      test(url, async ({ page }) => {
+        await page.goto(url)
 
         const counter = page.locator('.counter')
         await expect(counter).toBeVisible()

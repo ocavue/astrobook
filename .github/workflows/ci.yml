@@ -71,15 +71,11 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Install Playwright
-        run: |
-          cd test
-          pnpm run test:install
+        run: pnpm run test:install
 
       - name: Build
         if: ${{ matrix.mode == 'preview' }}
-        run: pnpm run build
+        run: cd examples/playground && pnpm run build
 
       - name: Test
-        run: |
-          cd test
-          pnpm run test
+        run: pnpm run test:e2e
