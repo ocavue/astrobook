@@ -19,11 +19,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
-  "include": ["./*.js", "./*.ts"],
+  "include": ["./*.js", "./*.ts", "./tests", "tests/example-urls.js"],
   "files": [],
   "references": [
     {
-      "path": "./playground"
+      "path": "./examples/playground"
     },
     {
       "path": "./packages/core"

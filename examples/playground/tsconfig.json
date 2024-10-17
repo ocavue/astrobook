@@ -19,5 +19,5 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
-  "include": ["./src", "./tests", "./*.js", "./*.mjs", "./*.ts"]
+  "include": ["./src", "./*.js", "./*.mjs", "./*.ts"]
 }

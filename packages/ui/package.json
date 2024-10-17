@@ -44,7 +44,7 @@
   "dependencies": {
     "@astrobook/core": "workspace:*",
     "@astrobook/types": "workspace:*",
-    "astro-theme-toggle": "^0.3.4"
+    "astro-theme-toggle": "^0.3.5"
   },
   "peerDependencies": {
     "astro": ">=4.0.0"
@@ -59,7 +59,7 @@
     "@iconify-json/mdi": "^1.2.0",
     "@types/node": "^20.16.10",
     "@unocss/cli": "^0.63.3",
-    "astro": "^4.15.11",
+    "astro": "^4.16.5",
     "esbuild": "^0.24.0",
     "fdir": "^6.4.0",
     "tsx": "^4.19.1",
