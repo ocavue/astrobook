@@ -1,5 +1,9 @@
 import { expect, test } from '@playwright/test'
 
+import { EXAMPLE_URLS } from '../example-urls'
+
+const BASE_URL = EXAMPLE_URLS['example-playground']
+
 for (const dir of ['dashboard', 'stories']) {
   for (const framework of [
     'astro',
@@ -11,7 +15,7 @@ for (const dir of ['dashboard', 'stories']) {
     'vue',
   ]) {
     for (const story of ['default', 'large-step']) {
-      const url = `http://localhost:4321/${dir}/${framework}/${framework}-counter/${story}`
+      const url = `${BASE_URL}/${dir}/${framework}/${framework}-counter/${story}`
       test(url, async ({ page }) => {
         await page.goto(url)
 
