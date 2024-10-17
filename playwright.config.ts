@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
+import { EXAMPLE_URLS } from './tests/example-urls'
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -67,14 +69,12 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: [
-    {
-      command:
-        process.env.ASTROBOOK_TEST_MODE === 'preview'
-          ? 'bash -c "cd examples/playground && pwd && pnpm run preview"'
-          : 'bash -c "cd examples/playground && pwd && pnpm run dev"',
-      url: 'http://localhost:4321',
-      reuseExistingServer: !process.env.CI,
-    },
-  ],
+  webServer: Object.entries(EXAMPLE_URLS).map(([name, url]) => ({
+    command:
+      process.env.ASTROBOOK_TEST_MODE === 'preview'
+        ? `pnpm run --filter ${name} preview`
+        : `pnpm run --filter ${name} dev`,
+    url: url,
+    reuseExistingServer: !process.env.CI,
+  })),
 })
