@@ -8,6 +8,8 @@ export default defineConfig({
     port: 4302,
   },
 
+  base: '/base',
+
   // Enable many frameworks to support all different kinds of components.
   integrations: [
     preact(),
