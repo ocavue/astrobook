@@ -1,5 +1,5 @@
 ---
-"@astrobook/ui": patch
+'@astrobook/ui': patch
 ---
 
-Update sidebar-component-list.astro
+Group stories under the same directory in the sidebar.
