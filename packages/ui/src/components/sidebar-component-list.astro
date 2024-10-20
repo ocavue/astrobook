@@ -2,12 +2,16 @@
 import '@astrobook/types'
 
 import { getPathWithBase } from '@astrobook/core/client'
+import groupBy from 'just-group-by'
 import BASE_URL from 'virtual:astrobook/base-url.mjs'
 import modules from 'virtual:astrobook/story-modules.mjs'
 
 interface Props {
   story?: string
 }
+
+// Group modules by directory
+const groupedModules = groupBy(modules, (module) => module.directory)
 ---
 
 <div
@@ -15,45 +19,45 @@ interface Props {
   id="astrobook-sidebar-component-list"
 >
   {
-    modules.map((module) => (
+    Object.entries(groupedModules).map(([directory, directoryModules]) => (
       <div class=":uno: flex flex-col gap-0.5">
-        {module.directory && (
-          <div class=":uno: px-2 text-sm text-gray-500 opacity-50 dark:text-gray-400">
-            {module.directory}
-          </div>
-        )}
-
-        <a
-          class:list={[
-            ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
-            ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
-            'astrobook-focus-ring',
-          ]}
-          href={getPathWithBase(
-            `/dashboard/${module.stories[0]?.id}`,
-            BASE_URL,
-          )}
-        >
-          <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
-          <span>{module.name}</span>
-        </a>
-
-        {module.stories.map((story) => (
-          <a
-            class:list={[
-              ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
-              ':uno: py-1 pl-5 pr-2',
-              'astrobook-focus-ring',
-              Astro.props.story === story.id
-                ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
-                : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
-            ]}
-            href={getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}
-            data-active={Astro.props.story === story.id ? '' : undefined}
-          >
-            <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
-            <span>{story.name}</span>
-          </a>
+        <div class=":uno: px-2 text-sm text-gray-500 opacity-50 dark:text-gray-400">
+          {directory}
+        </div>
+        {directoryModules.map((module) => (
+          <Fragment>
+            <a
+              class:list={[
+                ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+                ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
+                'astrobook-focus-ring',
+              ]}
+              href={getPathWithBase(
+                `/dashboard/${module.stories[0]?.id}`,
+                BASE_URL,
+              )}
+            >
+              <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
+              <span>{module.name}</span>
+            </a>
+            {module.stories.map((story) => (
+              <a
+                class:list={[
+                  ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+                  ':uno: py-1 pl-5 pr-2',
+                  'astrobook-focus-ring',
+                  Astro.props.story === story.id
+                    ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
+                    : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
+                ]}
+                href={getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}
+                data-active={Astro.props.story === story.id ? '' : undefined}
+              >
+                <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
+                <span>{story.name}</span>
+              </a>
+            ))}
+          </Fragment>
         ))}
       </div>
     ))

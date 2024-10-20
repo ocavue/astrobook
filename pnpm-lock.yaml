@@ -229,6 +229,9 @@ importers:
       astro-theme-toggle:
         specifier: ^0.3.5
         version: 0.3.5
+      just-group-by:
+        specifier: ^2.2.0
+        version: 2.2.0
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.7
@@ -3341,6 +3344,9 @@ packages:
   jsx-ast-utils@3.3.3:
     resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
     engines: {node: '>=4.0'}
+
+  just-group-by@2.2.0:
+    resolution: {integrity: sha512-brZocDSmkvDYc+FOr07GiTar4cp7K6OB9huVOrj5LX+iXfCe3hTvn2KGM811LE/SBQkCzuYDDEcG8HA/dKDrnw==}
 
   just-kebab-case@4.2.0:
     resolution: {integrity: sha512-p2BdO7o4BI+pMun3J+dhaOfYan5JsZrw9wjshRjkWY9+p+u+kKSMhNWYnot2yHDR9CSahZ9iT3dcqJ+V72qHMw==}
@@ -8796,6 +8802,8 @@ snapshots:
     dependencies:
       array-includes: 3.1.8
       object.assign: 4.1.5
+
+  just-group-by@2.2.0: {}
 
   just-kebab-case@4.2.0: {}
 
