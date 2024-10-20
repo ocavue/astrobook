@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.5.1
+
+### Patch Changes
+
+- [`09c2d10`](https://github.com/ocavue/astrobook/commit/09c2d1029b94c2558fe9210b16059db7da7211cc) Group stories under the same directory in the sidebar.
+
 ## 0.5.0
 
 ### Minor Changes
