@@ -48,7 +48,9 @@ const renderTree = (subtree: Record<string, any>, path = ''): string => {
               .flatMap((module) => module.stories)
               .filter((story) => currentPath.includes(story.id || ''))
               .reduce((longest, story) => {
-                return story.id.length > (longest.id?.length || 0) ? story : longest
+                return story.id.length > (longest.id?.length || 0)
+                  ? story
+                  : longest
               }, {} as StoryModule)
 
             return `
@@ -58,7 +60,8 @@ const renderTree = (subtree: Record<string, any>, path = ''): string => {
                 </div>
                 <ul class="list-none pl-4">
                   ${module.stories
-                    .map((story) => `
+                    .map(
+                      (story) => `
                       <li>
                         <a class="${story === longestStory ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200' : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'} :uno: block flex items-center gap-2 rounded text-sm no-underline transition :uno: py-1 pl-5 pr-2 astrobook-focus-ring"
                            href="${getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}"
@@ -67,7 +70,8 @@ const renderTree = (subtree: Record<string, any>, path = ''): string => {
                           <span>${story.name}</span>
                         </a>
                       </li>
-                    `)
+                    `
+                    )
                     .join('')}
                 </ul>
               </li>
