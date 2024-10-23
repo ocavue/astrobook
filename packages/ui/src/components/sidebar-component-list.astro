@@ -37,50 +37,55 @@ const tree = createTree(modules)
 const currentPath = Astro.url.pathname
 
 // Helper function to render the tree recursively as HTML string
-const renderTree = (subtree, path = '') => {
+const renderTree = (subtree: Record<string, any>, path = ''): string => {
   return Object.entries(subtree)
     .map(([key, value]) => {
       if (key === '__modules') {
         return value
-          .map(
-            (module) => `
-        <li class="list-none">
-        <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle " data-path="${module.name}">
-          <span class=" :uno: i-lucide-boxes inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${module.name}</span>
-        </div>
-        <ul class="list-none pl-4">
+          .map((module: StoryModule) => {
+            // Encontrar el story con el id más largo que cumple la condición
+            const longestStory = modules
+              .flatMap((module) => module.stories)
+              .filter((story) => currentPath.includes(story.id || ''))
+              .reduce((longest, story) => {
+                return story.id.length > (longest.id?.length || 0) ? story : longest
+              }, {} as StoryModule)
 
-            ${module.stories
-              .map(
-                (story) => `
-              <li>
-                <a class="${currentPath.includes(story.id || '') ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200' : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'} :uno: block flex items-center gap-2 rounded text-sm no-underline transition :uno: py-1 pl-5 pr-2 astrobook-focus-ring"
-                   href="${getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}"
-                   data-active="${Astro.props.story === story.id ? '' : undefined}">
-                  <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500"></span>
-                  <span>${story.name} ${story.id}</span>
-                </a>
+            return `
+              <li class="list-none">
+                <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle " data-path="${module.name}">
+                  <span class=" :uno: i-lucide-boxes inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${module.name}</span>
+                </div>
+                <ul class="list-none pl-4">
+                  ${module.stories
+                    .map((story) => `
+                      <li>
+                        <a class="${story === longestStory ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200' : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'} :uno: block flex items-center gap-2 rounded text-sm no-underline transition :uno: py-1 pl-5 pr-2 astrobook-focus-ring"
+                           href="${getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}"
+                           data-active="${Astro.props.story === story.id ? '' : undefined}">
+                          <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500"></span>
+                          <span>${story.name}</span>
+                        </a>
+                      </li>
+                    `)
+                    .join('')}
+                </ul>
               </li>
             `
-              )
-              .join('')}
-          </ul>
-        </li>
-      `
-          )
+          })
           .join('')
       } else {
         const newPath = path ? `${path}/${key}` : key
         return `
-        <li class=":uno: flex flex-col gap-0.5 list-none">
-          <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle" data-path="${newPath}">
-            <span class="i-lucide-folder-closed :uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${key}</span>
-          </div>
-          <ul id="tree-${newPath}" class=":uno: flex flex-col gap-0.5 hidden teest first:pl-0 pl-4">
-            ${renderTree(value, newPath)}
-          </ul>
-        </li>
-      `
+          <li class=":uno: flex flex-col gap-0.5 list-none">
+            <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle" data-path="${newPath}">
+              <span class="i-lucide-folder-closed :uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${key}</span>
+            </div>
+            <ul id="tree-${newPath}" class=":uno: flex flex-col gap-0.5 hidden teest first:pl-0 pl-4">
+              ${renderTree(value, newPath)}
+            </ul>
+          </li>
+        `
       }
     })
     .join('')
