@@ -34,7 +34,7 @@
     "@microsoft/api-extractor": "^7.47.9",
     "@ocavue/eslint-config": "^2.8.1",
     "@playwright/test": "^1.47.2",
-    "@types/node": "^20.16.10",
+    "@types/node": "^22.7.6",
     "eslint": "^9.11.1",
     "pkg-pr-new": "^0.0.29",
     "playwright": "^1.47.2",

@@ -58,7 +58,7 @@
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.7",
     "@iconify-json/mdi": "^1.2.0",
-    "@types/node": "^20.16.10",
+    "@types/node": "^22.7.6",
     "@unocss/cli": "^0.63.3",
     "astro": "^4.16.5",
     "esbuild": "^0.24.0",
