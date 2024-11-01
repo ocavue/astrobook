@@ -33,23 +33,23 @@
   },
   "dependencies": {
     "@astrobook/types": "workspace:*",
-    "acorn": "^8.12.1",
+    "acorn": "^8.14.0",
     "acorn-jsx": "^5.3.2",
-    "fdir": "^6.4.0",
+    "fdir": "^6.4.2",
     "picomatch": "^4.0.2",
     "slash": "^5.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.16.10",
+    "@types/node": "^20.17.5",
     "@types/picomatch": "^3.0.1",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
-    "astro": "^4.16.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "astro": "^4.16.8",
     "just-kebab-case": "^4.2.0",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.8",
-    "vitest": "^2.1.2"
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
   },
   "publishConfig": {
     "exports": {
