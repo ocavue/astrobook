@@ -18,8 +18,10 @@ const createTree = (modules: StoryModule[]): Record<string, any> => {
     const parts = module.directory.split('/')
     let current = tree
 
+    // Traverse the parts of the directory to build the tree structure
     parts.forEach((part, index) => {
       if (!current[part]) {
+        // If it's the last part, initialize with an empty array for __modules
         current[part] = index === parts.length - 1 ? { __modules: [] } : {}
       }
       current = current[part]
@@ -33,30 +35,36 @@ const createTree = (modules: StoryModule[]): Record<string, any> => {
   return tree
 }
 
+// Create the tree structure from the modules
 const tree = createTree(modules)
 const currentPath = Astro.url.pathname
 
+// Find story with the longest id
+const longestStory = modules
+  .flatMap((module) => module.stories)
+  .filter((story) => currentPath.includes(story.id || ''))
+  .reduce((longest, story) => {
+    return story.id.length > (longest.id?.length || 0) ? story : longest
+  }, {} as StoryModule)
+
 // Helper function to render the tree recursively as HTML string
 const renderTree = (subtree: Record<string, any>, path = ''): string => {
-  return Object.entries(subtree)
+  // Order to show components without folder first
+  const sortedEntries = Object.entries(subtree).sort(([keyA], [keyB]) => {
+    if (!keyA) return -1
+    if (!keyB) return 1
+    return 0
+  })
+
+  return sortedEntries
     .map(([key, value]) => {
       if (key === '__modules') {
         return value
           .map((module: StoryModule) => {
-            // Encontrar el story con el id más largo que cumple la condición
-            const longestStory = modules
-              .flatMap((module) => module.stories)
-              .filter((story) => currentPath.includes(story.id || ''))
-              .reduce((longest, story) => {
-                return story.id.length > (longest.id?.length || 0)
-                  ? story
-                  : longest
-              }, {} as StoryModule)
-
             return `
               <li class="list-none">
-                <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle " data-path="${module.name}">
-                  <span class=" :uno: i-lucide-boxes inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${module.name}</span>
+                <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle " data-path="${module.name + module.id + module.importPath}">
+                  <span class="chevron i-lucide-chevron-right :uno: inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span class=" :uno: i-lucide-boxes inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${module.name}</span>
                 </div>
                 <ul class="list-none pl-4">
                   ${module.stories
@@ -80,16 +88,22 @@ const renderTree = (subtree: Record<string, any>, path = ''): string => {
           .join('')
       } else {
         const newPath = path ? `${path}/${key}` : key
-        return `
-          <li class=":uno: flex flex-col gap-0.5 list-none">
-            <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle" data-path="${newPath}">
-              <span class="i-lucide-folder-closed :uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${key}</span>
-            </div>
-            <ul id="tree-${newPath}" class=":uno: flex flex-col gap-0.5 hidden teest first:pl-0 pl-4">
-              ${renderTree(value, newPath)}
-            </ul>
-          </li>
-        `
+        if (key) {
+          return `
+            <li class=":uno: flex flex-col gap-0.5 list-none">
+              <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle" data-path="${newPath}">
+                <span class="chevron i-lucide-chevron-right :uno: inline-block size-4 text-gray-400 dark:text-gray-500"></span><span class="i-lucide-folder-closed :uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${key}</span>
+              </div>
+              <ul id="tree-${newPath}" class=":uno: flex flex-col gap-0.5 hidden teest first:pl-0 pl-4">
+                ${renderTree(value, newPath)}
+              </ul>
+            </li>
+          `
+        } else {
+          return `
+                ${renderTree(value, newPath)}
+          `
+        }
       }
     })
     .join('')
@@ -128,11 +142,12 @@ const treeHTML = renderTree(tree)
   ;(() => {
     const elementId = 'astrobook-sidebar-component-list'
     const sessionKey = 'astrobook-navigation-scroll-position'
+    const toggleStateKey = 'astrobook-toggle-state'
 
     /**
      * Saves the current scroll position of the navigation element to sessionStorage
      */
-    const save = () => {
+    const saveScrollPosition = () => {
       const el = document.getElementById(elementId)
       if (!el) return
 
@@ -160,9 +175,9 @@ const treeHTML = renderTree(tree)
       }
     }
 
-    const throttledSave = throttle(save, 100)
+    const throttledSaveScrollPosition = throttle(saveScrollPosition, 100)
 
-    const load = () => {
+    const loadScrollPosition = () => {
       const el = document.getElementById(elementId)
       if (!el) return
 
@@ -171,7 +186,56 @@ const treeHTML = renderTree(tree)
         el.scrollTop = parseFloat(scrollPosition)
       }
 
-      el.addEventListener('scroll', throttledSave)
+      el.addEventListener('scroll', throttledSaveScrollPosition)
+    }
+
+    /**
+     * Saves the toggle state of elements to sessionStorage
+     */
+    const saveToggleState = () => {
+      const toggleState = {}
+      document.querySelectorAll('.toggle').forEach((element) => {
+        const path = element.getAttribute('data-path')
+        if (path) {
+          toggleState[path] =
+            !element.nextElementSibling?.classList.contains('hidden')
+        }
+      })
+      sessionStorage.setItem(toggleStateKey, JSON.stringify(toggleState))
+    }
+
+    /**
+     * Loads the toggle state of elements from sessionStorage
+     */
+    const loadToggleState = () => {
+      const toggleState = JSON.parse(
+        sessionStorage.getItem(toggleStateKey) || '{}'
+      )
+      document.querySelectorAll('.toggle').forEach((element) => {
+        const path = element.getAttribute('data-path')
+        if (path && toggleState[path] !== undefined) {
+          if (toggleState[path]) {
+            element.nextElementSibling?.classList.remove('hidden')
+            const chevron = element.querySelector('.chevron')
+            if (chevron) {
+              chevron.classList.remove('i-lucide-chevron-right')
+              chevron.classList.add('i-lucide-chevron-down')
+            }
+          } else {
+            element.nextElementSibling?.classList.add('hidden')
+            const chevron = element.querySelector('.chevron')
+            if (chevron) {
+              chevron.classList.remove('i-lucide-chevron-down')
+              chevron.classList.add('i-lucide-chevron-right')
+            }
+          }
+        }
+      })
+    }
+
+    const load = () => {
+      loadScrollPosition()
+      loadToggleState()
     }
 
     load()
@@ -180,21 +244,16 @@ const treeHTML = renderTree(tree)
       load()
     })
 
-    /**
-     * Toggles the visibility of a directory's subtree
-     * @param {string} directory - The directory to toggle
-     */
-    const toggleDirectory = (directory) => {
-      const el = document.getElementById(`tree-${directory}`)
-      if (el) {
-        el.classList.toggle('hidden')
-      }
-    }
-
     document.querySelectorAll('.toggle').forEach((element) => {
       element.addEventListener('click', () => {
         if (element.nextElementSibling) {
           element.nextElementSibling.classList.toggle('hidden')
+          const chevron = element.querySelector('.chevron')
+          if (chevron) {
+            chevron.classList.toggle('i-lucide-chevron-down')
+            chevron.classList.toggle('i-lucide-chevron-right')
+          }
+          saveToggleState()
         }
       })
     })
