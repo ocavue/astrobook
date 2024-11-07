@@ -1,5 +1,5 @@
 ---
-"@astrobook/ui": patch
+'@astrobook/ui': patch
 ---
 
 Feature/components tree

@@ -78,7 +78,7 @@ const renderTree = (subtree: Record<string, any>, path = ''): string => {
                           <span>${story.name}</span>
                         </a>
                       </li>
-                    `
+                    `,
                     )
                     .join('')}
                 </ul>
@@ -209,7 +209,7 @@ const treeHTML = renderTree(tree)
      */
     const loadToggleState = () => {
       const toggleState = JSON.parse(
-        sessionStorage.getItem(toggleStateKey) || '{}'
+        sessionStorage.getItem(toggleStateKey) || '{}',
       )
       document.querySelectorAll('.toggle').forEach((element) => {
         const path = element.getAttribute('data-path')
