@@ -27,7 +27,7 @@
       "github>ocavue/config-renovate"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
     "@changesets/cli": "^2.27.10",
     "@changesets/types": "^6.0.0",
     "@manypkg/cli": "^0.23.0",
