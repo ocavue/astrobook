@@ -71,10 +71,10 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^20.17.5",
-    "astro": "^4.16.8",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10",
-    "vitest": "^2.1.4"
+    "@types/node": "^20.17.9",
+    "astro": "^4.16.16",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.6"
   }
 }

@@ -56,17 +56,17 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.11",
+    "@iconify-json/lucide": "^1.2.17",
     "@iconify-json/mdi": "^1.2.1",
-    "@types/node": "^20.17.5",
-    "@unocss/cli": "^0.63.6",
-    "astro": "^4.16.8",
+    "@types/node": "^20.17.9",
+    "@unocss/cli": "^0.64.1",
+    "astro": "^4.16.16",
     "esbuild": "^0.24.0",
     "fdir": "^6.4.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3",
-    "unocss": "^0.63.6",
-    "vite": "^5.4.10",
-    "vitest": "^2.1.4"
+    "typescript": "^5.7.2",
+    "unocss": "^0.64.1",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.6"
   }
 }
