@@ -30,7 +30,7 @@
   "dependencies": {
     "@changesets/cli": "^2.27.9",
     "@changesets/types": "^6.0.0",
-    "@manypkg/cli": "^0.22.0",
+    "@manypkg/cli": "^0.23.0",
     "@microsoft/api-extractor": "^7.47.11",
     "@ocavue/eslint-config": "^2.10.4",
     "@playwright/test": "^1.48.2",
