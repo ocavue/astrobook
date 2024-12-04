@@ -2,66 +2,139 @@
 import '@astrobook/types'
 
 import { getPathWithBase } from '@astrobook/core/client'
-import groupBy from 'just-group-by'
 import BASE_URL from 'virtual:astrobook/base-url.mjs'
 import modules from 'virtual:astrobook/story-modules.mjs'
+import type { StoryModule } from '@astrobook/types'
 
 interface Props {
   story?: string
 }
 
-// Group modules by directory
-const groupedModules = groupBy(modules, (module) => module.directory)
+// Helper function to create a tree structure from the modules
+const createTree = (modules: StoryModule[]): Record<string, any> => {
+  const tree: Record<string, any> = {}
+
+  modules.forEach((module) => {
+    const parts = module.directory.split('/')
+    let current = tree
+
+    // Traverse the parts of the directory to build the tree structure
+    parts.forEach((part, index) => {
+      if (!current[part]) {
+        // If it's the last part, initialize with an empty array for __modules
+        current[part] = index === parts.length - 1 ? { __modules: [] } : {}
+      }
+      current = current[part]
+    })
+    if (!current.__modules) {
+      current.__modules = []
+    }
+    current.__modules.push(module)
+  })
+
+  return tree
+}
+
+// Create the tree structure from the modules
+const tree = createTree(modules)
+const currentPath = Astro.url.pathname
+
+// Find story with the longest id
+const longestStory = modules
+  .flatMap((module) => module.stories)
+  .filter((story) => currentPath.includes(story.id || ''))
+  .reduce((longest, story) => {
+    return story.id.length > (longest.id?.length || 0) ? story : longest
+  }, {} as StoryModule)
+
+// Helper function to render the tree recursively as HTML string
+const renderTree = (subtree: Record<string, any>, path = ''): string => {
+  // Order to show components without folder first
+  const sortedEntries = Object.entries(subtree).sort(([keyA], [keyB]) => {
+    if (!keyA) return -1
+    if (!keyB) return 1
+    return 0
+  })
+
+  return sortedEntries
+    .map(([key, value]) => {
+      if (key === '__modules') {
+        return value
+          .map((module: StoryModule) => {
+            return `
+              <li class="list-none">
+                <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle " data-path="${module.name + module.id + module.importPath}">
+                  <span class="chevron i-lucide-chevron-right :uno: inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span class=" :uno: i-lucide-boxes inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${module.name}</span>
+                </div>
+                <ul class="list-none pl-4">
+                  ${module.stories
+                    .map(
+                      (story) => `
+                      <li>
+                        <a class="${story === longestStory ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200' : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'} :uno: block flex items-center gap-2 rounded text-sm no-underline transition :uno: py-1 pl-5 pr-2 astrobook-focus-ring"
+                           href="${getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}"
+                           data-active="${Astro.props.story === story.id ? '' : undefined}">
+                          <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500"></span>
+                          <span>${story.name}</span>
+                        </a>
+                      </li>
+                    `,
+                    )
+                    .join('')}
+                </ul>
+              </li>
+            `
+          })
+          .join('')
+      } else {
+        const newPath = path ? `${path}/${key}` : key
+        if (key) {
+          return `
+            <li class=":uno: flex flex-col gap-0.5 list-none">
+              <div class=":uno: px-2 text-sm text-black dark:text-white cursor-pointer toggle" data-path="${newPath}">
+                <span class="chevron i-lucide-chevron-right :uno: inline-block size-4 text-gray-400 dark:text-gray-500"></span><span class="i-lucide-folder-closed :uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500"></span> <span>${key}</span>
+              </div>
+              <ul id="tree-${newPath}" class=":uno: flex flex-col gap-0.5 hidden teest first:pl-0 pl-4">
+                ${renderTree(value, newPath)}
+              </ul>
+            </li>
+          `
+        } else {
+          return `
+                ${renderTree(value, newPath)}
+          `
+        }
+      }
+    })
+    .join('')
+}
+
+const treeHTML = renderTree(tree)
 ---
 
+<style>
+  ul {
+    position: relative;
+
+    li {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        width: 1px;
+        left: 0px;
+        height: 100%;
+        background-color: rgb(156 163 175);
+      }
+    }
+  }
+</style>
 <div
   class=":uno: flex flex-col gap-4 overflow-y-auto border-0 px-2 pb-8 pt-4"
   id="astrobook-sidebar-component-list"
 >
-  {
-    Object.entries(groupedModules).map(([directory, directoryModules]) => (
-      <div class=":uno: flex flex-col gap-0.5">
-        <div class=":uno: px-2 text-sm text-gray-500 opacity-50 dark:text-gray-400">
-          {directory}
-        </div>
-        {directoryModules.map((module) => (
-          <Fragment>
-            <a
-              class:list={[
-                ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
-                ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
-                'astrobook-focus-ring',
-              ]}
-              href={getPathWithBase(
-                `/dashboard/${module.stories[0]?.id}`,
-                BASE_URL,
-              )}
-            >
-              <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
-              <span>{module.name}</span>
-            </a>
-            {module.stories.map((story) => (
-              <a
-                class:list={[
-                  ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
-                  ':uno: py-1 pl-5 pr-2',
-                  'astrobook-focus-ring',
-                  Astro.props.story === story.id
-                    ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
-                    : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
-                ]}
-                href={getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}
-                data-active={Astro.props.story === story.id ? '' : undefined}
-              >
-                <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
-                <span>{story.name}</span>
-              </a>
-            ))}
-          </Fragment>
-        ))}
-      </div>
-    ))
-  }
+  <ul class="list-none p-0" set:html={treeHTML} />
 </div>
 
 <script is:inline>
@@ -69,11 +142,12 @@ const groupedModules = groupBy(modules, (module) => module.directory)
   ;(() => {
     const elementId = 'astrobook-sidebar-component-list'
     const sessionKey = 'astrobook-navigation-scroll-position'
+    const toggleStateKey = 'astrobook-toggle-state'
 
     /**
      * Saves the current scroll position of the navigation element to sessionStorage
      */
-    const save = () => {
+    const saveScrollPosition = () => {
       const el = document.getElementById(elementId)
       if (!el) return
 
@@ -101,9 +175,9 @@ const groupedModules = groupBy(modules, (module) => module.directory)
       }
     }
 
-    const throttledSave = throttle(save, 100)
+    const throttledSaveScrollPosition = throttle(saveScrollPosition, 100)
 
-    const load = () => {
+    const loadScrollPosition = () => {
       const el = document.getElementById(elementId)
       if (!el) return
 
@@ -112,13 +186,76 @@ const groupedModules = groupBy(modules, (module) => module.directory)
         el.scrollTop = parseFloat(scrollPosition)
       }
 
-      el.addEventListener('scroll', throttledSave)
+      el.addEventListener('scroll', throttledSaveScrollPosition)
+    }
+
+    /**
+     * Saves the toggle state of elements to sessionStorage
+     */
+    const saveToggleState = () => {
+      const toggleState = {}
+      document.querySelectorAll('.toggle').forEach((element) => {
+        const path = element.getAttribute('data-path')
+        if (path) {
+          toggleState[path] =
+            !element.nextElementSibling?.classList.contains('hidden')
+        }
+      })
+      sessionStorage.setItem(toggleStateKey, JSON.stringify(toggleState))
+    }
+
+    /**
+     * Loads the toggle state of elements from sessionStorage
+     */
+    const loadToggleState = () => {
+      const toggleState = JSON.parse(
+        sessionStorage.getItem(toggleStateKey) || '{}',
+      )
+      document.querySelectorAll('.toggle').forEach((element) => {
+        const path = element.getAttribute('data-path')
+        if (path && toggleState[path] !== undefined) {
+          if (toggleState[path]) {
+            element.nextElementSibling?.classList.remove('hidden')
+            const chevron = element.querySelector('.chevron')
+            if (chevron) {
+              chevron.classList.remove('i-lucide-chevron-right')
+              chevron.classList.add('i-lucide-chevron-down')
+            }
+          } else {
+            element.nextElementSibling?.classList.add('hidden')
+            const chevron = element.querySelector('.chevron')
+            if (chevron) {
+              chevron.classList.remove('i-lucide-chevron-down')
+              chevron.classList.add('i-lucide-chevron-right')
+            }
+          }
+        }
+      })
+    }
+
+    const load = () => {
+      loadScrollPosition()
+      loadToggleState()
     }
 
     load()
 
     document.addEventListener('astro:page-load', () => {
       load()
+    })
+
+    document.querySelectorAll('.toggle').forEach((element) => {
+      element.addEventListener('click', () => {
+        if (element.nextElementSibling) {
+          element.nextElementSibling.classList.toggle('hidden')
+          const chevron = element.querySelector('.chevron')
+          if (chevron) {
+            chevron.classList.toggle('i-lucide-chevron-down')
+            chevron.classList.toggle('i-lucide-chevron-right')
+          }
+          saveToggleState()
+        }
+      })
     })
   })()
 </script>
