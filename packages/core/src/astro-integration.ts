@@ -15,31 +15,28 @@ export function createAstrobookIntegration(
   options?: IntegrationOptions,
 ): AstroIntegration {
   return {
-    name: 'astrobook/core',
+    name: 'astrobook',
     hooks: {
       'astro:config:setup': async ({
         updateConfig,
         injectRoute,
         config,
         createCodegenDir,
+        logger,
       }) => {
-        const codegenDir = createCodegenDir()
-        const codegenDirString = await fs.realpath(codegenDir)
-        console.log('[DEBUG] codegenDir', codegenDir)
-        console.log('[DEBUG] codegenDirString', codegenDirString)
+
 
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
-        const routes = await getVirtualRoutes(rootDir, codegenDirString)
 
-        console.log('[DEBUG] rootDir', rootDir)
+        logger.debug(`Scanning for stories in ${rootDir}`)
+        const codegenDirURL: URL = createCodegenDir()
+        const codegenDir: string = await fs.realpath(codegenDirURL)
+        const routes = await getVirtualRoutes(rootDir, codegenDir)
 
-        console.log('[DEBUG] baseUrl', baseUrl)
-        console.log('[DEBUG] baseUrl', baseUrl)
-        console.log('[DEBUG] routes', routes)
-
+        logger.debug(`Writing files to ${codegenDir}`)
         await Promise.all(
           Array.from(routes.values()).map(async (route) => {
             const filePath = route.entrypoint
@@ -55,6 +52,7 @@ export function createAstrobookIntegration(
           },
         })
 
+        logger.debug(`Injecting routes`)
         for (const route of routes.values()) {
           const pattern = pathPosix.join(astrobookBaseUrl, route.pattern)
           const entrypoint = path.normalize(
