@@ -50,7 +50,6 @@ export function createAstrobookIntegration(
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
-          console.log('[DEBUG] injectRoute', pattern, entrypoint)
           injectRoute({
             pattern,
             entrypoint,
