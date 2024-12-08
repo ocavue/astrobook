@@ -1,4 +1,4 @@
-import { LitCounter } from './LitCounter'
+import LitCounter from './LitCounter.astro'
 
 export default {
   component: LitCounter,

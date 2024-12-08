@@ -1,0 +1,14 @@
+---
+import '../../styles/global.css'
+
+interface Props {
+  step?: number
+}
+const step = Astro.props.step || 1
+---
+
+<script>
+  import "./LitCounter";
+</script>
+
+<lit-counter step={step}></lit-counter>
