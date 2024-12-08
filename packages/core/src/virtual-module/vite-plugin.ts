@@ -18,9 +18,13 @@ export function createVirtualFilesPlugin(
   baseUrl: string,
   routes: Map<string, VirtualRoute>,
 ): Plugin {
+  console.log('[DEBUG] createVirtualFilesPlugin')
+
   return {
     name: 'astrobook/virtual-files',
     resolveId(id) {
+      console.log('[DEBUG] astrobook/virtual-files resolveId', id)
+
       switch (id) {
         case STORY_MODULES_ID:
           return STORY_MODULES_RESOLVED_ID
@@ -40,6 +44,7 @@ export function createVirtualFilesPlugin(
       }
     },
     load(id) {
+      console.log('[DEBUG] astrobook/virtual-files load', id)
       switch (id) {
         case STORY_MODULES_RESOLVED_ID:
           return loadStoryModules(rootDir)

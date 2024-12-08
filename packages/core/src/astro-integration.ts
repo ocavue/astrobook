@@ -11,9 +11,14 @@ export function createAstrobookIntegration(
   options?: IntegrationOptions,
 ): AstroIntegration {
   return {
-    name: 'astrobook/core',
+    name: 'astrobook',
     hooks: {
-      'astro:config:setup': async ({ updateConfig, injectRoute, config }) => {
+      'astro:config:setup': async ({ updateConfig, injectRoute, config , createCodegenDir}) => {
+        console.log('[DEBUG] astro:config:setup')
+
+        const codegenDir = createCodegenDir()
+        console.log('[DEBUG] codegenDir', codegenDir)
+
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
@@ -31,6 +36,7 @@ export function createAstrobookIntegration(
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
+          console.log('[DEBUG] injectRoute', pattern, entrypoint)
           injectRoute({
             pattern,
             entrypoint,
