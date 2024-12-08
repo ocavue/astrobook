@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test'
 
 import { EXAMPLE_URLS } from '../example-urls'
 
-const BASE_URL = EXAMPLE_URLS['example-unocss']
+const BASE_URL = EXAMPLE_URLS['example-tailwindcss']
 
 // For unknown reasons, this test fails on Windows.
 test.skip(process.platform === 'win32', 'Skip on Windows')
 
-test('unocss example', async ({ page }) => {
+test('tailwindcss example', async ({ page }) => {
   await test.step('Select the story', async () => {
     await page.goto(BASE_URL)
     const button = page.locator('a', { hasText: 'LargeStep' })
