@@ -17,8 +17,7 @@ test('unocss example', async ({ page }) => {
   })
 
   await test.step('Check the style', async () => {
-    const button = page
-      .locator('button', { hasText: '+' })
+    const button = page.locator('button', { hasText: '+' })
     await expect(button).toHaveClass(/size-\[100px]/)
     const box = await button.boundingBox()
     expect(box).not.toBeNull()
