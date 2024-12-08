@@ -16,13 +16,12 @@ test('unocss example', async ({ page }) => {
     )
   })
 
-  const counterNumber = page
-    .locator('div.counter', { hasText: '+' })
-    .locator('pre')
+  const button = page
+    .locator('button', { hasText: '+' })
 
   await test.step('Check the style', async () => {
-    await expect(counterNumber).toHaveClass('size-[100px]')
-    const box = await counterNumber.boundingBox()
+    await expect(button).toHaveClass('size-[100px]')
+    const box = await button.boundingBox()
     expect(box).not.toBeNull()
     expect(box?.width).toBe(100)
     expect(box?.height).toBe(100)
