@@ -19,6 +19,8 @@ test('tailwindcss example', async ({ page }) => {
   await test.step('Check the style', async () => {
     const button = page.locator('button', { hasText: '+' })
     await expect(button).toHaveClass(/size-\[100px]/)
+    await expect(button).toHaveCSS('width', '100px')
+    await expect(button).toHaveCSS('height', '100px')
     const box = await button.boundingBox()
     expect(box).not.toBeNull()
     expect(Math.round(box?.width ?? 0)).toBe(100)
