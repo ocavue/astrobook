@@ -1,0 +1,23 @@
+{
+  "name": "example-tailwindcss",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^3.5.4",
+    "astro": "^4.16.16",
+    "astrobook": "*",
+    "preact": "^10.25.1"
+  }
+}
