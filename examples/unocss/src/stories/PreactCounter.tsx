@@ -19,14 +19,14 @@ export function PreactCounter({
     <>
       <div class="flex items-center gap-10 p-4">
         <button
-          class="color-black size-[100px] rounded bg-gray-200 p-5 transition-colors hover:bg-gray-300 flex items-center justify-center"
+          class="color-black flex size-[100px] items-center justify-center rounded bg-gray-200 p-5 transition-colors hover:bg-gray-300"
           onClick={subtract}
         >
           -
         </button>
         <pre>{count}</pre>
         <button
-          class="color-black size-[100px] rounded bg-gray-200 p-5 transition-colors hover:bg-gray-300 flex items-center justify-center"
+          class="color-black flex size-[100px] items-center justify-center rounded bg-gray-200 p-5 transition-colors hover:bg-gray-300"
           onClick={add}
         >
           +
