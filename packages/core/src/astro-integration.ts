@@ -24,8 +24,6 @@ export function createAstrobookIntegration(
         createCodegenDir,
         logger,
       }) => {
-
-
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
