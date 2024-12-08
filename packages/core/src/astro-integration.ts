@@ -25,16 +25,16 @@ export function createAstrobookIntegration(
       }) => {
         const codegenDir = createCodegenDir()
         const codegenDirString = await fs.realpath(codegenDir)
+        console.log('[DEBUG] codegenDir', codegenDir)
         console.log('[DEBUG] codegenDirString', codegenDirString)
 
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
-        const routes = await getVirtualRoutes(rootDir, codegenDir.pathname)
+        const routes = await getVirtualRoutes(rootDir, codegenDirString)
 
         console.log('[DEBUG] rootDir', rootDir)
-        console.log('[DEBUG] codegenDir', codegenDir)
 
         console.log('[DEBUG] baseUrl', baseUrl)
         console.log('[DEBUG] baseUrl', baseUrl)
