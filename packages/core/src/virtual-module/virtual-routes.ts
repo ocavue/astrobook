@@ -29,6 +29,7 @@ export interface VirtualRoute {
 
 export async function getVirtualRoutes(
   rootDir: string,
+  codegenDir: string,
 ): Promise<Map<string, VirtualRoute>> {
   const routes: VirtualRoute[] = []
   const storyModules = await getStoryModules(rootDir)
@@ -47,7 +48,7 @@ export async function getVirtualRoutes(
         {
           pattern: '/dashboard/' + story.id,
           entrypoint: slash(
-            path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+            path.resolve(codegenDir, ROUTE_DASHBOARD_DIR + story.id + '.astro'),
           ),
           storyModule,
           story,
@@ -56,7 +57,7 @@ export async function getVirtualRoutes(
         {
           pattern: '/stories/' + story.id,
           entrypoint: slash(
-            path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+            path.resolve(codegenDir, ROUTE_STORIES_DIR + story.id + '.astro'),
           ),
           storyModule,
           story,
@@ -69,28 +70,7 @@ export async function getVirtualRoutes(
   return new Map(routes.map((route) => [route.pattern, route]))
 }
 
-export function resolveVirtualRoute(
-  path: string,
-  routes: Map<string, VirtualRoute>,
-): VirtualRoute | undefined {
-  if (path.endsWith('.astro')) {
-    path = path.slice(0, -6)
-
-    if (path.includes(ROUTE_DASHBOARD_DIR)) {
-      const storyId = path.split(ROUTE_DASHBOARD_DIR).pop()
-      const pattern = '/dashboard/' + storyId
-      return routes.get(pattern)
-    }
-
-    if (path.includes(ROUTE_STORIES_DIR)) {
-      const storyId = path.split(ROUTE_STORIES_DIR).pop()
-      const pattern = '/stories/' + storyId
-      return routes.get(pattern)
-    }
-  }
-}
-
-function createVirtualRouteComponent(route: VirtualRoute): string {
+export function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
 import StoryPage from 'astrobook/pages/story.astro'
@@ -108,14 +88,4 @@ const isAstro = isAstroStory(m)
   }
 </StoryPage>
 `
-}
-
-export function resolveVirtualRouteComponent(
-  path: string,
-  routes: Map<string, VirtualRoute>,
-): string | undefined {
-  const route = resolveVirtualRoute(path, routes)
-  if (route) {
-    return createVirtualRouteComponent(route)
-  }
 }
