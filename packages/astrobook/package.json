@@ -27,15 +27,15 @@
     "vite"
   ],
   "sideEffects": false,
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
-  "types": "./lib/index.js",
+  "main": "./lib/index.ts",
+  "module": "./lib/index.ts",
+  "types": "./lib/index.ts",
   "exports": {
     ".": {
-      "default": "./lib/index.js"
+      "default": "./lib/index.ts"
     },
     "./client": {
-      "default": "./lib/client.js"
+      "default": "./lib/client.ts"
     },
     "./pages/*": {
       "default": "./lib/pages/*"
@@ -44,10 +44,10 @@
   "typesVersions": {
     "*": {
       ".": [
-        "./lib/index.js"
+        "./lib/index.ts"
       ],
       "./client": [
-        "./lib/client.js"
+        "./lib/client.ts"
       ],
       "./pages/*": [
         "./lib/pages/*"
