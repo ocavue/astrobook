@@ -5,7 +5,7 @@ import astrobook from 'astrobook'
 // https://astro.build/config
 export default defineConfig({
   server: {
-    port: 4303,
+    port: 4304,
   },
 
   integrations: [preact(), astrobook({}), ],
