@@ -1,8 +1,7 @@
 import preact from '@astrojs/preact'
+import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
-
-import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
