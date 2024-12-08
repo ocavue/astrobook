@@ -94,13 +94,15 @@ function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
 import StoryPage from 'astrobook/pages/story.astro'
-import { isAstroComponent } from 'astrobook/client'
+import { isAstroStory } from 'astrobook/client'
 import * as m from '${route.storyModule.importPath}'
+
+const isAstro = isAstroStory(m)
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    isAstroComponent(m)
+    isAstro
       ? (<m.default.component { ...m['${route.story.name}']?.args } />)
       : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
   }
