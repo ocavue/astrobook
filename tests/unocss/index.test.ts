@@ -22,7 +22,7 @@ test('unocss example', async ({ page }) => {
 
     if (process.platform === 'win32') {
       // For unknown reasons, this test fails on Windows.
-      return 
+      return
     }
 
     await expect(button).toHaveCSS('width', '100px')
