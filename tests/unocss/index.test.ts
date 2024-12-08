@@ -23,10 +23,10 @@ test('unocss example', async ({ page }) => {
     .locator('pre')
 
   await test.step('Check the style', async () => {
-    await expect(counterNumber).toHaveClass('size-10')
+    await expect(counterNumber).toHaveClass('size-[100px]')
     const box = await counterNumber.boundingBox()
     expect(box).not.toBeNull()
-    expect(box?.width).toBe(80)
-    expect(box?.height).toBe(80)
+    expect(box?.width).toBe(100)
+    expect(box?.height).toBe(100)
   })
 })
