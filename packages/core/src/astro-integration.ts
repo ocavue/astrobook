@@ -31,6 +31,10 @@ export function createAstrobookIntegration(
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
         const routes = await getVirtualRoutes(rootDir, codegenDir.pathname)
 
+        console.log('[DEBUG] rootDir', rootDir)
+        console.log('[DEBUG] codegenDir', codegenDir)
+        console.log('[DEBUG] baseUrl', baseUrl)
+        console.log('[DEBUG] baseUrl', baseUrl)
         console.log('[DEBUG] routes', routes)
 
         await Promise.all(
