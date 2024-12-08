@@ -2,9 +2,7 @@ import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 
 export { getPathWithBase } from './utils/base'
 
-export function isAstroStory(module: {
-  default?: { component?: unknown }
-}) {
+export function isAstroStory(module: { default?: { component?: unknown } }) {
   try {
     const component = module.default?.component
     if (!component) return false
@@ -15,9 +13,11 @@ export function isAstroStory(module: {
   }
 }
 
-
-
 // Copy from https://github.com/withastro/astro/blob/astro@5.0.0/packages/astro/src/runtime/server/render/astro/factory.ts#L15
-export function isAstroComponentFactory(obj: unknown): obj is AstroComponentFactory {
-  return obj == null ? false : (obj as Record<string, unknown>).isAstroComponentFactory === true;
+export function isAstroComponentFactory(
+  obj: unknown,
+): obj is AstroComponentFactory {
+  return obj == null
+    ? false
+    : (obj as Record<string, unknown>).isAstroComponentFactory === true
 }

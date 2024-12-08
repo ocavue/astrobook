@@ -5,7 +5,10 @@ import pathPosix from 'node:path/posix'
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
 
-import { createVirtualRouteComponent, getVirtualRoutes } from './virtual-module/virtual-routes'
+import {
+  createVirtualRouteComponent,
+  getVirtualRoutes,
+} from './virtual-module/virtual-routes'
 import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 
 export function createAstrobookIntegration(
@@ -14,9 +17,12 @@ export function createAstrobookIntegration(
   return {
     name: 'astrobook/core',
     hooks: {
-
-      'astro:config:setup': async ({ updateConfig, injectRoute, config, createCodegenDir, }) => {
-
+      'astro:config:setup': async ({
+        updateConfig,
+        injectRoute,
+        config,
+        createCodegenDir,
+      }) => {
         const codegenDir = createCodegenDir()
 
         const rootDir = path.resolve(options?.directory || '.')
@@ -30,20 +36,15 @@ export function createAstrobookIntegration(
             const filePath = route.entrypoint
             const fileContent = createVirtualRouteComponent(route)
             await fs.mkdir(path.dirname(filePath), { recursive: true })
-            await fs.writeFile(filePath, fileContent, { encoding: 'utf-8', })
+            await fs.writeFile(filePath, fileContent, { encoding: 'utf-8' })
           }),
         )
 
-
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir, baseUrl,)],
+            plugins: [createVirtualFilesPlugin(rootDir, baseUrl)],
           },
         })
-
-
-
-
 
         for (const route of routes.values()) {
           const pattern = pathPosix.join(astrobookBaseUrl, route.pattern)
