@@ -9,10 +9,5 @@ export default defineConfig({
     port: 4303,
   },
 
-
-  integrations: [
-    preact(),
-    astrobook({   }),
-    unocss({ injectReset: true }),
-  ],
+  integrations: [preact(), astrobook({}), unocss({ injectReset: true })],
 })
