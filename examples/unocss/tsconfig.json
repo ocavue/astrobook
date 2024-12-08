@@ -3,7 +3,7 @@
     "target": "es2022",
     "module": "esnext",
     "lib": ["esnext"],
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "declaration": true,
     "emitDeclarationOnly": true,
     "moduleResolution": "Bundler",
@@ -17,31 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "jsxImportSource": "preact"
   },
-  "include": ["./*.js", "./*.ts", "./tests", "tests/example-urls.js"],
-  "files": [],
-  "references": [
-    {
-      "path": "./examples/playground"
-    },
-    {
-      "path": "./examples/unocss"
-    },
-    {
-      "path": "./examples/mixed"
-    },
-    {
-      "path": "./packages/core"
-    },
-    {
-      "path": "./packages/types"
-    },
-    {
-      "path": "./packages/ui"
-    },
-    {
-      "path": "./packages/astrobook"
-    }
-  ]
+  "include": ["./src", "./*.js", "./*.mjs", "./*.ts"]
 }
