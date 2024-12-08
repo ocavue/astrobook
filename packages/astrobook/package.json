@@ -92,9 +92,10 @@
         "types": "./dist/client.d.ts",
         "import": "./dist/client.js",
         "default": "./dist/client.js"
-      },"./pages/*": {
-      "default": "./lib/pages/*"
-    }
+      },
+      "./pages/*": {
+        "default": "./lib/pages/*"
+      }
     },
     "main": "./dist/index.js",
     "module": "./dist/index.js",
@@ -106,7 +107,8 @@
         ],
         "./client": [
           "./dist/client.d.ts"
-        ], "./pages/*": [
+        ],
+        "./pages/*": [
           "./lib/pages/*"
         ]
       }
