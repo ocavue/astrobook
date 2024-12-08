@@ -5,8 +5,6 @@ import { EXAMPLE_URLS } from '../example-urls'
 const BASE_URL = EXAMPLE_URLS['example-unocss']
 
 test('unocss example', async ({ page }) => {
-
-
   await test.step('Select the story', async () => {
     await page.goto(BASE_URL)
     const button = page.locator('a', { hasText: 'LargeStep' })
