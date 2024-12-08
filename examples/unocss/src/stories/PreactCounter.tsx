@@ -1,6 +1,5 @@
 /** @jsxImportSource preact */
 
-
 import type { ComponentChildren } from 'preact'
 import { useState } from 'preact/hooks'
 
@@ -18,10 +17,20 @@ export function PreactCounter({
 
   return (
     <>
-      <div class="flex gap-10 items-center p-4">
-        <button class="bg-gray-200 rounded-md p-5 size-20 color-black shadow-sm hover:bg-gray-300 transition-colors" onClick={subtract}>-</button>
+      <div class="flex items-center gap-10 p-4">
+        <button
+          class="color-black size-20 rounded-md bg-gray-200 p-5 shadow-sm transition-colors hover:bg-gray-300"
+          onClick={subtract}
+        >
+          -
+        </button>
         <pre>{count}</pre>
-        <button class="bg-gray-200 rounded-md p-5 size-20 color-black shadow-sm hover:bg-gray-300 transition-colors" onClick={add}>+</button>
+        <button
+          class="color-black size-20 rounded-md bg-gray-200 p-5 shadow-sm transition-colors hover:bg-gray-300"
+          onClick={add}
+        >
+          +
+        </button>
       </div>
       <div class="counter-message">{children}</div>
     </>
