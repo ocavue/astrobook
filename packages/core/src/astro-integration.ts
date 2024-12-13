@@ -1,4 +1,3 @@
-import fsSync from 'node:fs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import pathPosix from 'node:path/posix'
@@ -30,18 +29,22 @@ export function createAstrobookIntegration(
         const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
 
-        logger.debug(`Creating codegen dir`)
-        const codegenDirURL: URL = (
-          createCodegenDir || createCodegenDirFallback
-        )()
-        const codegenDir = await fs.realpath(codegenDirURL)
+        logger.debug(`Creating dedicated folder`)
+        let codegenDir: string
+        if (createCodegenDir) {
+          const codegenDirURL = createCodegenDir()
+          codegenDir = await fs.realpath(codegenDirURL)
+        } else {
+          // Astro v4, where `createCodegenDir()` is not available
+          codegenDir = path.resolve('.astro', 'integrations', 'astrobook')
+          await fs.mkdir(codegenDir, { recursive: true })
+        }
+        logger.debug(`Created dedicated folder at ${codegenDir}`)
 
         logger.debug(`Scanning for stories in ${rootDir}`)
         const routes = await getVirtualRoutes(rootDir, codegenDir)
-
         let storyFileCount = 0
         let storyCount = 0
-
         for (const route of routes.values()) {
           storyFileCount += 1
           storyCount += route.storyModule.stories.length
@@ -49,7 +52,6 @@ export function createAstrobookIntegration(
             `Found ${route.storyModule.stories.length} stories in ${route.storyModule.importPath}`,
           )
         }
-
         logger.info(
           `Found ${storyFileCount} story files and ${storyCount} stories`,
         )
@@ -90,11 +92,4 @@ export function createAstrobookIntegration(
       },
     },
   }
-}
-
-// Fallback for Astro v4, where `createCodegenDir()` is not available
-function createCodegenDirFallback(): URL {
-  const codegenDir = new URL(`./integrations/astrobook/`, '.astro')
-  fsSync.mkdirSync(codegenDir, { recursive: true })
-  return codegenDir
 }
