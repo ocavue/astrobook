@@ -1,12 +1,12 @@
 import path from 'node:path'
 
 import type { Story, StoryModule } from '@astrobook/types'
+import type { AstroIntegrationLogger } from 'astro'
 import slash from 'slash'
 
 import { invariant } from '../utils/invariant'
 
 import { getStoryModules } from './get-story-modules'
-import { ROUTE_DASHBOARD_DIR, ROUTE_STORIES_DIR } from './virtual-module-ids'
 
 export interface VirtualRoute {
   pattern: string
@@ -29,11 +29,16 @@ export interface VirtualRoute {
 
 export async function getVirtualRoutes(
   rootDir: string,
+  codegenDir: string,
+  logger: AstroIntegrationLogger,
 ): Promise<Map<string, VirtualRoute>> {
   const routes: VirtualRoute[] = []
   const storyModules = await getStoryModules(rootDir)
 
   for (const storyModule of storyModules) {
+    logger.debug(
+      `Found ${storyModule.stories.length} stories in ${storyModule.importPath}`,
+    )
     for (const story of storyModule.stories) {
       invariant(
         !story.id.startsWith('..'),
@@ -47,7 +52,7 @@ export async function getVirtualRoutes(
         {
           pattern: '/dashboard/' + story.id,
           entrypoint: slash(
-            path.resolve(ROUTE_DASHBOARD_DIR + story.id + '.astro'),
+            path.resolve(codegenDir, 'dashboard', story.id + '.astro'),
           ),
           storyModule,
           story,
@@ -56,7 +61,7 @@ export async function getVirtualRoutes(
         {
           pattern: '/stories/' + story.id,
           entrypoint: slash(
-            path.resolve(ROUTE_STORIES_DIR + story.id + '.astro'),
+            path.resolve(codegenDir, 'stories', story.id + '.astro'),
           ),
           storyModule,
           story,
@@ -66,54 +71,27 @@ export async function getVirtualRoutes(
     }
   }
 
+  logger.info(`Found ${routes.length} stories in ${storyModules.length} files`)
+
   return new Map(routes.map((route) => [route.pattern, route]))
 }
 
-export function resolveVirtualRoute(
-  path: string,
-  routes: Map<string, VirtualRoute>,
-): VirtualRoute | undefined {
-  if (path.endsWith('.astro')) {
-    path = path.slice(0, -6)
-
-    if (path.includes(ROUTE_DASHBOARD_DIR)) {
-      const storyId = path.split(ROUTE_DASHBOARD_DIR).pop()
-      const pattern = '/dashboard/' + storyId
-      return routes.get(pattern)
-    }
-
-    if (path.includes(ROUTE_STORIES_DIR)) {
-      const storyId = path.split(ROUTE_STORIES_DIR).pop()
-      const pattern = '/stories/' + storyId
-      return routes.get(pattern)
-    }
-  }
-}
-
-function createVirtualRouteComponent(route: VirtualRoute): string {
+export function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
 import StoryPage from 'astrobook/pages/story.astro'
-import { isAstroComponent } from 'astrobook/client'
+import { isAstroStory } from 'astrobook/client'
 import * as m from '${route.storyModule.importPath}'
+
+const isAstro = isAstroStory(m)
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    isAstroComponent(m)
+    isAstro
       ? (<m.default.component { ...m['${route.story.name}']?.args } />)
       : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
   }
 </StoryPage>
-`
-}
-
-export function resolveVirtualRouteComponent(
-  path: string,
-  routes: Map<string, VirtualRoute>,
-): string | undefined {
-  const route = resolveVirtualRoute(path, routes)
-  if (route) {
-    return createVirtualRouteComponent(route)
-  }
+`.trim()
 }
