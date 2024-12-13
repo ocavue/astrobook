@@ -18,15 +18,22 @@ export function createAstrobookIntegration(
   return {
     name: 'astrobook',
     hooks: {
-      'astro:config:setup': async ({ updateConfig, injectRoute, config, createCodegenDir, logger }) => {
-
+      'astro:config:setup': async ({
+        updateConfig,
+        injectRoute,
+        config,
+        createCodegenDir,
+        logger,
+      }) => {
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
 
         logger.debug(`Creating codegen dir`)
-        const codegenDirURL: URL = (createCodegenDir || createCodegenDirFallback)()
+        const codegenDirURL: URL = (
+          createCodegenDir || createCodegenDirFallback
+        )()
         const codegenDir = await fs.realpath(codegenDirURL)
 
         logger.debug(`Scanning for stories in ${rootDir}`)
@@ -38,7 +45,9 @@ export function createAstrobookIntegration(
         for (const route of routes.values()) {
           storyFileCount += 1
           storyCount += route.storyModule.stories.length
-          logger.debug(`Found ${route.storyModule.stories.length} stories in ${route.storyModule.importPath}`)
+          logger.debug(
+            `Found ${route.storyModule.stories.length} stories in ${route.storyModule.importPath}`,
+          )
         }
 
         logger.info(
@@ -85,7 +94,7 @@ export function createAstrobookIntegration(
 
 // Fallback for Astro v4, where `createCodegenDir()` is not available
 function createCodegenDirFallback(): URL {
-  const codegenDir = new URL(`./integrations/astrobook/`, ".astro");
-  fsSync.mkdirSync(codegenDir, { recursive: true });
-  return codegenDir;
+  const codegenDir = new URL(`./integrations/astrobook/`, '.astro')
+  fsSync.mkdirSync(codegenDir, { recursive: true })
+  return codegenDir
 }
