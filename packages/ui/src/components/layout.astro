@@ -3,6 +3,8 @@ import '../style.css'
 import './layout.css'
 import Sidebar from './sidebar.astro'
 import { ThemeScript } from 'astro-theme-toggle'
+import CustomHead from 'virtual:astrobook/components/head.mjs'
+import config from 'virtual:astrobook/global-config.mjs'
 
 interface Props {
   story: string | undefined
@@ -17,9 +19,10 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astrobook</title>
+    <title>{config.title}</title>
     <ThemeScript />
     <script src="./theme-message.ts"></script>
+    <CustomHead />
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"

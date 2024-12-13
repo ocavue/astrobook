@@ -20,8 +20,8 @@ export function createAstrobookIntegration(
       'astro:config:setup': async ({
         updateConfig,
         injectRoute,
-        config,
         createCodegenDir,
+        config,
         logger,
       }) => {
         const rootDir = path.resolve(options?.directory || '.')
@@ -56,7 +56,11 @@ export function createAstrobookIntegration(
 
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir, baseUrl)],
+            plugins: [createVirtualFilesPlugin(rootDir, {
+              baseUrl,
+              head: options?.head || "@astrobook/ui/components/head.astro",
+              title: options?.title || "Astrobook",
+            })],
           },
         })
 

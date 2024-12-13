@@ -15,6 +15,20 @@ export interface IntegrationOptions {
    * @example '/docs/components'
    */
   subpath?: string
+
+  /**
+   * Set the title for your website. Will be used in metadata and in the browser tab title.
+   *
+   * @default 'Astrobook'
+   */
+  title?: string
+
+  /**
+   * The path to an Astro component to provide custom tags in the `<head>`.
+   *
+   * @example './src/components/CustomHead.astro'
+   */
+  head?: string
 }
 
 export interface StoryModule {
@@ -67,6 +81,12 @@ export interface Story {
    * @example 'PrimaryButton'
    */
   name: string
+}
+
+export interface GlobalConfig {
+  baseUrl: string,
+  head: string,
+  title: string,
 }
 
 declare global {

@@ -1,0 +1,13 @@
+---
+interface Props {
+  fontName: 'freckle-face' | 'lobster' | 'press-start-2p'
+}
+
+const { fontName } = Astro.props
+---
+
+<div>
+  <div class={`font-${fontName}`}>
+    <p>Lorem ipsum dolor sit amet</p>
+  </div>
+</div>
