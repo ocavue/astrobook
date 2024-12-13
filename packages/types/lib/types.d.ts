@@ -27,6 +27,7 @@ export interface IntegrationOptions {
    * The path to an Astro component to provide custom tags in the `<head>`.
    *
    * @example './src/components/CustomHead.astro'
+   * @example './src/components/CustomHead.html'
    */
   head?: string
 }
