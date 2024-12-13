@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import pathPosix from 'node:path/posix'
+import { fileURLToPath } from 'node:url'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
@@ -32,8 +33,7 @@ export function createAstrobookIntegration(
         logger.debug(`Creating dedicated folder`)
         let codegenDir: string
         if (createCodegenDir) {
-          const codegenDirURL = createCodegenDir()
-          codegenDir = await fs.realpath(codegenDirURL)
+          codegenDir = fileURLToPath(createCodegenDir())
         } else {
           // Astro v4, where `createCodegenDir()` is not available
           codegenDir = path.resolve('.astro', 'integrations', 'astrobook')
