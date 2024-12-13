@@ -1,6 +1,7 @@
 import path from 'node:path'
 
 import type { Story, StoryModule } from '@astrobook/types'
+import type { AstroIntegrationLogger } from 'astro'
 import slash from 'slash'
 
 import { invariant } from '../utils/invariant'
@@ -29,11 +30,15 @@ export interface VirtualRoute {
 export async function getVirtualRoutes(
   rootDir: string,
   codegenDir: string,
+  logger: AstroIntegrationLogger
 ): Promise<Map<string, VirtualRoute>> {
   const routes: VirtualRoute[] = []
   const storyModules = await getStoryModules(rootDir)
 
   for (const storyModule of storyModules) {
+    logger.debug(
+      `Found ${storyModule.stories.length} stories in ${storyModule.importPath}`,
+    )
     for (const story of storyModule.stories) {
       invariant(
         !story.id.startsWith('..'),
@@ -65,6 +70,8 @@ export async function getVirtualRoutes(
       )
     }
   }
+
+  logger.info(`Found ${routes.length} stories in ${storyModules.length} files`)
 
   return new Map(routes.map((route) => [route.pattern, route]))
 }

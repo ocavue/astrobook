@@ -42,19 +42,7 @@ export function createAstrobookIntegration(
         logger.debug(`Created dedicated folder at ${codegenDir}`)
 
         logger.debug(`Scanning for stories in ${rootDir}`)
-        const routes = await getVirtualRoutes(rootDir, codegenDir)
-        let storyFileCount = 0
-        let storyCount = 0
-        for (const route of routes.values()) {
-          storyFileCount += 1
-          storyCount += route.storyModule.stories.length
-          logger.debug(
-            `Found ${route.storyModule.stories.length} stories in ${route.storyModule.importPath}`,
-          )
-        }
-        logger.info(
-          `Found ${storyFileCount} story files and ${storyCount} stories`,
-        )
+        const routes = await getVirtualRoutes(rootDir, codegenDir, logger)
 
         logger.debug(`Writing files to ${codegenDir}`)
         await Promise.all(
