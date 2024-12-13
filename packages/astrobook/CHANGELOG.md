@@ -1,5 +1,13 @@
 # astrobook
 
+## 0.7.0
+
+### Minor Changes
+
+- [`aebaa00`](https://github.com/ocavue/astrobook/commit/aebaa0090f9d8f73f1ed374eaa5cfd3e451641a0) Add a new `head` option. This allows you to configure the global styles and fonts. Please check the README.md for more information.
+
+  Add a new `title` option to set the title for your Astrobook site.
+
 ## 0.6.0
 
 ### Minor Changes
