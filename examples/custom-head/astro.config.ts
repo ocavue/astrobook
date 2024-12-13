@@ -8,5 +8,11 @@ export default defineConfig({
   },
 
   // Enable many frameworks to support all different kinds of components.
-  integrations: [astrobook({ directory: 'src/components', head: './src/components/CustomHead.astro', title: 'Custom Title' })],
+  integrations: [
+    astrobook({
+      directory: 'src/components',
+      head: './src/components/CustomHead.astro',
+      title: 'Custom Title',
+    }),
+  ],
 })

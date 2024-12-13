@@ -56,11 +56,13 @@ export function createAstrobookIntegration(
 
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir, {
-              baseUrl,
-              head: options?.head || "astrobook/components/head.astro",
-              title: options?.title || "Astrobook",
-            })],
+            plugins: [
+              createVirtualFilesPlugin(rootDir, {
+                baseUrl,
+                head: options?.head || 'astrobook/components/head.astro',
+                title: options?.title || 'Astrobook',
+              }),
+            ],
           },
         })
 

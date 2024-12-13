@@ -85,9 +85,9 @@ export interface Story {
 }
 
 export interface GlobalConfig {
-  baseUrl: string,
-  head: string,
-  title: string,
+  baseUrl: string
+  head: string
+  title: string
 }
 
 declare global {

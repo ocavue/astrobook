@@ -8,7 +8,7 @@ import {
   STORY_MODULES_ID,
   STORY_MODULES_RESOLVED_ID,
   GLOBAL_CONFIG_ID,
-  GLOBAL_CONFIG_RESOLVED_ID
+  GLOBAL_CONFIG_RESOLVED_ID,
 } from './virtual-module-ids'
 
 export function createVirtualFilesPlugin(
@@ -34,7 +34,7 @@ export function createVirtualFilesPlugin(
         case GLOBAL_CONFIG_RESOLVED_ID:
           return `const config = ${JSON.stringify(config)}; export default config;`
         case COMPONENT_HEAD_RESOLVED_ID:
-          return `export { default } from ${JSON.stringify(config.head)};`;
+          return `export { default } from ${JSON.stringify(config.head)};`
       }
     },
   }
