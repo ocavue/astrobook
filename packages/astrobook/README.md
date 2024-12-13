@@ -122,6 +122,54 @@ export default defineConfig({
 
 You Astro project will be available at `http://localhost:4321/base` and Astrobook will be available at `http://localhost:4321/base/docs/components`.
 
+### `head`
+
+The path to an Astro component that includes custom tags to the `<head>` of your Astrobook site. It should only include [elements permitted inside `<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head#see_also).
+
+Below is an example of a custom head component that configures the global styles and fonts.
+
+```astro
+---
+// src/components/CustomHead.astro
+
+// Apply global styles from a CSS file
+import './global.css'
+---
+
+<!-- Load custom fonts -->
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+<!-- Apply global styles -->
+<style is:global>
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+```
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+
+export default defineConfig({
+  head: './src/components/CustomHead.astro',
+})
+```
+
+### `title`
+
+You can set the title for your website.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+
+export default defineConfig({
+  title: 'My Awesome Playground',
+})
+```
+
 ## Advanced
 
 ### Toggle theme via message

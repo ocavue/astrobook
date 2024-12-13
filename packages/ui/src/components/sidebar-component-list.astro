@@ -3,7 +3,7 @@ import '@astrobook/types'
 
 import { getPathWithBase } from '@astrobook/core/client'
 import groupBy from 'just-group-by'
-import BASE_URL from 'virtual:astrobook/base-url.mjs'
+import config from 'virtual:astrobook/global-config.mjs'
 import modules from 'virtual:astrobook/story-modules.mjs'
 
 interface Props {
@@ -28,13 +28,13 @@ const groupedModules = groupBy(modules, (module) => module.directory)
           <Fragment>
             <a
               class:list={[
-                ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+                ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
                 ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
                 'astrobook-focus-ring',
               ]}
               href={getPathWithBase(
                 `/dashboard/${module.stories[0]?.id}`,
-                BASE_URL,
+                config.baseUrl,
               )}
             >
               <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
@@ -43,14 +43,14 @@ const groupedModules = groupBy(modules, (module) => module.directory)
             {module.stories.map((story) => (
               <a
                 class:list={[
-                  ':uno: block flex items-center gap-2 rounded text-sm no-underline transition',
+                  ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
                   ':uno: py-1 pl-5 pr-2',
                   'astrobook-focus-ring',
                   Astro.props.story === story.id
                     ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
                     : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
                 ]}
-                href={getPathWithBase(`/dashboard/${story.id}`, BASE_URL)}
+                href={getPathWithBase(`/dashboard/${story.id}`, config.baseUrl)}
                 data-active={Astro.props.story === story.id ? '' : undefined}
               >
                 <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />

@@ -1,9 +1,16 @@
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+
 declare module 'virtual:astrobook/story-modules.mjs' {
   const entries: import('./types').StoryModule[]
   export default entries
 }
 
-declare module 'virtual:astrobook/base-url.mjs' {
-  const baseUrl: string
-  export default baseUrl
+declare module 'virtual:astrobook/global-config.mjs' {
+  const config: import('./types').GlobalConfig
+  export default config
+}
+
+declare module 'virtual:astrobook/components/head.mjs' {
+  const Head: (props: unknown) => unknown
+  export default Head
 }

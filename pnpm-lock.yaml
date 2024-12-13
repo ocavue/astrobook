@@ -60,6 +60,15 @@ importers:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@20.17.9)
 
+  examples/custom-head:
+    dependencies:
+      astro:
+        specifier: ^5.0.5
+        version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      astrobook:
+        specifier: '*'
+        version: link:../../packages/astrobook
+
   examples/mixed:
     dependencies:
       '@astrojs/preact':
@@ -70,7 +79,7 @@ importers:
         version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astrobook:
         specifier: '*'
-        version: 0.5.1(astro@5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: link:../../packages/astrobook
       preact:
         specifier: ^10.25.1
         version: 10.25.1
@@ -103,7 +112,7 @@ importers:
         version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astrobook:
         specifier: '*'
-        version: 0.5.1(astro@5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: link:../../packages/astrobook
       lit:
         specifier: ^3.2.1
         version: 3.2.1
@@ -139,7 +148,7 @@ importers:
         version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astrobook:
         specifier: '*'
-        version: 0.5.1(astro@5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: link:../../packages/astrobook
       preact:
         specifier: ^10.25.1
         version: 10.25.1
@@ -160,7 +169,7 @@ importers:
         version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astrobook:
         specifier: '*'
-        version: 0.5.1(astro@5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: link:../../packages/astrobook
       preact:
         specifier: ^10.25.1
         version: 10.25.1
@@ -2037,14 +2046,6 @@ packages:
     resolution: {integrity: sha512-xfptdmurDsQcj/Anc7mU+eKlcyV7ppJIlmaSwhX3ZWwK5N/0rGKVmUqnuILgR6MB0XVJiIfublNzDGoyj4Q6BQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
-
-  astrobook@0.5.1:
-    resolution: {integrity: sha512-8rfgXfG2VKMoO+7YXcGpPCwg6XMrt4Y1uio9HxpG+ChajFYMI604d1xz+Cz0Y3ccXXyCuOcgGg0LSKZTOGw4aQ==}
-    peerDependencies:
-      astro: '>=4.0.0'
-    peerDependenciesMeta:
-      astro:
-        optional: true
 
   autoprefixer@10.4.20:
     resolution: {integrity: sha512-XY25y5xSv/wEoqzDyXXME4AFfkZI0P23z6Fs3YgymDnKJkCGOnkL0iTxCa85UTqaSgfcqyf3UA6+c7wUvx/16g==}
@@ -7175,14 +7176,6 @@ snapshots:
       - tsx
       - typescript
       - yaml
-
-  astrobook@0.5.1(astro@5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)):
-    dependencies:
-      '@astrobook/core': link:packages/core
-      '@astrobook/types': link:packages/types
-      '@astrobook/ui': link:packages/ui
-    optionalDependencies:
-      astro: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
 
   autoprefixer@10.4.20(postcss@8.4.49):
     dependencies:

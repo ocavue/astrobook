@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import pathPosix from 'node:path/posix'
+import { fileURLToPath } from 'node:url'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
@@ -20,8 +21,8 @@ export function createAstrobookIntegration(
       'astro:config:setup': async ({
         updateConfig,
         injectRoute,
-        config,
         createCodegenDir,
+        config,
         logger,
       }) => {
         const rootDir = path.resolve(options?.directory || '.')
@@ -32,8 +33,7 @@ export function createAstrobookIntegration(
         logger.debug(`Creating dedicated folder`)
         let codegenDir: string
         if (createCodegenDir) {
-          const codegenDirURL = createCodegenDir()
-          codegenDir = await fs.realpath(codegenDirURL)
+          codegenDir = fileURLToPath(createCodegenDir())
         } else {
           // Astro v4, where `createCodegenDir()` is not available
           codegenDir = path.resolve('.astro', 'integrations', 'astrobook')
@@ -56,7 +56,13 @@ export function createAstrobookIntegration(
 
         updateConfig({
           vite: {
-            plugins: [createVirtualFilesPlugin(rootDir, baseUrl)],
+            plugins: [
+              createVirtualFilesPlugin(rootDir, {
+                baseUrl,
+                head: options?.head || 'astrobook/components/head.astro',
+                title: options?.title || 'Astrobook',
+              }),
+            ],
           },
         })
 
