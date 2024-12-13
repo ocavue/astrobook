@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.6.0
+
+### Minor Changes
+
+- [`74ee6e2`](https://github.com/ocavue/astrobook/commit/74ee6e2690146b6e39ddfa12a13d5115c4387fb9) Support Astro v5.
+
 ## 0.5.1
 
 ### Patch Changes
