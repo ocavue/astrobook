@@ -27,15 +27,15 @@
     "vite"
   ],
   "sideEffects": false,
-  "main": "./lib/index.ts",
-  "module": "./lib/index.ts",
-  "types": "./lib/index.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "default": "./lib/index.ts"
+      "default": "./src/index.ts"
     },
     "./client": {
-      "default": "./lib/client.ts"
+      "default": "./src/client.ts"
     },
     "./pages/*": {
       "default": "./lib/pages/*"
@@ -44,10 +44,10 @@
   "typesVersions": {
     "*": {
       ".": [
-        "./lib/index.ts"
+        "./src/index.ts"
       ],
       "./client": [
-        "./lib/client.ts"
+        "./src/client.ts"
       ],
       "./pages/*": [
         "./lib/pages/*"
@@ -55,15 +55,19 @@
     }
   },
   "files": [
+    "dist",
     "lib"
   ],
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json"
+  },
   "dependencies": {
     "@astrobook/core": "workspace:*",
     "@astrobook/types": "workspace:*",
     "@astrobook/ui": "workspace:*"
   },
   "peerDependencies": {
-    "astro": ">=5.0.0"
+    "astro": ">=4.0.0"
   },
   "peerDependenciesMeta": {
     "astro": {
@@ -76,5 +80,38 @@
     "typescript": "^5.6.3",
     "vite": "^6.0.3",
     "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "./client": {
+        "types": "./dist/client.d.ts",
+        "import": "./dist/client.js",
+        "default": "./dist/client.js"
+      },
+      "./pages/*": {
+        "default": "./lib/pages/*"
+      }
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "./dist/index.d.ts"
+        ],
+        "./client": [
+          "./dist/client.d.ts"
+        ],
+        "./pages/*": [
+          "./lib/pages/*"
+        ]
+      }
+    }
   }
 }
