@@ -62,18 +62,12 @@ importers:
 
   examples/custom-head:
     dependencies:
-      '@astrojs/preact':
-        specifier: ^4.0.0
-        version: 4.0.0(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@1.21.6)(preact@10.25.1)(tsx@4.19.2)(yaml@2.6.1)
       astro:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@20.17.9)(jiti@1.21.6)(rollup@4.28.1)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       astrobook:
         specifier: '*'
         version: link:../../packages/astrobook
-      preact:
-        specifier: ^10.25.1
-        version: 10.25.1
 
   examples/mixed:
     dependencies:

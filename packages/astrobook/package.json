@@ -39,6 +39,9 @@
     },
     "./pages/*": {
       "default": "./lib/pages/*"
+    },
+    "./components/*": {
+      "default": "./lib/components/*"
     }
   },
   "typesVersions": {
@@ -51,6 +54,9 @@
       ],
       "./pages/*": [
         "./lib/pages/*"
+      ],
+      "./components/*": [
+        "./lib/components/*"
       ]
     }
   },
@@ -95,6 +101,9 @@
       },
       "./pages/*": {
         "default": "./lib/pages/*"
+      },
+      "./components/*": {
+        "default": "./lib/components/*"
       }
     },
     "main": "./dist/index.js",
@@ -110,6 +119,9 @@
         ],
         "./pages/*": [
           "./lib/pages/*"
+        ],
+        "./components/*": [
+          "./lib/components/*"
         ]
       }
     }
