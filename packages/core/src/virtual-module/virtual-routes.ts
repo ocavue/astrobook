@@ -30,7 +30,7 @@ export interface VirtualRoute {
 export async function getVirtualRoutes(
   rootDir: string,
   codegenDir: string,
-  logger: AstroIntegrationLogger
+  logger: AstroIntegrationLogger,
 ): Promise<Map<string, VirtualRoute>> {
   const routes: VirtualRoute[] = []
   const storyModules = await getStoryModules(rootDir)
