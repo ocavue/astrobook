@@ -3,10 +3,6 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "pnpm install && pnpm run dev"
-  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -31,5 +27,9 @@
     "solid-js": "^1.9.4",
     "svelte": "^5.19.3",
     "vue": "^3.5.13"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
   }
 }

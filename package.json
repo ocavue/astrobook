@@ -22,11 +22,6 @@
     "ci:publish": "pnpm run build:package && pnpm publish --access public -r --no-git-checks --tag latest",
     "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --template ./examples/playground --pnpm"
   },
-  "renovate": {
-    "extends": [
-      "github>ocavue/config-renovate"
-    ]
-  },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
     "@changesets/types": "^6.0.0",
@@ -45,5 +40,10 @@
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "vitest": "^2.1.8"
+  },
+  "renovate": {
+    "extends": [
+      "github>ocavue/config-renovate"
+    ]
   }
 }

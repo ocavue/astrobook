@@ -37,11 +37,11 @@
     "./client": {
       "default": "./src/client.ts"
     },
-    "./pages/*": {
-      "default": "./lib/pages/*"
-    },
     "./components/*": {
       "default": "./lib/components/*"
+    },
+    "./pages/*": {
+      "default": "./lib/pages/*"
     }
   },
   "typesVersions": {
@@ -99,11 +99,11 @@
         "import": "./dist/client.js",
         "default": "./dist/client.js"
       },
-      "./pages/*": {
-        "default": "./lib/pages/*"
-      },
       "./components/*": {
         "default": "./lib/components/*"
+      },
+      "./pages/*": {
+        "default": "./lib/pages/*"
       }
     },
     "main": "./dist/index.js",

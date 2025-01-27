@@ -3,10 +3,6 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "pnpm install && pnpm run dev"
-  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -21,5 +17,9 @@
     "astrobook": "*",
     "preact": "^10.25.4",
     "unocss": "^0.65.3"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
   }
 }
