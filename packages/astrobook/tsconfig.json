@@ -3,5 +3,5 @@
   "compilerOptions": {
     "composite": true
   },
-  "include": ["src/**/*", "./*.js", "./*.ts"]
+  "include": ["src/**/*", "./*.js", "./*.ts", "../../examples/playground/src/astro.d.ts"]
 }
