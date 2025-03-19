@@ -1,7 +1,7 @@
 {
   "name": "astrobook",
   "type": "module",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "The minimal UI component playground",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
