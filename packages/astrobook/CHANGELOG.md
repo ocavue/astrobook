@@ -1,5 +1,14 @@
 # astrobook
 
+## 0.8.0
+
+### Minor Changes
+
+- [`9c445c8`](https://github.com/ocavue/astrobook/commit/9c445c80f696f565355b71628bcbb1e0c6353c26) Add a new `css` option to adding custom styles to your Astrobook project. You
+  can pass an array of CSS file paths to be imported into your Astrobook project.
+  It's easier than adding a custom `head` component, especially when you have no
+  experience with Astro components.
+
 ## 0.7.1
 
 ### Patch Changes
