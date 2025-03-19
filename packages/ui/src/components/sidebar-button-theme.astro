@@ -1,17 +1,17 @@
 ---
 import '@astrobook/types'
+import { Toggle } from 'astro-theme-toggle'
 import SidebarButton from './sidebar-button.astro'
 ---
 
-<SidebarButton id="astrobook-theme-icon" title="Toggle theme">
-  <span class=":uno: i-lucide-sun dark:i-lucide-moon box-border block size-4"
+<Toggle
+  class:list={[
+    ':uno: text-size-base block size-4 cursor-pointer rounded border-0 bg-transparent p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
+    'astrobook-focus-ring',
+  ]}
+  title="Toggle theme"
+>
+  <span class=":uno: sr-only">Toggle theme</span>
+  <span class=":uno: i-lucide-sun dark:i-lucide-moon box-border block size-full"
   ></span>
-</SidebarButton>
-
-<script>
-  import { handleToggleClick } from 'astro-theme-toggle'
-
-  document
-    .getElementById('astrobook-theme-icon')
-    ?.addEventListener('click', handleToggleClick)
-</script>
+</Toggle>

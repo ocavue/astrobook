@@ -6,17 +6,21 @@ import { getPathWithBase } from '@astrobook/core/client'
 import SidebarButton from './sidebar-button.astro'
 
 interface Props {
-  story?: string
+  story: string
 }
 ---
 
-{
-  Astro.props.story ? (
-    <SidebarButton
-      href={getPathWithBase(`/stories/${Astro.props.story}`, config.baseUrl)}
-      title="Go full screen"
-    >
-      <span class=":uno: i-lucide:square-arrow-out-up-right box-border block size-4" />
-    </SidebarButton>
-  ) : null
-}
+<a
+  href={getPathWithBase(`/stories/${Astro.props.story}`, config.baseUrl)}
+  class:list={[
+    ':uno: text-size-base block size-4 cursor-pointer rounded border-0 bg-transparent p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
+    'astrobook-focus-ring',
+  ]}
+  target="_blank"
+  title="Go full screen"
+>
+  <span class=":uno: sr-only">Go full screen</span>
+  <span
+    class=":uno: i-lucide:square-arrow-out-up-right box-border block size-full"
+  ></span>
+</a>

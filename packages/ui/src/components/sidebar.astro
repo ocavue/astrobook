@@ -15,7 +15,11 @@ interface Props {
   <div class=":uno: inline-flex items-center px-2 py-4">
     <SidebarTitle />
     <span class=":uno: flex-1"></span>
-    <SidebarButtonFullscreen story={Astro.props.story} />
+    {
+      Astro.props.story ? (
+        <SidebarButtonFullscreen story={Astro.props.story} />
+      ) : null
+    }
     <SidebarButtonTheme />
   </div>
   <SidebarComponentList story={Astro.props.story} />
