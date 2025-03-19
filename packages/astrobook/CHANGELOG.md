@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.7.1
+
+### Patch Changes
+
+- [`30729fb`](https://github.com/ocavue/astrobook/commit/30729fb316ba42ee22e2167e9226a3b812a5ad6b) Fix an issue where the theme toggle button was not working in some edge cases.
+
 ## 0.7.0
 
 ### Minor Changes
