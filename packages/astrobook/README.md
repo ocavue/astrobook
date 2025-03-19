@@ -101,7 +101,11 @@ import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
 export default defineConfig({
-  integrations: [astrobook({ subpath: '/docs/components' })],
+  integrations: [
+    astrobook({
+      subpath: '/docs/components',
+    }),
+  ],
 })
 ```
 
@@ -116,26 +120,44 @@ import astrobook from 'astrobook'
 
 export default defineConfig({
   base: '/base',
-  integrations: [astrobook({ subpath: '/docs/components' })],
+  integrations: [
+    astrobook({
+      subpath: '/docs/components',
+    }),
+  ],
 })
 ```
 
 You Astro project will be available at `http://localhost:4321/base` and Astrobook will be available at `http://localhost:4321/base/docs/components`.
 
+### `css`
+
+You can customize the styles by using the `css` option to specify the CSS files to be imported into your Astrobook site.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      css: [
+        // Relative path to your custom CSS file
+        './src/styles/custom.css',
+      ],
+    }),
+  ],
+})
+```
+
 ### `head`
 
-The path to an Astro component that includes custom tags to the `<head>` of your Astrobook site. It should only include [elements permitted inside `<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head#see_also).
+You can further customize your Astrobook project by providing a custom `head` options. It's a path to an Astro component that includes custom tags to the `<head>` of your Astrobook site. It should only include [elements permitted inside `<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head#see_also), like `<link>`, `<style>`, `<script>`, etc.
 
 Below is an example of a custom head component that configures the global styles and fonts.
 
 ```astro
----
-// src/components/CustomHead.astro
-
-// Apply global styles from a CSS file
-import './global.css'
----
-
 <!-- Load custom fonts -->
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -151,9 +173,15 @@ import './global.css'
 ```js
 // astro.config.mjs
 import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
 
 export default defineConfig({
-  head: './src/components/CustomHead.astro',
+  integrations: [
+    astrobook({
+      // Relative path to your custom head component
+      head: './src/components/CustomHead.astro',
+    }),
+  ],
 })
 ```
 
@@ -164,9 +192,14 @@ You can set the title for your website.
 ```js
 // astro.config.mjs
 import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
 
 export default defineConfig({
-  title: 'My Awesome Playground',
+  integrations: [
+    astrobook({
+      title: 'My Components Playground',
+    }),
+  ],
 })
 ```
 
