@@ -11,8 +11,7 @@ runs:
   using: composite
   steps:
     - name: Install pnpm
-      run: corepack enable
-      shell: bash
+      uses: pnpm/action-setup@v4
 
     - name: Setup node
       uses: actions/setup-node@v4
