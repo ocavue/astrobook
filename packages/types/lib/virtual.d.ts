@@ -15,4 +15,4 @@ declare module 'virtual:astrobook/components/head.mjs' {
   export default Head
 }
 
-declare module 'virtual:astrobook/user-css.mjs' {} 
+declare module 'virtual:astrobook/user-css.mjs' {}
