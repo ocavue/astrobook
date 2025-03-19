@@ -45,5 +45,10 @@
     "extends": [
       "github>ocavue/config-renovate"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "astrobook@*": "workspace:*"
+    }
   }
 }
