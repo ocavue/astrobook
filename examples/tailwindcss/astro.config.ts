@@ -1,5 +1,5 @@
 import preact from '@astrojs/preact'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
@@ -9,5 +9,11 @@ export default defineConfig({
     port: 4304,
   },
 
-  integrations: [preact(), astrobook({}), tailwind()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  integrations: [preact(), astrobook({
+    head: './src/astrobook/Head.astro',
+  }), ],
 })
