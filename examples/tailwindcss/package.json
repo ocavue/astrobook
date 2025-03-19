@@ -11,11 +11,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.0.3",
+    "@astrojs/preact": "^4.0.5",
     "@astrojs/tailwind": "^5.1.5",
     "astro": "^5.0.5",
     "astrobook": "*",
-    "preact": "^10.25.4",
+    "preact": "^10.26.4",
     "tailwindcss": "^3.4.17"
   },
   "stackblitz": {

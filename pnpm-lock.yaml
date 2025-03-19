@@ -72,8 +72,8 @@ importers:
   examples/mixed:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.3
-        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.25.4)(tsx@4.19.2)(yaml@2.6.1)
+        specifier: ^4.0.5
+        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.26.4)(tsx@4.19.2)(yaml@2.6.1)
       astro:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@20.17.9)(jiti@2.4.2)(rollup@4.36.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
@@ -81,14 +81,14 @@ importers:
         specifier: '*'
         version: link:../../packages/astrobook
       preact:
-        specifier: ^10.25.4
-        version: 10.25.4
+        specifier: ^10.26.4
+        version: 10.26.4
 
   examples/playground:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.3
-        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.25.4)(tsx@4.19.2)(yaml@2.6.1)
+        specifier: ^4.0.5
+        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.26.4)(tsx@4.19.2)(yaml@2.6.1)
       '@astrojs/react':
         specifier: ^4.1.6
         version: 4.1.6(@types/node@20.17.9)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tsx@4.19.2)(yaml@2.6.1)
@@ -117,8 +117,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       preact:
-        specifier: ^10.25.4
-        version: 10.25.4
+        specifier: ^10.26.4
+        version: 10.26.4
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -138,8 +138,8 @@ importers:
   examples/tailwindcss:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.3
-        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.25.4)(tsx@4.19.2)(yaml@2.6.1)
+        specifier: ^4.0.5
+        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.26.4)(tsx@4.19.2)(yaml@2.6.1)
       '@astrojs/tailwind':
         specifier: ^5.1.5
         version: 5.1.5(astro@5.0.5(@types/node@20.17.9)(jiti@2.4.2)(rollup@4.36.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))(tailwindcss@3.4.17)
@@ -150,8 +150,8 @@ importers:
         specifier: '*'
         version: link:../../packages/astrobook
       preact:
-        specifier: ^10.25.4
-        version: 10.25.4
+        specifier: ^10.26.4
+        version: 10.26.4
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -159,8 +159,8 @@ importers:
   examples/unocss:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.4
-        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.25.4)(tsx@4.19.2)(yaml@2.6.1)
+        specifier: ^4.0.5
+        version: 4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.26.4)(tsx@4.19.2)(yaml@2.6.1)
       '@unocss/reset':
         specifier: ^0.65.3
         version: 0.65.4
@@ -171,8 +171,8 @@ importers:
         specifier: '*'
         version: link:../../packages/astrobook
       preact:
-        specifier: ^10.25.4
-        version: 10.25.4
+        specifier: ^10.26.4
+        version: 10.26.4
       unocss:
         specifier: ^0.65.3
         version: 0.65.4(postcss@8.5.3)(rollup@4.36.0)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.7.2))
@@ -4101,8 +4101,8 @@ packages:
     peerDependencies:
       preact: '>=10'
 
-  preact@10.25.4:
-    resolution: {integrity: sha512-jLdZDb+Q+odkHJ+MpW/9U5cODzqnB+fy2EiHSZES7ldV5LK7yjlVzTp7R8Xy6W6y75kfK8iWYtFVH7lvjwrCMA==}
+  preact@10.26.4:
+    resolution: {integrity: sha512-KJhO7LBFTjP71d83trW+Ilnjbo+ySsaAgCfXOXUlmGzJ4ygYPWmysm77yg4emwfmoz3b22yvH5IsVFHbhUaH5w==}
 
   preferred-pm@4.0.0:
     resolution: {integrity: sha512-gYBeFTZLu055D8Vv3cSPox/0iTPtkzxpLroSYYA7WXgRi31WCJ51Uyl8ZiPeUUjyvs2MBzK+S8v9JVUgHU/Sqw==}
@@ -5354,15 +5354,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.25.4)(tsx@4.19.2)(yaml@2.6.1)':
+  '@astrojs/preact@4.0.5(@babel/core@7.26.0)(@types/node@20.17.9)(jiti@2.4.2)(preact@10.26.4)(tsx@4.19.2)(yaml@2.6.1)':
     dependencies:
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.0)
-      '@preact/preset-vite': 2.10.1(@babel/core@7.26.0)(preact@10.25.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))
-      '@preact/signals': 2.0.1(preact@10.25.4)
+      '@preact/preset-vite': 2.10.1(@babel/core@7.26.0)(preact@10.26.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))
+      '@preact/signals': 2.0.1(preact@10.26.4)
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.0)
-      preact: 10.25.4
-      preact-render-to-string: 6.5.13(preact@10.25.4)
+      preact: 10.26.4
+      preact-render-to-string: 6.5.13(preact@10.26.4)
       vite: 6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1)
     transitivePeerDependencies:
       - '@babel/core'
@@ -6578,12 +6578,12 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@preact/preset-vite@2.10.1(@babel/core@7.26.0)(preact@10.25.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))':
+  '@preact/preset-vite@2.10.1(@babel/core@7.26.0)(preact@10.26.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.0)
-      '@prefresh/vite': 2.4.6(preact@10.25.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))
+      '@prefresh/vite': 2.4.6(preact@10.26.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))
       '@rollup/pluginutils': 4.2.1
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.0)
       debug: 4.4.0
@@ -6596,27 +6596,27 @@ snapshots:
 
   '@preact/signals-core@1.8.0': {}
 
-  '@preact/signals@2.0.1(preact@10.25.4)':
+  '@preact/signals@2.0.1(preact@10.26.4)':
     dependencies:
       '@preact/signals-core': 1.8.0
-      preact: 10.25.4
+      preact: 10.26.4
 
   '@prefresh/babel-plugin@0.5.1': {}
 
-  '@prefresh/core@1.5.3(preact@10.25.4)':
+  '@prefresh/core@1.5.3(preact@10.26.4)':
     dependencies:
-      preact: 10.25.4
+      preact: 10.26.4
 
   '@prefresh/utils@1.2.0': {}
 
-  '@prefresh/vite@2.4.6(preact@10.25.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))':
+  '@prefresh/vite@2.4.6(preact@10.26.4)(vite@6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))':
     dependencies:
       '@babel/core': 7.26.0
       '@prefresh/babel-plugin': 0.5.1
-      '@prefresh/core': 1.5.3(preact@10.25.4)
+      '@prefresh/core': 1.5.3(preact@10.26.4)
       '@prefresh/utils': 1.2.0
       '@rollup/pluginutils': 4.2.1
-      preact: 10.25.4
+      preact: 10.26.4
       vite: 6.2.2(@types/node@20.17.9)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1)
     transitivePeerDependencies:
       - supports-color
@@ -9765,11 +9765,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact-render-to-string@6.5.13(preact@10.25.4):
+  preact-render-to-string@6.5.13(preact@10.26.4):
     dependencies:
-      preact: 10.25.4
+      preact: 10.26.4
 
-  preact@10.25.4: {}
+  preact@10.26.4: {}
 
   preferred-pm@4.0.0:
     dependencies:
