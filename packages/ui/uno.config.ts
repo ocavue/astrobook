@@ -2,7 +2,7 @@ import {
   defineConfig,
   transformerCompileClass,
   presetIcons,
-  presetWind3,
+  presetWind4,
 } from 'unocss'
 
 const config: unknown = defineConfig({
@@ -13,7 +13,7 @@ const config: unknown = defineConfig({
     },
   },
   presets: [
-    presetWind3({
+    presetWind4({
       variablePrefix: 'astrobook-',
       preflight: true,
     }),
