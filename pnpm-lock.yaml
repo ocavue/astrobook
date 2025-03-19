@@ -272,8 +272,8 @@ importers:
         specifier: workspace:*
         version: link:../types
       astro-theme-toggle:
-        specifier: ^0.5.1
-        version: 0.5.1
+        specifier: ^0.6.0
+        version: 0.6.0
       just-group-by:
         specifier: ^2.2.0
         version: 2.2.0
@@ -1923,8 +1923,8 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
-  astro-theme-toggle@0.5.1:
-    resolution: {integrity: sha512-KTKGHFsZf4jyGat/2oSQ6sJobsTT/Xh3LTBzHu4x4rY7vL45HYF709BFAM2i0AscHNcJxFX88+pu4S4ZyUTWVw==}
+  astro-theme-toggle@0.6.0:
+    resolution: {integrity: sha512-Pe2DTeckxJaspMXNWbHzhn3fQq6K4JTEZ/Gutehgty6qzfLWehsGPFtsKOhsS0r2EOK18MaUnONliE5+sDBLYw==}
 
   astro@5.5.3:
     resolution: {integrity: sha512-FvqIo5jkunP5R6FkY5vuFYElTOqjnazuiN0x/yf1F+nvedsGDemm5K7mS6RTmFVB291mE9WWn1AbuJsFWEcHgg==}
@@ -7071,7 +7071,7 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  astro-theme-toggle@0.5.1: {}
+  astro-theme-toggle@0.6.0: {}
 
   astro@5.5.3(@types/node@20.17.9)(jiti@2.4.2)(rollup@4.36.0)(tsx@4.19.3)(typescript@5.7.2)(yaml@2.6.1):
     dependencies:
