@@ -16,7 +16,7 @@ export default defineConfig({
   integrations: [
     preact(),
     astrobook({
-      head: './src/astrobook/Head.astro',
+      css: ['./src/styles/global.css'],
     }),
   ],
 })
