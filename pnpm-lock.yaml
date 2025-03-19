@@ -294,8 +294,8 @@ importers:
         specifier: ^5.5.3
         version: 5.5.3(@types/node@20.17.9)(jiti@2.4.2)(rollup@4.36.0)(tsx@4.19.3)(typescript@5.7.2)(yaml@2.6.1)
       esbuild:
-        specifier: ^0.24.2
-        version: 0.24.2
+        specifier: ^0.25.1
+        version: 0.25.1
       fdir:
         specifier: ^6.4.3
         version: 6.4.3(picomatch@4.0.2)
