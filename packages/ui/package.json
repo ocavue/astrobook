@@ -56,16 +56,16 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.24",
+    "@iconify-json/lucide": "^1.2.31",
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^20.17.5",
-    "@unocss/cli": "^0.65.3",
+    "@unocss/cli": "^0.65.4",
     "astro": "^5.5.3",
     "esbuild": "^0.25.1",
     "fdir": "^6.4.3",
     "tsx": "^4.19.3",
-    "typescript": "^5.7.2",
-    "unocss": "^0.65.3",
+    "typescript": "^5.7.3",
+    "unocss": "^0.65.4",
     "vite": "^6.2.2",
     "vitest": "^3.0.9"
   }
