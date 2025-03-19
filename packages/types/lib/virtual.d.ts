@@ -14,3 +14,5 @@ declare module 'virtual:astrobook/components/head.mjs' {
   const Head: (props: unknown) => unknown
   export default Head
 }
+
+declare module 'virtual:astrobook/user-css.mjs' {} 

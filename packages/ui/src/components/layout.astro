@@ -6,6 +6,9 @@ import { ThemeScript } from 'astro-theme-toggle'
 import CustomHead from 'virtual:astrobook/components/head.mjs'
 import config from 'virtual:astrobook/global-config.mjs'
 
+// Important that this is the last import so it can override built-in styles.
+import 'virtual:astrobook/user-css.mjs'
+
 interface Props {
   story: string | undefined
   hasSidebar: boolean

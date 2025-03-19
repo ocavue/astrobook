@@ -3,6 +3,14 @@ export interface IntegrationOptions {
    * The directory to scan for stories.
    *
    * @default '.'
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  directory: './src/astrobook',
+   * })
+   * ```
    */
   directory?: string
 
@@ -12,7 +20,13 @@ export interface IntegrationOptions {
    * of your Astro project. This is useful if you want to use Astrobook in your
    * existing Astro project.
    *
-   * @example '/docs/components'
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  subpath: '/docs/components',
+   * })
+   * ```
    */
   subpath?: string
 
@@ -20,14 +34,50 @@ export interface IntegrationOptions {
    * Set the title for your website. Will be used in metadata and in the browser tab title.
    *
    * @default 'Astrobook'
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  title: 'My Components Playground',
+   * })
+   * ```
    */
   title?: string
 
   /**
+   * Provide CSS files to customize the look and feel of your Astrobook project.
+   *
+   * Supports local CSS files relative to the root of your project,
+   * e.g. `'./src/custom.css'`, and CSS you installed as an npm
+   * module, e.g. `'@fontsource/roboto'`.
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  css: ['./src/custom-styles.css', '@fontsource/roboto'],
+   * })
+   * ```
+   */
+  css?: string[]
+
+  /**
    * The path to an Astro component to provide custom tags in the `<head>`.
    *
-   * @example './src/components/CustomHead.astro'
-   * @example './src/components/CustomHead.html'
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  head: './src/components/CustomHead.astro',
+   * })
+   * ```
+   *
+   * ```astro
+   * astrobook({
+   *  head: './src/components/CustomHead.html',
+   * })
+   * ```
    */
   head?: string
 }
@@ -87,6 +137,7 @@ export interface Story {
 export interface GlobalConfig {
   baseUrl: string
   head: string
+  css: string[]
   title: string
 }
 
