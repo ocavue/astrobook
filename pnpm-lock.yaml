@@ -233,8 +233,8 @@ importers:
         specifier: ^20.17.5
         version: 20.17.9
       '@types/picomatch':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^4.0.0
+        version: 4.0.0
       '@types/react':
         specifier: ^19.0.10
         version: 19.0.11
@@ -1485,8 +1485,8 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@types/picomatch@3.0.2':
-    resolution: {integrity: sha512-n0i8TD3UDB7paoMMxA3Y65vUncFJXjcUf7lQY7YyKGl6031FNjfsLs6pdLFCy2GNFxItPJG8GvvpbZc2skH7WA==}
+  '@types/picomatch@4.0.0':
+    resolution: {integrity: sha512-J1Bng+wlyEERWSgJQU1Pi0HObCLVcr994xT/M+1wcl/yNRTGBupsCxthgkdYG+GCOMaQH7iSVUY3LJVBBqG7MQ==}
 
   '@types/react-dom@19.0.4':
     resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
@@ -6471,7 +6471,7 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/picomatch@3.0.2': {}
+  '@types/picomatch@4.0.0': {}
 
   '@types/react-dom@19.0.4(@types/react@19.0.11)':
     dependencies:

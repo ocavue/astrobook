@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.17.5",
-    "@types/picomatch": "^3.0.2",
+    "@types/picomatch": "^4.0.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "astro": "^5.5.3",
