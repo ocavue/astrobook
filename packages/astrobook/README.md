@@ -9,7 +9,27 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
 ## Try it Online
 
-[astrobook.pages.dev](https://astrobook.pages.dev/)
+- An example of using multiple UI rendering frameworks (React, Preact, Vue, Svelte, Solid, Lit, Astro) with Astrobook.
+
+  Online demo: [astrobook.pages.dev](https://astrobook.pages.dev/)
+
+  [![Open in StackBlitz][stackblitz_badge]][example_playground]
+
+- An example of using custom `<head>` tags with Astrobook.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_custom_head]
+
+- An example that shows how to add Astrobook into an existing Astro project.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_mixed]
+
+- An example of using TailwindCSS with Astrobook.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_tailwindcss]
+
+- An example of using UnoCSS with Astrobook.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_unocss]
 
 ## Quick start
 
@@ -223,3 +243,10 @@ _[Add your project](https://github.com/ocavue/astrobook/edit/master/packages/ast
 ## License
 
 MIT
+
+[stackblitz_badge]: https://developer.stackblitz.com/img/open_in_stackblitz.svg
+[example_playground]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/playground
+[example_unocss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/unocss
+[example_tailwindcss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/tailwindcss
+[example_custom_head]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/custom-head
+[example_mixed]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/mixed
