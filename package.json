@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.8.1",
   "license": "MIT",
   "scripts": {
     "dev": "turbo --filter example-playground watch dev",
@@ -23,23 +23,23 @@
     "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --template ./examples/playground --pnpm"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.2",
     "@changesets/types": "^6.1.0",
     "@manypkg/cli": "^0.23.0",
-    "@microsoft/api-extractor": "^7.52.1",
-    "@ocavue/eslint-config": "^2.13.1",
-    "@playwright/test": "^1.51.1",
+    "@microsoft/api-extractor": "^7.52.4",
+    "@ocavue/eslint-config": "^2.14.3",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^20.17.5",
     "eslint": "^9.22.0",
-    "pkg-pr-new": "^0.0.41",
-    "playwright": "^1.51.1",
+    "pkg-pr-new": "^0.0.42",
+    "playwright": "^1.52.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "turbo": "^2.4.4",
-    "typescript": "^5.7.3",
-    "vite": "^6.2.2",
-    "vitest": "^3.0.9"
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.3.2",
+    "vitest": "^3.1.1"
   },
   "renovate": {
     "extends": [
