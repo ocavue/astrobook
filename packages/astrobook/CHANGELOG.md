@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.1
+
+### Patch Changes
+
+- [`25b2d47`](https://github.com/ocavue/astrobook/commit/25b2d47dd438aa2af71f1a64b3615620809ae0d4) Update dependencies.
+
 ## 0.8.0
 
 ### Minor Changes
