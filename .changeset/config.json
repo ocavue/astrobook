@@ -7,5 +7,11 @@
   "access": "restricted",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": ["example-playground", "example-mixed"]
+  "ignore": [
+    "example-playground",
+    "example-mixed",
+    "example-custom-head",
+    "example-tailwindcss",
+    "example-unocss"
+  ]
 }
