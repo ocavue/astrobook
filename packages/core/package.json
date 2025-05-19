@@ -35,7 +35,7 @@
     "@astrobook/types": "workspace:*",
     "acorn": "^8.14.1",
     "acorn-jsx": "^5.3.2",
-    "fdir": "^6.4.3",
+    "fdir": "^6.4.4",
     "picomatch": "^4.0.2",
     "slash": "^5.1.0"
   },
