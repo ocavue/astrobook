@@ -8,7 +8,7 @@
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/astrobook#readme",
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "https://github.com/ocavue/astrobook.git"
   },
   "bugs": "https://github.com/ocavue/astrobook/issues",
