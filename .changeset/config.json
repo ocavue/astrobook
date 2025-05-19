@@ -2,12 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
   "changelog": "./changelog-config.cjs",
   "commit": false,
-  "fixed": [
-    [
-      "@astrobook/*",
-      "astrobook"
-    ]
-  ],
+  "fixed": [["@astrobook/*", "astrobook"]],
   "linked": [],
   "access": "restricted",
   "baseBranch": "master",
