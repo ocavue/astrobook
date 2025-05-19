@@ -66,7 +66,7 @@ importers:
   examples/custom-head:
     dependencies:
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       astrobook:
         specifier: workspace:*
@@ -75,10 +75,10 @@ importers:
   examples/mixed:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.5
+        specifier: ^4.0.11
         version: 4.0.11(@babel/core@7.27.1)(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.6)(tsx@4.19.4)
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       astrobook:
         specifier: workspace:*
@@ -90,19 +90,19 @@ importers:
   examples/playground:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.5
+        specifier: ^4.0.11
         version: 4.0.11(@babel/core@7.27.1)(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.6)(tsx@4.19.4)
       '@astrojs/react':
-        specifier: ^4.2.1
+        specifier: ^4.2.7
         version: 4.2.7(@types/node@20.17.48)(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tsx@4.19.4)
       '@astrojs/solid-js':
-        specifier: ^5.0.5
+        specifier: ^5.0.10
         version: 5.0.10(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.7)(tsx@4.19.4)
       '@astrojs/svelte':
-        specifier: ^7.0.6
+        specifier: ^7.0.13
         version: 7.0.13(@types/node@20.17.48)(astro@5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3))(jiti@2.4.2)(lightningcss@1.30.1)(svelte@5.31.1)(tsx@4.19.4)(typescript@5.8.3)
       '@astrojs/vue':
-        specifier: ^5.0.7
+        specifier: ^5.0.13
         version: 5.0.13(@types/node@20.17.48)(astro@5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3))(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(vue@3.5.14(typescript@5.8.3))
       '@types/react':
         specifier: ^19.0.10
@@ -111,7 +111,7 @@ importers:
         specifier: ^19.0.4
         version: 19.1.5(@types/react@19.1.4)
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       astrobook:
         specifier: workspace:*
@@ -141,13 +141,13 @@ importers:
   examples/tailwindcss:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.5
+        specifier: ^4.0.11
         version: 4.0.11(@babel/core@7.27.1)(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.6)(tsx@4.19.4)
       '@tailwindcss/vite':
         specifier: ^4.0.14
         version: 4.1.7(vite@6.3.5(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.19.4))
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       astrobook:
         specifier: workspace:*
@@ -162,13 +162,13 @@ importers:
   examples/unocss:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.5
+        specifier: ^4.0.11
         version: 4.0.11(@babel/core@7.27.1)(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.6)(tsx@4.19.4)
       '@unocss/reset':
         specifier: ^66.1.0-beta.6
         version: 66.1.2
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       astrobook:
         specifier: workspace:*
@@ -196,7 +196,7 @@ importers:
         specifier: ^20.17.5
         version: 20.17.48
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       typescript:
         specifier: ^5.7.3
@@ -242,7 +242,7 @@ importers:
         specifier: ^19.0.4
         version: 19.1.5(@types/react@19.1.4)
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       just-kebab-case:
         specifier: ^4.2.0
@@ -294,7 +294,7 @@ importers:
         specifier: ^66.1.0-beta.6
         version: 66.1.2
       astro:
-        specifier: ^5.5.3
+        specifier: ^5.7.13
         version: 5.7.13(@types/node@20.17.48)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(tsx@4.19.4)(typescript@5.8.3)
       fdir:
         specifier: ^6.4.3
