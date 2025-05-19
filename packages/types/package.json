@@ -1,7 +1,7 @@
 {
   "name": "@astrobook/types",
   "type": "module",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
