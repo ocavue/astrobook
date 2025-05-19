@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-
 declare module 'virtual:astrobook/story-modules.mjs' {
   const entries: import('./types').StoryModule[]
   export default entries
