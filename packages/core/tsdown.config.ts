@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 const config: unknown = defineConfig({
   entry: {
@@ -7,7 +7,7 @@ const config: unknown = defineConfig({
   },
   format: ['esm'],
   clean: true,
-  experimentalDts: true,
+  dts: true,
   external: [/^virtual:/],
 })
 
