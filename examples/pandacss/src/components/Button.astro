@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { button, type ButtonVariantProps } from '../../styled-system/recipes'
+
+export type Props = ButtonVariantProps &
+  HTMLAttributes<'button'> & {
+    label: string
+  }
+
+const [variantProps, props] = button.splitVariantProps(Astro.props)
+const { label, ...rest } = props
+const className = button(variantProps)
+---
+
+<button class={className} {...rest}>
+  {label}
+</button>

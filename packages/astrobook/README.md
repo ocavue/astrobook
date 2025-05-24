@@ -31,6 +31,10 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
   [![Open in StackBlitz][stackblitz_badge]][example_unocss]
 
+- An example of using PandaCSS with Astrobook.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_pandacss]
+
 ## Quick start
 
 > [!NOTE]
@@ -247,6 +251,7 @@ MIT
 [stackblitz_badge]: https://developer.stackblitz.com/img/open_in_stackblitz.svg
 [example_playground]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/playground
 [example_unocss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/unocss
+[example_pandacss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/pandacss
 [example_tailwindcss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/tailwindcss
 [example_custom_head]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/custom-head
 [example_mixed]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/mixed
