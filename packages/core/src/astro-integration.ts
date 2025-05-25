@@ -64,6 +64,7 @@ export function createAstrobookIntegration(
                   head: options?.head || 'astrobook/components/head.astro',
                   css: options?.css || [],
                   title: options?.title || 'Astrobook',
+                  wrapper: options?.wrapper,
                 },
                 config,
               ),

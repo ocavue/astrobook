@@ -15,6 +15,8 @@ import {
   GLOBAL_CONFIG_RESOLVED_ID,
   USER_CSS_RESOLVED_ID,
   USER_CSS_ID,
+  USER_WRAPPER_COMPONENT_ID,
+  USER_WRAPPER_COMPONENT_RESOLVED_ID,
 } from './virtual-module-ids'
 
 export function createVirtualFilesPlugin(
@@ -49,6 +51,8 @@ export function createVirtualFilesPlugin(
           return COMPONENT_HEAD_RESOLVED_ID
         case USER_CSS_ID:
           return USER_CSS_RESOLVED_ID
+        case USER_WRAPPER_COMPONENT_ID:
+          return USER_WRAPPER_COMPONENT_RESOLVED_ID
       }
     },
     load(id) {
@@ -61,6 +65,12 @@ export function createVirtualFilesPlugin(
           return `export { default } from ${resolveId(config.head)};`
         case USER_CSS_RESOLVED_ID:
           return config.css.map((id) => `import ${resolveId(id)};`).join('')
+        case USER_WRAPPER_COMPONENT_RESOLVED_ID:
+          if (!config.wrapper) {
+            return `export default ({ children }) => { return children }`
+          }
+
+          return `export { default } from ${resolveId(config.wrapper)}`
       }
     },
   }

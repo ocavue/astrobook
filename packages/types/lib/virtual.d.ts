@@ -13,4 +13,10 @@ declare module 'virtual:astrobook/components/head.mjs' {
   export default Head
 }
 
+declare module 'virtual:astrobook/user-wrapper-component' {
+  const Wrapper: (props: unknown) => unknown
+
+  export default Wrapper
+}
+
 declare module 'virtual:astrobook/user-css.mjs' {}

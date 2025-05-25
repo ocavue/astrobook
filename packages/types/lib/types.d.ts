@@ -80,6 +80,19 @@ export interface IntegrationOptions {
    * ```
    */
   head?: string
+
+  /**
+   * The path to a slotted component that wraps the active story.
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *   wrapper: './src/layouts/StoryWrapper.astro',
+   * })
+   * ```
+   */
+  wrapper?: string
 }
 
 export interface StoryModule {
@@ -139,6 +152,7 @@ export interface GlobalConfig {
   head: string
   css: string[]
   title: string
+  wrapper?: string
 }
 
 declare global {

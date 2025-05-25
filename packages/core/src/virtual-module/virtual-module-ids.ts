@@ -11,3 +11,6 @@ export const COMPONENT_HEAD_RESOLVED_ID =
 
 export const USER_CSS_ID = 'virtual:astrobook/user-css.mjs'
 export const USER_CSS_RESOLVED_ID = '__virtual_astrobook_user_css__.mjs'
+
+export const USER_WRAPPER_COMPONENT_ID = 'virtual:astrobook/user-wrapper-component'
+export const USER_WRAPPER_COMPONENT_RESOLVED_ID = '__virtual_astrobook_user_wrapper_component__'
