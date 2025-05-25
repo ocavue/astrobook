@@ -12,6 +12,7 @@
     "build": "turbo run build",
     "build:package": "turbo build --filter='./packages/*' --concurrency=1",
     "build:watch": "turbo watch build",
+    "example:custom-wrapper": "pnpm --filter=./examples/custom-wrapper",
     "lint": "eslint .",
     "fix": "manypkg fix && eslint --fix . && prettier --write .",
     "prepublishOnly": "pnpm run build",

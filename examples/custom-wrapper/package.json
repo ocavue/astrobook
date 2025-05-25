@@ -1,0 +1,22 @@
+{
+  "name": "example-custom-wrapper",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Astrobook example",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.13",
+    "astrobook": "*"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
+  }
+}
