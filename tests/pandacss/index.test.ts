@@ -8,28 +8,27 @@ const BASE_URL = EXAMPLE_URLS['example-pandacss']
 test.skip(process.platform === 'win32', 'Skip on Windows')
 
 test('pandacss example', async ({ page }) => {
-  await test.step('Select the ghost story', async () => {
+  await test.step('Select the ghost button story', async () => {
     await page.goto(BASE_URL)
     const button = page.locator('a', { hasText: 'Ghost' })
     await expect(button).toBeVisible()
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/dashboard/src/stories/button/ghost`)
+    await page.waitForURL(`${BASE_URL}/dashboard/button/ghost`)
   })
 
-  await test.step('Check the style', async () => {
+  await test.step('Check the ghost button styles', async () => {
     const button = page.locator('button', { hasText: 'Ghost' })
+    await expect(button).toBeVisible()
     await expect(button).toHaveClass(/button/)
     await expect(button).toHaveClass(/button--variant_ghost/)
-    await expect(button).toHaveCSS('color', 'var(--colors-color-palette-text)')
-    // TODO: add hover checks
-    await expect(button).toHaveCSS('height', '2.5rem')
-    await expect(button).toHaveCSS('min-width', '2.5rem')
+    await expect(button).toHaveClass(/button--size_md/)
+    await expect(button).toHaveCSS('color', 'rgb(28, 32, 36)')
 
-    // I don't know much about playwright yet, TODO ...
-    // const box = await button.boundingBox()
-    // expect(box).not.toBeNull()
-    // expect(Math.round(box?.width ?? 0)).toBe(100)
-    // expect(Math.round(box?.height ?? 0)).toBe(100)
+    await expect(button).toHaveCSS('height', '40px')
+    await expect(button).toHaveCSS('min-width', '40px')
+    await button.hover()
+    await page.waitForTimeout(200)
+    await expect(button).toHaveCSS('background-color', 'rgba(0, 0, 51, 0.06)')
   })
 })
