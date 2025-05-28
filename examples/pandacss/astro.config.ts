@@ -1,4 +1,3 @@
-import preact from '@astrojs/preact'
 import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
@@ -9,11 +8,9 @@ export default defineConfig({
   },
 
   integrations: [
-    preact(),
     astrobook({
       title: 'Astrobook + PandaCSS Playground',
       directory: 'src/components',
-
       css: ['./src/styles/global.css'],
     }),
   ],

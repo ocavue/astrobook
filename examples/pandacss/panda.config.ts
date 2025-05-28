@@ -1,8 +1,8 @@
 import { defineConfig } from '@pandacss/dev'
 
-import { fontSizeTokens } from './src/tokens/fontSizes'
-import { colorTokens, semanticColorTokens } from './src/tokens/colors'
-import { button } from './src/components/Button.recipe'
+import { button } from './src/styles/recipes/button.recipe'
+import { colorTokens, semanticColorTokens } from './src/styles/tokens/colors'
+import { fontSizeTokens } from './src/styles/tokens/fontSizes'
 
 export default defineConfig({
   preflight: true,
@@ -101,5 +101,4 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: 'styled-system',
-  jsxFramework: 'preact',
 })
