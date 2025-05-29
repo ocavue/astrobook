@@ -4,9 +4,6 @@ import { EXAMPLE_URLS } from '../example-urls'
 
 const BASE_URL = EXAMPLE_URLS['example-unocss']
 
-// For unknown reasons, this test fails on Windows.
-test.skip(process.platform === 'win32', 'Skip on Windows')
-
 test('unocss example', async ({ page }) => {
   await test.step('Select the story', async () => {
     await page.goto(BASE_URL)
