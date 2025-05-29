@@ -47,7 +47,7 @@
     "astro": "^5.8.0",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.11.12",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.3",
     "vite": "^6.2.2",
     "vitest": "^3.0.9"
   },
