@@ -4,6 +4,7 @@ import './layout.css'
 import Sidebar from './sidebar.astro'
 import { ThemeScript } from 'astro-theme-toggle'
 import CustomHead from 'virtual:astrobook/components/head.mjs'
+import Wrapper from 'virtual:astrobook/user-wrapper-component'
 import config from 'virtual:astrobook/global-config.mjs'
 
 // Important that this is the last import so it can override built-in styles.
@@ -38,7 +39,9 @@ const hasSidebar = Astro.props.hasSidebar ?? true
       )
     }
     <main class=":uno: box-border flex-1 overflow-auto">
-      <slot />
+      <Wrapper>
+        <slot />
+      </Wrapper>
     </main>
   </body>
 </html>
