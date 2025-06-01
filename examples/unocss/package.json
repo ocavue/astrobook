@@ -14,9 +14,9 @@
   "dependencies": {
     "@astrojs/preact": "^4.1.0",
     "@unocss/reset": "^66.1.2",
-    "astro": "^5.8.0",
+    "astro": "^5.8.1",
     "astrobook": "*",
-    "preact": "^10.26.4",
+    "preact": "^10.26.8",
     "unocss": "^66.1.2"
   },
   "stackblitz": {
