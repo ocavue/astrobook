@@ -5,6 +5,7 @@
   "private": true,
   "description": "Astrobook example",
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -18,6 +19,6 @@
   },
   "stackblitz": {
     "installDependencies": false,
-    "startCommand": "pnpm install && pnpm panda codegen --silent && pnpm run dev"
+    "startCommand": "pnpm install && pnpm run dev"
   }
 }
