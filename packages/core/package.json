@@ -35,21 +35,21 @@
     "@astrobook/types": "workspace:*",
     "acorn": "^8.14.1",
     "acorn-jsx": "^5.3.2",
-    "fdir": "^6.4.4",
+    "fdir": "^6.4.5",
     "picomatch": "^4.0.2",
     "slash": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.5",
     "@types/picomatch": "^4.0.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "astro": "^5.7.13",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "astro": "^5.8.1",
     "just-kebab-case": "^4.2.0",
-    "tsdown": "^0.11.12",
-    "typescript": "^5.7.3",
-    "vite": "^6.2.2",
-    "vitest": "^3.0.9"
+    "tsdown": "^0.12.5",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.4"
   },
   "publishConfig": {
     "exports": {

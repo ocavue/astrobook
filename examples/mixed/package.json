@@ -12,10 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.0.11",
-    "astro": "^5.7.13",
+    "@astrojs/preact": "^4.1.0",
+    "astro": "^5.8.1",
     "astrobook": "*",
-    "preact": "^10.26.4"
+    "preact": "^10.26.8"
   },
   "stackblitz": {
     "installDependencies": false,
