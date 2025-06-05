@@ -35,8 +35,7 @@ async function checkButtonVariantStyles(
 
   await expect(button).toHaveCSS('color', color)
   await expect(button).toHaveCSS('background-color', backgroundColor)
-  const { width = 0, height = 0 } = (await button.boundingBox()) || {}
-  await button.hover({ position: { x: width / 2, y: height / 2 } })
+  await button.hover()
   await expect(button).toHaveCSS('background-color', hoverBackgroundColor)
 }
 
