@@ -4,9 +4,6 @@ import { EXAMPLE_URLS } from '../example-urls'
 
 const BASE_URL = EXAMPLE_URLS['example-pandacss']
 
-// For unknown reasons, this test fails on Windows.
-test.skip(process.platform === 'win32', 'Skip on Windows')
-
 async function locateButtonStory(page: Page, storyName: string) {
   await page.goto(BASE_URL)
   const button = page.locator('a', { hasText: storyName })
