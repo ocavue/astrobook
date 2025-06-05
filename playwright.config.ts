@@ -39,7 +39,18 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        launchOptions: {
+          firefoxUserPrefs: {
+            // Workaround for Firefox not being able to hover on buttons on
+            // Linux. See also:
+            // https://github.com/microsoft/playwright/issues/7769
+            'ui.primaryPointerCapabilities': 0x02 | 0x04,
+            'ui.allPointerCapabilities': 0x02 | 0x04,
+          },
+        },
+      },
     },
 
     {
