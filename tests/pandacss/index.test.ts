@@ -36,7 +36,6 @@ async function checkButtonVariantStyles(
   await expect(button).toHaveCSS('color', color)
   await expect(button).toHaveCSS('background-color', backgroundColor)
   await button.hover()
-  await page.waitForTimeout(200)
   await expect(button).toHaveCSS('background-color', hoverBackgroundColor)
 }
 
