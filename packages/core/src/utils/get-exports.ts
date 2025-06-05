@@ -1,16 +1,25 @@
+import { tsPlugin } from '@sveltejs/acorn-typescript'
 import { Parser } from 'acorn'
-import jsx from 'acorn-jsx'
 
 /**
  * Parses the content of the given file and returns all its exports
  */
 export function getExports(code: string): string[] {
   // Parse the code into an AST
-  const parser = Parser.extend(jsx())
+  const parser = Parser.extend(
+    tsPlugin({
+      dts: false,
+      jsx: {
+        allowNamespaces: true,
+        allowNamespacedObjects: true,
+      },
+    }),
+  )
   const ast = parser.parse(code, {
     sourceType: 'module',
     ecmaVersion: 'latest',
     allowImportExportEverywhere: true,
+    locations: true,
   })
 
   const exports = new Set<string>()
