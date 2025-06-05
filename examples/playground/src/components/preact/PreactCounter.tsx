@@ -6,13 +6,12 @@ import type { ComponentChildren } from 'preact'
 import { useState } from 'preact/hooks'
 
 /** A counter written with Preact */
-export function PreactCounter({
-  step = 1,
-  children,
-}: {
+export interface PreactCounterProps {
   step?: number
   children?: ComponentChildren
-}) {
+}
+
+export function PreactCounter({ step = 1, children }: PreactCounterProps) {
   const [count, setCount] = useState(0)
   const add = () => setCount((i) => i + step)
   const subtract = () => setCount((i) => i - step)
