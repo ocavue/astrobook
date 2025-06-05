@@ -1,6 +1,6 @@
 {
   "name": "@astrobook/ui",
-  "type": "module",
+  "type": "module", 
   "version": "0.8.2",
   "description": "",
   "author": "ocavue <ocavue@gmail.com>",
