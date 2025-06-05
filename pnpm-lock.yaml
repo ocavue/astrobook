@@ -226,12 +226,12 @@ importers:
       '@astrobook/types':
         specifier: workspace:*
         version: link:../types
+      '@sveltejs/acorn-typescript':
+        specifier: ^1.0.5
+        version: 1.0.5(acorn@8.14.1)
       acorn:
         specifier: ^8.14.1
         version: 8.14.1
-      acorn-jsx:
-        specifier: ^5.3.2
-        version: 5.3.2(acorn@8.14.1)
       fdir:
         specifier: ^6.4.5
         version: 6.4.5(picomatch@4.0.2)
