@@ -1,4 +1,5 @@
 import { defineConfig } from '@pandacss/dev'
+
 import { colorTokens, semanticColorTokens } from './src/styles/colors'
 
 export default defineConfig({
