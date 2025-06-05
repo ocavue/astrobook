@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "description": "Astrobook monorepo",
   "license": "MIT",
   "scripts": {
@@ -27,7 +27,7 @@
     "@changesets/cli": "^2.29.4",
     "@changesets/types": "^6.1.0",
     "@manypkg/cli": "^0.24.0",
-    "@ocavue/eslint-config": "^3.1.0",
+    "@ocavue/eslint-config": "^3.1.1",
     "@playwright/test": "^1.52.0",
     "@types/node": "^20.17.5",
     "eslint": "^9.27.0",
@@ -39,7 +39,7 @@
     "turbo": "^2.5.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.1"
   },
   "renovate": {
     "extends": [

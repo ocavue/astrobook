@@ -43,13 +43,13 @@
     "@types/node": "^20.17.5",
     "@types/picomatch": "^4.0.0",
     "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
-    "astro": "^5.8.1",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.9.0",
     "just-kebab-case": "^4.2.0",
-    "tsdown": "^0.12.5",
+    "tsdown": "^0.12.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.1"
   },
   "publishConfig": {
     "exports": {

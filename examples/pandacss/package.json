@@ -13,8 +13,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.53.6",
-    "astro": "^5.8.1",
+    "@pandacss/dev": "^0.53.7",
+    "astro": "^5.9.0",
     "astrobook": "*"
   },
   "devDependencies": {
