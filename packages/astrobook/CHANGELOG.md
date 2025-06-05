@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.2
+
+### Patch Changes
+
+- [`876198e`](https://github.com/ocavue/astrobook/commit/876198eec5798e03914dfb3e8324b2830523f8e1) Fix type imports in `*.stories.ts` files.
+
 ## 0.8.1
 
 ### Patch Changes
