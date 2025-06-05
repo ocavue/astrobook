@@ -1,0 +1,27 @@
+{
+  "name": "example-pandacss",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Astrobook example",
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@pandacss/dev": "^0.53.6",
+    "astro": "^5.8.1",
+    "astrobook": "*"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.4"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
+  }
+}
