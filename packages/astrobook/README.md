@@ -229,6 +229,30 @@ export default defineConfig({
 
 ## Advanced
 
+### Enable Astrobook only on development
+
+You can enable Astrobook only on development by using the `process.env.NODE_ENV`
+to conditionally include the `astrobook` integration. This is useful when you
+want to include Astrobook in your existing Astro project but don't want to build
+it in production.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+// https://astro.build/config
+export default defineConfig({
+  integrations: [
+    // On development, Astrobook is available at http://localhost:4321/astrobook.
+    // On production, Astrobook is not included.
+    process.env.NODE_ENV === 'development'
+      ? astrobook({ subpath: '/astrobook' })
+      : null,
+  ],
+})
+```
+
 ### Toggle theme via message
 
 If you're running Astrobook in an iframe, you can toggle the theme via a message.
