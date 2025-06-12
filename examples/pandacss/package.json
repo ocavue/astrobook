@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "@pandacss/dev": "^0.53.7",
-    "astro": "^5.9.0",
+    "astro": "^5.9.2",
     "astrobook": "*"
   },
   "devDependencies": {
-    "postcss": "^8.5.4"
+    "postcss": "^8.5.5"
   },
   "stackblitz": {
     "installDependencies": false,
