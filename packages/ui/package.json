@@ -44,7 +44,7 @@
   "dependencies": {
     "@astrobook/core": "workspace:*",
     "@astrobook/types": "workspace:*",
-    "astro-theme-toggle": "^0.6.0",
+    "astro-theme-toggle": "^0.6.1",
     "just-group-by": "^2.2.0"
   },
   "peerDependencies": {
