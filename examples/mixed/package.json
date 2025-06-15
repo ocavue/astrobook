@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.0",
-    "astro": "^5.9.0",
+    "astro": "^5.9.3",
     "astrobook": "*",
-    "preact": "^10.26.8"
+    "preact": "^10.26.9"
   },
   "stackblitz": {
     "installDependencies": false,
