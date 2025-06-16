@@ -13,12 +13,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.53.7",
-    "astro": "^5.9.0",
+    "@pandacss/dev": "^0.54.0",
+    "astro": "^5.9.3",
     "astrobook": "*"
   },
   "devDependencies": {
-    "postcss": "^8.5.4"
+    "postcss": "^8.5.6"
   },
   "stackblitz": {
     "installDependencies": false,
