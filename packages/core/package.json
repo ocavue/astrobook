@@ -34,22 +34,22 @@
   "dependencies": {
     "@astrobook/types": "workspace:*",
     "@sveltejs/acorn-typescript": "^1.0.5",
-    "acorn": "^8.14.1",
-    "fdir": "^6.4.5",
+    "acorn": "^8.15.0",
+    "fdir": "^6.4.6",
     "picomatch": "^4.0.2",
     "slash": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@types/picomatch": "^4.0.0",
-    "@types/react": "^19.1.6",
+    "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.9.0",
+    "astro": "^5.9.3",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.12.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.2.1"
+    "vitest": "^3.2.3"
   },
   "publishConfig": {
     "exports": {
