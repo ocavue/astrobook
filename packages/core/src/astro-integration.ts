@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
+import colors from 'yoctocolors'
 
 import {
   createVirtualRouteComponent,
@@ -29,6 +30,21 @@ export function createAstrobookIntegration(
         const astroBaseUrl = config.base || '/'
         const astrobookBaseUrl = options?.subpath || ''
         const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
+
+        // If subpath is set, Astrobook is only part of the current Astro
+        // project. In this case, we want to print the URL of the Astrobook
+        // entrypoint for easy access.
+        if (astrobookBaseUrl) {
+          const url = new URL(baseUrl, `http://localhost:${config.server.port}`)
+          const message =
+            colors.bgGreen(colors.white(colors.bold(' astrobook '))) +
+            ' is available at ' +
+            colors.cyan(url.toString())
+          // Get a logger that don't print the label and the current time
+          // https://github.com/withastro/astro/blob/ff72ebe/packages/astro/src/core/logger/core.ts#L38
+          const plainLogger = logger.fork('SKIP_FORMAT')
+          plainLogger.info(message)
+        }
 
         logger.debug(`Creating dedicated folder`)
         let codegenDir: string

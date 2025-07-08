@@ -37,7 +37,8 @@
     "acorn": "^8.15.0",
     "fdir": "^6.4.6",
     "picomatch": "^4.0.2",
-    "slash": "^5.1.0"
+    "slash": "^5.1.0",
+    "yoctocolors": "^2.1.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
