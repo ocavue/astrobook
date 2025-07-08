@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.4
+
+### Patch Changes
+
+- [`afad52a`](https://github.com/ocavue/astrobook/commit/afad52a4887ceb5f8e1833440bfd2e719de930ea) When the option `subpath` is set, print a message to the console with the URL of the Astrobook entrypoint for easy access.
+
 ## 0.8.2
 
 ### Patch Changes
