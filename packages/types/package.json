@@ -16,7 +16,7 @@
   "sideEffects": false,
   "main": "./lib/index.js",
   "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/index.d.ts", 
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
