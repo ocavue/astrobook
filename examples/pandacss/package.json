@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@pandacss/dev": "^0.54.0",
-    "astro": "^5.10.1",
+    "astro": "^5.11.0",
     "astrobook": "*"
   },
   "devDependencies": {
