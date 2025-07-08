@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
-    "astro": "^5.10.1",
+    "astro": "^5.11.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vitest": "^3.2.4"
