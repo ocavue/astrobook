@@ -45,7 +45,7 @@
     "@types/picomatch": "^4.0.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.10.1",
+    "astro": "^5.11.0",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.12.9",
     "typescript": "^5.8.3",
