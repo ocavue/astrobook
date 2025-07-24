@@ -14,7 +14,7 @@
   "bugs": "https://github.com/ocavue/astrobook/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./lib/index.js",
+  "main": "./lib/index.js", 
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
