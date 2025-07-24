@@ -56,11 +56,11 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.56",
+    "@iconify-json/lucide": "^1.2.58",
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.15.29",
     "@unocss/cli": "^66.3.3",
-    "astro": "^5.11.0",
+    "astro": "^5.12.3",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
