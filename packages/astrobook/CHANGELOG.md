@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.5
+
+### Patch Changes
+
+- [`0212668`](https://github.com/ocavue/astrobook/commit/021266830b27ae9c7446143cdf05808e00cf6cd4) Only print the Astrobook entrypoint URL during development.
+
 ## 0.8.4
 
 ### Patch Changes
