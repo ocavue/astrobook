@@ -1,1 +1,13 @@
 @import 'tailwindcss';
+
+/* 
+To allow toggling dark mode manually inside Astrobook, you need to 
+override the dark variant to use a custom selector. You can choose
+from `.dark` or `[data-theme=dark]`.
+
+See the docs for more details:
+https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually 
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+/* Or use this selector: */
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
