@@ -69,7 +69,7 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files. It's compatible with Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf).
+4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files. It's compatible with (a limited subset of) Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf).
 
    ```ts
    // src/components/Button.stories.ts
