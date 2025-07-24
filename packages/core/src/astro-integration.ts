@@ -25,6 +25,7 @@ export function createAstrobookIntegration(
         createCodegenDir,
         config,
         logger,
+        command,
       }) => {
         const rootDir = path.resolve(options?.directory || '.')
         const astroBaseUrl = config.base || '/'
@@ -34,7 +35,7 @@ export function createAstrobookIntegration(
         // If subpath is set, Astrobook is only part of the current Astro
         // project. In this case, we want to print the URL of the Astrobook
         // entrypoint for easy access.
-        if (astrobookBaseUrl) {
+        if (astrobookBaseUrl && command === 'dev') {
           const url = new URL(baseUrl, `http://localhost:${config.server.port}`)
           const message =
             colors.bgGreen(colors.white(colors.bold(' astrobook '))) +
