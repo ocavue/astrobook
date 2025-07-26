@@ -1,4 +1,5 @@
 import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
 import SvelteCounter from './SvelteCounter.svelte'
 
 type SvelteCounterProps = {
@@ -23,7 +24,5 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies SvelteCounterProps,
-  decorators: [
-    () => RedBorderDecorator
-  ]
+  decorators: [() => RedBorderDecorator],
 }

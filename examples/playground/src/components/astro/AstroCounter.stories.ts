@@ -1,7 +1,8 @@
 import type { ComponentProps } from 'astro/types'
 
-import AstroCounter from './AstroCounter.astro'
 import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
+import AstroCounter from './AstroCounter.astro'
 
 type AstroCounterProps = ComponentProps<typeof AstroCounter>
 
@@ -23,7 +24,5 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies AstroCounterProps,
-  decorators: [
-    () => RedBorderDecorator
-  ]
+  decorators: [() => RedBorderDecorator],
 }

@@ -1,4 +1,5 @@
 import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
 import { ReactCounter, type ReactCounterProps } from './ReactCounter'
 
 export default {
@@ -19,7 +20,5 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies ReactCounterProps,
-  decorators: [
-    () => RedBorderDecorator,
-  ]
+  decorators: [() => RedBorderDecorator],
 }

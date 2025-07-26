@@ -1,4 +1,5 @@
 import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
 import VueCounter from './VueCounter.vue'
 
 type VueCounterProps = {
@@ -23,7 +24,5 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies VueCounterProps,
-  decorators: [
-    () => RedBorderDecorator
-  ]
+  decorators: [() => RedBorderDecorator],
 }

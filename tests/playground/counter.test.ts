@@ -5,9 +5,9 @@ import { EXAMPLE_URLS } from '../example-urls'
 const BASE_URL = EXAMPLE_URLS['example-playground']
 
 const StoryTypes = {
-  'default': 'default',
+  default: 'default',
   'large-step': 'large-step',
-  'red-border': 'red-border'
+  'red-border': 'red-border',
 } as const
 type StoryTypes = (typeof StoryTypes)[keyof typeof StoryTypes]
 
@@ -28,7 +28,10 @@ for (const dir of ['dashboard', 'stories']) {
 
         if (story === StoryTypes['red-border']) {
           const decorator = page.locator('[data-decorator-type=astro]')
-          await expect(decorator).toHaveAttribute('style', 'border: solid 2px red;')
+          await expect(decorator).toHaveAttribute(
+            'style',
+            'border: solid 2px red;',
+          )
         }
 
         const counter = page.locator('.counter')
@@ -55,7 +58,9 @@ for (const dir of ['dashboard', 'stories']) {
         await expect(counterPre).toHaveText('0')
 
         await counterAdd.click()
-        await expect(counterPre).toHaveText(story === StoryTypes['large-step'] ? '5' : '1')
+        await expect(counterPre).toHaveText(
+          story === StoryTypes['large-step'] ? '5' : '1',
+        )
 
         await counterSub.click()
         await expect(counterPre).toHaveText('0')
