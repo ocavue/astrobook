@@ -1,6 +1,7 @@
 import type { ComponentProps } from 'astro/types'
 
 import LitCounter from './LitCounter.astro'
+import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
 
 type LitCounterProps = ComponentProps<typeof LitCounter>
 
@@ -16,4 +17,13 @@ export const LargeStep = {
   args: {
     step: 5,
   } satisfies LitCounterProps,
+}
+
+export const RedBorder = {
+  args: {
+    step: 1,
+  } satisfies LitCounterProps,
+  decorators: [
+    () => RedBorderDecorator
+  ]
 }
