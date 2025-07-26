@@ -1,3 +1,5 @@
+import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
 import SolidCounter, { type SolidCounterProps } from './SolidCounter'
 
 export default {
@@ -12,4 +14,11 @@ export const LargeStep = {
   args: {
     step: 5,
   } satisfies SolidCounterProps,
+}
+
+export const RedBorder = {
+  args: {
+    step: 1,
+  } satisfies SolidCounterProps,
+  decorators: [() => RedBorderDecorator],
 }
