@@ -120,6 +120,13 @@ export function GreenBorderDecorator({ children }: PreactDecoratorProps) {
 }
 ```
 
+And this Astro example:
+```astro
+<div style="border: solid 2px red;">
+  <slot />
+</div>
+```
+
 ## Options
 
 ### `directory`
