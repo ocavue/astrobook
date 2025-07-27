@@ -80,7 +80,7 @@ export function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
 import StoryPage from 'astrobook/pages/story.astro'
-import { isAstroStory } from 'astrobook/client'
+import { isAstroStory, isAstroComponentFactory } from 'astrobook/client'
 import * as m from '${route.storyModule.importPath}'
 
 const isAstro = isAstroStory(m)
@@ -88,9 +88,18 @@ const isAstro = isAstroStory(m)
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    isAstro
+    (({...m['${route.story.name}']}?.decorators || []).slice().reverse().reduce((currentTree, decoratorFn) => {
+      const Decorator = decoratorFn()
+
+      return (
+          <Decorator>
+            {currentTree}
+          </Decorator>
+        )
+    }, isAstro
       ? (<m.default.component { ...m['${route.story.name}']?.args } />)
       : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
+    ))
   }
 </StoryPage>
 `.trim()

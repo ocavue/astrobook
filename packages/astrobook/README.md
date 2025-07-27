@@ -69,11 +69,12 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files. It's compatible with (a limited subset of) Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf).
+4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, Args and Decorator properties are supported.
 
    ```ts
    // src/components/Button.stories.ts
    import { Button, type ButtonProps } from './Button.tsx'
+   import { DarkModeContainer } from './DarkModeContainer.tsx'
 
    export default {
      component: Button,
@@ -89,10 +90,42 @@ Astrobook is a UI component playground that supports multiple frameworks includi
      args: {
        variant: 'secondary',
      } satisfies ButtonProps,
+     decorators: [() => DarkModeContainer]
    }
    ```
 
 5. Run `npm run dev` and open `http://localhost:4321` to see your stories.
+
+### Decorators
+
+Decorators are functions that return a given component. This component must have a _slot_ for children to be rendered. Currently, decorators only support styling changes and are not able to change a component's context or any client-side behaviors. Any decorators are rendered into HTML by Astro and sent to the client.
+
+
+See this Preact example:
+```tsx
+/** @jsxImportSource preact */
+
+import type { ComponentChildren } from 'preact'
+
+export interface PreactDecoratorProps {
+  children?: ComponentChildren
+}
+
+export function GreenBorderDecorator({ children }: PreactDecoratorProps) {
+  return (
+    <>
+      <div style="border: solid 2px green;">{children}</div>
+    </>
+  )
+}
+```
+
+And this Astro example:
+```astro
+<div style="border: solid 2px red;">
+  <slot />
+</div>
+```
 
 ## Options
 
