@@ -5,7 +5,7 @@ import { EXAMPLE_URLS } from '../example-urls'
 const BASE_URL = EXAMPLE_URLS['example-playground']
 
 const StoryTypes = {
-  'default': 'default',
+  default: 'default',
   'large-step': 'large-step',
   'red-border': 'red-border',
   'green-border': 'green-border',
@@ -13,11 +13,21 @@ const StoryTypes = {
 type StoryTypes = (typeof StoryTypes)[keyof typeof StoryTypes]
 
 type DecoratorExpectationFn = (el: Locator) => Promise<void>
-const DECORATOR_EXPECTATIONS: Map<StoryTypes, DecoratorExpectationFn> = new Map([
-  [StoryTypes.default, async (el) => expect(true).toBe(true)],
-  [StoryTypes['large-step'], async (el) => expect(true).toBe(true)],
-  [StoryTypes['red-border'], async (el) => expect(el).toHaveAttribute('style', 'border: solid 2px red;')],
-  [StoryTypes['green-border'], async (el) => expect(el).toHaveClass('green-border')],
+const DECORATOR_EXPECTATIONS = new Map<StoryTypes, DecoratorExpectationFn>([
+  [StoryTypes.default, async (el) => await expect(el).not.toBeInViewport()],
+  [
+    StoryTypes['large-step'],
+    async (el) => await expect(el).not.toBeInViewport(),
+  ],
+  [
+    StoryTypes['red-border'],
+    async (el) =>
+      await expect(el).toHaveAttribute('style', 'border: solid 2px red;'),
+  ],
+  [
+    StoryTypes['green-border'],
+    async (el) => await expect(el).toHaveClass('green-border'),
+  ],
 ])
 
 for (const dir of ['dashboard', 'stories']) {
@@ -35,12 +45,15 @@ for (const dir of ['dashboard', 'stories']) {
       test(url, async ({ page }) => {
         await page.goto(url)
 
-        const decoratorType = story === StoryTypes['red-border'] 
-          ? 'astro'
-          : getDecoratorType(framework)
+        const decoratorType =
+          story === StoryTypes['red-border']
+            ? 'astro'
+            : getDecoratorType(framework)
 
         const decorator = page.locator(`[data-decorator-type=${decoratorType}]`)
-        const decoratorExpectation = DECORATOR_EXPECTATIONS.get(story) as DecoratorExpectationFn
+        const decoratorExpectation = DECORATOR_EXPECTATIONS.get(
+          story,
+        ) as DecoratorExpectationFn
         await decoratorExpectation(decorator)
 
         const counter = page.locator('.counter')
@@ -98,4 +111,3 @@ function getDecoratorType(framework: string): string {
 
   return decoratorType
 }
-

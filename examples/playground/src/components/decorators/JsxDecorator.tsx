@@ -9,7 +9,9 @@ export interface PreactDecoratorProps {
 export function GreenBorderDecorator({ children }: PreactDecoratorProps) {
   return (
     <>
-      <div class="green-border" data-decorator-type="jsx">{children}</div>
+      <div class="green-border" data-decorator-type="jsx">
+        {children}
+      </div>
     </>
   )
 }

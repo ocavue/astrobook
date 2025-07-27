@@ -90,7 +90,7 @@ Astrobook is a UI component playground that supports multiple frameworks includi
      args: {
        variant: 'secondary',
      } satisfies ButtonProps,
-     decorators: [() => DarkModeContainer]
+     decorators: [() => DarkModeContainer],
    }
    ```
 
@@ -100,8 +100,8 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
 Decorators are functions that return a given component. This component must have a _slot_ for children to be rendered. Currently, decorators only support styling changes and are not able to change a component's context or any client-side behaviors. Any decorators are rendered into HTML by Astro and sent to the client.
 
-
 See this Preact example:
+
 ```tsx
 /** @jsxImportSource preact */
 
@@ -121,6 +121,7 @@ export function GreenBorderDecorator({ children }: PreactDecoratorProps) {
 ```
 
 And this Astro example:
+
 ```astro
 <div style="border: solid 2px red;">
   <slot />

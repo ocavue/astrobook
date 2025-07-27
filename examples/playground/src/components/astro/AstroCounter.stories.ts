@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'astro/types'
 
+import GreenBorderDecorator from '../decorators/GreenBorderDecorator.astro'
 import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
 
 import AstroCounter from './AstroCounter.astro'
-import GreenBorderDecorator from '../decorators/GreenBorderDecorator.astro'
 
 type AstroCounterProps = ComponentProps<typeof AstroCounter>
 
