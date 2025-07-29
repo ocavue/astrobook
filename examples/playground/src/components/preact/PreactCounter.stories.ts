@@ -21,12 +21,12 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies PreactCounterProps,
-  decorators: [() => RedBorderDecorator],
+  decorators: [{component: RedBorderDecorator, props: {}}],
 }
 
 export const GreenBorder = {
   args: {
     step: 1,
   } satisfies PreactCounterProps,
-  decorators: [() => GreenBorderDecorator],
+  decorators: [{component: GreenBorderDecorator}],
 }

@@ -88,11 +88,11 @@ const isAstro = isAstroStory(m)
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    (({...m['${route.story.name}']}?.decorators || []).slice().reverse().reduce((currentTree, decoratorFn) => {
-      const Decorator = decoratorFn()
+    (({...m['${route.story.name}']}?.decorators || []).slice().reverse().reduce((currentTree, decorator) => {
+      const Decorator = decorator.component
 
       return (
-          <Decorator>
+          <Decorator { ...decorator?.props }>
             {currentTree}
           </Decorator>
         )

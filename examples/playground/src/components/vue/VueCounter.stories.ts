@@ -25,12 +25,12 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies VueCounterProps,
-  decorators: [() => RedBorderDecorator],
+  decorators: [{component: RedBorderDecorator}],
 }
 
 export const GreenBorder = {
   args: {
     step: 1,
   } satisfies VueCounterProps,
-  decorators: [() => VueDecorator],
+  decorators: [{component: VueDecorator}],
 }
