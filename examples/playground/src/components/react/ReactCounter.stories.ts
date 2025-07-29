@@ -21,12 +21,12 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies ReactCounterProps,
-  decorators: [{component: RedBorderDecorator, props: {size: "2px"}}],
+  decorators: [{ component: RedBorderDecorator, props: { size: '2px' } }],
 }
 
 export const GreenBorder = {
   args: {
     step: 1,
   } satisfies ReactCounterProps,
-  decorators: [{component: GreenBorderDecorator}],
+  decorators: [{ component: GreenBorderDecorator }],
 }

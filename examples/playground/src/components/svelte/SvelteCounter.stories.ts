@@ -25,12 +25,12 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies SvelteCounterProps,
-  decorators: [{component: RedBorderDecorator}],
+  decorators: [{ component: RedBorderDecorator }],
 }
 
 export const GreenBorder = {
   args: {
     step: 1,
   } satisfies SvelteCounterProps,
-  decorators: [{component: SvelteDecorator}],
+  decorators: [{ component: SvelteDecorator }],
 }

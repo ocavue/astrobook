@@ -25,12 +25,12 @@ export const RedBorder = {
   args: {
     step: 1,
   } satisfies AstroCounterProps,
-  decorators: [{component: RedBorderDecorator, props: {size: "2px"}}],
+  decorators: [{ component: RedBorderDecorator, props: { size: '2px' } }],
 }
 
 export const GreenBorder = {
   args: {
     step: 1,
   } satisfies AstroCounterProps,
-  decorators: [{component: GreenBorderDecorator}],
+  decorators: [{ component: GreenBorderDecorator }],
 }
