@@ -83,6 +83,7 @@ export function createAstrobookIntegration(
                   title: options?.title || 'Astrobook',
                 },
                 config,
+                logger,
               ),
             ],
           },
