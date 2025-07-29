@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.6
+
+### Patch Changes
+
+- [`96329ed`](https://github.com/ocavue/astrobook/commit/96329ed4732b64499c2304499a6a6235e7c2410a) Automatic reload when story files are updated.
+
 ## 0.8.5
 
 ### Patch Changes
