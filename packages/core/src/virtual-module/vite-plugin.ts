@@ -2,8 +2,8 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import type { GlobalConfig } from '@astrobook/types'
-import type { AstroConfig } from 'astro'
-import type { Plugin } from 'vite'
+import type { AstroConfig, AstroIntegrationLogger } from 'astro'
+import type { Plugin, ViteDevServer } from 'vite'
 
 import { loadStoryModules } from './story-modules'
 import {
@@ -21,6 +21,7 @@ export function createVirtualFilesPlugin(
   rootDir: string,
   config: GlobalConfig,
   astroConfig: AstroConfig,
+  logger: AstroIntegrationLogger,
 ): Plugin {
   const root = astroConfig.root
 
@@ -35,6 +36,49 @@ export function createVirtualFilesPlugin(
     return JSON.stringify(
       id.startsWith('.') ? resolve(fileURLToPath(base), id) : id,
     )
+  }
+
+  let storyModules: string | undefined
+  let needToReload = false
+  let watcherInitialized = false
+
+  async function getStoryModules(): Promise<string> {
+    let newStoryModules = await loadStoryModules(rootDir)
+    if (storyModules && newStoryModules !== storyModules) {
+      needToReload = true
+    }
+    storyModules = newStoryModules
+    return storyModules
+  }
+
+  async function restartServerIfNeeded(server: ViteDevServer) {
+    await getStoryModules()
+    if (needToReload) {
+      needToReload = false
+      logger.info(`Restarting`)
+      await server.restart()
+    }
+  }
+
+  function initializeNewFileWatcher(server: ViteDevServer) {
+    if (watcherInitialized || !server.watcher) return
+    watcherInitialized = true
+
+    server.watcher.on('add', async (filePath: string) => {
+      if (filePath.includes('.stories.')) {
+        logger.debug(`Potential story file added: ${filePath}`)
+        await restartServerIfNeeded(server)
+      }
+    })
+
+    server.watcher.on('unlink', async (filePath: string) => {
+      if (filePath.includes('.stories.')) {
+        logger.debug(`Potential story file deleted: ${filePath}`)
+        await restartServerIfNeeded(server)
+      }
+    })
+
+    logger.debug(`Initialized file watcher for story files`)
   }
 
   return {
@@ -54,7 +98,7 @@ export function createVirtualFilesPlugin(
     load(id) {
       switch (id) {
         case STORY_MODULES_RESOLVED_ID:
-          return loadStoryModules(rootDir)
+          return getStoryModules()
         case GLOBAL_CONFIG_RESOLVED_ID:
           return `const config = ${JSON.stringify(config)}; export default config;`
         case COMPONENT_HEAD_RESOLVED_ID:
@@ -62,6 +106,11 @@ export function createVirtualFilesPlugin(
         case USER_CSS_RESOLVED_ID:
           return config.css.map((id) => `import ${resolveId(id)};`).join('')
       }
+    },
+    async handleHotUpdate(ctx) {
+      const { server } = ctx
+      initializeNewFileWatcher(server)
+      await restartServerIfNeeded(server)
     },
   }
 }
