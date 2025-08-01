@@ -16,7 +16,7 @@ function goto(
 
 test.describe('decorators', () => {
   test('single decorator functionality', async ({ page }) => {
-    await goto(page, 'single-decorator')
+    await goto(page, 'single-decorator', 'stories')
 
     // Test basic functionality and structure
     await testCounter(page, 1)
@@ -48,7 +48,7 @@ test.describe('decorators', () => {
   })
 
   test('mixed framework decorators', async ({ page }) => {
-    await goto(page, 'mixed-decorators')
+    await goto(page, 'mixed-decorators', 'stories')
 
     // Test functionality through all decorators
     await testCounter(page, 10)
