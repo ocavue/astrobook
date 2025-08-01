@@ -7,7 +7,7 @@ export interface Props {
   children?: ReactNode
 }
 
-export default  function ReactDecorator({ children, label }: Props) {
+export default function ReactDecorator({ children, label }: Props) {
   return (
     <>
       <div className="decorator" data-label={label}>
