@@ -16,17 +16,13 @@ function goto(
 
 test.describe('decorators', () => {
   test('single decorator', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/single-decorator`,
-    )
+    await goto(page, 'single-decorator')
     await testCounter(page, 1)
     await expect(page.locator('.decorator')).toHaveCount(1)
   })
 
   test('multiple decorators', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/multiple-decorators`,
-    )
+    await goto(page, 'multiple-decorators')
     await testCounter(page, 5)
     await expect(page.locator('.decorator')).toHaveCount(2)
 
@@ -43,9 +39,7 @@ test.describe('decorators', () => {
   })
 
   test('mixed decorators', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/mixed-decorators`,
-    )
+    await goto(page, 'mixed-decorators')
     await testCounter(page, 10)
     await expect(page.locator('.decorator')).toHaveCount(5)
 
@@ -59,9 +53,7 @@ test.describe('decorators', () => {
   })
 
   test('decorator nesting order', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/mixed-decorators`,
-    )
+    await goto(page, 'mixed-decorators')
 
     // Test that decorators are nested in the correct order
     const decorators = page.locator('.decorator')
@@ -72,9 +64,7 @@ test.describe('decorators', () => {
   })
 
   test('decorator without label prop', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/single-decorator`,
-    )
+    await goto(page, 'single-decorator')
 
     // Single decorator doesn't have label prop, so data-label should be empty or undefined
     const decorator = page.locator('.decorator').first()
@@ -85,9 +75,7 @@ test.describe('decorators', () => {
   })
 
   test('all decorators maintain component functionality', async ({ page }) => {
-    await page.goto(
-      `${BASE_URL}/dashboard/decorators/decorators/mixed-decorators`,
-    )
+    await goto(page, 'mixed-decorators')
 
     // Verify that the wrapped component (ReactCounter) maintains its functionality
     // through all framework decorators using the testCounter helper
