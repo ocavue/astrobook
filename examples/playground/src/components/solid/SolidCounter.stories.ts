@@ -1,5 +1,3 @@
-import { GreenBorderDecorator } from '../decorators/JsxDecorator'
-import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
 
 import SolidCounter, { type SolidCounterProps } from './SolidCounter'
 
@@ -17,16 +15,3 @@ export const LargeStep = {
   } satisfies SolidCounterProps,
 }
 
-export const RedBorder = {
-  args: {
-    step: 1,
-  } satisfies SolidCounterProps,
-  decorators: [{ component: RedBorderDecorator, props: {} }],
-}
-
-export const GreenBorder = {
-  args: {
-    step: 1,
-  } satisfies SolidCounterProps,
-  decorators: [{ component: GreenBorderDecorator }],
-}

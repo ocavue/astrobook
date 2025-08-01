@@ -1,5 +1,3 @@
-import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
-import VueDecorator from '../decorators/VueDecorator.vue'
 
 import VueCounter from './VueCounter.vue'
 
@@ -21,16 +19,3 @@ export const LargeStep = {
   } satisfies VueCounterProps,
 }
 
-export const RedBorder = {
-  args: {
-    step: 1,
-  } satisfies VueCounterProps,
-  decorators: [{ component: RedBorderDecorator }],
-}
-
-export const GreenBorder = {
-  args: {
-    step: 1,
-  } satisfies VueCounterProps,
-  decorators: [{ component: VueDecorator }],
-}
