@@ -1,5 +1,13 @@
+<script setup lang="ts">
+interface Props {
+  label?: string
+}
+
+defineProps<Props>()
+</script>
+
 <template>
-  <div class="green-border" data-decorator-type="vue">
+  <div class="decorator" :data-label="label">
     <slot />
   </div>
 </template>
