@@ -102,12 +102,7 @@ For example, this is a React decorator that adds a green border to a component a
 ```tsx
 // ReactGreenBorderDecorator.tsx
 
-import type { ComponentChildren } from 'preact'
-
-export interface PreactDecoratorProps {
-  width?: number
-  children?: ComponentChildren
-}
+import type { ComponentChildren } from 'react'
 
 export function GreenBorderDecorator({
   width = 2,
@@ -133,7 +128,7 @@ In your stories, you can use the decorators like this:
 // Button.stories.tsx
 import { Button, type ButtonProps } from './Button.tsx'
 import { GreenBorderDecorator } from './ReactGreenBorderDecorator.tsx'
-import { RedBorderDecorator } from './AstroRedBorderDecorator.astro'
+import RedBorderDecorator from './AstroRedBorderDecorator.astro'
 
 export default {
   component: Button,
@@ -147,6 +142,8 @@ export const PrimaryButton = {
   ],
 }
 ```
+
+This will render the button, wrapped in a red border, which is then wrapped in a green border.
 
 ## Options
 
