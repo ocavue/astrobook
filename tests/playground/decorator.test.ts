@@ -17,22 +17,20 @@ function goto(
 test.describe('decorators', () => {
   test('single decorator functionality', async ({ page }) => {
     await goto(page, 'single-decorator')
-    
+
     // Test basic functionality and structure
     await testCounter(page, 1)
     await expect(page.locator('.decorator')).toHaveCount(1)
-    
-    // Single decorator doesn't have label prop, so data-label should be empty or undefined
+
+    // Single decorator doesn't have label prop, so data-label should be empty
     const decorator = page.locator('.decorator').first()
     const dataLabel = await decorator.getAttribute('data-label')
-    expect(
-      dataLabel === null || dataLabel === '' || dataLabel === 'undefined',
-    ).toBe(true)
+    expect(dataLabel).toBeNull()
   })
 
   test('multiple decorators with labels', async ({ page }) => {
     await goto(page, 'multiple-decorators')
-    
+
     // Test functionality and structure
     await testCounter(page, 5)
     await expect(page.locator('.decorator')).toHaveCount(2)
@@ -51,7 +49,7 @@ test.describe('decorators', () => {
 
   test('mixed framework decorators', async ({ page }) => {
     await goto(page, 'mixed-decorators')
-    
+
     // Test functionality through all decorators
     await testCounter(page, 10)
     await expect(page.locator('.decorator')).toHaveCount(5)
