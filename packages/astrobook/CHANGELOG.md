@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.7
+
+### Patch Changes
+
+- [`113b643`](https://github.com/ocavue/astrobook/commit/113b643544e36a70a05c6af91446698d18420d26) Add decorators.
+
 ## 0.8.6
 
 ### Patch Changes
