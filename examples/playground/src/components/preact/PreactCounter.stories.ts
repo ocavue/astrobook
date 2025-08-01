@@ -1,4 +1,3 @@
-
 import { PreactCounter, type PreactCounterProps } from './PreactCounter'
 
 export default {
@@ -14,4 +13,3 @@ export const LargeStep = {
     step: 5,
   } satisfies PreactCounterProps,
 }
-

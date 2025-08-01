@@ -17,4 +17,3 @@ export const LargeStep = {
     step: 5,
   } satisfies LitCounterProps,
 }
-

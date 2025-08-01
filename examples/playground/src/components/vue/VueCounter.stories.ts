@@ -1,4 +1,3 @@
-
 import VueCounter from './VueCounter.vue'
 
 type VueCounterProps = {
@@ -18,4 +17,3 @@ export const LargeStep = {
     step: 5,
   } satisfies VueCounterProps,
 }
-

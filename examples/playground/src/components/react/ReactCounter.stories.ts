@@ -1,4 +1,3 @@
-
 import { ReactCounter, type ReactCounterProps } from './ReactCounter'
 
 export default {
