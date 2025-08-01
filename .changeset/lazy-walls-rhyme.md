@@ -1,6 +1,6 @@
 ---
-"astrobook": patch
-"@astrobook/core": patch
+'astrobook': patch
+'@astrobook/core': patch
 ---
 
 Add decorators.
