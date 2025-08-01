@@ -1,4 +1,3 @@
-
 import SvelteCounter from './SvelteCounter.svelte'
 
 type SvelteCounterProps = {

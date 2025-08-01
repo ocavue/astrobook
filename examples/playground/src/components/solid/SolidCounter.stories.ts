@@ -1,4 +1,3 @@
-
 import SolidCounter, { type SolidCounterProps } from './SolidCounter'
 
 export default {
@@ -14,4 +13,3 @@ export const LargeStep = {
     step: 5,
   } satisfies SolidCounterProps,
 }
-
