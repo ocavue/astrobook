@@ -11,22 +11,22 @@ test.describe('decorators', () => {
       `${BASE_URL}/dashboard/decorators/decorators/single-decorator`,
     )
     await testCounter(page, 1)
-    expect(page.locator('.decorator').count()).toBe(1)
+    await expect(page.locator('.decorator')).toHaveCount(1)
   })
 
   test('multiple decorators', async ({ page }) => {
     await page.goto(
       `${BASE_URL}/dashboard/decorators/decorators/multiple-decorators`,
     )
-    await testCounter(page, 1)
-    expect(page.locator('.decorator').count()).toBe(2)
+    await testCounter(page, 5)
+    await expect(page.locator('.decorator')).toHaveCount(2)
   })
 
   test('mixed decorators', async ({ page }) => {
     await page.goto(
       `${BASE_URL}/dashboard/decorators/decorators/mixed-decorators`,
     )
-    await testCounter(page, 1)
-    expect(page.locator('.decorator').count()).toBe(5)
+    await testCounter(page, 10)
+    await expect(page.locator('.decorator')).toHaveCount(5)
   })
 })
