@@ -15,14 +15,25 @@ function goto(
 }
 
 test.describe('decorators', () => {
-  test('single decorator', async ({ page }) => {
+  test('single decorator functionality', async ({ page }) => {
     await goto(page, 'single-decorator')
+    
+    // Test basic functionality and structure
     await testCounter(page, 1)
     await expect(page.locator('.decorator')).toHaveCount(1)
+    
+    // Single decorator doesn't have label prop, so data-label should be empty or undefined
+    const decorator = page.locator('.decorator').first()
+    const dataLabel = await decorator.getAttribute('data-label')
+    expect(
+      dataLabel === null || dataLabel === '' || dataLabel === 'undefined',
+    ).toBe(true)
   })
 
-  test('multiple decorators', async ({ page }) => {
+  test('multiple decorators with labels', async ({ page }) => {
     await goto(page, 'multiple-decorators')
+    
+    // Test functionality and structure
     await testCounter(page, 5)
     await expect(page.locator('.decorator')).toHaveCount(2)
 
@@ -38,8 +49,10 @@ test.describe('decorators', () => {
     )
   })
 
-  test('mixed decorators', async ({ page }) => {
+  test('mixed framework decorators', async ({ page }) => {
     await goto(page, 'mixed-decorators')
+    
+    // Test functionality through all decorators
     await testCounter(page, 10)
     await expect(page.locator('.decorator')).toHaveCount(5)
 
@@ -50,35 +63,5 @@ test.describe('decorators', () => {
     await expect(decorators.nth(2)).toHaveAttribute('data-label', 'Preact')
     await expect(decorators.nth(3)).toHaveAttribute('data-label', 'Svelte')
     await expect(decorators.nth(4)).toHaveAttribute('data-label', 'Vue')
-  })
-
-  test('decorator nesting order', async ({ page }) => {
-    await goto(page, 'mixed-decorators')
-
-    // Test that decorators are nested in the correct order
-    const decorators = page.locator('.decorator')
-    await expect(decorators).toHaveCount(5)
-
-    // Test counter functionality still works through all decorators
-    await testCounter(page, 10)
-  })
-
-  test('decorator without label prop', async ({ page }) => {
-    await goto(page, 'single-decorator')
-
-    // Single decorator doesn't have label prop, so data-label should be empty or undefined
-    const decorator = page.locator('.decorator').first()
-    const dataLabel = await decorator.getAttribute('data-label')
-    expect(
-      dataLabel === null || dataLabel === '' || dataLabel === 'undefined',
-    ).toBe(true)
-  })
-
-  test('all decorators maintain component functionality', async ({ page }) => {
-    await goto(page, 'mixed-decorators')
-
-    // Verify that the wrapped component (ReactCounter) maintains its functionality
-    // through all framework decorators using the testCounter helper
-    await testCounter(page, 10)
   })
 })
