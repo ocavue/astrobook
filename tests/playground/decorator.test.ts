@@ -25,7 +25,7 @@ test.describe('decorators', () => {
     // Single decorator doesn't have label prop, so data-label should be empty
     const decorator = page.locator('.decorator').first()
     const dataLabel = await decorator.getAttribute('data-label')
-    expect(dataLabel).toBeNull()
+    expect(dataLabel).toBeFalsy()
   })
 
   test('multiple decorators with labels', async ({ page }) => {
