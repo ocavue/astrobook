@@ -10,18 +10,19 @@ export default {
   component: ReactCounter,
 }
 
-export const Astro = {
+export const SingleDecorator = {
   decorators: [{ component: AstroDecorator }],
 }
 
-export const ReactWithProps = {
+export const MultipleDecorators = {
   args: { step: 5 },
   decorators: [
-    { component: ReactDecorator, props: { label: 'React Decorator' } },
+    { component: ReactDecorator, props: { label: 'Outer Decorator' } },
+    { component: ReactDecorator, props: { label: 'Inner Decorator' } },
   ],
 }
 
-export const MixedFramework = {
+export const MixedDecorators = {
   args: { step: 10 },
   decorators: [
     { component: AstroDecorator, props: { label: 'Astro' } },
