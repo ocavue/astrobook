@@ -2,14 +2,15 @@
 
 import type { ComponentChildren } from 'preact'
 
-export interface PreactDecoratorProps {
+export interface Props {
+  label?: string
   children?: ComponentChildren
 }
 
-export function GreenBorderDecorator({ children }: PreactDecoratorProps) {
+export default function PreactDecorator({ children, label }: Props) {
   return (
     <>
-      <div class="green-border" data-decorator-type="jsx">
+      <div className="decorator" data-label={label}>
         {children}
       </div>
     </>

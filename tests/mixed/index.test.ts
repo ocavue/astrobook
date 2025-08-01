@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 import { EXAMPLE_URLS } from '../example-urls'
+import { testCounter } from '../helpers/counter'
 
 const BASE_URL = EXAMPLE_URLS['example-mixed']
 
@@ -29,17 +30,8 @@ test('mixed example', async ({ page }) => {
     )
   })
 
-  const counterNumber = page
-    .locator('div.counter', { hasText: '+' })
-    .locator('pre')
-
   await test.step('Interact with the story', async () => {
-    await expect(counterNumber).toHaveText('0')
-
-    const button = page.locator('button', { hasText: '+' })
-    await button.click()
-
-    await expect(counterNumber).toHaveText('5')
+    await testCounter(page, 5)
   })
 
   await test.step('Go to full screen', async () => {
@@ -49,11 +41,6 @@ test('mixed example', async ({ page }) => {
   })
 
   await test.step('Interact with the story', async () => {
-    await expect(counterNumber).toHaveText('0')
-
-    const button = page.locator('button', { hasText: '+' })
-    await button.click()
-
-    await expect(counterNumber).toHaveText('5')
+    await testCounter(page, 5)
   })
 })

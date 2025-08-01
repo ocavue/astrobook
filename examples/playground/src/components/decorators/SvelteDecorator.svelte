@@ -1,7 +1,12 @@
 <script lang="ts">
-  let { children } = $props()
+  interface Props {
+    label?: string
+    children: import('svelte').Snippet
+  }
+  
+  let { children, label }: Props = $props()
 </script>
 
-<div class="green-border" data-decorator-type="svelte">
+<div class="decorator" data-label={label}>
   {@render children()}
 </div>

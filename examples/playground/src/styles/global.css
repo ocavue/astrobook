@@ -13,3 +13,28 @@
 .green-border {
   border: solid 2px green;
 }
+
+.decorator {
+  padding-top: 1.5em;
+  margin: 1em;
+  border-color: gray;
+  border-style: dashed;
+  border-width: 1px;
+  position: relative;
+
+  &:before {
+    content: attr(data-label);
+    border-color: gray;
+    border-style: dashed;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-right-width: 1px;
+    padding: 0.25em;
+    color: gray;
+    top: 0;
+    left: 0;
+    display: block;
+    position: absolute;
+  }
+}

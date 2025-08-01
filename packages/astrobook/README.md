@@ -69,30 +69,23 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mtsx,mjs,mjsx}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, Args and Decorator properties are supported.
+4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported.
 
    ```ts
    // src/components/Button.stories.ts
    import { Button, type ButtonProps } from './Button.tsx'
-   import { DarkModeContainer } from './DarkModeContainer.tsx'
+   import { Container } from './Container.tsx'
 
    export default {
      component: Button,
    }
 
    export const PrimaryButton = {
-     args: {
-       variant: 'primary',
-     } satisfies ButtonProps,
+     args: { variant: 'primary' } satisfies ButtonProps,
    }
 
    export const SecondaryButton = {
-     args: {
-       variant: 'secondary',
-     } satisfies ButtonProps,
-     decorators: [
-       { component: DarkModeContainer, props: { deviceSize: 'mobile' } },
-     ],
+     args: { variant: 'secondary' } satisfies ButtonProps,
    }
    ```
 
@@ -102,36 +95,55 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
 Decorators are objects that have a property for the component and the props that will be passed to it on render. This component must have a _slot_ for children to be rendered. Currently, decorators only support styling changes and are not able to change a component's context or any client-side behaviors. Any decorators are rendered into HTML by Astro and sent to the client.
 
-See this Preact example:
+You can use decorators to wrap a component with a custom style.
+
+For example, this is a React decorator that adds a green border to a component and an Astro decorator that adds a red border to a component.
 
 ```tsx
-/** @jsxImportSource preact */
+// ReactGreenBorderDecorator.tsx
 
-import type { ComponentChildren } from 'preact'
-
-export interface PreactDecoratorProps {
-  children?: ComponentChildren
-}
+import type { ComponentChildren } from 'react'
 
 export function GreenBorderDecorator({
-  width = '2px',
+  width = 2,
   children,
-}: PreactDecoratorProps) {
-  return (
-    <>
-      <div style="border: solid 2px green;">{children}</div>
-    </>
-  )
+}: {
+  width?: number
+  children?: ComponentChildren
+}) {
+  return <div style={{ border: `solid ${width}px green` }}>{children}</div>
 }
 ```
 
-And this Astro example:
-
 ```astro
+<!-- AstroRedBorderDecorator.astro -->
 <div style="border: solid 2px red;">
   <slot />
 </div>
 ```
+
+In your stories, you can use the decorators like this:
+
+```tsx
+// Button.stories.tsx
+import { Button, type ButtonProps } from './Button.tsx'
+import { GreenBorderDecorator } from './ReactGreenBorderDecorator.tsx'
+import RedBorderDecorator from './AstroRedBorderDecorator.astro'
+
+export default {
+  component: Button,
+}
+
+export const PrimaryButton = {
+  args: { variant: 'primary' } satisfies ButtonProps,
+  decorators: [
+    { component: GreenBorderDecorator, props: { width: 10 } },
+    { component: RedBorderDecorator },
+  ],
+}
+```
+
+This will render the button, wrapped in a red border, which is then wrapped in a green border.
 
 ## Options
 
