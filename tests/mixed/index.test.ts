@@ -31,7 +31,7 @@ test('mixed example', async ({ page }) => {
   })
 
   await test.step('Interact with the story', async () => {
-    await testCounter(page, 1)
+    await testCounter(page, 5)
   })
 
   await test.step('Go to full screen', async () => {
@@ -41,6 +41,6 @@ test('mixed example', async ({ page }) => {
   })
 
   await test.step('Interact with the story', async () => {
-    await testCounter(page, 1)
+    await testCounter(page, 5)
   })
 })
