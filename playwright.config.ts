@@ -75,7 +75,12 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  ].filter((project) => {
+    if (process.env.CI) {
+      return true
+    }
+    return project.name === 'chromium'
+  }),
 
   /* Run your local dev server before starting the tests */
   webServer: Object.entries(EXAMPLE_URLS).map(([name, url]) => ({
