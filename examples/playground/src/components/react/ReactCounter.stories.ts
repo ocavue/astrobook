@@ -1,3 +1,6 @@
+import { GreenBorderDecorator } from '../decorators/JsxDecorator'
+import RedBorderDecorator from '../decorators/RedBorderDecorator.astro'
+
 import { ReactCounter, type ReactCounterProps } from './ReactCounter'
 
 export default {
@@ -12,4 +15,18 @@ export const LargeStep = {
   args: {
     step: 5,
   } satisfies ReactCounterProps,
+}
+
+export const RedBorder = {
+  args: {
+    step: 1,
+  } satisfies ReactCounterProps,
+  decorators: [{ component: RedBorderDecorator, props: { size: '2px' } }],
+}
+
+export const GreenBorder = {
+  args: {
+    step: 1,
+  } satisfies ReactCounterProps,
+  decorators: [{ component: GreenBorderDecorator }],
 }

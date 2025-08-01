@@ -9,3 +9,7 @@
 .counter-message {
   text-align: center;
 }
+
+.green-border {
+  border: solid 2px green;
+}
