@@ -80,26 +80,39 @@ export function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
 import StoryPage from 'astrobook/pages/story.astro'
-import { isAstroStory, isAstroComponentFactory } from 'astrobook/client'
+import { isAstroStory, isAstroComponentFactory, applyDecorators } from 'astrobook/client'
 import * as m from '${route.storyModule.importPath}'
 
 const isAstro = isAstroStory(m)
+const hasCustomRender = m.${route.story.name}?.render !== undefined
+const shouldExcludeDecorators = !!m.${route.story.name}?.render?.excludeDecorators
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   {
-    (({...m['${route.story.name}']}?.decorators || []).slice().reverse().reduce((currentTree, decorator) => {
-      const Decorator = decorator.component
+    shouldExcludeDecorators
+      ? isAstro
+        ? (<m.${route.story.name}?.render.component story={m.${route.story.name}} />)
+        : (<m.${route.story.name}?.render.component story={m.${route.story.name}} client:load />)
+      : applyDecorators({
+          decorators: ({...m['${route.story.name}']}?.decorators || []),
+          initialTree: !hasCustomRender
+            ? isAstro
+              ? (<m.default.component { ...m['${route.story.name}']?.args } />)
+              : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
+            : isAstro
+              ? (<m.${route.story.name}?.render.component story={m.${route.story.name}} />)
+              : (<m.${route.story.name}?.render.component story={m.${route.story.name}} client:load />),
+          reduceFn: (currentTree, decorator) => {
+            const Decorator = decorator.component
 
-      return (
-          <Decorator { ...decorator?.props }>
-            {currentTree}
-          </Decorator>
-        )
-    }, isAstro
-      ? (<m.default.component { ...m['${route.story.name}']?.args } />)
-      : (<m.default.component { ...m['${route.story.name}']?.args } client:load />)
-    ))
+            return (
+                <Decorator { ...decorator?.props }>
+                  {currentTree}
+                </Decorator>
+              )
+          }
+        })
   }
 </StoryPage>
 `.trim()
