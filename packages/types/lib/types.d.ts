@@ -152,39 +152,39 @@ declare global {
 
 /**
  * Represents a story object for a component, typically used improve type hinting in Custom Render Components.
- * 
+ *
  * @template TProps - The type of the props the story accepts.
  */
 export interface StoryObj<TProps = any> {
   /**
    * Arguments (props) to be passed to the component when rendering the story.
    */
-  args?: TProps;
+  args?: TProps
 
   /**
    * Optional decorators to wrap the component with, allowing for reusable wrappers like themes or providers.
-   * Each decorator includes a component and an array of props to apply to it. N.B. these will wrap the story and 
+   * Each decorator includes a component and an array of props to apply to it. N.B. these will wrap the story and
    * will not be rendered within an Astro "island".
    */
   decorators?: Array<{
-    component: unknown;
-    props: Array<Record<string, any>>;
-  }>;
+    component: unknown
+    props: Array<Record<string, any>>
+  }>
 
   /**
    * Custom render configuration for the story.
-   * Allows specifying a different component and optionally skipping decorators, 
+   * Allows specifying a different component and optionally skipping decorators,
    * should you wish to render them in the custom component separatetly.
    */
   render?: {
-    component: unknown;
-    excludeDecorators?: boolean;
-  };
+    component: unknown
+    excludeDecorators?: boolean
+  }
 }
 
 /**
  * Props for a custom render component that optionally receives a story object as input.
- * 
+ *
  * @template T - Must extend `StoryObj` to ensure correct typing.
  */
 export interface CustomRenderProps<T = any> {
@@ -192,5 +192,5 @@ export interface CustomRenderProps<T = any> {
    * The story object to be rendered. Only valid if `T` extends `StoryObj`. Can be safely ignored if the story
    * properties are not used in the Custom Render Component.
    */
-  story: T extends StoryObj ? T : never;
+  story: T extends StoryObj ? T : never
 }

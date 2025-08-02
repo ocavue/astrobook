@@ -22,7 +22,14 @@ export function isAstroComponentFactory(
     : (obj as Record<string, unknown>).isAstroComponentFactory === true
 }
 
-export function applyDecorators<T>(
-  { decorators = [], initialTree, reduceFn }: {decorators: [], initialTree: T, reduceFn: (currentTree: T, decorator: unknown) => T}) {
+export function applyDecorators<T>({
+  decorators = [],
+  initialTree,
+  reduceFn,
+}: {
+  decorators: []
+  initialTree: T
+  reduceFn: (currentTree: T, decorator: unknown) => T
+}) {
   return decorators.slice().reverse().reduce(reduceFn, initialTree)
 }
