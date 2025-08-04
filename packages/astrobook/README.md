@@ -178,15 +178,15 @@ import astrobook from 'astrobook'
 export default defineConfig({
   integrations: [
     astrobook({
-      subpath: '/docs/components',
+      subpath: '/playground',
     }),
   ],
 })
 ```
 
-In the example above, Astrobook will be available at `http://localhost:4321/docs/components`.
+In the example above, Astrobook will be available at `http://localhost:4321/playground`.
 
-Notice that the `subpath` option is relative to the [base URL](https://docs.astro.build/en/reference/configuration-reference/#base) of your Astro project. For example, if you configure both Astro's `base` and `astrobook`'s `subpath`, like so:
+Notice that the `subpath` option is relative to your Astro project's [base path](https://docs.astro.build/en/reference/configuration-reference/#base). For example, if you configure both Astro's `base` and `astrobook`'s `subpath`, like so:
 
 ```js
 // astro.config.mjs
@@ -194,16 +194,16 @@ import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
 export default defineConfig({
-  base: '/base',
+  base: '/docs',
   integrations: [
     astrobook({
-      subpath: '/docs/components',
+      subpath: '/playground',
     }),
   ],
 })
 ```
 
-You Astro project will be available at `http://localhost:4321/base` and Astrobook will be available at `http://localhost:4321/base/docs/components`.
+Your Astro project will be available at `http://localhost:4321/docs` and Astrobook will be available at `http://localhost:4321/docs/playground`.
 
 ### `css`
 
