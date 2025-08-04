@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.8
+
+### Patch Changes
+
+- [`604da41`](https://github.com/ocavue/astrobook/commit/604da415cd8fd1c04521efcf5498c6ecbfde82dc) Print correct port number on fallback.
+
 ## 0.8.7
 
 ### Patch Changes
