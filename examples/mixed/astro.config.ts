@@ -8,10 +8,15 @@ export default defineConfig({
     port: 4302,
   },
 
-  base: '/base',
+  base: '/docs',
 
   integrations: [
     preact(),
-    astrobook({ directory: 'src/stories', subpath: '/docs/components' }),
+    astrobook({ 
+      directory: 'src/stories', 
+      subpath: 'playground',
+      dashboardSubpath: '',
+      storySubpath: '/-/',
+    }),
   ],
 })

@@ -26,7 +26,7 @@ test('mixed example', async ({ page }) => {
     await button.click()
 
     await page.waitForURL(
-      `${BASE_URL}/docs/components/dashboard/preact-counter/large-step`,
+      `${BASE_URL}/docs/playground/preact-counter/large-step`,
     )
   })
 
@@ -36,7 +36,7 @@ test('mixed example', async ({ page }) => {
 
   await test.step('Go to full screen', async () => {
     await page.goto(
-      `${BASE_URL}/docs/components/stories/preact-counter/large-step`,
+      `${BASE_URL}/docs/playground/-/preact-counter/large-step`,
     )
   })
 
