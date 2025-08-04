@@ -32,7 +32,7 @@ export function createAstrobookIntegration(
         logger,
         command,
       }) => {
-        const rootDir = resolvedOptions.directory
+        const rootDir = path.resolve(resolvedOptions.directory)
 
         const astroBase = config.base || ''
 
