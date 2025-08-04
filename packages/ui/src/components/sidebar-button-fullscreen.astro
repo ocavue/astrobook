@@ -13,7 +13,10 @@ interface Props {
 {
   Astro.props.story ? (
     <SidebarButton
-      href={getPathWithBase(`/stories/${Astro.props.story}`, config.baseUrl)}
+      href={getPathWithBase(
+        `/stories/${Astro.props.story}`,
+        config.astrobookBase,
+      )}
       title="Go full screen"
     >
       <span class=":uno: i-lucide:square-arrow-out-up-right box-border block size-4" />

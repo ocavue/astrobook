@@ -16,7 +16,7 @@ import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 export function createAstrobookIntegration(
   options?: IntegrationOptions,
 ): AstroIntegration {
-  let astrobookPathForLogging: string | undefined
+  let astrobookBaseForLogging: string | undefined
 
   return {
     name: 'astrobook',
@@ -30,17 +30,18 @@ export function createAstrobookIntegration(
         command,
       }) => {
         const rootDir = path.resolve(options?.directory || '.')
-        const astroBaseUrl = config.base || '/'
-        const astrobookBaseUrl = options?.subpath || ''
-        const baseUrl = pathPosix.join(astroBaseUrl, astrobookBaseUrl)
+
+        const astroBase = config.base || '/'
+        const astrobookSubpath = options?.subpath || ''
+        const astrobookBase = pathPosix.join(astroBase, astrobookSubpath)
 
         // If subpath is set, Astrobook is only part of the current Astro
         // project. In this case, we want to print the URL of the Astrobook
         // entrypoint for easy access.
-        if (astrobookBaseUrl && command === 'dev') {
-          astrobookPathForLogging = baseUrl
+        if (astrobookSubpath && command === 'dev') {
+          astrobookBaseForLogging = astrobookBase
         } else {
-          astrobookPathForLogging = undefined
+          astrobookBaseForLogging = undefined
         }
 
         logger.debug(`Creating dedicated folder`)
@@ -73,7 +74,7 @@ export function createAstrobookIntegration(
               createVirtualFilesPlugin(
                 rootDir,
                 {
-                  baseUrl,
+                  astrobookBase: astrobookBase,
                   head: options?.head || 'astrobook/components/head.astro',
                   css: options?.css || [],
                   title: options?.title || 'Astrobook',
@@ -87,7 +88,7 @@ export function createAstrobookIntegration(
 
         logger.debug(`Injecting routes`)
         for (const route of routes.values()) {
-          const pattern = pathPosix.join(astrobookBaseUrl, route.pattern)
+          const pattern = pathPosix.join(astrobookSubpath, route.pattern)
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
@@ -98,15 +99,15 @@ export function createAstrobookIntegration(
           })
         }
         injectRoute({
-          pattern: astrobookBaseUrl,
+          pattern: astrobookSubpath,
           entrypoint: 'astrobook/pages/app.astro',
           prerender: true,
         })
       },
       'astro:server:start': ({ logger, address }) => {
-        if (astrobookPathForLogging) {
+        if (astrobookBaseForLogging) {
           const url = new URL(
-            astrobookPathForLogging,
+            astrobookBaseForLogging,
             `http://localhost:${address.port}`,
           )
           const message =
