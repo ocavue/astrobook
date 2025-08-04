@@ -154,8 +154,7 @@ export interface GlobalConfig {
   css: string[]
 
   /**
-   * The title for the Astrobook website. Used in the browser tab title
-   * and displayed in the sidebar.
+   * The title for the Astrobook website.
    */
   title: string
 }
