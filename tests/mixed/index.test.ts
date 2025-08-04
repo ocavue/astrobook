@@ -15,7 +15,7 @@ test('mixed example', async ({ page }) => {
     const button = page.locator('a', { hasText: 'Go to Astrobook' })
     await button.click()
 
-    await expect(page).toHaveURL(`${BASE_URL}/astro-base/astrobook-subpath`)
+    await expect(page).toHaveURL(`${BASE_URL}/astrobook-subpath`)
     await expect(page).toHaveTitle('Astrobook')
     await expect(page.locator('h1')).toHaveText('Astrobook')
   })
@@ -26,7 +26,7 @@ test('mixed example', async ({ page }) => {
     await button.click()
 
     await page.waitForURL(
-      `${BASE_URL}/astro-base/astrobook-subpath/dashboard-subpath/preact-counter/large-step`,
+      `${BASE_URL}/astrobook-subpath/dashboard-subpath/preact-counter/large-step`,
     )
   })
 
@@ -36,7 +36,7 @@ test('mixed example', async ({ page }) => {
 
   await test.step('Go to full screen', async () => {
     await page.goto(
-      `${BASE_URL}/astro-base/astrobook-subpath/story-subpath/preact-counter/large-step`,
+      `${BASE_URL}/astrobook-subpath/story-subpath/preact-counter/large-step`,
     )
   })
 
