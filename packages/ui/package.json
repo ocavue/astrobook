@@ -24,7 +24,7 @@
     "./components/*": {
       "default": "./dist/components/*"
     }
-  },
+  }, 
   "typesVersions": {
     "*": {
       ".": [
