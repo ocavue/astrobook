@@ -12,8 +12,8 @@ export default defineConfig({
 
   integrations: [
     preact(),
-    astrobook({ 
-      directory: 'src/stories', 
+    astrobook({
+      directory: 'src/stories',
       subpath: 'playground',
       dashboardSubpath: '',
       storySubpath: '/-/',

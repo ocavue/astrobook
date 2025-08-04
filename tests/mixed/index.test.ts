@@ -35,9 +35,7 @@ test('mixed example', async ({ page }) => {
   })
 
   await test.step('Go to full screen', async () => {
-    await page.goto(
-      `${BASE_URL}/docs/playground/-/preact-counter/large-step`,
-    )
+    await page.goto(`${BASE_URL}/docs/playground/-/preact-counter/large-step`)
   })
 
   await test.step('Interact with the story', async () => {
