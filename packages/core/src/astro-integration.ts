@@ -16,6 +16,8 @@ import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 export function createAstrobookIntegration(
   options?: IntegrationOptions,
 ): AstroIntegration {
+  let astrobookPathForLogging: string | undefined
+
   return {
     name: 'astrobook',
     hooks: {
@@ -36,15 +38,9 @@ export function createAstrobookIntegration(
         // project. In this case, we want to print the URL of the Astrobook
         // entrypoint for easy access.
         if (astrobookBaseUrl && command === 'dev') {
-          const url = new URL(baseUrl, `http://localhost:${config.server.port}`)
-          const message =
-            colors.bgGreen(colors.white(colors.bold(' astrobook '))) +
-            ' is available at ' +
-            colors.cyan(url.toString())
-          // Get a logger that don't print the label and the current time
-          // https://github.com/withastro/astro/blob/ff72ebe/packages/astro/src/core/logger/core.ts#L38
-          const plainLogger = logger.fork('SKIP_FORMAT')
-          plainLogger.info(message)
+          astrobookPathForLogging = baseUrl
+        } else {
+          astrobookPathForLogging = undefined
         }
 
         logger.debug(`Creating dedicated folder`)
@@ -106,6 +102,22 @@ export function createAstrobookIntegration(
           entrypoint: 'astrobook/pages/app.astro',
           prerender: true,
         })
+      },
+      'astro:server:start': ({ logger, address }) => {
+        if (astrobookPathForLogging) {
+          const url = new URL(
+            astrobookPathForLogging,
+            `http://localhost:${address.port}`,
+          )
+          const message =
+            colors.bgGreen(colors.white(colors.bold(' astrobook '))) +
+            ' is available at ' +
+            colors.cyan(url.toString())
+          // Get a logger that don't print the label and the current time
+          // https://github.com/withastro/astro/blob/ff72ebe/packages/astro/src/core/logger/core.ts#L38
+          const plainLogger = logger.fork('SKIP_FORMAT')
+          plainLogger.info(message)
+        }
       },
     },
   }
