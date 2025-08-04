@@ -203,7 +203,7 @@ export default defineConfig({
 })
 ```
 
-You Astro project will be available at `http://localhost:4321/docs` and Astrobook will be available at `http://localhost:4321/docs/playground`.
+Your Astro project will be available at `http://localhost:4321/docs` and Astrobook will be available at `http://localhost:4321/docs/playground`.
 
 ### `css`
 
