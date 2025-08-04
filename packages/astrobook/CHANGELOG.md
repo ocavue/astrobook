@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.8.9
+
+### Patch Changes
+
+- [`891e26d`](https://github.com/ocavue/astrobook/commit/891e26d60d1fcfee5b3675ebff759fb998e62840) Fix publish workflow.
+
 ## 0.8.8
 
 ### Patch Changes
