@@ -135,9 +135,27 @@ export interface Story {
 }
 
 export interface GlobalConfig {
-  baseUrl: string
+  /**
+   * The computed base URL path for Astrobook, combining the Astro base URL with
+   * the optional subpath. Used for generating correct URLs throughout the
+   * Astrobook interface.
+   */
+  astrobookBase: string
+
+  /**
+   * The path to an Astro component to provide custom tags in the `<head>`.
+   */
   head: string
+
+  /**
+   * Array of CSS file paths to import for customizing the look and feel
+   * of the Astrobook project. Supports both local files and npm modules.
+   */
   css: string[]
+
+  /**
+   * The title for the Astrobook website.
+   */
   title: string
 }
 

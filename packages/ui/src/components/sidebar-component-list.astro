@@ -34,7 +34,7 @@ const groupedModules = groupBy(modules, (module) => module.directory)
               ]}
               href={getPathWithBase(
                 `/dashboard/${module.stories[0]?.id}`,
-                config.baseUrl,
+                config.astrobookBase,
               )}
             >
               <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
@@ -50,7 +50,10 @@ const groupedModules = groupBy(modules, (module) => module.directory)
                     ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
                     : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
                 ]}
-                href={getPathWithBase(`/dashboard/${story.id}`, config.baseUrl)}
+                href={getPathWithBase(
+                  `/dashboard/${story.id}`,
+                  config.astrobookBase,
+                )}
                 data-active={Astro.props.story === story.id ? '' : undefined}
               >
                 <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
