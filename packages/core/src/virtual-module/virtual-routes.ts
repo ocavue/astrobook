@@ -5,6 +5,7 @@ import type { AstroIntegrationLogger } from 'astro'
 import slash from 'slash'
 
 import { invariant } from '../utils/invariant'
+import { urlPathJoin } from '../utils/path'
 
 import { getStoryModules } from './get-story-modules'
 
@@ -31,6 +32,8 @@ export async function getVirtualRoutes(
   rootDir: string,
   codegenDir: string,
   logger: AstroIntegrationLogger,
+  dashboardSubpath: string,
+  storySubpath: string,
 ): Promise<Map<string, VirtualRoute>> {
   const routes: VirtualRoute[] = []
   const storyModules = await getStoryModules(rootDir)
@@ -50,7 +53,7 @@ export async function getVirtualRoutes(
       )
       routes.push(
         {
-          pattern: '/dashboard/' + story.id,
+          pattern: urlPathJoin(dashboardSubpath, story.id),
           entrypoint: slash(
             path.resolve(codegenDir, 'dashboard', story.id + '.astro'),
           ),
@@ -59,7 +62,7 @@ export async function getVirtualRoutes(
           props: { hasSidebar: true, story: story.id },
         },
         {
-          pattern: '/stories/' + story.id,
+          pattern: urlPathJoin(storySubpath, story.id),
           entrypoint: slash(
             path.resolve(codegenDir, 'stories', story.id + '.astro'),
           ),

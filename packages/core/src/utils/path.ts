@@ -18,3 +18,10 @@ export function ensureTrailingSlash(path: string): string {
   }
   return path + '/'
 }
+
+/**
+ * Joins multiple path segments into a single URL path with a leading slash.
+ */
+export function urlPathJoin(...parts: string[]): string {
+  return ensureLeadingSlash(parts.map(stripSlashes).filter(Boolean).join('/'))
+}

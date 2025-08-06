@@ -31,6 +31,38 @@ export interface IntegrationOptions {
   subpath?: string
 
   /**
+   * The subpath for dashboard pages relative to the main subpath.
+   * Dashboard pages include the sidebar for navigation.
+   *
+   * @default '/dashboard/'
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  dashboardSubpath: '/components/',
+   * })
+   * ```
+   */
+  dashboardSubpath?: string
+
+  /**
+   * The subpath for story-only pages relative to the main subpath.
+   * Story pages display components without the sidebar.
+   *
+   * @default '/stories/'
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *  storySubpath: '/preview/',
+   * })
+   * ```
+   */
+  storySubpath?: string
+
+  /**
    * Set the title for your website. Will be used in metadata and in the browser tab title.
    *
    * @default 'Astrobook'
@@ -141,6 +173,8 @@ export interface GlobalConfig {
    * Astrobook interface.
    */
   astrobookBase: string
+  dashboardBase: string
+  storyBase: string
 
   /**
    * The path to an Astro component to provide custom tags in the `<head>`.
