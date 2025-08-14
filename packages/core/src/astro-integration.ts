@@ -1,12 +1,13 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import pathPosix from 'node:path/posix'
 import { fileURLToPath } from 'node:url'
 
 import type { IntegrationOptions } from '@astrobook/types'
 import type { AstroIntegration } from 'astro'
 import colors from 'yoctocolors'
 
+import { resolveOptions } from './options'
+import { urlPathJoin } from './utils/path'
 import {
   createVirtualRouteComponent,
   getVirtualRoutes,
@@ -14,9 +15,11 @@ import {
 import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 
 export function createAstrobookIntegration(
-  options?: IntegrationOptions,
+  userOptions?: IntegrationOptions,
 ): AstroIntegration {
   let astrobookBaseForLogging: string | undefined
+
+  const resolvedOptions = resolveOptions(userOptions)
 
   return {
     name: 'astrobook',
@@ -29,11 +32,30 @@ export function createAstrobookIntegration(
         logger,
         command,
       }) => {
-        const rootDir = path.resolve(options?.directory || '.')
+        const rootDir = path.resolve(resolvedOptions.directory)
 
-        const astroBase = config.base || '/'
-        const astrobookSubpath = options?.subpath || ''
-        const astrobookBase = pathPosix.join(astroBase, astrobookSubpath)
+        const astroBase = config.base || ''
+
+        // The subpaths are relative to the Astro base path.
+        const astrobookSubpath = resolvedOptions.subpath
+        const dashboardSubpath = urlPathJoin(
+          astrobookSubpath,
+          resolvedOptions.dashboardSubpath,
+        )
+        const previewSubpath = urlPathJoin(
+          astrobookSubpath,
+          resolvedOptions.previewSubpath,
+        )
+
+        if (dashboardSubpath === previewSubpath) {
+          throw new Error(
+            '[Astrobook] The dashboard and preview subpaths cannot be the same. Please set different values for `dashboardSubpath` and `previewSubpath` options.',
+          )
+        }
+
+        const astrobookBase = urlPathJoin(astroBase, astrobookSubpath)
+        const dashboardBase = urlPathJoin(astroBase, dashboardSubpath)
+        const storyBase = urlPathJoin(astroBase, previewSubpath)
 
         // If subpath is set, Astrobook is only part of the current Astro
         // project. In this case, we want to print the URL of the Astrobook
@@ -56,7 +78,14 @@ export function createAstrobookIntegration(
         logger.debug(`Created dedicated folder at ${codegenDir}`)
 
         logger.debug(`Scanning for stories in ${rootDir}`)
-        const routes = await getVirtualRoutes(rootDir, codegenDir, logger)
+
+        const routes = await getVirtualRoutes(
+          rootDir,
+          codegenDir,
+          logger,
+          dashboardSubpath,
+          previewSubpath,
+        )
 
         logger.debug(`Writing files to ${codegenDir}`)
         await Promise.all(
@@ -74,10 +103,12 @@ export function createAstrobookIntegration(
               createVirtualFilesPlugin(
                 rootDir,
                 {
-                  astrobookBase: astrobookBase,
-                  head: options?.head || 'astrobook/components/head.astro',
-                  css: options?.css || [],
-                  title: options?.title || 'Astrobook',
+                  astrobookBase,
+                  dashboardBase,
+                  storyBase,
+                  head: resolvedOptions.head,
+                  css: resolvedOptions.css,
+                  title: resolvedOptions.title,
                 },
                 config,
                 logger,
@@ -88,12 +119,11 @@ export function createAstrobookIntegration(
 
         logger.debug(`Injecting routes`)
         for (const route of routes.values()) {
-          const pattern = pathPosix.join(astrobookSubpath, route.pattern)
           const entrypoint = path.normalize(
             path.relative('.', route.entrypoint),
           )
           injectRoute({
-            pattern,
+            pattern: route.pattern,
             entrypoint,
             prerender: true,
           })
