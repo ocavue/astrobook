@@ -1,5 +1,13 @@
 # astrobook
 
+## 0.8.10
+
+### Patch Changes
+
+- [`413b05a`](https://github.com/ocavue/astrobook/commit/413b05a5e56faee04999621df0cb2badd9589c6b) Respect the `trailingSlash` configuration from `astro.config.mjs`.
+
+- [`f7045d8`](https://github.com/ocavue/astrobook/commit/f7045d86ee9878ba73deedba116ffe2aef9ee2bf) Add two new options `dashboardSubpath` and `previewSubpath` to specify the subpath for the dashboard and story pages.
+
 ## 0.8.9
 
 ### Patch Changes
