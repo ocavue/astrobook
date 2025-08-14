@@ -1,7 +1,7 @@
 {
   "name": "@astrobook/core",
   "type": "module",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "Internal package for Astrobook",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
