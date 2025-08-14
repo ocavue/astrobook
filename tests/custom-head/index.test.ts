@@ -16,7 +16,7 @@ test('custom-head example', async ({ page }) => {
     await expect(button).toBeVisible()
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/dashboard/typography/lobster`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/lobster/`)
   })
 
   await test.step('Verify custom fonts are loaded', async () => {
@@ -42,7 +42,7 @@ test('custom-head example', async ({ page }) => {
     const button = page.locator('a', { hasText: 'FreckleFace' })
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/dashboard/typography/freckle-face`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/freckle-face/`)
 
     const textElement = page.locator('.font-freckle-face p')
     await expect(textElement).toBeVisible()
@@ -57,7 +57,7 @@ test('custom-head example', async ({ page }) => {
     const button = page.locator('a', { hasText: 'PressStart2P' })
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/dashboard/typography/press-start2-p`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/press-start2-p/`)
 
     const textElement = page.locator('.font-press-start-2p p')
     await expect(textElement).toBeVisible()
