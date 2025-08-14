@@ -20,8 +20,8 @@ test('custom-head example', async ({ page }) => {
   })
 
   await test.step('Verify custom fonts are loaded', async () => {
-    // Check that Google Fonts link is present in the head
-    const fontLink = page.locator('link[href*="fonts.googleapis.com"]')
+    // Check that Google Fonts stylesheet link is present in the head
+    const fontLink = page.locator('link[rel="stylesheet"][href*="fonts.googleapis.com"]')
     await expect(fontLink).toBeAttached()
 
     // Check that the text uses the Lobster font
