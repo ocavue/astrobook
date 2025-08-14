@@ -1,8 +1,8 @@
 ---
 import '@astrobook/types'
 
-import { getPathWithBase } from '@astrobook/core/client'
 import config from 'virtual:astrobook/global-config.mjs'
+import { urlPathJoin } from '../../../core/src/utils/path'
 ---
 
 <a
@@ -10,7 +10,7 @@ import config from 'virtual:astrobook/global-config.mjs'
     ':uno: line-height-[1.15] rounded p-2 font-semibold text-gray-500 no-underline transition hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
     'astrobook-focus-ring',
   ]}
-  href={getPathWithBase('/', config.astrobookBase)}
+  href={urlPathJoin('/', config.astrobookBase)}
 >
   {config.title}
 </a>
