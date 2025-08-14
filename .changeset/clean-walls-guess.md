@@ -5,4 +5,4 @@
 'astrobook': patch
 ---
 
-Add two new options `dashboardSubpath` and `storySubpath` to specify the subpath for the dashboard and story pages.
+Add two new options `dashboardSubpath` and `previewSubpath` to specify the subpath for the dashboard and story pages.

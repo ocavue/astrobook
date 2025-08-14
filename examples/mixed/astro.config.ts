@@ -16,7 +16,7 @@ export default defineConfig({
       directory: 'src/stories',
       subpath: '/astrobook-subpath',
       dashboardSubpath: '/dashboard-subpath',
-      storySubpath: '/story-subpath',
+      previewSubpath: '/preview-subpath',
     }),
   ],
 })

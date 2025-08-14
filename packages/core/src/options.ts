@@ -5,7 +5,7 @@ const IntegrationOptionsSchema = z.object({
   directory: z.string().optional().default('.'),
   subpath: z.string().optional().default(''),
   dashboardSubpath: z.string().optional().default('dashboard'),
-  storySubpath: z.string().optional().default('stories'),
+  previewSubpath: z.string().optional().default('stories'),
   title: z.string().optional().default('Astrobook'),
   css: z.array(z.string()).optional().default([]),
   head: z.string().optional().default('astrobook/components/head.astro'),

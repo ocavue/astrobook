@@ -42,20 +42,20 @@ export function createAstrobookIntegration(
           astrobookSubpath,
           resolvedOptions.dashboardSubpath,
         )
-        const storySubpath = urlPathJoin(
+        const previewSubpath = urlPathJoin(
           astrobookSubpath,
-          resolvedOptions.storySubpath,
+          resolvedOptions.previewSubpath,
         )
 
-        if (dashboardSubpath === storySubpath) {
+        if (dashboardSubpath === previewSubpath) {
           throw new Error(
-            '[Astrobook] The dashboard and story subpaths cannot be the same. Please set different values for `dashboardSubpath` and `storySubpath`.',
+            '[Astrobook] The dashboard and preview subpaths cannot be the same. Please set different values for `dashboardSubpath` and `previewSubpath` options.',
           )
         }
 
         const astrobookBase = urlPathJoin(astroBase, astrobookSubpath)
         const dashboardBase = urlPathJoin(astroBase, dashboardSubpath)
-        const storyBase = urlPathJoin(astroBase, storySubpath)
+        const storyBase = urlPathJoin(astroBase, previewSubpath)
 
         // If subpath is set, Astrobook is only part of the current Astro
         // project. In this case, we want to print the URL of the Astrobook
@@ -84,7 +84,7 @@ export function createAstrobookIntegration(
           codegenDir,
           logger,
           dashboardSubpath,
-          storySubpath,
+          previewSubpath,
         )
 
         logger.debug(`Writing files to ${codegenDir}`)

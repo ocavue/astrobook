@@ -32,7 +32,7 @@ export interface IntegrationOptions {
 
   /**
    * The subpath for dashboard pages relative to the main subpath.
-   * Dashboard pages include the sidebar for navigation.
+   * A dashboard page has a sidebar for navigation between components.
    *
    * @default '/dashboard/'
    *
@@ -47,8 +47,8 @@ export interface IntegrationOptions {
   dashboardSubpath?: string
 
   /**
-   * The subpath for story-only pages relative to the main subpath.
-   * Story pages display components without the sidebar.
+   * The subpath for preview pages relative to the main subpath.
+   * A preview page displays an individual component without the sidebar.
    *
    * @default '/stories/'
    *
@@ -56,11 +56,11 @@ export interface IntegrationOptions {
    *
    * ```js
    * astrobook({
-   *  storySubpath: '/preview/',
+   *  previewSubpath: '/preview/',
    * })
    * ```
    */
-  storySubpath?: string
+  previewSubpath?: string
 
   /**
    * Set the title for your website. Will be used in metadata and in the browser tab title.

@@ -36,7 +36,7 @@ test('mixed example', async ({ page }) => {
 
   await test.step('Go to full screen', async () => {
     await page.goto(
-      `${BASE_URL}/astrobook-subpath/story-subpath/preact-counter/large-step`,
+      `${BASE_URL}/astrobook-subpath/preview-subpath/preact-counter/large-step`,
     )
   })
 
