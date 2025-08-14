@@ -21,7 +21,9 @@ test('custom-head example', async ({ page }) => {
 
   await test.step('Verify custom fonts are loaded', async () => {
     // Check that Google Fonts stylesheet link is present in the head
-    const fontLink = page.locator('link[rel="stylesheet"][href*="fonts.googleapis.com"]')
+    const fontLink = page.locator(
+      'link[rel="stylesheet"][href*="fonts.googleapis.com"]',
+    )
     await expect(fontLink).toBeAttached()
 
     // Check that the text uses the Lobster font
@@ -30,8 +32,8 @@ test('custom-head example', async ({ page }) => {
     await expect(textElement).toHaveText('Lorem ipsum dolor sit amet')
 
     // Verify the font-family is applied
-    const computedStyle = await textElement.evaluate((el) => 
-      window.getComputedStyle(el).fontFamily
+    const computedStyle = await textElement.evaluate(
+      (el) => window.getComputedStyle(el).fontFamily,
     )
     expect(computedStyle).toContain('Lobster')
   })
@@ -45,8 +47,8 @@ test('custom-head example', async ({ page }) => {
     const textElement = page.locator('.font-freckle-face p')
     await expect(textElement).toBeVisible()
 
-    const computedStyle = await textElement.evaluate((el) => 
-      window.getComputedStyle(el).fontFamily
+    const computedStyle = await textElement.evaluate(
+      (el) => window.getComputedStyle(el).fontFamily,
     )
     expect(computedStyle).toContain('Freckle Face')
   })
@@ -60,8 +62,8 @@ test('custom-head example', async ({ page }) => {
     const textElement = page.locator('.font-press-start-2p p')
     await expect(textElement).toBeVisible()
 
-    const computedStyle = await textElement.evaluate((el) => 
-      window.getComputedStyle(el).fontFamily
+    const computedStyle = await textElement.evaluate(
+      (el) => window.getComputedStyle(el).fontFamily,
     )
     expect(computedStyle).toContain('Press Start 2P')
   })
