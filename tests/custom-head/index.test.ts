@@ -8,7 +8,7 @@ test('custom-head example', async ({ page }) => {
   await test.step('Check the home page', async () => {
     await page.goto(BASE_URL)
     await expect(page).toHaveTitle('Custom Title')
-    await expect(page.locator('h1')).toHaveText('Astrobook')
+    await expect(page.locator('a', { hasText: 'Custom Title' })).toBeVisible()
   })
 
   await test.step('Select Lobster font story', async () => {
