@@ -7,15 +7,7 @@ const BASE_URL = EXAMPLE_URLS['example-custom-head']
 test('custom-head example', async ({ page }) => {
   await test.step('Check the home page', async () => {
     await page.goto(BASE_URL)
-    await expect(page).toHaveTitle(/Astrobook/)
-  })
-
-  await test.step('Open the astrobook', async () => {
-    const button = page.locator('a', { hasText: 'Go to Astrobook' })
-    await button.click()
-
-    await expect(page).toHaveURL(`${BASE_URL}/astrobook`)
-    await expect(page).toHaveTitle('Astrobook')
+    await expect(page).toHaveTitle('Custom Title')
     await expect(page.locator('h1')).toHaveText('Astrobook')
   })
 
@@ -24,7 +16,7 @@ test('custom-head example', async ({ page }) => {
     await expect(button).toBeVisible()
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/astrobook/typography/lobster`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/lobster`)
   })
 
   await test.step('Verify custom fonts are loaded', async () => {
@@ -48,7 +40,7 @@ test('custom-head example', async ({ page }) => {
     const button = page.locator('a', { hasText: 'FreckleFace' })
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/astrobook/typography/freckle-face`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/freckle-face`)
 
     const textElement = page.locator('.font-freckle-face p')
     await expect(textElement).toBeVisible()
@@ -63,7 +55,7 @@ test('custom-head example', async ({ page }) => {
     const button = page.locator('a', { hasText: 'PressStart2P' })
     await button.click()
 
-    await page.waitForURL(`${BASE_URL}/astrobook/typography/press-start-2-p`)
+    await page.waitForURL(`${BASE_URL}/dashboard/typography/press-start2-p`)
 
     const textElement = page.locator('.font-press-start-2p p')
     await expect(textElement).toBeVisible()
