@@ -3,8 +3,6 @@ import astrobook from 'astrobook'
 
 // https://astro.build/config
 export default defineConfig({
-  trailingSlash: 'always',
-
   server: {
     port: 4305,
   },
