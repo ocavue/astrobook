@@ -191,6 +191,8 @@ export interface GlobalConfig {
    * The title for the Astrobook website.
    */
   title: string
+
+  trailingSlash: import('astro').AstroConfig['trailingSlash']
 }
 
 declare global {
