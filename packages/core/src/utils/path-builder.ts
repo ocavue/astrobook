@@ -13,7 +13,6 @@ interface PathBuilderOptions {
 
 export type PathBuilder = (...parts: string[]) => string
 
-
 /**
  * Joins multiple path segments into a single URL path with a leading slash,
  * and adds or removes a trailing slash based on config.

@@ -59,6 +59,4 @@ export function stripExtension(path: string) {
   return path.slice(0, periodIndex > -1 ? periodIndex : undefined)
 }
 
-
-
 export { stripLeadingAndTrailingSlashes as stripSlashes }

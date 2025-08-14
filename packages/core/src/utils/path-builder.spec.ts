@@ -55,8 +55,12 @@ describe('createPathBuilder', () => {
       expect(buildPath('/api/', '/users/', '/profile/')).toBe(
         '/api/users/profile/',
       )
-      expect(buildPath('/api', 'users/', '/profile')).toBe('/api/users/profile/')
-      expect(buildPath('api/', '/users', 'profile/')).toBe('/api/users/profile/')
+      expect(buildPath('/api', 'users/', '/profile')).toBe(
+        '/api/users/profile/',
+      )
+      expect(buildPath('api/', '/users', 'profile/')).toBe(
+        '/api/users/profile/',
+      )
     })
 
     it('should filter out empty strings and add trailing slash', () => {
