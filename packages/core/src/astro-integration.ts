@@ -7,7 +7,7 @@ import type { AstroIntegration } from 'astro'
 import colors from 'yoctocolors'
 
 import { resolveOptions } from './options'
-import { urlPathJoin } from './utils/path'
+import { createPathBuilder } from './utils/path-builder'
 import {
   createVirtualRouteComponent,
   getVirtualRoutes,
@@ -38,11 +38,16 @@ export function createAstrobookIntegration(
 
         // The subpaths are relative to the Astro base path.
         const astrobookSubpath = resolvedOptions.subpath
-        const dashboardSubpath = urlPathJoin(
+
+        const buildPath = createPathBuilder({
+          trailingSlash: config.trailingSlash,
+        })
+
+        const dashboardSubpath = buildPath(
           astrobookSubpath,
           resolvedOptions.dashboardSubpath,
         )
-        const previewSubpath = urlPathJoin(
+        const previewSubpath = buildPath(
           astrobookSubpath,
           resolvedOptions.previewSubpath,
         )
@@ -53,9 +58,9 @@ export function createAstrobookIntegration(
           )
         }
 
-        const astrobookBase = urlPathJoin(astroBase, astrobookSubpath)
-        const dashboardBase = urlPathJoin(astroBase, dashboardSubpath)
-        const storyBase = urlPathJoin(astroBase, previewSubpath)
+        const astrobookBase = buildPath(astroBase, astrobookSubpath)
+        const dashboardBase = buildPath(astroBase, dashboardSubpath)
+        const storyBase = buildPath(astroBase, previewSubpath)
 
         // If subpath is set, Astrobook is only part of the current Astro
         // project. In this case, we want to print the URL of the Astrobook
@@ -85,6 +90,7 @@ export function createAstrobookIntegration(
           logger,
           dashboardSubpath,
           previewSubpath,
+          buildPath,
         )
 
         logger.debug(`Writing files to ${codegenDir}`)
@@ -109,6 +115,7 @@ export function createAstrobookIntegration(
                   head: resolvedOptions.head,
                   css: resolvedOptions.css,
                   title: resolvedOptions.title,
+                  trailingSlash: config.trailingSlash,
                 },
                 config,
                 logger,

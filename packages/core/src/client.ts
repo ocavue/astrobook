@@ -1,6 +1,6 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 
-export { getPathWithBase } from './utils/base'
+export { createPathBuilder, type PathBuilder } from './utils/path-builder'
 
 export function isAstroStory(module: { default?: { component?: unknown } }) {
   try {

@@ -26,7 +26,16 @@
   "files": [
     "lib"
   ],
+  "peerDependencies": {
+    "astro": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "astro": "^5.12.7",
     "typescript": "^5.8.3"
   }
 }

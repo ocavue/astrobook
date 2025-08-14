@@ -1,11 +1,10 @@
 ---
 import '@astrobook/types'
 
-import { getPathWithBase } from '@astrobook/core/client'
 import groupBy from 'just-group-by'
 import config from 'virtual:astrobook/global-config.mjs'
 import modules from 'virtual:astrobook/story-modules.mjs'
-import { urlPathJoin } from '../../../core/src/utils/path'
+import { buildPath } from './build-path'
 
 interface Props {
   story?: string
@@ -33,7 +32,7 @@ const groupedModules = groupBy(modules, (module) => module.directory)
                 ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
                 'astrobook-focus-ring',
               ]}
-              href={urlPathJoin(config.dashboardBase, module.stories[0]?.id)}
+              href={buildPath(config.dashboardBase, module.stories[0]?.id)}
             >
               <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
               <span>{module.name}</span>
@@ -48,7 +47,7 @@ const groupedModules = groupBy(modules, (module) => module.directory)
                     ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
                     : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
                 ]}
-                href={urlPathJoin(config.dashboardBase, story.id)}
+                href={buildPath(config.dashboardBase, story.id)}
                 data-active={Astro.props.story === story.id ? '' : undefined}
               >
                 <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
