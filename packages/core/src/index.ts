@@ -1,3 +1,1 @@
-import { createAstrobookIntegration } from './astro-integration'
-
-export { createAstrobookIntegration }
+export { createAstrobookIntegration } from './astro-integration'

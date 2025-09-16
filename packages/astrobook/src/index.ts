@@ -1,3 +1,1 @@
-import { createAstrobookIntegration } from '@astrobook/core'
-
-export default createAstrobookIntegration
+export { createAstrobookIntegration as default } from '@astrobook/core'
