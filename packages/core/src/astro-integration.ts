@@ -72,14 +72,8 @@ export function createAstrobookIntegration(
         }
 
         logger.debug(`Creating dedicated folder`)
-        let codegenDir: string
-        if (createCodegenDir) {
-          codegenDir = fileURLToPath(createCodegenDir())
-        } else {
-          // Astro v4, where `createCodegenDir()` is not available
-          codegenDir = path.resolve('.astro', 'integrations', 'astrobook')
-          await fs.mkdir(codegenDir, { recursive: true })
-        }
+        const codegenDir: string = fileURLToPath(createCodegenDir())
+
         logger.debug(`Created dedicated folder at ${codegenDir}`)
 
         logger.debug(`Scanning for stories in ${rootDir}`)
