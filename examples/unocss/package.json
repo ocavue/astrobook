@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.1",
-    "@unocss/reset": "^66.4.2",
-    "astro": "^5.13.7",
+    "@unocss/reset": "^66.5.0",
+    "astro": "^5.14.1",
     "astrobook": "*",
     "preact": "^10.27.2",
-    "unocss": "^66.4.2"
+    "unocss": "^66.5.0"
   },
   "stackblitz": {
     "installDependencies": false,
