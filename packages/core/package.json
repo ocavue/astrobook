@@ -38,6 +38,7 @@
     "fdir": "^6.5.0",
     "picomatch": "^4.0.3",
     "slash": "^5.1.0",
+    "valibot": "^1.1.0",
     "yoctocolors": "^2.1.2"
   },
   "devDependencies": {

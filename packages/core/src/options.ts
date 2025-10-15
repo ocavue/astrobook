@@ -1,28 +1,31 @@
 import type { IntegrationOptions } from '@astrobook/types'
-import { z } from 'astro/zod'
+import * as v from 'valibot'
 
-const IntegrationOptionsSchema = z.object({
-  directory: z.string().optional().default('.'),
-  subpath: z.string().optional().default(''),
-  dashboardSubpath: z.string().optional().default('dashboard'),
-  previewSubpath: z.string().optional().default('stories'),
-  title: z.string().optional().default('Astrobook'),
-  css: z.array(z.string()).optional().default([]),
-  head: z.string().optional().default('astrobook/components/head.astro'),
-})
+const IntegrationOptionsSchema = v.optional(
+  v.object({
+    directory: v.optional(v.string(), '.'),
+    subpath: v.optional(v.string(), ''),
+    dashboardSubpath: v.optional(v.string(), 'dashboard'),
+    previewSubpath: v.optional(v.string(), 'stories'),
+    title: v.optional(v.string(), 'Astrobook'),
+    css: v.optional(v.array(v.string()), []),
+    head: v.optional(v.string(), 'astrobook/components/head.astro'),
+  }),
+  {},
+)
 
-export type ResolvedOptions = z.infer<typeof IntegrationOptionsSchema>
+export type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
 
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
-  const result = IntegrationOptionsSchema.safeParse(options)
+  const result = v.safeParse(
+    IntegrationOptionsSchema,
+    options satisfies v.InferInput<typeof IntegrationOptionsSchema>,
+  )
 
   if (!result.success) {
-    // TODO: use `z.prettifyError()` to provide a more readable error message once
-    // Astro supports zod v4.
-    throw new Error(`Invalid Astrobook options:\n${result.error}`, {
-      cause: result.error,
-    })
+    const errorMessage = v.summarize(result.issues)
+    throw new Error(`Invalid Astrobook options:\n${errorMessage}`)
   }
 
-  return result.data
+  return result.output
 }
