@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.9.1
+
+### Patch Changes
+
+- [`01c3dcc`](https://github.com/ocavue/astrobook/commit/01c3dcc2b1ef6e73275d7fc9dfc74c8efae2e1fb) Provide more detailed error messages for invalid options.
+
 ## 0.9.0
 
 ### Minor Changes
