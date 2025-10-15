@@ -95,7 +95,7 @@ export interface IntegrationOptions {
   css?: string[]
 
   /**
-   * The path to an Astro component to provide custom tags in the `<head>`. 
+   * The path to an Astro component to provide custom tags in the `<head>`.
    * It can be an `.astro` or `.html` file.
    *
    * @example
