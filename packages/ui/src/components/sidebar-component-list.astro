@@ -15,7 +15,7 @@ const groupedModules = groupBy(modules, (module) => module.directory)
 ---
 
 <div
-  class=":uno: flex flex-col gap-4 overflow-y-auto border-0 px-2 pb-8 pt-4"
+  class=":uno: flex flex-col gap-4 overflow-y-auto border-0 px-2 pt-4 pb-8"
   id="astrobook-sidebar-component-list"
 >
   {
@@ -41,7 +41,7 @@ const groupedModules = groupBy(modules, (module) => module.directory)
               <a
                 class:list={[
                   ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
-                  ':uno: py-1 pl-5 pr-2',
+                  ':uno: py-1 pr-2 pl-5',
                   'astrobook-focus-ring',
                   Astro.props.story === story.id
                     ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
