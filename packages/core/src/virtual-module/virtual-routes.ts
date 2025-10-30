@@ -83,13 +83,13 @@ export async function getVirtualRoutes(
 export function createVirtualRouteComponent(route: VirtualRoute): string {
   return `
 ---
-import StoryPage from 'astrobook/pages/story.astro'
-import WithDecorators from 'astrobook/components/with-decorators.astro'
-import { parseStoryDefaultExport, parseStoryNamedExport } from 'astrobook/client'
-import * as mod from '${route.storyModule.importPath}'
+import StoryPage from 'astrobook/pages/story.astro';
+import WithDecorators from 'astrobook/components/with-decorators.astro';
+import { parseStoryDefaultExport, parseStoryNamedExport } from 'astrobook/client';
+import * as mod from '${route.storyModule.importPath}';
 
-const { isAstroComponent } = parseStoryDefaultExport(mod, '${route.storyModule.importPath}')
-const { decorators, args } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}')
+const { isAstroComponent } = parseStoryDefaultExport(mod, '${route.storyModule.importPath}');
+const { decorators, args } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}');
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
