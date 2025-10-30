@@ -69,12 +69,11 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported.
+4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported. Every component story file consists of a required **default export** and one or more **named exports**.
 
    ```ts
    // src/components/Button.stories.ts
    import { Button, type ButtonProps } from './Button.tsx'
-   import { Container } from './Container.tsx'
 
    export default {
      component: Button,
