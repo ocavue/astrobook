@@ -1,0 +1,22 @@
+---
+interface Decorator {
+  component: any
+  props?: any
+}
+
+interface Props {
+  decorators?: Decorator[]
+}
+
+const decorators = (Astro.props.decorators || []).slice().reverse()
+---
+
+{
+  decorators.reduce(
+    (children, decorator) => {
+      const Decorator = decorator.component
+      return <Decorator {...decorator?.props}>{children}</Decorator>
+    },
+    <slot />
+  )
+}
