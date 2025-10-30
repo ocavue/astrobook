@@ -169,7 +169,7 @@ importers:
         specifier: ^10.27.2
         version: 10.27.2
       tailwindcss:
-        specifier: ^4.1.14
+        specifier: ^4.1.16
         version: 4.1.16
 
   examples/unocss:
