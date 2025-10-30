@@ -29,7 +29,9 @@ export function PreactCounter(props: PreactCounterProps) {
         <button onClick={add}>+</button>
       </div>
       <div class="counter-message">
-        <div>Below is the children defined in the PreactCounter.stories.tsx file</div>
+        <div>
+          Below is the children defined in the PreactCounter.stories.tsx file
+        </div>
         <div>{children}</div>
       </div>
     </>
