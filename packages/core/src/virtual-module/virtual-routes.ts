@@ -92,15 +92,14 @@ const isAstro = isAstroStory(storyModule)
 const story = storyModule['${route.story.name}']
 const decorators = story?.decorators
 const args = story?.args
-const StoryComponent = storyModule.default.component
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   <WithDecorators decorators={decorators}>
     {isAstro ? (
-      <StoryComponent {...args} />
+      <storyModule.default.component {...args} />
     ) : (
-      <StoryComponent {...args} client:load />
+      <storyModule.default.component {...args} client:load />
     )}
   </WithDecorators>
 </StoryPage>
