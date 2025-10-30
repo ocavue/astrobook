@@ -23,7 +23,9 @@ export function ReactCounter({ step = 1, children }: ReactCounterProps) {
         <button onClick={add}>+</button>
       </div>
       <div className="counter-message">
-        <div>Below is the children defined in the ReactCounter.stories.tsx file</div>
+        <div>
+          Below is the children defined in the ReactCounter.stories.tsx file
+        </div>
         <div>{children}</div>
       </div>
     </>
