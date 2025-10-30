@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.1.1",
+    "@astrojs/preact": "^4.1.2",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.14.1",
     "astrobook": "*",
