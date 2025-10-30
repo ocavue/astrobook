@@ -196,6 +196,36 @@ export interface GlobalConfig {
   trailingSlash: import('astro').AstroConfig['trailingSlash']
 }
 
+/**
+ * @internal
+ */
+export interface StoryDecorator {
+  /**
+   * The component to use as a decorator.
+   */
+  component: unknown
+
+  /**
+   * The props to pass to the decorator.
+   */
+  props?: object | null | undefined
+}
+
+/**
+ * @internal
+ */
+export interface StoryNamedExport {
+  /**
+   * The decorators to apply to the story.
+   */
+  decorators?: StoryDecorator[] | null | undefined
+
+  /**
+   * The arguments to pass to the story.
+   */
+  args?: object | null | undefined
+}
+
 declare global {
   interface Window {
     astrobook?: {
