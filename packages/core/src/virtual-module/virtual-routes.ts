@@ -86,7 +86,7 @@ export function createVirtualRouteComponent(route: VirtualRoute): string {
 import StoryPage from 'astrobook/pages/story.astro'
 import WithDecorators from 'astrobook/components/with-decorators.astro'
 import { parseStoryDefaultExport, parseStoryNamedExport } from 'astrobook/client'
-import * as module from '${route.storyModule.importPath}'
+import * as mod from '${route.storyModule.importPath}'
 
 const { isAstroComponent } = parseStoryDefaultExport(mod, '${route.storyModule.importPath}')
 const { decorators, args } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}')
