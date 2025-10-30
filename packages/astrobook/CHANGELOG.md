@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.10.0
+
+### Minor Changes
+
+- [`85870da`](https://github.com/ocavue/astrobook/commit/85870da71225bc5ee912e07ef7e72142f0a0b2ea) Validate the default export and named exports from a story module, and provide clear and helpful error messages.
+
 ## 0.9.1
 
 ### Patch Changes
