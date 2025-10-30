@@ -32,7 +32,7 @@ const hasSidebar = Astro.props.hasSidebar ?? true
   >
     {
       hasSidebar && (
-        <div class=":uno: flex w-64 min-w-64 max-w-64 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900">
+        <div class=":uno: flex w-64 max-w-64 min-w-64 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900">
           <Sidebar story={Astro.props.story} />
         </div>
       )
