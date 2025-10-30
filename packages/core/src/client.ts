@@ -3,17 +3,6 @@ import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 
 export { createPathBuilder, type PathBuilder } from './utils/path-builder'
 
-export function isAstroStory(module: { default?: { component?: unknown } }) {
-  try {
-    const component = module.default?.component
-    if (!component) return false
-
-    return isAstroComponentFactory(component)
-  } catch {
-    return false
-  }
-}
-
 // Copy from https://github.com/withastro/astro/blob/astro@5.0.0/packages/astro/src/runtime/server/render/astro/factory.ts#L15
 function isAstroComponentFactory(obj: unknown): obj is AstroComponentFactory {
   return obj == null
@@ -21,22 +10,15 @@ function isAstroComponentFactory(obj: unknown): obj is AstroComponentFactory {
     : (obj as Record<string, unknown>).isAstroComponentFactory === true
 }
 
-export function parseStoryNamedExport(
+/**
+ * @internal
+ */
+export function parseStoryDefaultExport(
   module: Record<string, unknown>,
   importPath: string,
-  storyName: string,
-): StoryNamedExport {
-  if (!module) {
-    throw new Error(
-      `[astrobook] Unexpected error: Unable to find story module: ${importPath}`,
-    )
-  }
-  if (typeof module !== 'object') {
-    throw new TypeError(
-      `[astrobook] Unexpected error: Story module should be an object, but got ${typeof module}: ${importPath}`,
-    )
-  }
-
+): {
+  isAstroComponent: boolean
+} {
   const defaultExport = 'default' in module ? module['default'] : undefined
   if (!defaultExport) {
     throw new TypeError(
@@ -57,6 +39,20 @@ export function parseStoryNamedExport(
     )
   }
 
+  // Whether the component is an Astro component or not (e.g. React, Vue, etc.)
+  const isAstroComponent: boolean = isAstroComponentFactory(component)
+
+  return { isAstroComponent }
+}
+
+/**
+ * @internal
+ */
+export function parseStoryNamedExport(
+  module: Record<string, unknown>,
+  importPath: string,
+  storyName: string,
+): StoryNamedExport {
   const storyObject: unknown =
     storyName in module ? module[storyName] : undefined
   if (!storyObject) {
