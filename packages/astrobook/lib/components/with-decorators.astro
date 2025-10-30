@@ -5,10 +5,10 @@ interface Decorator {
 }
 
 interface Props {
-  decorators?: Decorator[]
+  decorators?: Decorator[] | null | undefined
 }
 
-const decorators = (Astro.props.decorators || []).slice().reverse()
+const decorators: Decorator[] = (Astro.props.decorators || []).slice().reverse()
 ---
 
 {
