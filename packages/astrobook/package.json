@@ -84,8 +84,8 @@
     "@types/node": "^22.15.29",
     "astro": "^5.14.1",
     "typescript": "^5.9.2",
-    "vite": "^6.3.6",
-    "vitest": "^3.2.4"
+    "vite": "^6.4.1",
+    "vitest": "^4.0.5"
   },
   "publishConfig": {
     "exports": {

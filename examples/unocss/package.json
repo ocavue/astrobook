@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.1.1",
+    "@astrojs/preact": "^4.1.2",
     "@unocss/reset": "^66.5.0",
     "astro": "^5.14.1",
     "astrobook": "*",
