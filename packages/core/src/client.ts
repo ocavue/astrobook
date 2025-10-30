@@ -15,9 +15,7 @@ export function isAstroStory(module: { default?: { component?: unknown } }) {
 }
 
 // Copy from https://github.com/withastro/astro/blob/astro@5.0.0/packages/astro/src/runtime/server/render/astro/factory.ts#L15
-function isAstroComponentFactory(
-  obj: unknown,
-): obj is AstroComponentFactory {
+function isAstroComponentFactory(obj: unknown): obj is AstroComponentFactory {
   return obj == null
     ? false
     : (obj as Record<string, unknown>).isAstroComponentFactory === true
