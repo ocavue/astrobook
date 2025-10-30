@@ -11,10 +11,15 @@ export interface PreactCounterProps {
   children?: ComponentChildren
 }
 
-export function PreactCounter({ step = 1, children }: PreactCounterProps) {
+export function PreactCounter(props: PreactCounterProps) {
+  const { step = 1, children } = props
   const [count, setCount] = useState(0)
   const add = () => setCount((i) => i + step)
   const subtract = () => setCount((i) => i - step)
+
+  console.log('props', props)
+  console.log('step', step)
+  console.log('children', children)
 
   return (
     <>
@@ -23,7 +28,10 @@ export function PreactCounter({ step = 1, children }: PreactCounterProps) {
         <pre>{count}</pre>
         <button onClick={add}>+</button>
       </div>
-      <div class="counter-message">{children}</div>
+      <div class="counter-message">
+        <div>Below is the children defined in the PreactCounter.stories.tsx file</div>
+        <div>{children}</div>
+      </div>
     </>
   )
 }
