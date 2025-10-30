@@ -21,7 +21,7 @@ function isAstroComponentFactory(obj: unknown): obj is AstroComponentFactory {
     : (obj as Record<string, unknown>).isAstroComponentFactory === true
 }
 
-export function validateStoryNamedExport(
+export function parseStoryNamedExport(
   module: Record<string, unknown>,
   importPath: string,
   storyName: string,
