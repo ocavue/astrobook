@@ -1,5 +1,5 @@
 ---
-import '@astrobook/types'
+import type { StoryModule } from '@astrobook/types'
 
 import groupBy from 'just-group-by'
 import config from 'virtual:astrobook/global-config.mjs'
@@ -12,6 +12,10 @@ interface Props {
 
 // Group modules by directory
 const groupedModules = groupBy(modules, (module) => module.directory)
+
+// Check if story module has just one story that should be hoisted
+const isSingleStory = (module: StoryModule) =>
+  module.stories.length === 1 && module.stories[0].name === module.name
 ---
 
 <div
@@ -26,22 +30,26 @@ const groupedModules = groupBy(modules, (module) => module.directory)
         </div>
         {directoryModules.map((module) => (
           <Fragment>
-            <a
-              class:list={[
-                ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
-                ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
-                'astrobook-focus-ring',
-              ]}
-              href={buildPath(config.dashboardBase, module.stories[0]?.id)}
-            >
-              <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
-              <span>{module.name}</span>
-            </a>
+            {!isSingleStory(module) && (
+              <a
+                class:list={[
+                  ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
+                  ':uno: px-2 py-1 text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
+                  'astrobook-focus-ring',
+                ]}
+                href={buildPath(config.dashboardBase, module.stories[0]?.id)}
+              >
+                <span class=":uno: i-lucide-box inline-block size-4 text-gray-400 dark:text-gray-500" />
+                <span>{module.name}</span>
+              </a>
+            )}
             {module.stories.map((story) => (
               <a
                 class:list={[
                   ':uno: flex items-center gap-2 rounded text-sm no-underline transition',
-                  ':uno: py-1 pr-2 pl-5',
+                  isSingleStory(module)
+                    ? ':uno: px-2 py-1'
+                    : ':uno: py-1 pr-2 pl-5',
                   'astrobook-focus-ring',
                   Astro.props.story === story.id
                     ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
@@ -50,7 +58,14 @@ const groupedModules = groupBy(modules, (module) => module.directory)
                 href={buildPath(config.dashboardBase, story.id)}
                 data-active={Astro.props.story === story.id ? '' : undefined}
               >
-                <span class=":uno: i-lucide-diamond inline-block size-4 text-gray-400 dark:text-gray-500" />
+                <span
+                  class:list={[
+                    isSingleStory(module)
+                      ? ':uno: i-lucide-box'
+                      : ':uno: i-lucide-diamond',
+                    ':uno: inline-block size-4 text-gray-400 dark:text-gray-500',
+                  ]}
+                />
                 <span>{story.name}</span>
               </a>
             ))}
