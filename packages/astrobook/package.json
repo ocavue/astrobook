@@ -83,9 +83,9 @@
   "devDependencies": {
     "@types/node": "^22.15.29",
     "astro": "^5.14.1",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "vite": "^6.4.1",
-    "vitest": "^4.0.5"
+    "vitest": "^4.0.6"
   },
   "publishConfig": {
     "exports": {
