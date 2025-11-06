@@ -10,16 +10,16 @@ test('Hoist sidebar', async ({ page }) => {
   const hoistNavGroup = page.locator('nav > div > div:has( div:text("hoist") )')
 
   const linkTexts = await hoistNavGroup.locator('a').allTextContents()
-  const trimmedLinkTexts = linkTexts.map(text => text.trim())
+  const trimmedLinkTexts = linkTexts.map((text) => text.trim())
 
   expect(trimmedLinkTexts).toEqual([
-    "Hoist",
+    'Hoist',
 
-    "NoHoistDifferentName",
-    "Default",
+    'NoHoistDifferentName',
+    'Default',
 
-    "NoHoistMultiple",
-    "Default",
-    "NoHoistMultiple"
+    'NoHoistMultiple',
+    'Default',
+    'NoHoistMultiple',
   ])
 })
