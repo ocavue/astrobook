@@ -1,6 +1,6 @@
 ---
-'astrobook': patch
-'@astrobook/ui': patch
+'astrobook': minor
+'@astrobook/ui': minor
 ---
 
 Add single-story hoisting.
