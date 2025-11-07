@@ -32,7 +32,7 @@ export function createAstrobookIntegration(
         logger,
         command,
       }) => {
-        const rootDir = path.resolve(resolvedOptions.directory)
+				const rootDir = path.resolve(config.root.pathname, resolvedOptions.directory);
 
         const astroBase = config.base || ''
 
@@ -120,12 +120,9 @@ export function createAstrobookIntegration(
 
         logger.debug(`Injecting routes`)
         for (const route of routes.values()) {
-          const entrypoint = path.normalize(
-            path.relative('.', route.entrypoint),
-          )
           injectRoute({
             pattern: route.pattern,
-            entrypoint,
+            entrypoint: route.entrypoint,
             prerender: true,
           })
         }
