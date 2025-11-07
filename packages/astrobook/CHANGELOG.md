@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.10.1
+
+### Patch Changes
+
+- [`aa51e71`](https://github.com/ocavue/astrobook/commit/aa51e71a0aa00e392f871663d5521839b41e68bd) Add single-story hoisting.
+
 ## 0.10.0
 
 ### Minor Changes
