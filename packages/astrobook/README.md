@@ -144,6 +144,28 @@ export const PrimaryButton = {
 
 This will render the button, wrapped in a red border, which is then wrapped in a green border.
 
+### Single-story hoisting
+
+Stories named the same as their module will get automatically hoisted up to replace their parent component in the UI, if they're the only story exported from their module.
+
+This helps avoid redundant nesting in the sidebar (e.g. `Button/Button`):
+
+```ts
+// Button.stories.ts
+
+import { Button as ButtonComponent } from './Button.tsx'
+
+export default {
+  component: ButtonComponent,
+}
+
+// Single named export.
+// Export name matches module name (Button.stories.ts)
+export const Button = {}
+```
+
+This story will not get nested to `Button/Button` in the UI, but simply `Button`.
+
 ## Options
 
 ### `directory`
