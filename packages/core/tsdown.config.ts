@@ -8,6 +8,7 @@ const config: unknown = defineConfig({
   format: ['esm'],
   clean: true,
   dts: true,
+  fixedExtension: false,
   external: [/^virtual:/],
 })
 
