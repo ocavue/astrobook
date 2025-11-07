@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.11.1
+
+### Patch Changes
+
+- [`961f07b`](https://github.com/ocavue/astrobook/commit/961f07bc3f79fc564d6410d387f5ce70d3839686) Support `astro --root` CLI commands if `astro` is run in a directory other than the project root directory.
+
 ## 0.11.0
 
 ### Minor Changes
