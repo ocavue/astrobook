@@ -3,3 +3,4 @@ packages:
   - examples/*
   - packages/*
 linkWorkspacePackages: 'deep'
+ignoreWorkspaceRootCheck: true
