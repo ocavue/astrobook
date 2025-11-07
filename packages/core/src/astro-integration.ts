@@ -33,7 +33,7 @@ export function createAstrobookIntegration(
         command,
       }) => {
         const rootDir = path.resolve(
-          config.root.pathname,
+          fileURLToPath(config.root),
           resolvedOptions.directory,
         )
 
