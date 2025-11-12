@@ -115,7 +115,7 @@ export interface IntegrationOptions {
   head?: string
 
   /**
-   * The path to an Astro component to render on dashboard homepage.  
+   * The path to an Astro component to render on dashboard homepage.
    * @default astrobook/components/home.astro
    */
   home?: string
@@ -189,7 +189,7 @@ export interface GlobalConfig {
   head: string
 
   /**
-   * The path to an Astro component to render on dashboard homepage.  
+   * The path to an Astro component to render on dashboard homepage.
    * @default astrobook/components/home.astro
    */
   home: string

@@ -18,4 +18,4 @@ declare module 'virtual:astrobook/components/home.mjs' {
   export default Home
 }
 
-declare module 'virtual:astrobook/user-css.mjs' { }
+declare module 'virtual:astrobook/user-css.mjs' {}

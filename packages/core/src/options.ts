@@ -10,7 +10,7 @@ const IntegrationOptionsSchema = v.optional(
     title: v.optional(v.string(), 'Astrobook'),
     css: v.optional(v.array(v.string()), []),
     head: v.optional(v.string(), 'astrobook/components/head.astro'),
-    home: v.optional(v.string(), 'astrobook/components/home.astro')
+    home: v.optional(v.string(), 'astrobook/components/home.astro'),
   }),
   {},
 )
