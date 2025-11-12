@@ -12,6 +12,7 @@ describe('resolveOptions', () => {
       title: 'Astrobook',
       css: [],
       head: 'astrobook/components/head.astro',
+      home: 'astrobook/components/home.astro',
     })
   })
 
@@ -21,6 +22,7 @@ describe('resolveOptions', () => {
         directory: './components',
         title: 'My Library',
         css: ['./styles/main.css'],
+        home: './MyCustomHome.astro',
       }),
     ).toEqual({
       directory: './components',
@@ -30,6 +32,7 @@ describe('resolveOptions', () => {
       title: 'My Library',
       css: ['./styles/main.css'],
       head: 'astrobook/components/head.astro',
+      home: './MyCustomHome.astro',
     })
   })
 

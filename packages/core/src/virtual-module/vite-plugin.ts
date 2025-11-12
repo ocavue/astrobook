@@ -9,6 +9,8 @@ import { loadStoryModules } from './story-modules'
 import {
   COMPONENT_HEAD_ID,
   COMPONENT_HEAD_RESOLVED_ID,
+  COMPONENT_HOME_ID,
+  COMPONENT_HOME_RESOLVED_ID,
   STORY_MODULES_ID,
   STORY_MODULES_RESOLVED_ID,
   GLOBAL_CONFIG_ID,
@@ -91,6 +93,8 @@ export function createVirtualFilesPlugin(
           return GLOBAL_CONFIG_RESOLVED_ID
         case COMPONENT_HEAD_ID:
           return COMPONENT_HEAD_RESOLVED_ID
+        case COMPONENT_HOME_ID:
+          return COMPONENT_HOME_RESOLVED_ID
         case USER_CSS_ID:
           return USER_CSS_RESOLVED_ID
       }
@@ -103,6 +107,8 @@ export function createVirtualFilesPlugin(
           return `const config = ${JSON.stringify(config)}; export default config;`
         case COMPONENT_HEAD_RESOLVED_ID:
           return `export { default } from ${resolveId(config.head)};`
+        case COMPONENT_HOME_RESOLVED_ID:
+          return `export { default } from ${resolveId(config.home)};`
         case USER_CSS_RESOLVED_ID:
           return config.css.map((id) => `import ${resolveId(id)};`).join('')
       }
