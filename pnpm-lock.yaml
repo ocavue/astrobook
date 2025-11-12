@@ -69,6 +69,15 @@ importers:
         specifier: workspace:*
         version: link:../../packages/astrobook
 
+  examples/custom-home:
+    dependencies:
+      astro:
+        specifier: ^5.14.1
+        version: 5.14.1(@types/node@22.15.29)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.41.0)(tsx@4.20.6)(typescript@5.9.3)
+      astrobook:
+        specifier: workspace:*
+        version: link:../../packages/astrobook
+
   examples/mixed:
     dependencies:
       '@astrojs/preact':
