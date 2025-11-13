@@ -113,6 +113,12 @@ export interface IntegrationOptions {
    * ```
    */
   head?: string
+
+  /**
+   * The path to an Astro component to render on dashboard homepage.
+   * @default astrobook/components/home.astro
+   */
+  home?: string
 }
 
 export interface StoryModule {
@@ -181,6 +187,12 @@ export interface GlobalConfig {
    * The path to an Astro component to provide custom tags in the `<head>`.
    */
   head: string
+
+  /**
+   * The path to an Astro component to render on dashboard homepage.
+   * @default astrobook/components/home.astro
+   */
+  home: string
 
   /**
    * Array of CSS file paths to import for customizing the look and feel

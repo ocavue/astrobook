@@ -13,4 +13,9 @@ declare module 'virtual:astrobook/components/head.mjs' {
   export default Head
 }
 
+declare module 'virtual:astrobook/components/home.mjs' {
+  const Home: (props: unknown) => unknown
+  export default Home
+}
+
 declare module 'virtual:astrobook/user-css.mjs' {}
