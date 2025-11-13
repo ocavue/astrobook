@@ -82,10 +82,10 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
-    "astro": "^5.14.1",
+    "astro": "^5.15.6",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
-    "vitest": "^4.0.7"
+    "vitest": "^4.0.8"
   },
   "publishConfig": {
     "exports": {

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.22.0",
   "description": "Astrobook monorepo",
   "license": "MIT",
   "scripts": {
@@ -36,10 +36,10 @@
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "turbo": "^2.6.0",
+    "turbo": "^2.6.1",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
-    "vitest": "^4.0.7"
+    "vitest": "^4.0.8"
   },
   "renovate": {
     "extends": [
