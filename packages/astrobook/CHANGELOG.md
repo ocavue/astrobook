@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.11.2
+
+### Patch Changes
+
+- [`b73d724`](https://github.com/ocavue/astrobook/commit/b73d724fd818655745e78dcefd071b46768cbe5e) Add a new `home` option to override the default home page.
+
 ## 0.11.1
 
 ### Patch Changes
