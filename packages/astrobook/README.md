@@ -69,12 +69,11 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported.
+4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported. Every component story file consists of a required **default export** and one or more **named exports**.
 
    ```ts
    // src/components/Button.stories.ts
    import { Button, type ButtonProps } from './Button.tsx'
-   import { Container } from './Container.tsx'
 
    export default {
      component: Button,
@@ -144,6 +143,28 @@ export const PrimaryButton = {
 ```
 
 This will render the button, wrapped in a red border, which is then wrapped in a green border.
+
+### Single-story hoisting
+
+Stories named the same as their module will get automatically hoisted up to replace their parent component in the UI, if they're the only story exported from their module.
+
+This helps avoid redundant nesting in the sidebar (e.g. `Button/Button`):
+
+```ts
+// Button.stories.ts
+
+import { Button as ButtonComponent } from './Button.tsx'
+
+export default {
+  component: ButtonComponent,
+}
+
+// Single named export.
+// Export name matches module name (Button.stories.ts)
+export const Button = {}
+```
+
+This story will not get nested to `Button/Button` in the UI, but simply `Button`.
 
 ## Options
 

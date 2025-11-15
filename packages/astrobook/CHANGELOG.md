@@ -1,5 +1,29 @@
 # astrobook
 
+## 0.11.2
+
+### Patch Changes
+
+- [`b73d724`](https://github.com/ocavue/astrobook/commit/b73d724fd818655745e78dcefd071b46768cbe5e) Add a new `home` option to override the default home page.
+
+## 0.11.1
+
+### Patch Changes
+
+- [`961f07b`](https://github.com/ocavue/astrobook/commit/961f07bc3f79fc564d6410d387f5ce70d3839686) Support `astro --root` CLI commands if `astro` is run in a directory other than the project root directory.
+
+## 0.11.0
+
+### Minor Changes
+
+- [`aa51e71`](https://github.com/ocavue/astrobook/commit/aa51e71a0aa00e392f871663d5521839b41e68bd) Add single-story hoisting.
+
+## 0.10.0
+
+### Minor Changes
+
+- [`85870da`](https://github.com/ocavue/astrobook/commit/85870da71225bc5ee912e07ef7e72142f0a0b2ea) Validate the default export and named exports from a story module, and provide clear and helpful error messages.
+
 ## 0.9.1
 
 ### Patch Changes
