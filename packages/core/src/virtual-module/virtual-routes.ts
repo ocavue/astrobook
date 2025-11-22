@@ -92,7 +92,7 @@ import { parseStoryDefaultExport, parseStoryNamedExport } from 'astrobook/client
 import * as mod from '${route.storyModule.importPath}';
 
 const { isAstroComponent } = parseStoryDefaultExport(mod, '${route.storyModule.importPath}');
-const { decorators, args } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}');
+const { decorators, args, slots } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}');
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
