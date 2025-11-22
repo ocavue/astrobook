@@ -98,9 +98,13 @@ const { decorators, args, slots } = parseStoryNamedExport(mod, '${route.storyMod
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   <WithDecorators decorators={decorators}>
     {isAstroComponent ? (
-      <mod.default.component {...args}><slot /></mod.default.component>
+      <mod.default.component {...args}>
+        {slots?.default && (typeof slots.default === 'function' ? <slots.default /> : <Fragment set:html={slots.default} />)}
+      </mod.default.component>
     ) : (
-      <mod.default.component {...args} client:load><slot /></mod.default.component>
+      <mod.default.component {...args} client:load>
+        {args?.children || slots?.default}
+      </mod.default.component>
     )}
   </WithDecorators>
 </StoryPage>
