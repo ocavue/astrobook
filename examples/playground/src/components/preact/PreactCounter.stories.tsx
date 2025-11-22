@@ -11,6 +11,6 @@ export const Default = {
 export const LargeStep = {
   args: {
     step: 100,
-    children: 'I expect this to be rendered on the screen',
+    children: 'Counter',
   } satisfies PreactCounterProps,
 }
