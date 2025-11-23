@@ -102,9 +102,12 @@ For Astro components, only the default slot is rendered. Named slots are not cur
 ---
 // MyComponent.astro
 ---
+
 <div>
-  <slot name="header" /> <!-- Current can't be passed/rendered -->
-  <slot /> <!-- Only the default slot is rendered -->
+  <slot name="header" />
+  <!-- Current can't be passed/rendered -->
+  <slot />
+  <!-- Only the default slot is rendered -->
 </div>
 ```
 
