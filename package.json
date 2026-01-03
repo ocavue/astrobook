@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.27.0",
   "description": "Astrobook monorepo",
   "license": "MIT",
   "scripts": {
@@ -27,28 +27,28 @@
     "@changesets/cli": "^2.29.7",
     "@changesets/types": "^6.1.0",
     "@manypkg/cli": "^0.25.1",
-    "@ocavue/eslint-config": "^3.6.1",
+    "@ocavue/eslint-config": "^3.8.3",
     "@playwright/test": "^1.56.1",
     "@types/node": "^22.15.29",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "pkg-pr-new": "^0.0.60",
     "playwright": "^1.56.1",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1",
-    "turbo": "^2.6.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "turbo": "^2.7.2",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
     "vitest": "^4.0.8"
-  },
-  "renovate": {
-    "extends": [
-      "github>ocavue/config-renovate"
-    ]
   },
   "pnpm": {
     "overrides": {
       "astrobook@*": "workspace:*"
     }
+  },
+  "renovate": {
+    "extends": [
+      "github>ocavue/config-renovate"
+    ]
   }
 }
