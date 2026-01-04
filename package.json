@@ -24,22 +24,22 @@
     "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --template ./examples/playground --pnpm"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.7",
+    "@changesets/cli": "^2.29.8",
     "@changesets/types": "^6.1.0",
     "@manypkg/cli": "^0.25.1",
     "@ocavue/eslint-config": "^3.8.3",
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.57.0",
     "@types/node": "^22.15.29",
     "eslint": "^9.39.2",
-    "pkg-pr-new": "^0.0.60",
-    "playwright": "^1.56.1",
+    "pkg-pr-new": "^0.0.62",
+    "playwright": "^1.57.0",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "turbo": "^2.7.2",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.16"
   },
   "pnpm": {
     "overrides": {
