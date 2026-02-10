@@ -50,8 +50,8 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
    ```js
    // astro.config.mjs
-   import { defineConfig } from 'astro/config'
    import react from '@astrojs/react'
+   import { defineConfig } from 'astro/config'
    import astrobook from 'astrobook'
 
    // https://astro.build/config
@@ -125,9 +125,9 @@ In your stories, you can use the decorators like this:
 
 ```tsx
 // Button.stories.tsx
+import RedBorderDecorator from './AstroRedBorderDecorator.astro'
 import { Button, type ButtonProps } from './Button.tsx'
 import { GreenBorderDecorator } from './ReactGreenBorderDecorator.tsx'
-import RedBorderDecorator from './AstroRedBorderDecorator.astro'
 
 export default {
   component: Button,

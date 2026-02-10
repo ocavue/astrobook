@@ -45,7 +45,7 @@ export function createVirtualFilesPlugin(
   let watcherInitialized = false
 
   async function getStoryModules(): Promise<string> {
-    let newStoryModules = await loadStoryModules(rootDir)
+    const newStoryModules = await loadStoryModules(rootDir)
     if (storyModules && newStoryModules !== storyModules) {
       needToReload = true
     }

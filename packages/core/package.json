@@ -41,6 +41,14 @@
     "valibot": "^1.2.0",
     "yoctocolors": "^2.1.2"
   },
+  "peerDependencies": {
+    "astro": "*"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@types/picomatch": "^4.0.2",
@@ -48,7 +56,7 @@
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.6",
     "just-kebab-case": "^4.2.0",
-    "tsdown": "^0.18.4",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
     "vitest": "^4.0.16"
