@@ -10,7 +10,7 @@ const config: unknown = defineConfig({
   dts: true,
   fixedExtension: false,
   external: [/^virtual:/],
-  inlineOnly: ['just-kebab-case']
+  inlineOnly: ['just-kebab-case'],
 })
 
 export default config

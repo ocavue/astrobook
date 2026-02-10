@@ -1,1 +1,4 @@
-export { createAstrobookIntegration, type IntegrationOptions } from './astro-integration'
+export {
+  createAstrobookIntegration,
+  type IntegrationOptions,
+} from './astro-integration'
