@@ -64,9 +64,9 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
    ```json
    "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+     "dev": "astro dev",
+     "build": "astro build",
+     "preview": "astro preview"
    }
    ```
 
