@@ -41,6 +41,14 @@
     "valibot": "^1.2.0",
     "yoctocolors": "^2.1.2"
   },
+  "peerDependencies": {
+    "astro": "*"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@types/picomatch": "^4.0.2",

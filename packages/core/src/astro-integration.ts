@@ -14,6 +14,8 @@ import {
 } from './virtual-module/virtual-routes'
 import { createVirtualFilesPlugin } from './virtual-module/vite-plugin'
 
+export type { IntegrationOptions }
+
 export function createAstrobookIntegration(
   userOptions?: IntegrationOptions,
 ): AstroIntegration {
