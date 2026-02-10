@@ -60,12 +60,12 @@
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.15.29",
     "@unocss/cli": "^66.5.12",
-    "astro": "^5.16.6",
+    "astro": "^6.0.0-beta.1",
     "prettier": "^3.7.4",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "unocss": "^66.5.12",
-    "vite": "^6.4.1",
+    "vite": "^7.0.0",
     "vitest": "^4.0.16"
   }
 }

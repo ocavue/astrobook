@@ -42,7 +42,7 @@
     "yoctocolors": "^2.1.2"
   },
   "peerDependencies": {
-    "astro": "*"
+    "astro": ">=5.0.0"
   },
   "peerDependenciesMeta": {
     "astro": {
@@ -54,11 +54,11 @@
     "@types/picomatch": "^4.0.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.6",
+    "astro": "^6.0.0-beta.1",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
-    "vite": "^6.4.1",
+    "vite": "^7.0.0",
     "vitest": "^4.0.16"
   },
   "publishConfig": {
