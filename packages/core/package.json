@@ -42,7 +42,7 @@
     "yoctocolors": "^2.1.2"
   },
   "peerDependencies": {
-    "astro": "*"
+    "astro": ">=5.0.0"
   },
   "peerDependenciesMeta": {
     "astro": {
