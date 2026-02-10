@@ -38,7 +38,7 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 ## Quick start
 
 > [!NOTE]
-> Astrobook supports various frameworks. We use React as an example here. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
+> Astrobook supports various frameworks. We use **React** as an example here but you can also use other frameworks like **Vue**, **Preact**, **Svelte**, **Solid**, **Lit**, etc. Check the [Astro docs](https://docs.astro.build/en/guides/integrations-guide/#official-integrations) for other integrations.
 
 1. Install the packages
 
@@ -65,11 +65,23 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    ```json
    "scripts": {
      "dev": "astro dev",
-     "build": "astro build"
+     "build": "astro build",
+     "preview": "astro preview"
    }
    ```
 
-4. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported. Every component story file consists of a required **default export** and one or more **named exports**.
+   Please refer to the [Astro docs](https://docs.astro.build/en/reference/cli-reference/) for more information on these commands.
+
+4. Update your `.gitignore` file to exclude the build output.
+
+   ```gitignore
+   # build output
+   dist/
+   # generated types
+   .astro/
+   ```
+
+5. Write stories. Astrobook scans all `.stories.{ts,tsx,js,jsx,mts,mjs}` files. It's compatible with a limited subset of Storybook's [Component Story Format v3](https://storybook.js.org/docs/api/csf). In particular, `args` and `decorators` properties are supported. Every component story file consists of a required **default export** and one or more **named exports**.
 
    ```ts
    // src/components/Button.stories.ts
@@ -88,7 +100,7 @@ Astrobook is a UI component playground that supports multiple frameworks includi
    }
    ```
 
-5. Run `npm run dev` and open `http://localhost:4321` to see your stories.
+6. Run `npm run dev` and open `http://localhost:4321` to see your stories.
 
 ### Decorators
 
