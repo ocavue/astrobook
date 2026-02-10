@@ -52,14 +52,14 @@
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@types/picomatch": "^4.0.2",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.0.0-beta.1",
+    "astro": "^6.0.0-beta.9",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
-    "vite": "^7.0.0",
-    "vitest": "^4.0.16"
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
   },
   "publishConfig": {
     "exports": {
