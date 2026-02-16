@@ -11,5 +11,6 @@ export const Default = {
 export const LargeStep = {
   args: {
     step: 5,
+    children: 'Counter',
   } satisfies SolidCounterProps,
 }

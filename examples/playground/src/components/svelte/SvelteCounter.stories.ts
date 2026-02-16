@@ -16,4 +16,7 @@ export const LargeStep = {
   args: {
     step: 5,
   } satisfies SvelteCounterProps,
+  slots: {
+    default: 'Counter',
+  },
 }

@@ -82,5 +82,12 @@ export function parseStoryNamedExport(
     )
   }
 
-  return { decorators, args }
+  const slots = 'slots' in storyObject ? storyObject.slots : undefined
+  if (slots != null && typeof slots !== 'object') {
+    throw new TypeError(
+      `[astrobook] The 'slots' property of the named export '${storyName}' from '${importPath}' should be an object or undefined, but got ${typeof slots}`,
+    )
+  }
+
+  return { decorators, args, slots }
 }

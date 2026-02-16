@@ -92,15 +92,19 @@ import { parseStoryDefaultExport, parseStoryNamedExport } from 'astrobook/client
 import * as mod from '${route.storyModule.importPath}';
 
 const { isAstroComponent } = parseStoryDefaultExport(mod, '${route.storyModule.importPath}');
-const { decorators, args } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}');
+const { decorators, args, slots } = parseStoryNamedExport(mod, '${route.storyModule.importPath}', '${route.story.name}');
 ---
 
 <StoryPage story={'${route.props.story}'} hasSidebar={${route.props.hasSidebar}}>
   <WithDecorators decorators={decorators}>
     {isAstroComponent ? (
-      <mod.default.component {...args} />
+      <mod.default.component {...args}>
+        {slots?.default && (typeof slots.default === 'function' ? <slots.default /> : <Fragment set:html={slots.default} />)}
+      </mod.default.component>
     ) : (
-      <mod.default.component {...args} client:load />
+      <mod.default.component {...args} client:load>
+        {args?.children || slots?.default}
+      </mod.default.component>
     )}
   </WithDecorators>
 </StoryPage>

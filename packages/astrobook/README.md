@@ -102,6 +102,50 @@ Astrobook is a UI component playground that supports multiple frameworks includi
 
 6. Run `npm run dev` and open `http://localhost:4321` to see your stories.
 
+### Slots
+
+Astrobook supports defining slots for your components, allowing you to pass content into specific areas of a component. However, there are some framework-specific limitations and patterns to be aware of.
+
+#### Astro Components
+
+For Astro components, only the default slot is rendered. Named slots are not currently supported.
+
+```astro
+---
+// MyComponent.astro
+---
+
+<div>
+  <slot name="header" />
+  <!-- Current can't be passed/rendered -->
+  <slot />
+  <!-- Only the default slot is rendered -->
+</div>
+```
+
+#### Framework Components
+
+For React, Vue, Preact, Svelte, Solid, and Lit components, slots can only accept primitive values or HTML strings. Slots are passed in a separate slots object on the Story or using the `children` argument.
+
+```ts
+// Button.stories.ts
+import { Button } from './Button.tsx'
+
+export default {
+  component: Button,
+}
+
+export const WithSlot = {
+  args: {
+    variant: 'primary',
+    children: '<span>Click me!</span>', // Either as children argument
+  },
+  slots: {
+    default: '<span>Click me!</span>', // Or as separate slot
+  },
+}
+```
+
 ### Decorators
 
 Decorators are objects that have a property for the component and the props that will be passed to it on render. This component must have a _slot_ for children to be rendered. Currently, decorators only support styling changes and are not able to change a component's context or any client-side behaviors. Any decorators are rendered into HTML by Astro and sent to the client.
