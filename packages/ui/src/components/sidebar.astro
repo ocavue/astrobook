@@ -1,7 +1,7 @@
 ---
 import SidebarButtonFullscreen from './sidebar-button-fullscreen.astro'
 import SidebarButtonTheme from './sidebar-button-theme.astro'
-import SidebarComponentList from './sidebar-component-list.astro'
+import SidebarTree from './sidebar-tree.astro'
 import SidebarTitle from './sidebar-title.astro'
 
 interface Props {
@@ -18,5 +18,5 @@ interface Props {
     <SidebarButtonFullscreen story={Astro.props.story} />
     <SidebarButtonTheme />
   </div>
-  <SidebarComponentList story={Astro.props.story} />
+  <SidebarTree story={Astro.props.story} />
 </nav>
