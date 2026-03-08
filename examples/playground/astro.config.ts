@@ -14,8 +14,8 @@ export default defineConfig({
 
   // Enable many frameworks to support all different kinds of components.
   integrations: [
-    react({ include: ['**/react/*'] }),
-    preact({ include: ['**/preact/*'] }),
+    react({ include: ['**/react/*',   "**/decorators.stories.ts"] }),
+    preact({ include: ['**/preact/*', ] }),
     solid({ include: ['**/solid/*'] }),
     svelte(),
     vue(),
