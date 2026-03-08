@@ -39,7 +39,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsx copy.ts src temp && unocss --write-transformed && prettier -w temp/style.css && tsx copy.ts temp dist"
+    "build": "tsx copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && tsx copy.ts temp dist"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
@@ -59,12 +59,12 @@
     "@iconify-json/lucide": "^1.2.89",
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.15.29",
-    "@unocss/cli": "^66.6.0",
+    "@unocss/cli": "^66.6.6",
     "astro": "^6.0.0-beta.20",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "unocss": "^66.6.0",
+    "unocss": "^66.6.6",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
   }
