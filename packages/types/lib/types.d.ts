@@ -236,6 +236,11 @@ export interface StoryNamedExport {
    * The arguments to pass to the story.
    */
   args?: object | null | undefined
+
+  /**
+   * The slots to pass to the story.
+   */
+  slots?: object | null | undefined
 }
 
 declare global {
