@@ -17,7 +17,7 @@
     "@unocss/reset": "^66.6.6",
     "astro": "^6.0.0-beta.20",
     "astrobook": "*",
-    "preact": "^10.28.3",
+    "preact": "^10.28.4",
     "unocss": "^66.6.6"
   },
   "stackblitz": {
