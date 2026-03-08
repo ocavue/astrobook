@@ -15,7 +15,7 @@
     "@astrojs/preact": "^5.0.0-beta.5",
     "astro": "^6.0.0-beta.20",
     "astrobook": "*",
-    "preact": "^10.28.3"
+    "preact": "^10.28.4"
   },
   "stackblitz": {
     "installDependencies": false,
