@@ -16,14 +16,12 @@
     "@unocss/reset": "^66.6.6",
     "astro": "^6.0.0-beta.20",
     "astrobook": "*",
+    "@unocss/astro": "^66.6.6",
     "preact": "^10.28.3",
     "unocss": "^66.6.6"
   },
   "stackblitz": {
     "installDependencies": false,
     "startCommand": "pnpm install && pnpm run dev"
-  },
-  "devDependencies": {
-    "@unocss/astro": "^66.6.6"
   }
 }
