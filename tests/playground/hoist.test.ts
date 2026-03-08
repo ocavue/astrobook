@@ -7,9 +7,12 @@ const url = EXAMPLE_URLS['example-playground']
 test('Hoist sidebar', async ({ page }) => {
   await page.goto(url)
 
-  const hoistNavGroup = page.locator('nav > div > div:has( div:text("hoist") )')
+  const hoistDir = page.locator('details[data-id="dir:hoist"]')
 
-  const linkTexts = await hoistNavGroup.locator('a').allTextContents()
+  const contents = hoistDir.locator(':scope > div')
+  const linkTexts = await contents
+    .locator('a, details[data-astrobook-collapsible] > summary')
+    .allTextContents()
   const trimmedLinkTexts = linkTexts.map((text) => text.trim())
 
   expect(trimmedLinkTexts).toEqual([

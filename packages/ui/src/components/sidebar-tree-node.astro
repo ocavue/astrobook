@@ -1,0 +1,115 @@
+---
+import type { TreeNode } from './build-tree'
+import config from 'virtual:astrobook/global-config.mjs'
+import { buildPath } from './build-path'
+
+interface Props {
+  node: TreeNode
+  story?: string
+}
+
+const { node, story } = Astro.props
+---
+
+{
+  node.type === 'directory' && (
+    <details open data-astrobook-collapsible data-id={`dir:${node.name}`}>
+      <summary
+        class:list={[
+          ':uno: flex cursor-pointer list-none items-center gap-2 rounded px-2 py-1 text-sm transition',
+          ':uno: text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300',
+          'astrobook-focus-ring',
+        ]}
+      >
+        <span
+          data-astrobook-chevron
+          class=":uno: i-fluent-chevron-down-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500"
+        />
+        <span>{node.name}</span>
+      </summary>
+      <div class=":uno: flex flex-col gap-0.5 pl-3">
+        {node.children.map((child) => (
+          <Astro.self node={child} story={story} />
+        ))}
+      </div>
+    </details>
+  )
+}
+
+{
+  node.type === 'module' && (
+    <details
+      open
+      data-astrobook-collapsible
+      data-id={`module:${node.module.id}`}
+    >
+      <summary
+        class:list={[
+          ':uno: flex cursor-pointer list-none items-center gap-2 rounded px-2 py-1 text-sm no-underline transition',
+          ':uno: text-gray-900 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
+          'astrobook-focus-ring',
+        ]}
+      >
+        <span class=":uno: i-fluent-collections-empty-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+        <span>{node.module.name}</span>
+      </summary>
+      <div class=":uno: flex flex-col gap-0.5 pl-3">
+        {node.children.map((child) => (
+          <Astro.self node={child} story={story} />
+        ))}
+      </div>
+    </details>
+  )
+}
+
+{
+  node.type === 'story' && (
+    <a
+      href={buildPath(config.dashboardBase, node.story.id)}
+      data-active={story === node.story.id ? '' : undefined}
+      class:list={[
+        ':uno: flex items-center gap-2 rounded px-2 py-1 text-sm no-underline transition',
+        'astrobook-focus-ring',
+        story === node.story.id
+          ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
+          : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
+      ]}
+    >
+      <span class=":uno: i-fluent-diamond-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+      <span>{node.story.name}</span>
+    </a>
+  )
+}
+
+<style>
+  /*
+   * TODO: Replace with UnoCSS `details-content:` variant once supported.
+   * https://github.com/unocss/unocss/issues/5137
+   */
+  details[data-astrobook-collapsible] {
+    interpolate-size: allow-keywords;
+  }
+
+  details[data-astrobook-collapsible]::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 150ms ease-out,
+      content-visibility 150ms ease-out allow-discrete;
+  }
+
+  details[data-astrobook-collapsible][open]::details-content {
+    height: auto;
+  }
+
+  [data-astrobook-chevron] {
+    transform: rotate(-90deg);
+    transition: transform 150ms ease-out;
+  }
+
+  details[data-astrobook-collapsible][open]
+    > summary
+    > [data-astrobook-chevron] {
+    transform: rotate(0deg);
+  }
+</style>
