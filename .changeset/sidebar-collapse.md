@@ -1,5 +1,5 @@
 ---
-"astrobook": minor
+'astrobook': minor
 ---
 
 Add sidebar collapse functionality.
