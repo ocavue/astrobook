@@ -3,97 +3,34 @@ import modules from 'virtual:astrobook/story-modules.mjs'
 import { buildTree } from './build-tree'
 import SidebarTreeNode from './sidebar-tree-node.astro'
 
-interface Props {
-  story?: string
-}
-
 const tree = buildTree(modules)
 ---
 
 <div
   class=":uno: flex flex-col gap-0.5 overflow-y-auto border-0 px-2 pt-4 pb-8"
-  id="astrobook-sidebar-component-list"
+  id="astrobook-sidebar-tree"
+  transition:persist="astrobook-sidebar-tree"
 >
-  {
-    tree.map((node) => (
-      <SidebarTreeNode node={node} story={Astro.props.story} />
-    ))
-  }
+  {tree.map((node) => <SidebarTreeNode node={node} />)}
 </div>
 
 <script is:inline>
   // @ts-check
-  ;(() => {
-    const SCROLL_KEY = 'astrobook-navigation-scroll-position'
-    const COLLAPSED_KEY = 'astrobook-collapsed'
-    const LIST_ID = 'astrobook-sidebar-component-list'
-
-    /** @param {() => void} func @param {number} limit @returns {() => void} */
-    const throttle = (func, limit) => {
-      let pending = 0
-      return () => {
-        if (pending) return
-        pending = 1
-        setTimeout(() => {
-          pending = 0
-          func()
-        }, limit)
-      }
+  function setupScrollRestoration() {
+    const SCROLL_KEY = 'astrobook-sidebar-scroll'
+    const el = document.getElementById('astrobook-sidebar-tree')
+    if (!el) {
+      return
     }
-
-    function init() {
-      const el = document.getElementById(LIST_ID)
-      if (!el) return
-
-      // Restore collapsed state
-      try {
-        const collapsed = JSON.parse(
-          sessionStorage.getItem(COLLAPSED_KEY) || '[]',
-        )
-        el.querySelectorAll('details[data-astrobook-collapsible]').forEach(
-          (item) => {
-            const details = /** @type {HTMLDetailsElement} */ (item)
-            const id = details.getAttribute('data-id')
-            if (
-              id &&
-              collapsed.includes(id) &&
-              !details.querySelector('[data-active]')
-            ) {
-              details.open = false
-            }
-          },
-        )
-      } catch {}
-
-      // Save collapsed state on toggle
-      el.querySelectorAll('details[data-astrobook-collapsible]').forEach(
-        (details) => {
-          details.addEventListener('toggle', () => {
-            const allDetails = Array.from(
-              el.querySelectorAll('details[data-astrobook-collapsible]'),
-            )
-            const collapsed = allDetails
-              .filter((d) => !(/** @type {HTMLDetailsElement} */ (d).open))
-              .map((d) => d.getAttribute('data-id'))
-            sessionStorage.setItem(COLLAPSED_KEY, JSON.stringify(collapsed))
-          })
-        },
-      )
-
-      // Scroll restoration
-      const scrollPosition = sessionStorage.getItem(SCROLL_KEY) || ''
-      if (scrollPosition.match(/^\d+(\.\d*)?$/)) {
-        el.scrollTop = parseFloat(scrollPosition)
-      }
-
-      const throttledSave = throttle(() => {
-        sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
-      }, 100)
-
-      el.addEventListener('scroll', throttledSave)
+    const scrollPosition = parseFloat(sessionStorage.getItem(SCROLL_KEY) || '')
+    if (scrollPosition) {
+      el.scrollTop = scrollPosition
     }
+    el.onscrollend = () => {
+      sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
+    }
+  }
 
-    init()
-    document.addEventListener('astro:page-load', init)
-  })()
+  setupScrollRestoration()
+  document.addEventListener('astro:after-swap', setupScrollRestoration)
 </script>

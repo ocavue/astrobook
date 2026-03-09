@@ -5,10 +5,13 @@ import { buildPath } from './build-path'
 
 interface Props {
   node: TreeNode
-  story?: string
 }
 
-const { node, story } = Astro.props
+const { node } = Astro.props
+
+// We will update the active state use sidebar-active-story.ts, but we need to set an initial state here so that
+// UnoCSS can scan both active and inactive class names.
+const active = false
 ---
 
 {
@@ -29,7 +32,7 @@ const { node, story } = Astro.props
       </summary>
       <div class=":uno: flex flex-col gap-0.5 pl-3">
         {node.children.map((child) => (
-          <Astro.self node={child} story={story} />
+          <Astro.self node={child} />
         ))}
       </div>
     </details>
@@ -55,7 +58,7 @@ const { node, story } = Astro.props
       </summary>
       <div class=":uno: flex flex-col gap-0.5 pl-3">
         {node.children.map((child) => (
-          <Astro.self node={child} story={story} />
+          <Astro.self node={child} />
         ))}
       </div>
     </details>
@@ -66,13 +69,14 @@ const { node, story } = Astro.props
   node.type === 'story' && (
     <a
       href={buildPath(config.dashboardBase, node.story.id)}
-      data-active={story === node.story.id ? '' : undefined}
+      data-astrobook-story-link
+      data-story-id={node.story.id}
       class:list={[
         ':uno: flex items-center gap-2 rounded px-2 py-1 text-sm no-underline transition',
         'astrobook-focus-ring',
-        story === node.story.id
-          ? ':uno: bg-gray-800 text-white hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-200'
-          : ':uno: text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100',
+        active
+          ? 'astrobook-sidebar-story-link-active'
+          : 'astrobook-sidebar-story-link-inactive',
       ]}
     >
       <span class=":uno: i-fluent-diamond-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
