@@ -2,4 +2,4 @@
 'astrobook': minor
 ---
 
-Support searching and filtering stories.
+Support searching and filtering stories in the sidebar.
