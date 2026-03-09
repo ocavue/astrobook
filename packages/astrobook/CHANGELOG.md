@@ -1,5 +1,15 @@
 # astrobook
 
+## 0.12.0
+
+### Minor Changes
+
+- [`498558c`](https://github.com/ocavue/astrobook/commit/498558cf1698d6a09a426ac050698c1c2dbc01e6) Support collapsing and expanding sidebar groups.
+
+- [`fce8fd2`](https://github.com/ocavue/astrobook/commit/fce8fd26008992db760d1f656a50b51bfd2c8aaf) Support dragging to resize the sidebar width.
+
+- [`8821231`](https://github.com/ocavue/astrobook/commit/8821231a11f572d0203d177ef9f3e612606742e7) Support searching and filtering stories in the sidebar.
+
 ## 0.11.2
 
 ### Patch Changes
