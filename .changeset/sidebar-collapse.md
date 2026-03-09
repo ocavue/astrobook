@@ -2,4 +2,4 @@
 'astrobook': minor
 ---
 
-Add sidebar collapse functionality.
+Support collapsing and expanding sidebar groups.

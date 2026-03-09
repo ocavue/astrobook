@@ -1,0 +1,78 @@
+<astrobook-sidebar-resize-handle
+  role="separator"
+  class=":uno: relative -left-0.5 block w-1 cursor-ew-resize transition-colors hover:bg-gray-300 dark:hover:bg-gray-600"
+>
+</astrobook-sidebar-resize-handle>
+
+<script is:inline>
+  ;(() => {
+    const STORAGE_KEY = 'astrobook-sidebar-width'
+    const width = parseFloat(sessionStorage.getItem(STORAGE_KEY) || '')
+    if (width) {
+      document.documentElement.dataset.sidebarWidth = String(width)
+    }
+  })()
+</script>
+
+<script>
+  const STORAGE_KEY = 'astrobook-sidebar-width'
+  const DEFAULT_WIDTH = 300
+  let previousWidth = ''
+
+  function setSidebarWidth(width: number): void {
+    const widthString = width.toFixed(0)
+    if (widthString === previousWidth) {
+      return
+    }
+    previousWidth = widthString
+    document.documentElement.dataset.sidebarWidth = widthString
+    sessionStorage.setItem(STORAGE_KEY, widthString)
+  }
+
+  class AstrobookSidebarResizeHandle extends HTMLElement {
+    #handleCapture = (event: PointerEvent) => {
+      event.preventDefault()
+      this.setPointerCapture(event.pointerId)
+      document.documentElement.dataset.sidebarResizing = ''
+
+      document.body.addEventListener('pointermove', this.#handleMove)
+      document.body.addEventListener('pointerup', this.#handleRelease, {
+        once: true,
+      })
+    }
+
+    #handleRelease = (event?: PointerEvent) => {
+      if (event) {
+        event.preventDefault()
+        this.releasePointerCapture(event.pointerId)
+      }
+      delete document.documentElement.dataset.sidebarResizing
+      document.body.removeEventListener('pointermove', this.#handleMove)
+      document.body.removeEventListener('pointerup', this.#handleRelease)
+    }
+
+    #handleMove = (event: PointerEvent) => {
+      setSidebarWidth(event.clientX)
+    }
+
+    #handleReset = () => {
+      setSidebarWidth(DEFAULT_WIDTH)
+    }
+
+    connectedCallback() {
+      this.addEventListener('pointerdown', this.#handleCapture)
+      this.addEventListener('dblclick', this.#handleReset)
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener('pointerdown', this.#handleCapture)
+      this.removeEventListener('dblclick', this.#handleReset)
+      this.#handleRelease()
+    }
+  }
+
+  customElements.define(
+    'astrobook-sidebar-resize-handle',
+    AstrobookSidebarResizeHandle,
+  )
+</script>
