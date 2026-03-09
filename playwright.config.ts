@@ -1,6 +1,71 @@
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig, devices, type Project } from '@playwright/test'
 
 import { EXAMPLE_URLS } from './tests/example-urls'
+
+const allProjects: Project[] = [
+  {
+    name: 'chromium',
+    use: { ...devices['Desktop Chrome'] },
+  },
+
+  {
+    name: 'firefox',
+    use: {
+      ...devices['Desktop Firefox'],
+      launchOptions: {
+        firefoxUserPrefs: {
+          // Workaround for Firefox not being able to hover on buttons on
+          // Linux. See also:
+          // https://github.com/microsoft/playwright/issues/7769
+          'ui.primaryPointerCapabilities': 0x02 | 0x04,
+          'ui.allPointerCapabilities': 0x02 | 0x04,
+        },
+      },
+    },
+  },
+
+  {
+    name: 'webkit',
+    use: { ...devices['Desktop Safari'] },
+  },
+
+  /* Test against mobile viewports. */
+  // {
+  //   name: 'Mobile Chrome',
+  //   use: { ...devices['Pixel 5'] },
+  // },
+  // {
+  //   name: 'Mobile Safari',
+  //   use: { ...devices['iPhone 12'] },
+  // },
+
+  /* Test against branded browsers. */
+  // {
+  //   name: 'Microsoft Edge',
+  //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+  // },
+  // {
+  //   name: 'Google Chrome',
+  //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+  // },
+]
+
+const filteredProjects = allProjects.filter((project) => {
+  const browser = process.env.ASTROBOOK_TEST_BROWSER
+  if (browser) {
+    return project.name === browser
+  }
+  if (process.env.CI) {
+    return true
+  }
+  return project.name === 'chromium'
+})
+
+if (filteredProjects.length === 0) {
+  throw new Error(
+    `No browsers selected for testing. Check the value of ASTROBOOK_TEST_BROWSER: ${process.env.ASTROBOOK_TEST_BROWSER}`,
+  )
+}
 
 /**
  * Read environment variables from file.
@@ -29,58 +94,7 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        launchOptions: {
-          firefoxUserPrefs: {
-            // Workaround for Firefox not being able to hover on buttons on
-            // Linux. See also:
-            // https://github.com/microsoft/playwright/issues/7769
-            'ui.primaryPointerCapabilities': 0x02 | 0x04,
-            'ui.allPointerCapabilities': 0x02 | 0x04,
-          },
-        },
-      },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  ].filter((project) => {
-    if (process.env.CI) {
-      return true
-    }
-    return project.name === 'chromium'
-  }),
+  projects: filteredProjects,
 
   /* Run your local dev server before starting the tests */
   webServer: Object.entries(EXAMPLE_URLS).map(([name, url]) => ({
