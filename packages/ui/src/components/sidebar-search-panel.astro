@@ -1,0 +1,36 @@
+<div id="astrobook-search-panel" class=":uno: -m-px border-x-0">
+  <div class=":uno: flex items-center gap-1 px-2 py-2">
+    <div class=":uno: relative flex flex-1 items-center">
+      <span
+        class=":uno: i-fluent-search-16-regular pointer-events-none absolute left-2 size-3.5 text-gray-400 dark:text-gray-500"
+      ></span>
+      <input
+        id="astrobook-search-input"
+        type="text"
+        placeholder="Search..."
+        aria-label="Search stories"
+        class=":uno: w-full rounded border-0 bg-transparent py-1 pr-2 pl-7 text-sm text-gray-900 transition outline-none placeholder:text-gray-400 dark:text-gray-100 dark:placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  #astrobook-search-panel {
+    interpolate-size: allow-keywords;
+    height: 0;
+    overflow: clip;
+    transition: height 150ms ease-out;
+  }
+
+  #astrobook-search-panel[data-open] {
+    height: max-content;
+  }
+</style>
+
+<script>
+  import { initSearch } from './sidebar-search-script'
+
+  initSearch()
+  document.addEventListener('astro:after-swap', initSearch)
+</script>
