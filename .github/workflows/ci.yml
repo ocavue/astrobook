@@ -60,6 +60,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         mode: [dev, preview]
+        browser: [chromium, firefox, webkit]
 
     runs-on: ${{ matrix.os }}
     env:
@@ -71,11 +72,11 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Install Playwright
-        run: pnpm run test:install
+        run: pnpm run test:install:${{ matrix.browser }}
 
       - name: Build
         if: ${{ matrix.mode == 'preview' }}
         run: pnpm run build
 
       - name: Test
-        run: pnpm run test:e2e
+        run: pnpm run test:e2e -- --project=${{ matrix.browser }}
