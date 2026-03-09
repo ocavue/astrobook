@@ -29,7 +29,6 @@ const DEFAULT_SIDEBAR_RESIZING = false
   data-active-story={Astro.props.story ?? ''}
   data-sidebar-width={DEFAULT_SIDEBAR_WIDTH}
   data-sidebar-resizing={DEFAULT_SIDEBAR_RESIZING ? '' : undefined}
-  transition:animate="none"
 >
   <head>
     <meta charset="utf-8" />
@@ -72,7 +71,17 @@ const DEFAULT_SIDEBAR_RESIZING = false
         </>
       )
     }
-    <main class=":uno: box-border flex-1 overflow-auto">
+    {
+      /* 
+      Use `transition:animate="none"` here because we don't want the fade animation 
+      when switching between stories. Sadly this also remove the animation when toggle the light/dark theme.
+      */
+    }
+    <main
+      class=":uno: box-border flex-1 overflow-auto"
+      transition:name="astrobook-main"
+      transition:animate="none"
+    >
       <slot />
     </main>
   </body>
