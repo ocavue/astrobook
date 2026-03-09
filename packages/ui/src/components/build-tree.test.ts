@@ -60,14 +60,14 @@ describe('buildTree', () => {
 
     expect(dir.children[0].type).toBe('story')
     if (dir.children[0].type !== 'story') throw new Error('expected story')
-    expect(dir.children[0].story.name).toBe('Hoist')
+    expect(dir.children[0].name).toBe('Hoist')
 
     expect(dir.children[1].type).toBe('module')
     if (dir.children[1].type !== 'module') throw new Error('expected module')
-    expect(dir.children[1].module.name).toBe('NoHoistMultiple')
+    expect(dir.children[1].name).toBe('NoHoistMultiple')
     expect(dir.children[1].children).toHaveLength(2)
-    expect(dir.children[1].children[0].story.name).toBe('Default')
-    expect(dir.children[1].children[1].story.name).toBe('NoHoistMultiple')
+    expect(dir.children[1].children[0].name).toBe('Default')
+    expect(dir.children[1].children[1].name).toBe('NoHoistMultiple')
   })
 
   it('creates nested directories from slashed paths', () => {

@@ -1,21 +1,28 @@
-import type { Story, StoryModule } from '@astrobook/types'
+import type { StoryModule } from '@astrobook/types'
+
+import { compressTerms } from './compress-terms'
 
 export interface DirectoryNode {
   type: 'directory'
   name: string
+  searchText: string
   children: TreeNode[]
 }
 
 export interface ModuleNode {
   type: 'module'
-  module: StoryModule
+  id: string
+  name: string
+  searchText: string
   children: StoryNode[]
 }
 
 export interface StoryNode {
   type: 'story'
-  story: Story
-  module: StoryModule
+  id: string
+  name: string
+  searchText: string
+  children?: undefined
 }
 
 export type TreeNode = DirectoryNode | ModuleNode | StoryNode
@@ -30,11 +37,15 @@ function findOrCreateDirectory(
 ): TreeNode[] {
   let current = children
   for (const segment of segments) {
-    let dir = current.find(
-      (n): n is DirectoryNode => n.type === 'directory' && n.name === segment,
-    )
+    let dir: DirectoryNode | undefined
+    for (const node of current) {
+      if (node.type === 'directory' && node.name === segment) {
+        dir = node
+        break
+      }
+    }
     if (!dir) {
-      dir = { type: 'directory', name: segment, children: [] }
+      dir = { type: 'directory', name: segment, children: [], searchText: '' }
       current.push(dir)
     }
     current = dir.children
@@ -49,27 +60,46 @@ export function buildTree(modules: StoryModule[]): TreeNode[] {
     const segments = module.directory ? module.directory.split('/') : []
     const children = findOrCreateDirectory(root, segments)
 
+    const storyNodes: StoryNode[] = module.stories.map((story) => ({
+      type: 'story',
+      id: story.id,
+      name: story.name,
+      searchText: '',
+    }))
+
     if (isSingleStory(module)) {
-      const storyNode: StoryNode = {
-        type: 'story',
-        story: module.stories[0],
-        module,
-      }
-      children.push(storyNode)
+      children.push(storyNodes[0])
     } else {
-      const storyNodes: StoryNode[] = module.stories.map((story) => ({
-        type: 'story' as const,
-        story,
-        module,
-      }))
       const moduleNode: ModuleNode = {
         type: 'module',
-        module,
+        id: module.id,
+        name: module.name,
+        searchText: '',
         children: storyNodes,
       }
       children.push(moduleNode)
     }
   }
 
+  for (const node of root) {
+    assignSearchText(node, [])
+  }
+
   return root
+}
+
+function assignSearchText(
+  node: TreeNode,
+  ancestorTerms: readonly string[],
+): readonly string[] {
+  const currTerms = [...ancestorTerms, node.name]
+  const subTreeTerms: Array<readonly string[]> = []
+
+  for (const child of node.children || []) {
+    subTreeTerms.push(assignSearchText(child, currTerms))
+  }
+
+  const mergedTerms = compressTerms([...currTerms, ...subTreeTerms.flat()])
+  node.searchText = mergedTerms.join(' ')
+  return mergedTerms
 }
