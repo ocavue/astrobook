@@ -6,6 +6,8 @@ import { ThemeScript } from 'astro-theme-toggle/components'
 import CustomHead from 'virtual:astrobook/components/head.mjs'
 import config from 'virtual:astrobook/global-config.mjs'
 
+import { ClientRouter } from 'astro:transitions'
+
 // Important that this is the last import so it can override built-in styles.
 import 'virtual:astrobook/user-css.mjs'
 
@@ -17,7 +19,12 @@ interface Props {
 const hasSidebar = Astro.props.hasSidebar ?? true
 ---
 
-<html lang="en" class=":uno: box-border h-full max-h-screen overflow-hidden">
+<html
+  lang="en"
+  class=":uno: box-border h-full max-h-screen overflow-hidden"
+  data-active-story={Astro.props.story ?? ''}
+  transition:animate="none"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -25,7 +32,9 @@ const hasSidebar = Astro.props.hasSidebar ?? true
     <title>{config.title}</title>
     <ThemeScript />
     <script src="./theme-message.ts"></script>
+    <script src="./sidebar-active-story.ts"></script>
     <CustomHead />
+    <ClientRouter fallback="none" />
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"

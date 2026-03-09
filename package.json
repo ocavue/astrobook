@@ -7,7 +7,7 @@
   "description": "Astrobook monorepo",
   "license": "MIT",
   "scripts": {
-    "dev": "turbo --filter example-playground dev",
+    "dev": "turbo watch --filter example-playground dev",
     "postinstall": "pnpm --filter=./packages/ui build",
     "build": "turbo run build --concurrency=1",
     "build:package": "turbo build --filter='./packages/*' --concurrency=1",
