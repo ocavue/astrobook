@@ -2,4 +2,4 @@
 'astrobook': minor
 ---
 
-Add search functionality to the sidebar for filtering stories.
+Support searching and filtering stories.
