@@ -15,27 +15,34 @@ const tree = buildTree(modules)
 </astrobook-sidebar-tree>
 
 <script is:inline>
-{  class AstrobookSidebarTree extends HTMLElement {
-    connectedCallback() {
-      const activeStory = document.documentElement.dataset.activeStory || ''
-      this.querySelectorAll(
-        'a[data-astrobook-story-link][data-story-id]',
-      ).forEach((link) => {
-        const active = link.dataset.storyId === activeStory
-        link.classList.toggle('astrobook-sidebar-story-link-active', active)
-        link.classList.toggle('astrobook-sidebar-story-link-inactive', !active)
-      })
+  {
+    class AstrobookSidebarTree extends HTMLElement {
+      connectedCallback() {
+        const activeStory = document.documentElement.dataset.activeStory || ''
+        this.querySelectorAll(
+          'a[data-astrobook-story-link][data-story-id]',
+        ).forEach((link) => {
+          const active = link.dataset.storyId === activeStory
+          link.classList.toggle('astrobook-sidebar-story-link-active', active)
+          link.classList.toggle(
+            'astrobook-sidebar-story-link-inactive',
+            !active,
+          )
+        })
 
-    const SCROLL_KEY = 'astrobook-sidebar-scroll'
-      let el = this 
-       const scrollPosition = parseFloat(sessionStorage.getItem(SCROLL_KEY) || '')
-    if (scrollPosition) {
-      el.scrollTop = scrollPosition
+        const SCROLL_KEY = 'astrobook-sidebar-scroll'
+        let el = this
+        const scrollPosition = parseFloat(
+          sessionStorage.getItem(SCROLL_KEY) || '',
+        )
+        if (scrollPosition) {
+          el.scrollTop = scrollPosition
+        }
+        el.onscrollend = () => {
+          sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
+        }
+      }
     }
-    el.onscrollend = () => {
-      sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
-    }
-    }
+    customElements.define('astrobook-sidebar-tree', AstrobookSidebarTree)
   }
-  customElements.define('astrobook-sidebar-tree', AstrobookSidebarTree)}
 </script>
