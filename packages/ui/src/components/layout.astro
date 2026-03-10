@@ -54,6 +54,20 @@ const DEFAULT_SIDEBAR_RESIZING = false
         max-width: calc(100vw - 100px);
       }
     </style>
+    <script is:inline>
+      ;(() => {
+        const STORAGE_KEY = 'astrobook-sidebar-width'
+        const restoreWidth = () => {
+          const width = parseFloat(localStorage.getItem(STORAGE_KEY) || '')
+          if (width) {
+            document.documentElement.dataset.sidebarWidth = String(width)
+          }
+        }
+
+        restoreWidth()
+        document.addEventListener('astro:after-swap', restoreWidth)
+      })()
+    </script>
   </head>
   <body
     class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"

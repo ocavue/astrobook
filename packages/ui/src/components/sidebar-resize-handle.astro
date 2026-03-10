@@ -4,20 +4,7 @@
 >
 </astrobook-sidebar-resize-handle>
 
-<script is:inline>
-  ;(() => {
-    const STORAGE_KEY = 'astrobook-sidebar-width'
-    const restoreWidth = () => {
-      const width = parseFloat(sessionStorage.getItem(STORAGE_KEY) || '')
-      if (width) {
-        document.documentElement.dataset.sidebarWidth = String(width)
-      }
-    }
 
-    restoreWidth()
-    document.addEventListener('astro:after-swap', restoreWidth)
-  })()
-</script>
 
 <script>
   const STORAGE_KEY = 'astrobook-sidebar-width'
@@ -31,7 +18,7 @@
     }
     previousWidth = widthString
     document.documentElement.dataset.sidebarWidth = widthString
-    sessionStorage.setItem(STORAGE_KEY, widthString)
+    localStorage.setItem(STORAGE_KEY, widthString)
   }
 
   class AstrobookSidebarResizeHandle extends HTMLElement {
