@@ -6,31 +6,42 @@ import SidebarTreeNode from './sidebar-tree-node.astro'
 const tree = buildTree(modules)
 ---
 
-<div
+<astrobook-sidebar-tree
   class=":uno: flex flex-col gap-0.5 overflow-y-auto border-0 px-2 pt-4 pb-8"
   id="astrobook-sidebar-tree"
   transition:persist="astrobook-sidebar-tree"
 >
   {tree.map((node) => <SidebarTreeNode node={node} />)}
-</div>
+</astrobook-sidebar-tree>
 
 <script is:inline>
-  // @ts-check
-  function setupScrollRestoration() {
-    const SCROLL_KEY = 'astrobook-sidebar-scroll'
-    const el = document.getElementById('astrobook-sidebar-tree')
-    if (!el) {
-      return
-    }
-    const scrollPosition = parseFloat(sessionStorage.getItem(SCROLL_KEY) || '')
-    if (scrollPosition) {
-      el.scrollTop = scrollPosition
-    }
-    el.onscrollend = () => {
-      sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
-    }
-  }
+  {
+    class AstrobookSidebarTree extends HTMLElement {
+      connectedCallback() {
+        const activeStory = document.documentElement.dataset.activeStory || ''
+        this.querySelectorAll(
+          'a[data-astrobook-story-link][data-story-id]',
+        ).forEach((link) => {
+          const active = link.dataset.storyId === activeStory
+          link.classList.toggle('astrobook-sidebar-story-link-active', active)
+          link.classList.toggle(
+            'astrobook-sidebar-story-link-inactive',
+            !active,
+          )
+        })
 
-  setupScrollRestoration()
-  document.addEventListener('astro:after-swap', setupScrollRestoration)
+        const SCROLL_KEY = 'astrobook-sidebar-scroll'
+        const scrollPosition = parseFloat(
+          sessionStorage.getItem(SCROLL_KEY) || '',
+        )
+        if (scrollPosition) {
+          this.scrollTop = scrollPosition
+        }
+        this.onscrollend = () => {
+          sessionStorage.setItem(SCROLL_KEY, String(this.scrollTop))
+        }
+      }
+    }
+    customElements.define('astrobook-sidebar-tree', AstrobookSidebarTree)
+  }
 </script>
