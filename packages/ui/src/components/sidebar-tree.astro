@@ -31,15 +31,14 @@ const tree = buildTree(modules)
         })
 
         const SCROLL_KEY = 'astrobook-sidebar-scroll'
-        let el = this
         const scrollPosition = parseFloat(
           sessionStorage.getItem(SCROLL_KEY) || '',
         )
         if (scrollPosition) {
-          el.scrollTop = scrollPosition
+          this.scrollTop = scrollPosition
         }
-        el.onscrollend = () => {
-          sessionStorage.setItem(SCROLL_KEY, String(el.scrollTop))
+        this.onscrollend = () => {
+          sessionStorage.setItem(SCROLL_KEY, String(this.scrollTop))
         }
       }
     }
