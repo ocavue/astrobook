@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.1
+
+### Patch Changes
+
+- [`0e8a11a`](https://github.com/ocavue/astrobook/commit/0e8a11ac6d414bfdd4cf363acaebc74f755168d0) Fix an issue where the active story isn't highlighted in the sidebar.
+
 ## 0.12.0
 
 ### Minor Changes
