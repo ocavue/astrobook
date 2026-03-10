@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.2
+
+### Patch Changes
+
+- [`9dfc766`](https://github.com/ocavue/astrobook/commit/9dfc76615c8a8acaf3daa4a30ccea29d385f60dc) Reorder sidebar buttons.
+
 ## 0.12.1
 
 ### Patch Changes
