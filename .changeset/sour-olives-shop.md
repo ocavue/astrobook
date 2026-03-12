@@ -1,4 +1,5 @@
 ---
+'astrobook': patch
 '@astrobook/core': patch
 ---
 
