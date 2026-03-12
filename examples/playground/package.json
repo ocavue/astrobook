@@ -12,22 +12,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^5.0.0-beta.5",
-    "@astrojs/react": "^5.0.0-beta.4",
-    "@astrojs/solid-js": "^6.0.0-beta.2",
-    "@astrojs/svelte": "^8.0.0-beta.3",
-    "@astrojs/vue": "^6.0.0-beta.1",
+    "@astrojs/preact": "^5.0.0",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/solid-js": "^6.0.0",
+    "@astrojs/svelte": "^8.0.0",
+    "@astrojs/vue": "^6.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.0.0-beta.20",
+    "astro": "^6.0.3",
     "astrobook": "*",
     "lit": "^3.3.2",
-    "preact": "^10.28.4",
+    "preact": "^10.29.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "solid-js": "^1.9.11",
-    "svelte": "^5.53.7",
-    "vue": "^3.5.29"
+    "svelte": "^5.53.10",
+    "vue": "^3.5.30"
   },
   "stackblitz": {
     "installDependencies": false,
