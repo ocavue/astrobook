@@ -85,7 +85,7 @@ export function createVirtualRouteComponent(route: VirtualRoute): string {
   const modName = `astrobook_module_${route.storyModule.id}`
     .replaceAll(/\W+/g, '_')
     .replaceAll(/_+/g, '_')
-    .replaceAll(/_+$/, '')
+    .replace(/_+$/, '')
 
   return `
 ---
