@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.3
+
+### Patch Changes
+
+- [`0b8d5b4`](https://github.com/ocavue/astrobook/commit/0b8d5b461e7b65e5d95ab7cf07bdb904cb84aade) Improve error message for virtual route components.
+
 ## 0.12.2
 
 ### Patch Changes
