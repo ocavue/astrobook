@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.4
+
+### Patch Changes
+
+- [`9506f19`](https://github.com/ocavue/astrobook/commit/9506f19931af1a7d65d4f791649312d7f1223ec3) Improve search term splitting for better query handling.
+
 ## 0.12.3
 
 ### Patch Changes
