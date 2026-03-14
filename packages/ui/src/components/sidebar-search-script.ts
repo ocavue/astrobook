@@ -25,7 +25,7 @@ function updateQuery(query: string): void {
     return
   }
 
-  const terms = compressTerms(trimmed.split(/[\s._\-]+/))
+  const terms = compressTerms(trimmed.split(/[\s\p{P}]+/u))
   const rules = terms.map((term) => {
     return `#${TREE_ID} [data-search-text]:not([data-search-text*="${CSS.escape(term)}"]) { display: none !important; }`
   })
