@@ -16,58 +16,62 @@ const active = false
 
 {
   node.type === 'directory' && (
-    <details
-      open
-      data-astrobook-collapsible
-      data-id={`dir:${node.name}`}
-      data-search-text={node.searchText}
-    >
-      <summary
-        class:list={[
-          'astrobook-sidebar-link',
-          'astrobook-sidebar-collapsible-link',
-          'astrobook-focus-ring',
-        ]}
+    <astrobook-sidebar-node class=":uno: contents">
+      <details
+        open
+        data-astrobook-collapsible
+        data-id={`dir:${node.name}`}
+        data-search-text={node.searchText}
       >
-        <span
-          data-astrobook-chevron
-          class=":uno: i-fluent-chevron-down-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500"
-        />
-        <span>{node.name}</span>
-      </summary>
-      <div class=":uno: flex flex-col gap-0.5 pl-3">
-        {node.children.map((child) => (
-          <Astro.self node={child} />
-        ))}
-      </div>
-    </details>
+        <summary
+          class:list={[
+            'astrobook-sidebar-link',
+            'astrobook-sidebar-collapsible-link',
+            'astrobook-focus-ring',
+          ]}
+        >
+          <span
+            data-astrobook-chevron
+            class=":uno: i-fluent-chevron-down-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500"
+          />
+          <span>{node.name}</span>
+        </summary>
+        <div class=":uno: flex flex-col gap-0.5 pl-3">
+          {node.children.map((child) => (
+            <Astro.self node={child} />
+          ))}
+        </div>
+      </details>
+    </astrobook-sidebar-node>
   )
 }
 
 {
   node.type === 'module' && (
-    <details
-      open
-      data-astrobook-collapsible
-      data-id={`module:${node.id}`}
-      data-search-text={node.searchText}
-    >
-      <summary
-        class:list={[
-          'astrobook-sidebar-link',
-          'astrobook-sidebar-collapsible-link',
-          'astrobook-focus-ring',
-        ]}
+    <astrobook-sidebar-node class=":uno: contents">
+      <details
+        open
+        data-astrobook-collapsible
+        data-id={`module:${node.id}`}
+        data-search-text={node.searchText}
       >
-        <span class=":uno: i-fluent-collections-empty-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
-        <span>{node.name}</span>
-      </summary>
-      <div class=":uno: flex flex-col gap-0.5 pl-3">
-        {node.children.map((child) => (
-          <Astro.self node={child} />
-        ))}
-      </div>
-    </details>
+        <summary
+          class:list={[
+            'astrobook-sidebar-link',
+            'astrobook-sidebar-collapsible-link',
+            'astrobook-focus-ring',
+          ]}
+        >
+          <span class=":uno: i-fluent-collections-empty-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+          <span>{node.name}</span>
+        </summary>
+        <div class=":uno: flex flex-col gap-0.5 pl-3">
+          {node.children.map((child) => (
+            <Astro.self node={child} />
+          ))}
+        </div>
+      </details>
+    </astrobook-sidebar-node>
   )
 }
 
