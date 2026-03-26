@@ -3,9 +3,9 @@
 <p><strong>The minimal UI component playground</strong></p>
 </div>
 
-![astrobook](https://github.com/user-attachments/assets/02289aa9-df34-48f8-8aa5-42015c172443)
+<img width="848" height="622" alt="astrobook" src="https://github.com/user-attachments/assets/c5af7699-1b6b-4364-a809-1e876cdc0cfa" />
 
-Astrobook is a UI component playground that supports multiple frameworks including **React**, **Vue**, **Preact**, **Svelte**, **Solid**, **Lit**, and **Astro**. It offers a unified environment to develop, test, and showcase components.
+**Astrobook** is a UI component playground that supports multiple frameworks, including **React**, **Vue**, **Preact**, **Svelte**, **Solid**, **Lit**, and **Astro**. It offers a unified environment to develop, test, and showcase components.
 
 ## Try it Online
 
@@ -345,12 +345,6 @@ If you're running Astrobook in an iframe, you can toggle the theme via a message
 const theme = 'light' // or "dark"
 iframe.contentWindow.postMessage({ type: 'astrobook:set-theme', theme }, '*')
 ```
-
-## Who's using Astrobook?
-
-- [ProseKit](https://prosekit.dev/astrobook)
-
-_[Add your project](https://github.com/ocavue/astrobook/edit/master/packages/astrobook/README.md)_
 
 ## License
 
