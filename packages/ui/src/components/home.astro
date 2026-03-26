@@ -12,12 +12,14 @@ import { version } from '@astrobook/ui/package.json'
       Astrobook
     </h1>
     <p
-      class=":uno: hidden cursor-default text-center text-gray-400 transition mt-3 @sm:block text-lg dark:text-gray-500"
+      class=":uno: mt-3 hidden cursor-default text-center text-lg text-gray-400 transition @sm:block dark:text-gray-500"
     >
       The minimal UI component playground
     </p>
 
-    <div class=":uno: mt-4 flex flex-col @xs:flex-row @xs:items-center gap-2.5 @xs:mt-8 @xs:gap-3">
+    <div
+      class=":uno: mt-4 flex flex-col gap-2.5 @xs:mt-8 @xs:flex-row @xs:items-center @xs:gap-3"
+    >
       <a
         href={`https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md`}
         target="_blank"
@@ -34,7 +36,7 @@ import { version } from '@astrobook/ui/package.json'
         target="_blank"
         rel="noopener noreferrer"
         class:list={[
-          ':uno: gap-1.5 @xs:gap-2 font-medium',
+          ':uno: gap-1.5 font-medium @xs:gap-2',
           ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
         ]}
       >
