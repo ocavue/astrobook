@@ -346,12 +346,6 @@ const theme = 'light' // or "dark"
 iframe.contentWindow.postMessage({ type: 'astrobook:set-theme', theme }, '*')
 ```
 
-## Who's using Astrobook?
-
-- [ProseKit](https://prosekit.dev/astrobook)
-
-_[Add your project](https://github.com/ocavue/astrobook/edit/master/packages/astrobook/README.md)_
-
 ## License
 
 MIT
