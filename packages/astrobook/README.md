@@ -5,7 +5,7 @@
 
 <img width="848" height="622" alt="astrobook" src="https://github.com/user-attachments/assets/c5af7699-1b6b-4364-a809-1e876cdc0cfa" />
 
-Astrobook is a UI component playground that supports multiple frameworks including **React**, **Vue**, **Preact**, **Svelte**, **Solid**, **Lit**, and **Astro**. It offers a unified environment to develop, test, and showcase components.
+**Astrobook** is a UI component playground that supports multiple frameworks, including **React**, **Vue**, **Preact**, **Svelte**, **Solid**, **Lit**, and **Astro**. It offers a unified environment to develop, test, and showcase components.
 
 ## Try it Online
 
