@@ -44,4 +44,29 @@ const tree = buildTree(modules)
     }
     customElements.define('astrobook-sidebar-tree', AstrobookSidebarTree)
   }
+  {
+    class AstrobookSidebarNode extends HTMLElement {
+      connectedCallback() {
+        const details = this.querySelector('details[data-id]')
+        if (!details) return
+        const id = details.dataset.id
+        if (!id) return
+        const key = 'astrobook-sidebar-collapse-' + id
+        const collapsed = localStorage.getItem(key) === '1'
+
+        if (collapsed) {
+          details.removeAttribute('open')
+        }
+
+        details.addEventListener('toggle', () => {
+          if (details.open) {
+            localStorage.removeItem(key)
+          } else {
+            localStorage.setItem(key, '1')
+          }
+        })
+      }
+    }
+    customElements.define('astrobook-sidebar-node', AstrobookSidebarNode)
+  }
 </script>
