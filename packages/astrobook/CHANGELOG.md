@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.6
+
+### Patch Changes
+
+- [`c2641be`](https://github.com/ocavue/astrobook/commit/c2641be761e39f9c0fb4cd53ed3844be999d8b9d) Redesign default landing page.
+
 ## 0.12.5
 
 ### Patch Changes
