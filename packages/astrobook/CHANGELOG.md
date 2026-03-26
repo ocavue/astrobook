@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.5
+
+### Patch Changes
+
+- [`b2f5240`](https://github.com/ocavue/astrobook/commit/b2f52402bb2c9b2a4bf244daf4bcdc6cfcb1bcd3) Persist sidebar collapse state.
+
 ## 0.12.4
 
 ### Patch Changes
