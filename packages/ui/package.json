@@ -23,6 +23,9 @@
     },
     "./components/*": {
       "default": "./dist/components/*"
+    },
+    "./package.json": {
+      "default": "./package.json"
     }
   },
   "typesVersions": {

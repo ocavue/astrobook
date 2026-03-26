@@ -1,34 +1,48 @@
-<div
-  class=":uno: flex h-full w-full flex-col items-center justify-center gap-4"
->
-  <h1 class=":uno: cursor-default text-3xl font-semibold">Astrobook</h1>
-  <footer
-    class=":uno: flex h-8 flex-row items-center justify-center gap-2 text-sm"
-  >
-    <span>
-      <span class=":uno: cursor-default text-gray-400">built by</span>
-      <a
-        href="https://github.com/ocavue"
-        class=":uno: text-gray-400 no-underline hover:text-gray-500 dark:hover:text-gray-300"
-      >
-        @ocavue
-      </a>
-    </span>
-    <span></span>
-    <a
-      href="https://twitter.com/ocavue"
-      class=":uno: inline-block leading-4 text-gray-400 no-underline hover:text-gray-500 dark:hover:text-gray-300"
-      aria-label="Twitter"
-    >
-      <span class=":uno: i-mdi-twitter inline-block size-5 leading-4"></span>
-    </a>
+---
+import { version } from '@astrobook/ui/package.json'
+---
 
-    <a
-      href="https://github.com/ocavue/astrobook"
-      class=":uno: inline-block leading-4 text-gray-400 no-underline hover:text-gray-500 dark:hover:text-gray-300"
-      aria-label="GitHub"
+<div class=":uno: @container h-full w-full">
+  <div
+    class=":uno: box-border flex h-full w-full flex-col items-center justify-center px-4 @xs:px-6"
+  >
+    <h1
+      class=":uno: cursor-default text-center text-sm font-bold tracking-tight text-gray-900 transition @xs:text-3xl @sm:text-5xl dark:text-gray-100"
     >
-      <span class=":uno: i-mdi-github inline-block size-5 leading-4"></span>
-    </a>
-  </footer>
+      Astrobook
+    </h1>
+    <p
+      class=":uno: hidden cursor-default text-center text-gray-400 transition mt-3 @sm:block text-lg dark:text-gray-500"
+    >
+      The minimal UI component playground
+    </p>
+
+    <div class=":uno: mt-4 flex flex-col @xs:flex-row @xs:items-center gap-2.5 @xs:mt-8 @xs:gap-3">
+      <a
+        href={`https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          ':uno: font-mono',
+          ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
+        ]}
+      >
+        v{version}
+      </a>
+      <a
+        href="https://github.com/ocavue/astrobook"
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          ':uno: gap-1.5 @xs:gap-2 font-medium',
+          ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
+        ]}
+      >
+        <span class=":uno: i-mdi-star-outline inline-block size-3.5 @xs:size-4"
+        ></span>
+        <span class=":uno: @xs:hidden">Star</span>
+        <span class=":uno: hidden @xs:inline">Star on GitHub</span>
+      </a>
+    </div>
+  </div>
 </div>
