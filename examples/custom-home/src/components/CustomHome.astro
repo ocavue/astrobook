@@ -1,1 +1,55 @@
-<h1>Custom home</h1>
+<div class="custom-home">
+  <h1>My Design System</h1>
+  <p class="subtitle">Browse and preview all UI components in one place.</p>
+  <p class="hint">Select a component from the sidebar to get started.</p>
+</div>
+
+<style>
+  .custom-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+
+  .subtitle {
+    margin: 0.75rem 0 0;
+    font-size: 1.1rem;
+    color: #555;
+  }
+
+  .hint {
+    margin: 1.5rem 0 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #888;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h1 {
+      color: #e0e0e0;
+    }
+
+    .subtitle {
+      color: #aaa;
+    }
+
+    .hint {
+      color: #888;
+      border-color: #555;
+    }
+  }
+</style>
