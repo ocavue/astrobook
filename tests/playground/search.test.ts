@@ -82,18 +82,17 @@ test.describe('Search', () => {
 
     await input.fill('react')
 
-    // Wait for the CSS filter to take effect
-    const visibleItems = getSidebarItems(page).filter({
-      hasNot: page.locator(':scope[style*="display: none"]'),
-    })
-    // At least the react directory/module should be visible
-    await expect(visibleItems.first()).toBeVisible()
+    // Items matching "react" should be visible
+    const reactItems = page.locator(
+      '#astrobook-sidebar-tree [data-search-text*="react"]',
+    )
+    await expect(reactItems.first()).toBeVisible()
 
     // Items that don't match "react" should be hidden
-    const vueItem = page.locator(
+    const nonReactItems = page.locator(
       '#astrobook-sidebar-tree [data-search-text]:not([data-search-text*="react"])',
     )
-    for (const item of await vueItem.all()) {
+    for (const item of await nonReactItems.all()) {
       await expect(item).not.toBeVisible()
     }
   })
