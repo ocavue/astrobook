@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary'
+}
+const { variant = 'primary' } = Astro.props
+---
+
+<button class:list={['button', variant]}>
+  <slot />
+</button>
+
+<style>
+  .button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .primary {
+    background: #3b82f6;
+    color: #fff;
+  }
+
+  .secondary {
+    background: #e5e7eb;
+    color: #1f2937;
+  }
+</style>

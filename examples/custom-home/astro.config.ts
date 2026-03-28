@@ -12,7 +12,7 @@ export default defineConfig({
   integrations: [
     astrobook({
       directory: 'src/components',
-      head: './src/components/CustomHome.astro',
+      home: './src/components/CustomHome.astro',
     }),
   ],
 })

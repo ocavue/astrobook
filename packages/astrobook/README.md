@@ -31,6 +31,10 @@
 
   [![Open in StackBlitz][stackblitz_badge]][example_unocss]
 
+- An example of using a custom homepage with Astrobook.
+
+  [![Open in StackBlitz][stackblitz_badge]][example_custom_home]
+
 - An example of using PandaCSS with Astrobook.
 
   [![Open in StackBlitz][stackblitz_badge]][example_pandacss]
@@ -293,6 +297,24 @@ export default defineConfig({
 })
 ```
 
+### `home`
+
+You can customize the homepage by providing a path to an Astro component using the `home` option. This component will be rendered on the dashboard homepage instead of the default one.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      home: './src/components/CustomHome.astro',
+    }),
+  ],
+})
+```
+
 ### `title`
 
 You can set the title for your website.
@@ -356,4 +378,5 @@ MIT
 [example_pandacss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/pandacss
 [example_tailwindcss]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/tailwindcss
 [example_custom_head]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/custom-head
+[example_custom_home]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/custom-home
 [example_mixed]: https://stackblitz.com/github/ocavue/astrobook/tree/master/examples/mixed

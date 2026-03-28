@@ -7,6 +7,8 @@ const BASE_URL = EXAMPLE_URLS['example-custom-home']
 test('custom-home example', async ({ page }) => {
   await test.step('Check the home page', async () => {
     await page.goto(BASE_URL)
-    await expect(page.locator('h1', { hasText: 'Custom home' })).toBeVisible()
+    await expect(
+      page.locator('h1', { hasText: 'My Design System' }),
+    ).toBeVisible()
   })
 })
