@@ -15,7 +15,7 @@ test('unocss example', async ({ page }) => {
       `${BASE_URL}/dashboard/src/stories/preact-counter/large-step`,
     )
   })
-  
+
   await test.step('Check the style', async () => {
     // It seems that Astro needs a reload to apply the styles since astro@6.1.3
     await page.reload()
