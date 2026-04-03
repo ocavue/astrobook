@@ -4,3 +4,4 @@ packages:
   - packages/*
 linkWorkspacePackages: 'deep'
 ignoreWorkspaceRootCheck: true
+strictPeerDependencies: true
