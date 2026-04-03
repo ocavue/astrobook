@@ -11,6 +11,7 @@ export default defineConfig({
 
   vite: {
     optimizeDeps: {
+      // A workaround for https://github.com/withastro/astro/issues/16181
       include: [
         'astro/runtime/client/dev-toolbar/entrypoint.js',
         'astro/virtual-modules/transitions-router.js',
