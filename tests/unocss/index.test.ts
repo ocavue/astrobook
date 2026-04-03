@@ -18,6 +18,7 @@ test('unocss example', async ({ page }) => {
   
   await test.step('Check the style', async () => {
     // It seems that Astro needs a reload to apply the styles since astro@6.1.3
+    // See https://github.com/withastro/astro/issues/16204
     await page.reload()
 
     const button = page.locator('button', { hasText: '+' })
