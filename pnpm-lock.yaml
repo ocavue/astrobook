@@ -63,8 +63,8 @@ importers:
   examples/custom-head:
     dependencies:
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -72,8 +72,8 @@ importers:
   examples/custom-home:
     dependencies:
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -84,8 +84,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(@babel/core@7.29.0)(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.0)(rollup@4.59.0)(tsx@4.21.0)
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -99,8 +99,8 @@ importers:
         specifier: ^1.9.1
         version: 1.9.1(typescript@5.9.3)
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -122,10 +122,10 @@ importers:
         version: 6.0.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(solid-js@1.9.12)(tsx@4.21.0)
       '@astrojs/svelte':
         specifier: ^8.0.4
-        version: 8.0.4(@types/node@22.19.15)(astro@6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.1)(tsx@4.21.0)(typescript@5.9.3)
+        version: 8.0.4(@types/node@22.19.15)(astro@6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.1)(tsx@4.21.0)(typescript@5.9.3)
       '@astrojs/vue':
         specifier: ^6.0.1
-        version: 6.0.1(@types/node@22.19.15)(astro@6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)(vue@3.5.31(typescript@5.9.3))
+        version: 6.0.1(@types/node@22.19.15)(astro@6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)(vue@3.5.31(typescript@5.9.3))
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -133,8 +133,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -169,8 +169,8 @@ importers:
         specifier: ^4.2.2
         version: 4.2.2(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0))
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -193,8 +193,8 @@ importers:
         specifier: ^66.6.7
         version: 66.6.7
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       astrobook:
         specifier: workspace:*
         version: link:../../packages/astrobook
@@ -221,8 +221,8 @@ importers:
         specifier: ^22.15.29
         version: 22.19.15
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -273,8 +273,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       just-kebab-case:
         specifier: ^4.2.0
         version: 4.2.0
@@ -294,8 +294,8 @@ importers:
   packages/types:
     devDependencies:
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -331,8 +331,8 @@ importers:
         specifier: ^66.6.7
         version: 66.6.7
       astro:
-        specifier: ^6.1.3
-        version: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
@@ -2584,8 +2584,8 @@ packages:
   astro-theme-toggle@0.8.0:
     resolution: {integrity: sha512-7ngEKDfCLKoVbxX4yxrggtBr8i6W8eT0un0TpNKHUeOG/Pq2g7BrjH+etP/l/XQYYSWQmeOIAI02LvLXDMvOWw==}
 
-  astro@6.1.3:
-    resolution: {integrity: sha512-FUKbBYOdYYrRNZwDd9I5CVSfR6Nj9aZeNzcjcvh1FgHwR0uXawkYFR3HiGxmdmAB2m8fs0iIkDdsiUfwGeO8qA==}
+  astro@6.1.5:
+    resolution: {integrity: sha512-AJVw/JlssxUCBFi3Hp4djL8Pt7wUQqStBBawCd8cNGBBM2lBzp/rXGguzt4OcMfW+86fs0hpFwMyopHM2r6d3g==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5686,10 +5686,10 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@8.0.4(@types/node@22.19.15)(astro@6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.1)(tsx@4.21.0)(typescript@5.9.3)':
+  '@astrojs/svelte@8.0.4(@types/node@22.19.15)(astro@6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.1)(tsx@4.21.0)(typescript@5.9.3)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.55.1)(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0))
-      astro: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+      astro: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       svelte: 5.55.1
       svelte2tsx: 0.7.52(svelte@5.55.1)(typescript@5.9.3)
       typescript: 5.9.3
@@ -5719,12 +5719,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vue@6.0.1(@types/node@22.19.15)(astro@6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)(vue@3.5.31(typescript@5.9.3))':
+  '@astrojs/vue@6.0.1(@types/node@22.19.15)(astro@6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)(vue@3.5.31(typescript@5.9.3))':
     dependencies:
       '@vitejs/plugin-vue': 6.0.4(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0))(vue@3.5.31(typescript@5.9.3))
       '@vitejs/plugin-vue-jsx': 5.1.4(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0))(vue@3.5.31(typescript@5.9.3))
       '@vue/compiler-sfc': 3.5.31
-      astro: 6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
+      astro: 6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3)
       vite: 7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)
       vite-plugin-vue-devtools: 8.0.7(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0))(vue@3.5.31(typescript@5.9.3))
       vue: 3.5.31(typescript@5.9.3)
@@ -8103,7 +8103,7 @@ snapshots:
 
   astro-theme-toggle@0.8.0: {}
 
-  astro@6.1.3(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3):
+  astro@6.1.5(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(tsx@4.21.0)(typescript@5.9.3):
     dependencies:
       '@astrojs/compiler': 3.0.1
       '@astrojs/internal-helpers': 0.8.0
@@ -8121,7 +8121,6 @@ snapshots:
       cookie: 1.1.1
       devalue: 5.6.4
       diff: 8.0.3
-      dlv: 1.1.3
       dset: 3.1.4
       es-module-lexer: 2.0.0
       esbuild: 0.27.3
