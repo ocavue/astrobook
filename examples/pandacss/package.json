@@ -18,7 +18,7 @@
     "astrobook": "*"
   },
   "devDependencies": {
-    "postcss": "^8.5.8"
+    "postcss": "^8.5.9"
   },
   "stackblitz": {
     "installDependencies": false,
