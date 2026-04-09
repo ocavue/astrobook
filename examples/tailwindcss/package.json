@@ -16,7 +16,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "astrobook": "*",
-    "preact": "^10.29.0",
+    "preact": "^10.29.1",
     "tailwindcss": "^4.2.2"
   },
   "stackblitz": {
