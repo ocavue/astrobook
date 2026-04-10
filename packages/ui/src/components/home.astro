@@ -12,12 +12,16 @@ const showBadges = !!(content.version || content.repo)
   >
     {
       content.title == null ? null : (
-        <h1 class=":uno: cursor-default text-center text-sm font-bold tracking-tight text-gray-900 transition @xs:text-3xl @sm:text-5xl dark:text-gray-100">{content.title}</h1>
+        <h1 class=":uno: cursor-default text-center text-sm font-bold tracking-tight text-gray-900 transition @xs:text-3xl @sm:text-5xl dark:text-gray-100">
+          {content.title}
+        </h1>
       )
     }
     {
       content.subtitle == null ? null : (
-        <p class=":uno: mt-3 hidden cursor-default text-center text-lg text-gray-400 transition @sm:block dark:text-gray-500">{content.subtitle}</p>
+        <p class=":uno: mt-3 hidden cursor-default text-center text-lg text-gray-400 transition @sm:block dark:text-gray-500">
+          {content.subtitle}
+        </p>
       )
     }
 
@@ -33,7 +37,9 @@ const showBadges = !!(content.version || content.repo)
                 ':uno: font-mono',
                 ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
               ]}
-            >v{version}</a>
+            >
+              v{version}
+            </a>
           )}
           {content.repo && (
             <a
@@ -44,7 +50,10 @@ const showBadges = !!(content.version || content.repo)
                 ':uno: gap-1.5 font-medium @xs:gap-2',
                 ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
               ]}
-            ><span class=":uno: i-mdi-star-outline inline-block size-3.5 @xs:size-4" /><span>{content.repo.label}</span></a>
+            >
+              <span class=":uno: i-mdi-star-outline inline-block size-3.5 @xs:size-4" />
+              <span>{content.repo.label}</span>
+            </a>
           )}
         </div>
       )
