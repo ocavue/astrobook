@@ -1,9 +1,9 @@
 import type {
   IntegrationOptions,
-  ResolvedHomeContent,
 } from '@astrobook/types'
 import * as v from 'valibot'
 
+const DEFAULT_HEAD_COMPONENT = 'astrobook/components/head.astro'
 const DEFAULT_HOME_COMPONENT = 'astrobook/components/home.astro'
 const EMPTY_HOME_COMPONENT = 'astrobook/components/empty.astro'
 
@@ -53,37 +53,14 @@ const IntegrationOptionsSchema = v.optional(
     previewSubpath: v.optional(v.string(), 'stories'),
     title: v.optional(v.string(), 'Astrobook'),
     css: v.optional(v.array(v.string()), []),
-    head: v.optional(v.string(), 'astrobook/components/head.astro'),
+    head: v.optional(v.string(),DEFAULT_HEAD_COMPONENT),
     home: HomeSchema,
   }),
   {},
 )
 
-// We define `ResolvedOptions` manually rather than inferring from the valibot
-// schema because the union shape of `home` confuses inference: the parsed
-// `home` value would be widened to `any` and infect downstream destructuring.
-export interface ResolvedOptions {
-  directory: string
-  subpath: string
-  dashboardSubpath: string
-  previewSubpath: string
-  title: string
-  css: string[]
-  head: string
-  home: string
-  homeContent: ResolvedHomeContent
-}
+export type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
 
-interface ParsedOptions {
-  directory: string
-  subpath: string
-  dashboardSubpath: string
-  previewSubpath: string
-  title: string
-  css: string[]
-  head: string
-  home: string | false | ResolvedHomeContent
-}
 
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
   const result = v.safeParse(
@@ -96,39 +73,10 @@ export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
     throw new Error(`Invalid Astrobook options:\n${errorMessage}`)
   }
 
-  const parsed = result.output as unknown as ParsedOptions
+  const resolved: ResolvedOptions = {...result.output }
 
-  // The default home content is what valibot produces when an empty object is
-  // parsed against `HomeContentSchema`. Computing it here keeps a single source
-  // of truth: the schema.
-  const defaultHomeContent: ResolvedHomeContent = v.parse(
-    HomeContentSchema,
-    {},
-  ) as ResolvedHomeContent
+  if ()
 
-  let home: string
-  let homeContent: ResolvedHomeContent
-
-  if (typeof parsed.home === 'string') {
-    home = parsed.home
-    homeContent = defaultHomeContent
-  } else if (parsed.home === false) {
-    home = EMPTY_HOME_COMPONENT
-    homeContent = defaultHomeContent
-  } else {
-    home = DEFAULT_HOME_COMPONENT
-    homeContent = parsed.home
-  }
-
-  return {
-    directory: parsed.directory,
-    subpath: parsed.subpath,
-    dashboardSubpath: parsed.dashboardSubpath,
-    previewSubpath: parsed.previewSubpath,
-    title: parsed.title,
-    css: parsed.css,
-    head: parsed.head,
-    home,
-    homeContent,
-  }
+  return resolved 
+  
 }
