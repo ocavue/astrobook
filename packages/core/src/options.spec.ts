@@ -1,12 +1,18 @@
+import { createRequire } from 'node:module'
+
 import { describe, expect, it } from 'vitest'
 
 import { resolveOptions } from './options'
+
+const requireModule = createRequire(import.meta.url)
+const { version } = requireModule('../package.json') as { version: string }
 
 const defaultHomeContent = {
   title: 'Astrobook',
   subtitle: 'The minimal UI component playground',
   version: {
     href: 'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
+    label: `v${version}`,
   },
   repo: {
     href: 'https://github.com/ocavue/astrobook',

@@ -14,12 +14,10 @@ test('custom-home-content example', async ({ page }) => {
     ).toBeVisible()
   })
 
-  await test.step('Hide the version badge', async () => {
-    // The default version badge links to Astrobook's CHANGELOG; with
-    // `version: false` it must not be rendered at all.
-    await expect(
-      page.locator('a[href*="packages/astrobook/CHANGELOG"]'),
-    ).toHaveCount(0)
+  await test.step('Render the custom version badge', async () => {
+    // The example sets version.label to its own package.json version (v0.0.1).
+    const versionBadge = page.locator('a', { hasText: 'v0.0.1' })
+    await expect(versionBadge).toBeVisible()
   })
 
   await test.step('Render the customized GitHub badge', async () => {

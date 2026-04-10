@@ -1,5 +1,12 @@
+import { createRequire } from 'node:module'
+
 import type { IntegrationOptions } from '@astrobook/types'
 import * as v from 'valibot'
+
+const requireModule = createRequire(import.meta.url)
+const astrobookVersion: string = (
+  requireModule('../package.json') as { version: string }
+).version
 
 const HomeContentSchema = v.optional(
   v.object({
@@ -15,6 +22,7 @@ const HomeContentSchema = v.optional(
             v.string(),
             'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
           ),
+          label: v.optional(v.string(), `v${astrobookVersion}`),
         }),
         v.literal(false),
       ]),

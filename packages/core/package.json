@@ -23,7 +23,8 @@
     },
     "./client": {
       "default": "./src/client.ts"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -72,7 +73,8 @@
         "types": "./dist/client.d.ts",
         "import": "./dist/client.js",
         "default": "./dist/client.js"
-      }
+      }, 
+      "./package.json": "./package.json"
     },
     "main": "./dist/index.js",
     "module": "./dist/index.js",
