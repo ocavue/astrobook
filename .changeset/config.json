@@ -11,6 +11,8 @@
     "example-playground",
     "example-mixed",
     "example-custom-head",
+    "example-custom-home",
+    "example-custom-home-content",
     "example-tailwindcss",
     "example-unocss",
     "example-pandacss"
