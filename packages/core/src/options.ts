@@ -35,7 +35,10 @@ const HomeContentSchema = v.optional(
 )
 
 const HomeSchema = v.pipe(
-  v.optional(v.union([v.string(), v.literal(false)]), 'astrobook/components/home.astro'),
+  v.optional(
+    v.union([v.string(), v.literal(false)]),
+    'astrobook/components/home.astro',
+  ),
   v.transform((input): string => {
     if (typeof input === 'string') {
       return input
