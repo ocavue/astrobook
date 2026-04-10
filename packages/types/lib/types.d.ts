@@ -171,27 +171,27 @@ export interface IntegrationOptions {
  */
 export interface HomeContentOptions {
   /**
-   * The main title shown on the home page. Set to `null` to hide.
+   * The main title shown on the home page. Set to `false` to hide.
    * @default 'Astrobook'
    */
-  title?: string | null
+  title?: string | false
 
   /**
-   * The subtitle shown beneath the title. Set to `null` to hide.
+   * The subtitle shown beneath the title. Set to `false` to hide.
    * @default 'The minimal UI component playground'
    */
-  subtitle?: string | null
+  subtitle?: string | false
 
   /**
-   * Configuration for the version badge. Set to `null` to hide.
+   * Configuration for the version badge. Set to `false` to hide.
    * The badge label always displays the current Astrobook version.
    */
-  version?: HomeVersionOptions | null
+  version?: HomeVersionOptions | false
 
   /**
-   * Configuration for the GitHub repository badge. Set to `null` to hide.
+   * Configuration for the GitHub repository badge. Set to `false` to hide.
    */
-  repo?: HomeRepoOptions | null
+  repo?: HomeRepoOptions | false
 }
 
 export interface HomeVersionOptions {
