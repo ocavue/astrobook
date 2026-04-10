@@ -56,9 +56,9 @@ describe('resolveOptions', () => {
     expect(resolved.homeContent).toEqual(defaultHomeContent)
   })
 
-  it('should accept a partial `home` content object', () => {
+  it('should accept a partial `homeContent` object', () => {
     const resolved = resolveOptions({
-      home: {
+      homeContent: {
         title: 'Acme UI',
         repo: { href: 'https://github.com/acme/ui' },
       },
@@ -77,7 +77,7 @@ describe('resolveOptions', () => {
 
   it('should hide individual sections when set to false', () => {
     const resolved = resolveOptions({
-      home: {
+      homeContent: {
         title: false,
         subtitle: false,
         version: false,

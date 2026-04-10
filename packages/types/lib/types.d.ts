@@ -115,17 +115,13 @@ export interface IntegrationOptions {
   head?: string
 
   /**
-   * Customize the dashboard home page.
+   * Controls which Astro component is rendered on the dashboard homepage.
    *
-   * Accepts three different forms:
-   *
-   * - A `string` is treated as the path to an Astro component used to fully
-   *   replace the built-in home page (relative paths and package identifiers
-   *   are both supported).
-   * - An object of type {@link HomeContentOptions} keeps the built-in home
-   *   layout and overrides individual pieces (title, subtitle, version badge,
-   *   GitHub badge). Set any field to `false` to hide the corresponding section.
-   * - `false` renders an empty home page with no content.
+   * - Pass a string (relative path or package identifier) to fully replace
+   *   the built-in home page with a custom Astro component.
+   * - Pass `false` to render an empty home page.
+   * - Omit the option to use Astrobook's built-in home. Customize the content
+   *   of that built-in home through {@link IntegrationOptions.homeContent}.
    *
    * @default 'astrobook/components/home.astro'
    *
@@ -141,9 +137,29 @@ export interface IntegrationOptions {
    * @example
    *
    * ```js
-   * // Override individual pieces of the built-in home page
+   * // Render an empty home page
+   * astrobook({ home: false })
+   * ```
+   */
+  home?: string | false
+
+  /**
+   * Customize the content of Astrobook's built-in home page (title, subtitle,
+   * version badge, GitHub badge).
+   *
+   * This option is only consumed when {@link IntegrationOptions.home} is left
+   * at its default value. If you provide a custom `home` component or set
+   * `home: false`, this option is ignored.
+   *
+   * Each field can be set to a custom value to override it, set to `false`
+   * to hide the corresponding section, or omitted to fall back to the
+   * default.
+   *
+   * @example
+   *
+   * ```js
    * astrobook({
-   *   home: {
+   *   homeContent: {
    *     title: 'Acme UI',
    *     subtitle: 'Internal component library',
    *     repo: { href: 'https://github.com/acme/ui' },
@@ -151,15 +167,8 @@ export interface IntegrationOptions {
    *   },
    * })
    * ```
-   *
-   * @example
-   *
-   * ```js
-   * // Render an empty home page
-   * astrobook({ home: false })
-   * ```
    */
-  home?: string | HomeContentOptions | false
+  homeContent?: HomeContentOptions
 }
 
 /**
