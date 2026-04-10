@@ -1,11 +1,7 @@
-import { createRequire } from 'node:module'
-
+import { version } from '@astrobook/core/package.json'
 import { describe, expect, it } from 'vitest'
 
 import { resolveOptions } from './options'
-
-const requireModule = createRequire(import.meta.url)
-const { version } = requireModule('../package.json') as { version: string }
 
 const defaultHomeContent = {
   title: 'Astrobook',

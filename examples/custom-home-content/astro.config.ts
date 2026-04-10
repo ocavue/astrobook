@@ -1,10 +1,7 @@
-import { createRequire } from 'node:module'
-
 import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
-const requireModule = createRequire(import.meta.url)
-const { version } = requireModule('./package.json') as { version: string }
+import { version } from './package.json'
 
 // https://astro.build/config
 export default defineConfig({
