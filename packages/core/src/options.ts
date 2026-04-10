@@ -35,19 +35,18 @@ const HomeContentSchema = v.optional(
 )
 
 const HomeSchema = v.pipe(
-  v.optional(v.union([v.string(), v.literal(false)]), undefined),
+  v.optional(v.union([v.string(), v.literal(false)]), 'astrobook/components/home.astro'),
   v.transform((input): string => {
     if (typeof input === 'string') {
       return input
     } else if (input === false) {
       return 'astrobook/components/empty.astro'
-    } else if (input === undefined) {
-      return 'astrobook/components/home.astro'
     } else {
       throw new Error("Invalid value for 'home' option")
     }
   }),
   v.string(),
+  v.minLength(1),
 )
 
 const IntegrationOptionsSchema = v.optional(
