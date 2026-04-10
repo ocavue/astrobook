@@ -315,6 +315,52 @@ export default defineConfig({
 })
 ```
 
+### `homeContent`
+
+Customize the content of the built-in home page without replacing it entirely. You can configure the title, subtitle, version badge, and repository badge. Each field can be set to a custom value, set to `false` to hide it, or omitted to use the default.
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config'
+import astrobook from 'astrobook'
+
+import { version } from './package.json'
+
+export default defineConfig({
+  integrations: [
+    astrobook({
+      homeContent: {
+        title: 'Acme UI',
+        subtitle: 'Internal component library',
+        // Display your project's own version and link to your own changelog.
+        version: {
+          label: `v${version}`,
+          href: 'https://example.com/CHANGELOG',
+        },
+        // Customize the repository badge.
+        repo: {
+          href: 'https://github.com/acme/ui',
+          label: 'View on GitHub',
+        },
+      },
+    }),
+  ],
+})
+```
+
+| Field           | Type              | Default                                    | Description                     |
+| --------------- | ----------------- | ------------------------------------------ | ------------------------------- |
+| `title`         | `string \| false` | `'Astrobook'`                              | Main heading on the home page.  |
+| `subtitle`      | `string \| false` | `'The minimal UI component playground'`    | Text below the title.           |
+| `version`       | `object \| false` | `{}` (shows Astrobook version)             | Version badge configuration.    |
+| `version.href`  | `string`          | Astrobook CHANGELOG URL                    | Link target for the badge.      |
+| `version.label` | `string`          | Current Astrobook version (e.g. `v0.12.7`) | Text displayed in the badge.    |
+| `repo`          | `object \| false` | `{}` (links to Astrobook repo)             | Repository badge configuration. |
+| `repo.href`     | `string`          | `'https://github.com/ocavue/astrobook'`    | Link target for the badge.      |
+| `repo.label`    | `string`          | `'Star on GitHub'`                         | Text displayed in the badge.    |
+
+This option is only used when `home` is left at its default value. If you provide a custom `home` component or set `home: false`, `homeContent` is ignored.
+
 ### `title`
 
 You can set the title for your website.

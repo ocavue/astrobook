@@ -3,5 +3,11 @@
   "compilerOptions": {
     "composite": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.d.ts", "./*.js", "./*.ts"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./*.js",
+    "./*.ts",
+    "./*.json"
+  ]
 }

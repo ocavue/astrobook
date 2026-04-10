@@ -1,3 +1,4 @@
+import { version } from '@astrobook/core/package.json'
 import { describe, expect, it } from 'vitest'
 
 import { resolveOptions } from './options'
@@ -7,6 +8,7 @@ const defaultHomeContent = {
   subtitle: 'The minimal UI component playground',
   version: {
     href: 'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
+    label: `v${version}`,
   },
   repo: {
     href: 'https://github.com/ocavue/astrobook',

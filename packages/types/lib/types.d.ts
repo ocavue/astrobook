@@ -158,12 +158,17 @@ export interface IntegrationOptions {
    * @example
    *
    * ```js
+   * import { version } from './package.json'
+   *
    * astrobook({
    *   homeContent: {
    *     title: 'Acme UI',
    *     subtitle: 'Internal component library',
+   *     version: {
+   *       label: `v${version}`,
+   *       href: 'https://example.com/CHANGELOG',
+   *     },
    *     repo: { href: 'https://github.com/acme/ui' },
-   *     version: false, // hide the version badge
    *   },
    * })
    * ```
@@ -193,7 +198,6 @@ export interface HomeContentOptions {
 
   /**
    * Configuration for the version badge. Set to `false` to hide.
-   * The badge label always displays the current Astrobook version.
    */
   version?: HomeVersionOptions | false
 
@@ -209,6 +213,26 @@ export interface HomeVersionOptions {
    * @default 'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md'
    */
   href?: string
+
+  /**
+   * The label rendered inside the version badge.
+   *
+   * Defaults to the current Astrobook version (e.g. `v0.12.7`).
+   * Set a custom string to display your own project's version instead.
+   *
+   * @example
+   *
+   * ```js
+   * import { version } from './package.json'
+   *
+   * astrobook({
+   *   homeContent: {
+   *     version: { label: `v${version}` },
+   *   },
+   * })
+   * ```
+   */
+  label?: string
 }
 
 export interface HomeRepoOptions {
@@ -306,7 +330,7 @@ export interface GlobalConfig {
   homeContent: {
     title: string | false
     subtitle: string | false
-    version: { href: string } | false
+    version: { href: string; label: string } | false
     repo: { href: string; label: string } | false
   }
 

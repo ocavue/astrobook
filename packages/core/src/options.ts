@@ -1,3 +1,4 @@
+import { version } from '@astrobook/core/package.json'
 import type { IntegrationOptions } from '@astrobook/types'
 import * as v from 'valibot'
 
@@ -15,6 +16,7 @@ const HomeContentSchema = v.optional(
             v.string(),
             'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
           ),
+          label: v.optional(v.string(), `v${version}`),
         }),
         v.literal(false),
       ]),
