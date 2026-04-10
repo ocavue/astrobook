@@ -225,7 +225,6 @@ export interface HomeRepoOptions {
   label?: string
 }
 
-
 export interface StoryModule {
   /**
    * The id of the story module.
@@ -304,13 +303,12 @@ export interface GlobalConfig {
    * provides a custom `home` component path or `home: false`, this still
    * holds the default values but is not consumed by the rendered component.
    */
-  homeContent:  {
-  title: string | false
-  subtitle: string | false
-  version: { href: string } | false
-  repo: { href: string; label: string } | false
-}
-
+  homeContent: {
+    title: string | false
+    subtitle: string | false
+    version: { href: string } | false
+    repo: { href: string; label: string } | false
+  }
 
   /**
    * Array of CSS file paths to import for customizing the look and feel
