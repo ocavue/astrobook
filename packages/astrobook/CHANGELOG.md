@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.13.0
+
+### Minor Changes
+
+- [`6c3acef`](https://github.com/ocavue/astrobook/commit/6c3acef2ba68355c14c0079867ac9dcbfda7aab5) Added `label` option to `homeContent.version` for customizing the version badge text. Defaults to the current Astrobook version but can be set to any string, e.g. your own project's version from `package.json`.
+
 ## 0.12.7
 
 ### Patch Changes
