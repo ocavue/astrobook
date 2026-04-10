@@ -73,7 +73,7 @@
         "types": "./dist/client.d.ts",
         "import": "./dist/client.js",
         "default": "./dist/client.js"
-      }, 
+      },
       "./package.json": "./package.json"
     },
     "main": "./dist/index.js",
