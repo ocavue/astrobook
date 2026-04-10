@@ -6,5 +6,6 @@ export const EXAMPLE_URLS = /** @type {const} */ ({
   'example-tailwindcss': 'http://localhost:4304',
   'example-custom-head': 'http://localhost:4305',
   'example-custom-home': 'http://localhost:4306',
+  'example-custom-home-content': 'http://localhost:4307',
   'example-pandacss': 'http://localhost:4309',
 })

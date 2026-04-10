@@ -1,50 +1,62 @@
 ---
 import { version } from '@astrobook/ui/package.json'
+import config from 'virtual:astrobook/global-config.mjs'
+
+const content = config.homeContent
+const showBadges = !!(content.version || content.repo)
 ---
 
 <div class=":uno: @container h-full w-full">
   <div
     class=":uno: box-border flex h-full w-full flex-col items-center justify-center px-4 @xs:px-6"
   >
-    <h1
-      class=":uno: cursor-default text-center text-sm font-bold tracking-tight text-gray-900 transition @xs:text-3xl @sm:text-5xl dark:text-gray-100"
-    >
-      Astrobook
-    </h1>
-    <p
-      class=":uno: mt-3 hidden cursor-default text-center text-lg text-gray-400 transition @sm:block dark:text-gray-500"
-    >
-      The minimal UI component playground
-    </p>
+    {
+      content.title == null ? null : (
+        <h1 class=":uno: cursor-default text-center text-sm font-bold tracking-tight text-gray-900 transition @xs:text-3xl @sm:text-5xl dark:text-gray-100">
+          {content.title}
+        </h1>
+      )
+    }
+    {
+      content.subtitle == null ? null : (
+        <p class=":uno: mt-3 hidden cursor-default text-center text-lg text-gray-400 transition @sm:block dark:text-gray-500">
+          {content.subtitle}
+        </p>
+      )
+    }
 
-    <div
-      class=":uno: mt-4 flex flex-col gap-2.5 @xs:mt-8 @xs:flex-row @xs:items-center @xs:gap-3"
-    >
-      <a
-        href={`https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class:list={[
-          ':uno: font-mono',
-          ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
-        ]}
-      >
-        v{version}
-      </a>
-      <a
-        href="https://github.com/ocavue/astrobook"
-        target="_blank"
-        rel="noopener noreferrer"
-        class:list={[
-          ':uno: gap-1.5 font-medium @xs:gap-2',
-          ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
-        ]}
-      >
-        <span class=":uno: i-mdi-star-outline inline-block size-3.5 @xs:size-4"
-        ></span>
-        <span class=":uno: @xs:hidden">Star</span>
-        <span class=":uno: hidden @xs:inline">Star on GitHub</span>
-      </a>
-    </div>
+    {
+      showBadges && (
+        <div class=":uno: mt-4 flex flex-col gap-2.5 @xs:mt-8 @xs:flex-row @xs:items-center @xs:gap-3">
+          {content.version && (
+            <a
+              href={content.version.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                ':uno: font-mono',
+                ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
+              ]}
+            >
+              v{version}
+            </a>
+          )}
+          {content.repo && (
+            <a
+              href={content.repo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                ':uno: gap-1.5 font-medium @xs:gap-2',
+                ':uno: flex items-center justify-center rounded-full border border-solid border-gray-200 px-2.5 py-0.5 text-xs text-gray-500 no-underline transition hover:border-gray-300 hover:text-gray-600 @xs:px-3 @xs:py-1 @xs:text-sm dark:border-gray-700 dark:text-gray-500 dark:hover:border-gray-600 dark:hover:text-gray-300',
+              ]}
+            >
+              <span class=":uno: i-mdi-star-outline inline-block size-3.5 @xs:size-4" />
+              <span>{content.repo.label}</span>
+            </a>
+          )}
+        </div>
+      )
+    }
   </div>
 </div>

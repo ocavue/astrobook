@@ -113,6 +113,7 @@ export function createAstrobookIntegration(
                   storyBase,
                   head: resolvedOptions.head,
                   home: resolvedOptions.home,
+                  homeContent: resolvedOptions.homeContent,
                   css: resolvedOptions.css,
                   title: resolvedOptions.title,
                   trailingSlash: config.trailingSlash,

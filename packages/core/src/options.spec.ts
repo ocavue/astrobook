@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest'
 
 import { resolveOptions } from './options'
 
+const defaultHomeContent = {
+  title: 'Astrobook',
+  subtitle: 'The minimal UI component playground',
+  version: {
+    href: 'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
+  },
+  repo: {
+    href: 'https://github.com/ocavue/astrobook',
+    label: 'Star on GitHub',
+  },
+}
+
 describe('resolveOptions', () => {
   it('should return default values', () => {
     expect(resolveOptions()).toEqual({
@@ -13,6 +25,7 @@ describe('resolveOptions', () => {
       css: [],
       head: 'astrobook/components/head.astro',
       home: 'astrobook/components/home.astro',
+      homeContent: defaultHomeContent,
     })
   })
 
@@ -33,6 +46,50 @@ describe('resolveOptions', () => {
       css: ['./styles/main.css'],
       head: 'astrobook/components/head.astro',
       home: './MyCustomHome.astro',
+      homeContent: defaultHomeContent,
+    })
+  })
+
+  it('should treat `home: false` as the empty home component', () => {
+    const resolved = resolveOptions({ home: false })
+    expect(resolved.home).toBe('astrobook/components/empty.astro')
+    expect(resolved.homeContent).toEqual(defaultHomeContent)
+  })
+
+  it('should accept a partial `homeContent` object', () => {
+    const resolved = resolveOptions({
+      homeContent: {
+        title: 'Acme UI',
+        repo: { href: 'https://github.com/acme/ui' },
+      },
+    })
+    expect(resolved.home).toBe('astrobook/components/home.astro')
+    expect(resolved.homeContent).toEqual({
+      title: 'Acme UI',
+      subtitle: 'The minimal UI component playground',
+      version: defaultHomeContent.version,
+      repo: {
+        href: 'https://github.com/acme/ui',
+        label: 'Star on GitHub',
+      },
+    })
+  })
+
+  it('should hide individual sections when set to false', () => {
+    const resolved = resolveOptions({
+      homeContent: {
+        title: false,
+        subtitle: false,
+        version: false,
+        repo: false,
+      },
+    })
+    expect(resolved.home).toBe('astrobook/components/home.astro')
+    expect(resolved.homeContent).toEqual({
+      title: false,
+      subtitle: false,
+      version: false,
+      repo: false,
     })
   })
 
@@ -49,5 +106,12 @@ describe('resolveOptions', () => {
       × Invalid type: Expected string but received 333
         → at css.1]
     `)
+  })
+
+  it('should throw error for invalid `home` value', () => {
+    expect(() => {
+      // @ts-expect-error - testing invalid type
+      resolveOptions({ home: 123 })
+    }).toThrow(/Invalid Astrobook options:/)
   })
 })

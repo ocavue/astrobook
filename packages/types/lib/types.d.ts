@@ -115,10 +115,114 @@ export interface IntegrationOptions {
   head?: string
 
   /**
-   * The path to an Astro component to render on dashboard homepage.
-   * @default astrobook/components/home.astro
+   * Controls which Astro component is rendered on the dashboard homepage.
+   *
+   * - Pass a string (relative path or package identifier) to fully replace
+   *   the built-in home page with a custom Astro component.
+   * - Pass `false` to render an empty home page.
+   * - Omit the option to use Astrobook's built-in home. Customize the content
+   *   of that built-in home through {@link IntegrationOptions.homeContent}.
+   *
+   * @default 'astrobook/components/home.astro'
+   *
+   * @example
+   *
+   * ```js
+   * // Replace the built-in home page with a custom Astro component
+   * astrobook({
+   *   home: './src/components/CustomHome.astro',
+   * })
+   * ```
+   *
+   * @example
+   *
+   * ```js
+   * // Render an empty home page
+   * astrobook({ home: false })
+   * ```
    */
-  home?: string
+  home?: string | false
+
+  /**
+   * Customize the content of Astrobook's built-in home page (title, subtitle,
+   * version badge, GitHub badge).
+   *
+   * This option is only consumed when {@link IntegrationOptions.home} is left
+   * at its default value. If you provide a custom `home` component or set
+   * `home: false`, this option is ignored.
+   *
+   * Each field can be set to a custom value to override it, set to `false`
+   * to hide the corresponding section, or omitted to fall back to the
+   * default.
+   *
+   * @example
+   *
+   * ```js
+   * astrobook({
+   *   homeContent: {
+   *     title: 'Acme UI',
+   *     subtitle: 'Internal component library',
+   *     repo: { href: 'https://github.com/acme/ui' },
+   *     version: false, // hide the version badge
+   *   },
+   * })
+   * ```
+   */
+  homeContent?: HomeContentOptions
+}
+
+/**
+ * Options for customizing the content of the built-in home page.
+ *
+ * Used as the object form of {@link IntegrationOptions.home}. Each field can
+ * be set to `false` to hide the corresponding section, omitted to fall back to
+ * the default value, or set to a custom value to override it.
+ */
+export interface HomeContentOptions {
+  /**
+   * The main title shown on the home page. Set to `false` to hide.
+   * @default 'Astrobook'
+   */
+  title?: string | false
+
+  /**
+   * The subtitle shown beneath the title. Set to `false` to hide.
+   * @default 'The minimal UI component playground'
+   */
+  subtitle?: string | false
+
+  /**
+   * Configuration for the version badge. Set to `false` to hide.
+   * The badge label always displays the current Astrobook version.
+   */
+  version?: HomeVersionOptions | false
+
+  /**
+   * Configuration for the GitHub repository badge. Set to `false` to hide.
+   */
+  repo?: HomeRepoOptions | false
+}
+
+export interface HomeVersionOptions {
+  /**
+   * The URL the version badge links to.
+   * @default 'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md'
+   */
+  href?: string
+}
+
+export interface HomeRepoOptions {
+  /**
+   * The URL the repository badge links to.
+   * @default 'https://github.com/ocavue/astrobook'
+   */
+  href?: string
+
+  /**
+   * The label rendered inside the repository badge.
+   * @default 'Star on GitHub'
+   */
+  label?: string
 }
 
 export interface StoryModule {
@@ -193,6 +297,18 @@ export interface GlobalConfig {
    * @default astrobook/components/home.astro
    */
   home: string
+
+  /**
+   * The fully resolved content for the built-in home page. When the user
+   * provides a custom `home` component path or `home: false`, this still
+   * holds the default values but is not consumed by the rendered component.
+   */
+  homeContent: {
+    title: string | false
+    subtitle: string | false
+    version: { href: string } | false
+    repo: { href: string; label: string } | false
+  }
 
   /**
    * Array of CSS file paths to import for customizing the look and feel

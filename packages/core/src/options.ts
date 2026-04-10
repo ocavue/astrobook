@@ -1,6 +1,57 @@
 import type { IntegrationOptions } from '@astrobook/types'
 import * as v from 'valibot'
 
+const HomeContentSchema = v.optional(
+  v.object({
+    title: v.optional(v.union([v.string(), v.literal(false)]), 'Astrobook'),
+    subtitle: v.optional(
+      v.union([v.string(), v.literal(false)]),
+      'The minimal UI component playground',
+    ),
+    version: v.optional(
+      v.union([
+        v.object({
+          href: v.optional(
+            v.string(),
+            'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
+          ),
+        }),
+        v.literal(false),
+      ]),
+      {},
+    ),
+    repo: v.optional(
+      v.union([
+        v.object({
+          href: v.optional(v.string(), 'https://github.com/ocavue/astrobook'),
+          label: v.optional(v.string(), 'Star on GitHub'),
+        }),
+        v.literal(false),
+      ]),
+      {},
+    ),
+  }),
+  {},
+)
+
+const HomeSchema = v.pipe(
+  v.optional(
+    v.union([v.string(), v.literal(false)]),
+    'astrobook/components/home.astro',
+  ),
+  v.transform((input): string => {
+    if (typeof input === 'string') {
+      return input
+    } else if (input === false) {
+      return 'astrobook/components/empty.astro'
+    } else {
+      throw new Error("Invalid value for 'home' option")
+    }
+  }),
+  v.string(),
+  v.minLength(1),
+)
+
 const IntegrationOptionsSchema = v.optional(
   v.object({
     directory: v.optional(v.string(), '.'),
@@ -10,12 +61,13 @@ const IntegrationOptionsSchema = v.optional(
     title: v.optional(v.string(), 'Astrobook'),
     css: v.optional(v.array(v.string()), []),
     head: v.optional(v.string(), 'astrobook/components/head.astro'),
-    home: v.optional(v.string(), 'astrobook/components/home.astro'),
+    home: HomeSchema,
+    homeContent: HomeContentSchema,
   }),
   {},
 )
 
-export type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
+type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
 
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
   const result = v.safeParse(
