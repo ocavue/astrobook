@@ -112,6 +112,6 @@ describe('resolveOptions', () => {
     expect(() => {
       // @ts-expect-error - testing invalid type
       resolveOptions({ home: 123 })
-    }).toThrowError(/Invalid Astrobook options:/)
+    }).toThrow(/Invalid Astrobook options:/)
   })
 })

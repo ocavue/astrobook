@@ -54,11 +54,30 @@ const IntegrationOptionsSchema = v.optional(
   {},
 )
 
-type ParsedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
-
-export interface ResolvedOptions extends Omit<ParsedOptions, 'home'> {
+// We define `ResolvedOptions` manually rather than inferring from the valibot
+// schema because the union shape of `home` confuses inference: the parsed
+// `home` value would be widened to `any` and infect downstream destructuring.
+export interface ResolvedOptions {
+  directory: string
+  subpath: string
+  dashboardSubpath: string
+  previewSubpath: string
+  title: string
+  css: string[]
+  head: string
   home: string
   homeContent: ResolvedHomeContent
+}
+
+interface ParsedOptions {
+  directory: string
+  subpath: string
+  dashboardSubpath: string
+  previewSubpath: string
+  title: string
+  css: string[]
+  head: string
+  home: string | false | ResolvedHomeContent
 }
 
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
@@ -72,29 +91,38 @@ export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
     throw new Error(`Invalid Astrobook options:\n${errorMessage}`)
   }
 
-  const { home: parsedHome, ...rest } = result.output
+  const parsed = result.output as unknown as ParsedOptions
 
   // The default home content is what valibot produces when an empty object is
   // parsed against `HomeContentSchema`. Computing it here keeps a single source
   // of truth: the schema.
-  const defaultHomeContent = v.parse(HomeContentSchema, {}) as ResolvedHomeContent
+  const defaultHomeContent: ResolvedHomeContent = v.parse(
+    HomeContentSchema,
+    {},
+  ) as ResolvedHomeContent
 
   let home: string
   let homeContent: ResolvedHomeContent
 
-  if (typeof parsedHome === 'string') {
-    home = parsedHome
+  if (typeof parsed.home === 'string') {
+    home = parsed.home
     homeContent = defaultHomeContent
-  } else if (parsedHome === false) {
+  } else if (parsed.home === false) {
     home = EMPTY_HOME_COMPONENT
     homeContent = defaultHomeContent
   } else {
     home = DEFAULT_HOME_COMPONENT
-    homeContent = parsedHome as ResolvedHomeContent
+    homeContent = parsed.home
   }
 
   return {
-    ...rest,
+    directory: parsed.directory,
+    subpath: parsed.subpath,
+    dashboardSubpath: parsed.dashboardSubpath,
+    previewSubpath: parsed.previewSubpath,
+    title: parsed.title,
+    css: parsed.css,
+    head: parsed.head,
     home,
     homeContent,
   }
