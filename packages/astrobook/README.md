@@ -321,13 +321,10 @@ Customize the content of the built-in home page without replacing it entirely. Y
 
 ```js
 // astro.config.mjs
-import { createRequire } from 'node:module'
-
 import { defineConfig } from 'astro/config'
 import astrobook from 'astrobook'
 
-const _require = createRequire(import.meta.url)
-const { version } = _require('./package.json')
+import { version } from './package.json'
 
 export default defineConfig({
   integrations: [
@@ -335,8 +332,11 @@ export default defineConfig({
       homeContent: {
         title: 'Acme UI',
         subtitle: 'Internal component library',
-        // Display your project's own version instead of the Astrobook version.
-        version: { label: `v${version}` },
+        // Display your project's own version and link to your own changelog.
+        version: {
+          label: `v${version}`,
+          href: 'https://github.com/acme/ui/blob/main/CHANGELOG.md',
+        },
         // Customize the repository badge.
         repo: {
           href: 'https://github.com/acme/ui',

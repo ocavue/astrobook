@@ -158,13 +158,13 @@ export interface IntegrationOptions {
    * @example
    *
    * ```js
-   * import pkg from './package.json'
+   * import { version } from './package.json'
    *
    * astrobook({
    *   homeContent: {
    *     title: 'Acme UI',
    *     subtitle: 'Internal component library',
-   *     version: { label: `v${pkg.version}` }, // show your own version
+   *     version: { label: `v${version}` }, // show your own version
    *     repo: { href: 'https://github.com/acme/ui' },
    *   },
    * })
@@ -220,11 +220,11 @@ export interface HomeVersionOptions {
    * @example
    *
    * ```js
-   * import pkg from './package.json'
+   * import { version } from './package.json'
    *
    * astrobook({
    *   homeContent: {
-   *     version: { label: `v${pkg.version}` },
+   *     version: { label: `v${version}` },
    *   },
    * })
    * ```
