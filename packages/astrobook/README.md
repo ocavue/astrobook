@@ -335,7 +335,7 @@ export default defineConfig({
         // Display your project's own version and link to your own changelog.
         version: {
           label: `v${version}`,
-          href: 'https://github.com/acme/ui/blob/main/CHANGELOG.md',
+          href: 'https://example.com/CHANGELOG',
         },
         // Customize the repository badge.
         repo: {
