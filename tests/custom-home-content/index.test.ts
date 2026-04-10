@@ -17,9 +17,7 @@ test('custom-home-content example', async ({ page }) => {
   await test.step('Render the custom version badge', async () => {
     // The example sets version.label to its own package.json version (v0.0.1)
     // and version.href to its own changelog URL.
-    const versionBadge = page.locator(
-      'a[href="https://example.com/CHANGELOG"]',
-    )
+    const versionBadge = page.locator('a[href="https://example.com/CHANGELOG"]')
     await expect(versionBadge).toBeVisible()
     await expect(versionBadge).toContainText('v0.0.1')
   })
