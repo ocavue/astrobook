@@ -1,0 +1,22 @@
+{
+  "name": "example-custom-home-content",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Astrobook example",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.1.5",
+    "astrobook": "*"
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "pnpm install && pnpm run dev"
+  }
+}
