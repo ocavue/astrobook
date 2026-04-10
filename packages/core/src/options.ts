@@ -1,7 +1,6 @@
 import type { IntegrationOptions } from '@astrobook/types'
 import * as v from 'valibot'
 
-
 const HomeContentSchema = v.optional(
   v.object({
     title: v.optional(v.union([v.string(), v.literal(false)]), 'Astrobook'),
@@ -36,22 +35,19 @@ const HomeContentSchema = v.optional(
 )
 
 const HomeSchema = v.pipe(
-  v.optional(
-  v.union([v.string(), v.literal(false)]),
-  undefined,
-),
+  v.optional(v.union([v.string(), v.literal(false)]), undefined),
   v.transform((input): string => {
-    if (typeof input === "string") {
+    if (typeof input === 'string') {
       return input
-    } else if (input === false ) {
+    } else if (input === false) {
       return 'astrobook/components/empty.astro'
-    } else if (input === undefined )  {
+    } else if (input === undefined) {
       return 'astrobook/components/home.astro'
     } else {
       throw new Error("Invalid value for 'home' option")
     }
-  })
-);
+  }),
+)
 
 const IntegrationOptionsSchema = v.optional(
   v.object({
@@ -70,7 +66,6 @@ const IntegrationOptionsSchema = v.optional(
 
 type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
 
-
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
   const result = v.safeParse(
     IntegrationOptionsSchema,
@@ -82,6 +77,5 @@ export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
     throw new Error(`Invalid Astrobook options:\n${errorMessage}`)
   }
 
-return  result.output
-
+  return result.output
 }
