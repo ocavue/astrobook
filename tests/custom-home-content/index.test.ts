@@ -18,7 +18,7 @@ test('custom-home-content example', async ({ page }) => {
     // The default version badge links to Astrobook's CHANGELOG; with
     // `version: false` it must not be rendered at all.
     await expect(
-      page.locator('a[href*="astrobook/blob/master/packages/astrobook/CHANGELOG"]'),
+      page.locator('a[href*="packages/astrobook/CHANGELOG"]'),
     ).toHaveCount(0)
   })
 
