@@ -47,6 +47,7 @@ const HomeSchema = v.pipe(
       throw new Error("Invalid value for 'home' option")
     }
   }),
+  v.string(),
 )
 
 const IntegrationOptionsSchema = v.optional(
