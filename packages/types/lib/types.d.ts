@@ -225,18 +225,6 @@ export interface HomeRepoOptions {
   label?: string
 }
 
-/**
- * The fully resolved version of {@link HomeContentOptions}, with all defaults
- * applied. Used internally to render the built-in home page.
- *
- * @internal
- */
-export interface ResolvedHomeContent {
-  title: string | false
-  subtitle: string | false
-  version: { href: string } | false
-  repo: { href: string; label: string } | false
-}
 
 export interface StoryModule {
   /**
@@ -316,7 +304,13 @@ export interface GlobalConfig {
    * provides a custom `home` component path or `home: false`, this still
    * holds the default values but is not consumed by the rendered component.
    */
-  homeContent: ResolvedHomeContent
+  homeContent:  {
+  title: string | false
+  subtitle: string | false
+  version: { href: string } | false
+  repo: { href: string; label: string } | false
+}
+
 
   /**
    * Array of CSS file paths to import for customizing the look and feel
