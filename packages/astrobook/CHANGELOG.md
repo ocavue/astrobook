@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.12.7
+
+### Patch Changes
+
+- [`a66d5b9`](https://github.com/ocavue/astrobook/commit/a66d5b970d4b1f1b215d2625ee8ca0f99b282786) Add a new `homeContent` option to customize the title, subtitle, version badge, and GitHub badge of the built-in home page. Set any field to `false` to hide that section. Also allow `home: false` to render an empty home page.
+
 ## 0.12.6
 
 ### Patch Changes
