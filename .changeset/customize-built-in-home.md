@@ -5,4 +5,4 @@
 'astrobook': patch
 ---
 
-Allow customizing the built-in home page via the `home` option. It now accepts an object that overrides the title, subtitle, version badge, and GitHub badge, or `false` to render an empty home page.
+Add a new `homeContent` option to customize the title, subtitle, version badge, and GitHub badge of the built-in home page. Set any field to `false` to hide that section. Also allow `home: false` to render an empty home page.

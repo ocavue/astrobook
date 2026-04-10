@@ -1,9 +1,6 @@
 import type { IntegrationOptions } from '@astrobook/types'
 import * as v from 'valibot'
 
-const DEFAULT_HEAD_COMPONENT = 'astrobook/components/head.astro'
-const DEFAULT_HOME_COMPONENT = 'astrobook/components/home.astro'
-const EMPTY_HOME_COMPONENT = 'astrobook/components/empty.astro'
 
 const HomeContentSchema = v.optional(
   v.object({
@@ -38,10 +35,23 @@ const HomeContentSchema = v.optional(
   {},
 )
 
-const HomeSchema = v.optional(
+const HomeSchema = v.pipe(
+  v.optional(
   v.union([v.string(), v.literal(false)]),
-  DEFAULT_HOME_COMPONENT,
-)
+  undefined,
+),
+  v.transform((input): string => {
+    if (typeof input === "string") {
+      return input
+    } else if (input === false ) {
+      return 'astrobook/components/empty.astro'
+    } else if (input === undefined )  {
+      return 'astrobook/components/home.astro'
+    } else {
+      throw new Error("Invalid value for 'home' option")
+    }
+  })
+);
 
 const IntegrationOptionsSchema = v.optional(
   v.object({
@@ -51,20 +61,15 @@ const IntegrationOptionsSchema = v.optional(
     previewSubpath: v.optional(v.string(), 'stories'),
     title: v.optional(v.string(), 'Astrobook'),
     css: v.optional(v.array(v.string()), []),
-    head: v.optional(v.string(), DEFAULT_HEAD_COMPONENT),
+    head: v.optional(v.string(), 'astrobook/components/head.astro'),
     home: HomeSchema,
     homeContent: HomeContentSchema,
   }),
   {},
 )
 
-type ParsedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
+type ResolvedOptions = v.InferOutput<typeof IntegrationOptionsSchema>
 
-export interface ResolvedOptions extends Omit<ParsedOptions, 'home'> {
-  // After normalization `home` is always a path string. `false` is rewritten
-  // to the built-in empty component path.
-  home: string
-}
 
 export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
   const result = v.safeParse(
@@ -77,10 +82,6 @@ export function resolveOptions(options?: IntegrationOptions): ResolvedOptions {
     throw new Error(`Invalid Astrobook options:\n${errorMessage}`)
   }
 
-  const parsed = result.output
+return  result.output
 
-  return {
-    ...parsed,
-    home: parsed.home === false ? EMPTY_HOME_COMPONENT : parsed.home,
-  }
 }
