@@ -75,21 +75,21 @@ describe('resolveOptions', () => {
     })
   })
 
-  it('should hide individual sections when set to null', () => {
+  it('should hide individual sections when set to false', () => {
     const resolved = resolveOptions({
       home: {
-        title: null,
-        subtitle: null,
-        version: null,
-        repo: null,
+        title: false,
+        subtitle: false,
+        version: false,
+        repo: false,
       },
     })
     expect(resolved.home).toBe('astrobook/components/home.astro')
     expect(resolved.homeContent).toEqual({
-      title: null,
-      subtitle: null,
-      version: null,
-      repo: null,
+      title: false,
+      subtitle: false,
+      version: false,
+      repo: false,
     })
   })
 

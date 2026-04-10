@@ -124,7 +124,7 @@ export interface IntegrationOptions {
    *   are both supported).
    * - An object of type {@link HomeContentOptions} keeps the built-in home
    *   layout and overrides individual pieces (title, subtitle, version badge,
-   *   GitHub badge). Set any field to `null` to hide the corresponding section.
+   *   GitHub badge). Set any field to `false` to hide the corresponding section.
    * - `false` renders an empty home page with no content.
    *
    * @default 'astrobook/components/home.astro'
@@ -147,7 +147,7 @@ export interface IntegrationOptions {
    *     title: 'Acme UI',
    *     subtitle: 'Internal component library',
    *     repo: { href: 'https://github.com/acme/ui' },
-   *     version: null, // hide the version badge
+   *     version: false, // hide the version badge
    *   },
    * })
    * ```
@@ -166,7 +166,7 @@ export interface IntegrationOptions {
  * Options for customizing the content of the built-in home page.
  *
  * Used as the object form of {@link IntegrationOptions.home}. Each field can
- * be set to `null` to hide the corresponding section, omitted to fall back to
+ * be set to `false` to hide the corresponding section, omitted to fall back to
  * the default value, or set to a custom value to override it.
  */
 export interface HomeContentOptions {
@@ -223,10 +223,10 @@ export interface HomeRepoOptions {
  * @internal
  */
 export interface ResolvedHomeContent {
-  title: string | null
-  subtitle: string | null
-  version: { href: string } | null
-  repo: { href: string; label: string } | null
+  title: string | false
+  subtitle: string | false
+  version: { href: string } | false
+  repo: { href: string; label: string } | false
 }
 
 export interface StoryModule {

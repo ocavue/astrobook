@@ -8,29 +8,34 @@ const DEFAULT_HOME_COMPONENT = 'astrobook/components/home.astro'
 const EMPTY_HOME_COMPONENT = 'astrobook/components/empty.astro'
 
 const HomeContentSchema = v.object({
-  title: v.optional(v.nullable(v.string()), 'Astrobook'),
+  title: v.optional(
+    v.union([v.string(), v.literal(false)]),
+    'Astrobook',
+  ),
   subtitle: v.optional(
-    v.nullable(v.string()),
+    v.union([v.string(), v.literal(false)]),
     'The minimal UI component playground',
   ),
   version: v.optional(
-    v.nullable(
+    v.union([
       v.object({
         href: v.optional(
           v.string(),
           'https://github.com/ocavue/astrobook/blob/master/packages/astrobook/CHANGELOG.md',
         ),
       }),
-    ),
+      v.literal(false),
+    ]),
     {},
   ),
   repo: v.optional(
-    v.nullable(
+    v.union([
       v.object({
         href: v.optional(v.string(), 'https://github.com/ocavue/astrobook'),
         label: v.optional(v.string(), 'Star on GitHub'),
       }),
-    ),
+      v.literal(false),
+    ]),
     {},
   ),
 })
