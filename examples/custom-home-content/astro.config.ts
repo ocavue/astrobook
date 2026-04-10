@@ -18,8 +18,11 @@ export default defineConfig({
       homeContent: {
         title: 'Acme UI',
         subtitle: 'Internal component library',
-        // Show the version badge with a custom label from package.json.
-        version: { label: `v${version}` },
+        // Show the version badge with a custom label and link.
+        version: {
+          label: `v${version}`,
+          href: 'https://example.com/CHANGELOG',
+        },
         // Override the repository badge with a custom URL and label.
         repo: {
           href: 'https://github.com/acme/ui',

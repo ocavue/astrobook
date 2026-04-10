@@ -164,7 +164,10 @@ export interface IntegrationOptions {
    *   homeContent: {
    *     title: 'Acme UI',
    *     subtitle: 'Internal component library',
-   *     version: { label: `v${version}` }, // show your own version
+   *     version: {
+   *       label: `v${version}`,
+   *       href: 'https://example.com/CHANGELOG',
+   *     },
    *     repo: { href: 'https://github.com/acme/ui' },
    *   },
    * })
