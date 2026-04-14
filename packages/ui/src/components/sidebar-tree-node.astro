@@ -103,6 +103,7 @@ const collapseDuration = getCollapseDuration(node)
 
 <style>
   details[data-astrobook-collapsible] {
+    --collapse-ease: cubic-bezier(0, 0, 0.2, 1);
     interpolate-size: allow-keywords;
   }
 
@@ -110,8 +111,9 @@ const collapseDuration = getCollapseDuration(node)
     height: 0;
     overflow: clip;
     transition:
-      height var(--collapse-duration, 150ms) ease-out,
-      content-visibility var(--collapse-duration, 150ms) ease-out allow-discrete;
+      height var(--collapse-duration, 150ms) var(--collapse-ease),
+      content-visibility var(--collapse-duration, 150ms) var(--collapse-ease)
+        allow-discrete;
   }
 
   details[data-astrobook-collapsible][open]::details-content {
@@ -120,7 +122,7 @@ const collapseDuration = getCollapseDuration(node)
 
   [data-astrobook-chevron] {
     transform: rotate(-90deg);
-    transition: transform var(--collapse-duration, 150ms) ease-out;
+    transition: transform var(--collapse-duration, 150ms) var(--collapse-ease);
   }
 
   details[data-astrobook-collapsible][open]
