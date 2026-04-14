@@ -20,6 +20,6 @@ export function computeCollapseDuration(rows: number): number {
   const scale = 50
   return Math.min(
     maxMs,
-    Math.round(minMs + scale * Math.log(Math.max(0, rows) + 1)),
+    Math.round(minMs + scale * Math.log(Math.max(1, rows))),
   )
 }
