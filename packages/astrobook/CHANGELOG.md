@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.13.1
+
+### Patch Changes
+
+- [`4128fb5`](https://github.com/ocavue/astrobook/commit/4128fb508313956529332e584cbba92cf732dbfe) Tweak collapse animation.
+
 ## 0.13.0
 
 ### Minor Changes
