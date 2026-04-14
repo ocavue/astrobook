@@ -15,5 +15,8 @@ export function getCollapseDuration(node: TreeNode): number {
 }
 
 export function computeCollapseDuration(rows: number): number {
-  return Math.round(100 + 50 * Math.log(Math.max(0, rows) + 1))
+  const minMs = 50
+  const maxMs = 500
+  const scale = 50
+  return Math.min(maxMs, Math.round(minMs + scale * Math.log(Math.max(0, rows) + 1)))
 }
