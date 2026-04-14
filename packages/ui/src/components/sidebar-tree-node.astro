@@ -2,6 +2,7 @@
 import type { TreeNode } from './build-tree'
 import config from 'virtual:astrobook/global-config.mjs'
 import { buildPath } from './build-path'
+import { getCollapseDuration } from './collapse-duration'
 
 interface Props {
   node: TreeNode
@@ -12,6 +13,8 @@ const { node } = Astro.props
 // We will update the active state using sidebar-active-story.ts, but we need to set an initial state here so that
 // UnoCSS can scan both active and inactive class names.
 const active = false
+
+const collapseDuration = getCollapseDuration(node)
 ---
 
 {
@@ -22,6 +25,7 @@ const active = false
         data-astrobook-collapsible
         data-id={`dir:${node.name}`}
         data-search-text={node.searchText}
+        style={`--collapse-duration: ${collapseDuration}ms`}
       >
         <summary
           class:list={[
@@ -54,6 +58,7 @@ const active = false
         data-astrobook-collapsible
         data-id={`module:${node.id}`}
         data-search-text={node.searchText}
+        style={`--collapse-duration: ${collapseDuration}ms`}
       >
         <summary
           class:list={[
@@ -97,10 +102,6 @@ const active = false
 }
 
 <style>
-  /*
-   * TODO: Replace with UnoCSS `details-content:` variant once supported.
-   * https://github.com/unocss/unocss/issues/5137
-   */
   details[data-astrobook-collapsible] {
     interpolate-size: allow-keywords;
   }
@@ -109,8 +110,8 @@ const active = false
     height: 0;
     overflow: clip;
     transition:
-      height 150ms ease-out,
-      content-visibility 150ms ease-out allow-discrete;
+      height var(--collapse-duration, 150ms) ease-out,
+      content-visibility var(--collapse-duration, 150ms) ease-out allow-discrete;
   }
 
   details[data-astrobook-collapsible][open]::details-content {
@@ -119,7 +120,7 @@ const active = false
 
   [data-astrobook-chevron] {
     transform: rotate(-90deg);
-    transition: transform 150ms ease-out;
+    transition: transform var(--collapse-duration, 150ms) ease-out;
   }
 
   details[data-astrobook-collapsible][open]
