@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.6",
+    "astro": "^6.2.1",
     "astrobook": "*"
   },
   "stackblitz": {
