@@ -46,6 +46,7 @@
   },
   "pnpm": {
     "overrides": {
+      "astro": "https://pkg.pr.new/astro@16505",
       "astrobook@*": "workspace:*"
     }
   },
