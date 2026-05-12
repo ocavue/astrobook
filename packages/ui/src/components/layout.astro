@@ -36,7 +36,10 @@ const DEFAULT_SIDEBAR_RESIZING = false
     <meta name="generator" content={Astro.generator} />
     <title>{config.title}</title>
     <ThemeScript />
-    <script src="./theme-message.ts"></script>
+    <script>
+      import { initThemeMessage } from './theme-message'
+      initThemeMessage()
+    </script>
     <CustomHead />
     <ClientRouter fallback="none" />
     <style is:global>
@@ -85,8 +88,8 @@ const DEFAULT_SIDEBAR_RESIZING = false
       )
     }
     {
-      /* 
-      Use `transition:animate="none"` here because we don't want the fade animation 
+      /*
+      Use `transition:animate="none"` here because we don't want the fade animation
       when switching between stories. Sadly this also removes the animation when toggling the light/dark theme.
       */
     }
