@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.13.2
+
+### Patch Changes
+
+- [`b8961c4`](https://github.com/ocavue/astrobook/commit/b8961c41c752d552ea96c32fe7e375567b574b54) Avoid empty chunk warning for layout theme script.
+
 ## 0.13.1
 
 ### Patch Changes
