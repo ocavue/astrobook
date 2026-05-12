@@ -1,7 +1,8 @@
 import { setTheme } from 'astro-theme-toggle/client'
 
-if (typeof window !== 'undefined') {
-  // Add message event listener to toggle the theme
+export function initThemeMessage(): void {
+  if (typeof window === 'undefined') return
+
   window.addEventListener('message', (event) => {
     try {
       const { type, theme } = event.data as { type: string; theme: string }
