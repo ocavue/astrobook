@@ -10,4 +10,3 @@ allowBuilds:
   sharp: false
 overrides:
   'astrobook@*': 'workspace:*'
-  'typescript': '5.9.3'
