@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@astrojs/preact": "^5.1.2",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.2.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.1",
     "astrobook": "*",
     "preact": "^10.29.1",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.3.0"
   },
   "stackblitz": {
     "installDependencies": false,

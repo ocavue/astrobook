@@ -19,15 +19,15 @@
     "@astrojs/vue": "^6.0.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.2.1",
+    "astro": "^6.3.1",
     "astrobook": "*",
     "lit": "^3.3.2",
     "preact": "^10.29.1",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "solid-js": "^1.9.12",
     "svelte": "^5.55.5",
-    "vue": "^3.5.33"
+    "vue": "^3.5.34"
   },
   "stackblitz": {
     "installDependencies": false,
