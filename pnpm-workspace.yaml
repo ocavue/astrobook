@@ -8,5 +8,5 @@ strictPeerDependencies: true
 allowBuilds:
   esbuild: false
   sharp: false
-'overrides':
+overrides:
   'astrobook@*': 'workspace:*'
