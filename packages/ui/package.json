@@ -59,7 +59,7 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.44",
+    "@iconify-json/fluent": "^1.2.0",
     "@iconify-json/lucide": "^1.2.101",
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.19.17",
