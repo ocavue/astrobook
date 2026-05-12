@@ -5,3 +5,8 @@ packages:
 linkWorkspacePackages: 'deep'
 ignoreWorkspaceRootCheck: true
 strictPeerDependencies: true
+allowBuilds:
+  esbuild: false
+  sharp: false
+'overrides':
+  'astrobook@*': 'workspace:*'
