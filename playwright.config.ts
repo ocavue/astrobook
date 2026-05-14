@@ -104,5 +104,6 @@ export default defineConfig({
         : `pnpm run --filter ${name} dev`,
     url: url,
     reuseExistingServer: !process.env.CI,
+    timeout: 180_000,
   })),
 })
