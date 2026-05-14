@@ -24,7 +24,7 @@ importers:
         specifier: ^4.5.7
         version: 4.5.7(@types/estree@1.0.8)(@typescript-eslint/parser@8.59.3(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3))(@typescript-eslint/rule-tester@8.58.1(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3))(@typescript-eslint/typescript-estree@8.59.3(typescript@6.0.3))(@typescript-eslint/utils@8.59.3(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.3.0(jiti@2.6.1))(jsonc-eslint-parser@3.1.0)(typescript@6.0.3)
       '@playwright/test':
-        specifier: ^1.59.1
+        specifier: ^1.0.0
         version: 1.59.1
       '@types/node':
         specifier: ^22.19.17
@@ -36,7 +36,7 @@ importers:
         specifier: ^0.0.71
         version: 0.0.71
       playwright:
-        specifier: ^1.59.1
+        specifier: ^1.0.0
         version: 1.59.1
       prettier:
         specifier: ^3.8.3
