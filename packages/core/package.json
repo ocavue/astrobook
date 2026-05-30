@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@astrobook/types": "workspace:*",
-    "@sveltejs/acorn-typescript": "^1.0.9",
+    "@sveltejs/acorn-typescript": "^1.0.10",
     "acorn": "^8.16.0",
     "fdir": "^6.5.0",
     "picomatch": "^4.0.4",
@@ -53,9 +53,9 @@
   "devDependencies": {
     "@types/node": "^22.19.17",
     "@types/picomatch": "^4.0.3",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.3.2",
+    "astro": "^6.4.2",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
