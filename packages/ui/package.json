@@ -64,7 +64,7 @@
     "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.19.17",
     "@unocss/cli": "^66.7.0",
-    "astro": "^6.4.5",
+    "astro": "^7.0.0-beta.3",
     "prettier": "^3.8.3",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3",
