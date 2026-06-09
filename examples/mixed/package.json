@@ -12,8 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^5.1.4",
-    "astro": "^6.4.2",
+    "@astrojs/preact": "^5.1.5",
+    "astro": "^6.4.5",
     "astrobook": "*",
     "preact": "^10.29.2"
   },

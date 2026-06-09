@@ -12,14 +12,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^5.1.4",
-    "@astrojs/react": "^5.0.6",
+    "@astrojs/preact": "^5.1.5",
+    "@astrojs/react": "^5.0.7",
     "@astrojs/solid-js": "^6.0.1",
     "@astrojs/svelte": "^8.1.2",
     "@astrojs/vue": "^6.0.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.4.2",
+    "astro": "^6.4.5",
     "astrobook": "*",
     "lit": "^3.3.3",
     "preact": "^10.29.2",
