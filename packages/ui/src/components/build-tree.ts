@@ -93,7 +93,10 @@ function assignSearchText(
   ancestorTerms: readonly string[],
 ): readonly string[] {
   const currTerms = [...ancestorTerms, node.name]
-  const subTreeTerms: Array<readonly string[]> = Array.from(node.children || [], child => assignSearchText(child, currTerms));
+  const subTreeTerms: Array<readonly string[]> = Array.from(
+    node.children || [],
+    (child) => assignSearchText(child, currTerms),
+  )
 
   const mergedTerms = compressTerms([...currTerms, ...subTreeTerms.flat()])
   node.searchText = mergedTerms.join(' ')
