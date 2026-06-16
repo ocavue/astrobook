@@ -53,7 +53,8 @@ export function parseStoryNamedExport(
   importPath: string,
   storyName: string,
 ): StoryNamedExport {
-  const storyObject: unknown = (module && typeof module === "object") ? module[storyName] : undefined
+  const storyObject: unknown =
+    module && typeof module === 'object' ? module[storyName] : undefined
   if (!storyObject) {
     throw new Error(
       `[astrobook] Unable to find named export '${storyName}' from '${importPath}'`,
