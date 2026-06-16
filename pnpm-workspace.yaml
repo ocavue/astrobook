@@ -11,5 +11,4 @@ allowBuilds:
 overrides:
   'astrobook@*': 'workspace:*'
 minimumReleaseAgeExclude:
-  - '@astrojs/svelte@9.0.0-alpha.2'
-  - astro@7.0.0-beta.3
+  - astro@7.0.0-beta.4
