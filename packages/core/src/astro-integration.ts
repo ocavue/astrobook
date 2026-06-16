@@ -94,7 +94,7 @@ export function createAstrobookIntegration(
 
         logger.debug(`Writing files to ${codegenDir}`)
         await Promise.all(
-          Array.from(routes.values()).map(async (route) => {
+          Array.from(routes.values(), async (route) => {
             const filePath = route.entrypoint
             const fileContent = createVirtualRouteComponent(route)
             await fs.mkdir(path.dirname(filePath), { recursive: true })
