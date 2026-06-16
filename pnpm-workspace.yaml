@@ -12,4 +12,3 @@ overrides:
   'astrobook@*': 'workspace:*'
 minimumReleaseAgeExclude:
   - astro@7.0.0-beta.4
-  - '@ocavue/eslint-config@4.7.1'
