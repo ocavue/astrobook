@@ -94,7 +94,7 @@ export function createAstrobookIntegration(
 
         logger.debug(`Writing files to ${codegenDir}`)
         await Promise.all(
-          Array.from(routes.values()).map(async (route) => {
+          Array.from(routes.values(), async (route) => {
             const filePath = route.entrypoint
             const fileContent = createVirtualRouteComponent(route)
             await fs.mkdir(path.dirname(filePath), { recursive: true })
@@ -148,7 +148,7 @@ export function createAstrobookIntegration(
           const message =
             colors.bgGreen(colors.white(colors.bold(' astrobook '))) +
             ' is available at ' +
-            colors.cyan(url.toString())
+            colors.cyan(url.href)
           // Get a logger that don't print the label and the current time
           // https://github.com/withastro/astro/blob/ff72ebe/packages/astro/src/core/logger/core.ts#L38
           const plainLogger = logger.fork('SKIP_FORMAT')
