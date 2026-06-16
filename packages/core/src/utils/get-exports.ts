@@ -25,14 +25,14 @@ export function getExports(code: string): string[] {
   const exports = new Set<string>()
 
   // Walk through the AST
-  ast.body.forEach((node) => {
+  for (const node of ast.body) {
     if (node.type === 'ExportNamedDeclaration') {
-      node.specifiers.forEach((specifier) => {
+      for (const specifier of node.specifiers) {
         const { exported } = specifier
         if (exported.type === 'Identifier') {
           exports.add(exported.name)
         }
-      })
+      }
 
       const { declaration } = node
       if (declaration?.type === 'VariableDeclaration') {
@@ -53,7 +53,7 @@ export function getExports(code: string): string[] {
     } else if (node.type === 'ExportDefaultDeclaration') {
       exports.add('default')
     }
-  })
+  }
 
   return Array.from(exports).sort()
 }
