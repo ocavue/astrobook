@@ -23,11 +23,11 @@
     "astrobook": "*",
     "lit": "^3.3.3",
     "preact": "^10.29.2",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "solid-js": "^1.9.13",
     "svelte": "^5.55.10",
-    "vue": "^3.5.34"
+    "vue": "^3.5.38"
   },
   "stackblitz": {
     "installDependencies": false,

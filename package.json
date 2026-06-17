@@ -36,17 +36,17 @@
     "@changesets/types": "^6.1.0",
     "@manypkg/cli": "^0.25.1",
     "@ocavue/eslint-config": "^4.7.2",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.61.0",
     "@types/node": "^22.19.17",
     "eslint": "^10.5.0",
-    "pkg-pr-new": "^0.0.71",
-    "playwright": "^1.60.0",
-    "prettier": "^3.8.3",
+    "pkg-pr-new": "^0.0.75",
+    "playwright": "^1.61.0",
+    "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "turbo": "^2.9.12",
     "typescript": "^6.0.3",
-    "vite": "^8.0.0",
-    "vitest": "^4.1.6"
+    "vite": "^8.0.13",
+    "vitest": "^4.1.9"
   }
 }
