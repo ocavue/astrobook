@@ -53,13 +53,13 @@
   "devDependencies": {
     "@types/node": "^22.19.17",
     "@types/picomatch": "^4.0.3",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "astro": "^7.0.0-beta.4",
+    "astro": "^7.0.0",
     "just-kebab-case": "^4.2.0",
     "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
-    "vite": "^8.0.13",
+    "vite": "^8.0.16",
     "vitest": "^4.1.9"
   },
   "publishConfig": {
