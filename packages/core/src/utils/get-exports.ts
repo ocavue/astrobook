@@ -37,12 +37,12 @@ export function getExports(code: string): string[] {
       const { declaration } = node
       if (declaration?.type === 'VariableDeclaration') {
         const { declarations } = declaration
-        declarations.forEach((declaration) => {
+        for (const declaration of declarations) {
           const id = declaration.id
           if (id.type === 'Identifier') {
             exports.add(id.name)
           }
-        })
+        }
       }
       if (declaration?.type === 'FunctionDeclaration') {
         exports.add(declaration.id.name)
