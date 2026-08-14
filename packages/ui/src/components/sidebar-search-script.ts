@@ -18,7 +18,7 @@ function getStyleElement(doc: Document): HTMLStyleElement {
   return styleEl
 }
 
-function updateQueryStyle(doc: Document,query: string): void {
+function updateQueryStyle(doc: Document, query: string): void {
   const trimmed = query.trim()
   const el = getStyleElement(doc)
 
@@ -50,43 +50,40 @@ export function initSearch(doc: Document): void {
   const searchPanelElement = doc.getElementById(SEARCH_PANEL_ID)
   if (!searchInputElement || !searchToggleElement || !searchPanelElement) return
 
+  const searchInput = searchInputElement
+  const searchToggle = searchToggleElement
+  const searchPanel = searchPanelElement
 
-const searchInput = searchInputElement;
-const searchToggle = searchToggleElement;
-const searchPanel = searchPanelElement;
-
-
-function openPanel(): void {
-  searchPanel.setAttribute('data-open', '')
-  searchToggle.setAttribute('data-active', '')
-  sessionStorage.setItem(OPEN_KEY, '1')
-  requestAnimationFrame(() => searchInput.focus())
-}
-
-function closePanel(): void {
-  searchInput.value = ''
-  saveQuery('')
-  updateQueryStyle(doc, '')
-  searchPanel.removeAttribute('data-open')
-  searchToggle.removeAttribute('data-active')
-  sessionStorage.removeItem(OPEN_KEY)
-}
-
-function handleInput(): void {
-  saveQuery(searchInput.value)
-  updateQueryStyle(document,  searchInput.value)
-}
-
-searchToggle.addEventListener('click', () => {
-  if (searchPanel.hasAttribute('data-open')) {
-    closePanel()
-  } else {
-    openPanel()
+  function openPanel(): void {
+    searchPanel.setAttribute('data-open', '')
+    searchToggle.setAttribute('data-active', '')
+    sessionStorage.setItem(OPEN_KEY, '1')
+    requestAnimationFrame(() => searchInput.focus())
   }
-})
+
+  function closePanel(): void {
+    searchInput.value = ''
+    saveQuery('')
+    updateQueryStyle(doc, '')
+    searchPanel.removeAttribute('data-open')
+    searchToggle.removeAttribute('data-active')
+    sessionStorage.removeItem(OPEN_KEY)
+  }
+
+  function handleInput(): void {
+    saveQuery(searchInput.value)
+    updateQueryStyle(document, searchInput.value)
+  }
+
+  searchToggle.addEventListener('click', () => {
+    if (searchPanel.hasAttribute('data-open')) {
+      closePanel()
+    } else {
+      openPanel()
+    }
+  })
 
   searchInput.addEventListener('input', handleInput)
-
 
   const query = sessionStorage.getItem(QUERY_KEY)
   if (!query) {
