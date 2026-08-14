@@ -14,12 +14,12 @@
   "dependencies": {
     "@astrojs/preact": "^6.0.2",
     "@astrojs/react": "^6.0.2",
-    "@astrojs/solid-js": "^7.0.1",
+    "@astrojs/solid-js": "^7.0.2",
     "@astrojs/svelte": "^9.0.1",
-    "@astrojs/vue": "^7.0.1",
+    "@astrojs/vue": "^7.0.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "astro": "^7.0.6",
+    "astro": "^7.2.1",
     "astrobook": "*",
     "lit": "^3.3.3",
     "preact": "^10.29.8",
@@ -27,7 +27,7 @@
     "react-dom": "^19.2.8",
     "solid-js": "^1.9.14",
     "svelte": "^5.56.8",
-    "vue": "^3.5.40"
+    "vue": "^3.5.41"
   },
   "stackblitz": {
     "installDependencies": false,
