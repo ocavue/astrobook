@@ -85,7 +85,7 @@ export function initSearch(doc: Document): void {
 
   searchInput.addEventListener('input', handleInput)
 
-  const isOpen = sessionStorage.getItem(OPEN_KEY)!=null
+  const isOpen = sessionStorage.getItem(OPEN_KEY) === '1'
   if (!isOpen) {
     return
   }
