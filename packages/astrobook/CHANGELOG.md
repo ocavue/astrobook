@@ -1,5 +1,11 @@
 # astrobook
 
+## 0.13.3
+
+### Patch Changes
+
+- [`94463de`](https://github.com/ocavue/astrobook/commit/94463dea48b71d408ec8cbc15df184e3437315ca) Keep the sidebar search panel and query when navigating between stories.
+
 ## 0.13.2
 
 ### Patch Changes
