@@ -88,7 +88,7 @@ export function initSearch(doc: Document): void {
   // Restore state from sessionStorage after a page navigation
   const isOpen = sessionStorage.getItem(OPEN_KEY) === '1'
   if (isOpen) {
-    const query = sessionStorage.getItem(QUERY_KEY) || ""
+    const query = sessionStorage.getItem(QUERY_KEY) || ''
     searchPanel.setAttribute('data-open', '')
     searchToggle.setAttribute('data-active', '')
     searchInput.value = query
