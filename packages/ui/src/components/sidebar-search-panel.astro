@@ -31,6 +31,8 @@
 <script>
   import { initSearch } from './sidebar-search-script'
 
-  initSearch()
-  document.addEventListener('astro:after-swap', initSearch)
+  initSearch(document)
+  document.addEventListener('astro:before-swap', (event) => {
+    initSearch(event.newDocument)
+  })
 </script>

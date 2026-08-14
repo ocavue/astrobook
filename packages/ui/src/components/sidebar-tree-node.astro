@@ -10,8 +10,8 @@ interface Props {
 
 const { node } = Astro.props
 
-// We will update the active state using sidebar-active-story.ts, but we need to set an initial state here so that
-// UnoCSS can scan both active and inactive class names.
+// The inline script in sidebar-tree.astro updates the active state, but we need to set an initial state here so
+// that UnoCSS can scan both active and inactive class names.
 const active = false
 
 const collapseDuration = getCollapseDuration(node)
