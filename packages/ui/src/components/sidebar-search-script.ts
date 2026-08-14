@@ -96,9 +96,9 @@ function restoreState(
 }
 
 export function initSearch(): void {
-  const searchInput = document.querySelector<HTMLInputElement>(
-    `#${SEARCH_INPUT_ID}`,
-  )
+  const searchInput = document.getElementById (
+    SEARCH_INPUT_ID
+  ) as HTMLInputElement | null
   const searchToggle = document.getElementById(SEARCH_TOGGLE_ID)
   const searchPanel = document.getElementById(SEARCH_PANEL_ID)
   if (!searchInput || !searchToggle || !searchPanel) return
