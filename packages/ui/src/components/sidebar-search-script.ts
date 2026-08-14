@@ -8,19 +8,19 @@ const STYLE_ID = 'astrobook-search-style'
 const OPEN_KEY = 'astrobook-sidebar-search-open'
 const QUERY_KEY = 'astrobook-sidebar-search-query'
 
-function getStyleElement(): HTMLStyleElement {
-  let styleEl = document.getElementById(STYLE_ID) as HTMLStyleElement | null
+function getStyleElement(doc: Document): HTMLStyleElement {
+  let styleEl = doc.getElementById(STYLE_ID) as HTMLStyleElement | null
   if (!styleEl) {
-    styleEl = document.createElement('style')
+    styleEl = doc.createElement('style')
     styleEl.id = STYLE_ID
-    document.head.appendChild(styleEl)
+    doc.head.appendChild(styleEl)
   }
   return styleEl
 }
 
-function updateQuery(query: string): void {
+function updateQuery(doc: Document,query: string): void {
   const trimmed = query.trim()
-  const el = getStyleElement()
+  const el = getStyleElement(doc)
 
   if (!trimmed) {
     el.textContent = ''
