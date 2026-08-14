@@ -85,11 +85,13 @@ export function initSearch(doc: Document): void {
 
   searchInput.addEventListener('input', handleInput)
 
-  const query = sessionStorage.getItem(QUERY_KEY)
-  if (!query) {
+  const isOpen = sessionStorage.getItem(OPEN_KEY)!=null
+  if (!isOpen) {
     return
   }
 
+
+  const query = sessionStorage.getItem(QUERY_KEY) || ""
   searchPanel.setAttribute('data-open', '')
   searchToggle.setAttribute('data-active', '')
   searchInput.value = query
