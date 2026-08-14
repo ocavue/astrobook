@@ -30,6 +30,7 @@ const config: unknown = defineConfig({
 
     'astrobook-sidebar-button': [
       'text-size-base block cursor-pointer rounded border-0 bg-transparent p-2 font-semibold text-gray-500 no-underline transition hover:scale-110 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
+      'data-[active]:bg-gray-200 data-[active]:text-gray-800 dark:data-[active]:bg-gray-700 dark:data-[active]:text-gray-200',
       'astrobook-focus-ring',
     ],
 
