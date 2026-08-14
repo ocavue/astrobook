@@ -4,7 +4,6 @@
   "commit": false,
   "fixed": [["@astrobook/*", "astrobook"]],
   "linked": [],
-  "access": "private",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
   "ignore": [
