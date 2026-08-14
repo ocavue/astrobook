@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.0",
-    "@changesets/types": "^6.1.0",
+    "@changesets/types": "^7.0.0",
     "@manypkg/cli": "^0.25.1",
     "@ocavue/eslint-config": "^4.12.1",
     "@playwright/test": "^1.62.1",
