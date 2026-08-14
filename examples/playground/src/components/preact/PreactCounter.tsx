@@ -5,7 +5,9 @@ import '../../styles/global.css'
 import type { ComponentChildren } from 'preact'
 import { useState } from 'preact/hooks'
 
-/** A counter written with Preact */
+/**
+ * A counter written with Preact
+ */
 export interface PreactCounterProps {
   step?: number
   children?: ComponentChildren

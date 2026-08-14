@@ -9,7 +9,9 @@ export interface SolidCounterProps {
   children?: JSX.Element
 }
 
-/** A counter written with Solid */
+/**
+ * A counter written with Solid
+ */
 export default function SolidCounter(props: SolidCounterProps) {
   const [count, setCount] = createSignal(0)
   const add = () => setCount(count() + (props.step || 1))
