@@ -84,11 +84,11 @@ function restoreState(
   searchToggle: HTMLElement,
   searchPanel: HTMLElement,
 ): void {
-  if (!sessionStorage.getItem(OPEN_KEY)) {
+  const query = sessionStorage.getItem(QUERY_KEY)
+  if (!query ) {
     return
   }
 
-  const query = sessionStorage.getItem(QUERY_KEY) || ''
   searchPanel.setAttribute('data-open', '')
   searchToggle.setAttribute('data-active', '')
   searchInput.value = query
