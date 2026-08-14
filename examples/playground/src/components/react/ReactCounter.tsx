@@ -9,7 +9,9 @@ export interface ReactCounterProps {
   children?: ReactNode
 }
 
-/** A counter written with React */
+/**
+ * A counter written with React
+ */
 export function ReactCounter({ step = 1, children }: ReactCounterProps) {
   const [count, setCount] = useState(0)
   const add = () => setCount((i) => i + step)

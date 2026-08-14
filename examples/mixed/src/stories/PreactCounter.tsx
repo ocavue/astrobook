@@ -10,7 +10,9 @@ export interface PreactCounterProps {
   children?: ComponentChildren
 }
 
-/** A counter written with Preact */
+/**
+ * A counter written with Preact
+ */
 export function PreactCounter({ step = 1, children }: PreactCounterProps) {
   const [count, setCount] = useState(0)
   const add = () => setCount((i) => i + step)
