@@ -66,7 +66,7 @@ function openPanel(): void {
 function closePanel(): void {
   searchInput.value = ''
   saveQuery('')
-  updateQuery('')
+  updateQuery(doc, '')
   searchPanel.removeAttribute('data-open')
   searchToggle.removeAttribute('data-active')
   sessionStorage.removeItem(OPEN_KEY)
@@ -74,7 +74,7 @@ function closePanel(): void {
 
 function handleInput(): void {
   saveQuery(searchInput.value)
-  updateQuery(searchInput.value)
+  updateQuery(doc, searchInput.value)
 }
 
 searchToggle.addEventListener('click', () => {
@@ -96,5 +96,5 @@ searchToggle.addEventListener('click', () => {
   searchPanel.setAttribute('data-open', '')
   searchToggle.setAttribute('data-active', '')
   searchInput.value = query
-  updateQuery(query)
+  updateQuery(doc, query)
 }
