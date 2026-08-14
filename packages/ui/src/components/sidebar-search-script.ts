@@ -42,12 +42,12 @@ function saveQuery(query: string): void {
   }
 }
 
-export function initSearch(): void {
-  const searchInputElement = document.getElementById(
+export function initSearch(doc: Document): void {
+  const searchInputElement = doc.getElementById(
     SEARCH_INPUT_ID,
   ) as HTMLInputElement | null
-  const searchToggleElement = document.getElementById(SEARCH_TOGGLE_ID)
-  const searchPanelElement = document.getElementById(SEARCH_PANEL_ID)
+  const searchToggleElement = doc.getElementById(SEARCH_TOGGLE_ID)
+  const searchPanelElement = doc.getElementById(SEARCH_PANEL_ID)
   if (!searchInputElement || !searchToggleElement || !searchPanelElement) return
 
 
