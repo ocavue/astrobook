@@ -18,7 +18,7 @@ function getStyleElement(doc: Document): HTMLStyleElement {
   return styleEl
 }
 
-function updateQuery(doc: Document,query: string): void {
+function updateQueryStyle(doc: Document,query: string): void {
   const trimmed = query.trim()
   const el = getStyleElement(doc)
 
@@ -66,7 +66,7 @@ function openPanel(): void {
 function closePanel(): void {
   searchInput.value = ''
   saveQuery('')
-  updateQuery(doc, '')
+  updateQueryStyle(doc, '')
   searchPanel.removeAttribute('data-open')
   searchToggle.removeAttribute('data-active')
   sessionStorage.removeItem(OPEN_KEY)
@@ -74,7 +74,7 @@ function closePanel(): void {
 
 function handleInput(): void {
   saveQuery(searchInput.value)
-  updateQuery(doc, searchInput.value)
+  updateQueryStyle(document,  searchInput.value)
 }
 
 searchToggle.addEventListener('click', () => {
@@ -96,5 +96,5 @@ searchToggle.addEventListener('click', () => {
   searchPanel.setAttribute('data-open', '')
   searchToggle.setAttribute('data-active', '')
   searchInput.value = query
-  updateQuery(doc, query)
+  updateQueryStyle(doc, query)
 }
