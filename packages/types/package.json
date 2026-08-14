@@ -35,7 +35,7 @@
     }
   },
   "devDependencies": {
-    "astro": "^7.0.6",
+    "astro": "^7.2.1",
     "typescript": "^6.0.3"
   }
 }
