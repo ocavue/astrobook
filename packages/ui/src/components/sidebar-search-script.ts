@@ -85,7 +85,7 @@ function restoreState(
   searchPanel: HTMLElement,
 ): void {
   const query = sessionStorage.getItem(QUERY_KEY)
-  if (!query ) {
+  if (!query) {
     return
   }
 
@@ -96,8 +96,8 @@ function restoreState(
 }
 
 export function initSearch(): void {
-  const searchInput = document.getElementById (
-    SEARCH_INPUT_ID
+  const searchInput = document.getElementById(
+    SEARCH_INPUT_ID,
   ) as HTMLInputElement | null
   const searchToggle = document.getElementById(SEARCH_TOGGLE_ID)
   const searchPanel = document.getElementById(SEARCH_PANEL_ID)
