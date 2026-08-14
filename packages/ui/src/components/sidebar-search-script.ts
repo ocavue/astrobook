@@ -42,48 +42,52 @@ function saveQuery(query: string): void {
   }
 }
 
-function addListener(
-  searchInput: HTMLInputElement,
-  searchToggle: HTMLElement,
-  searchPanel: HTMLElement,
-): void {
-  function openPanel(): void {
-    searchPanel.setAttribute('data-open', '')
-    searchToggle.setAttribute('data-active', '')
-    sessionStorage.setItem(OPEN_KEY, '1')
-    requestAnimationFrame(() => searchInput.focus())
-  }
+ function initSearch(): void {
+  const searchInputElement = document.getElementById(
+    SEARCH_INPUT_ID,
+  ) as HTMLInputElement | null
+  const searchToggleElement = document.getElementById(SEARCH_TOGGLE_ID)
+  const searchPanelElement = document.getElementById(SEARCH_PANEL_ID)
+  if (!searchInputElement || !searchToggleElement || !searchPanelElement) return
 
-  function closePanel(): void {
-    searchInput.value = ''
-    saveQuery('')
-    updateQuery('')
-    searchPanel.removeAttribute('data-open')
-    searchToggle.removeAttribute('data-active')
-    sessionStorage.removeItem(OPEN_KEY)
-  }
 
-  function handleInput(): void {
-    saveQuery(searchInput.value)
-    updateQuery(searchInput.value)
-  }
+const searchInput = searchInputElement;
+const searchToggle = searchToggleElement;
+const searchPanel = searchPanelElement;
 
-  searchToggle.addEventListener('click', () => {
-    if (searchPanel.hasAttribute('data-open')) {
-      closePanel()
-    } else {
-      openPanel()
-    }
-  })
 
-  searchInput.addEventListener('input', handleInput)
+function openPanel(): void {
+  searchPanel.setAttribute('data-open', '')
+  searchToggle.setAttribute('data-active', '')
+  sessionStorage.setItem(OPEN_KEY, '1')
+  requestAnimationFrame(() => searchInput.focus())
 }
 
-function restoreState(
-  searchInput: HTMLInputElement,
-  searchToggle: HTMLElement,
-  searchPanel: HTMLElement,
-): void {
+function closePanel(): void {
+  searchInput.value = ''
+  saveQuery('')
+  updateQuery('')
+  searchPanel.removeAttribute('data-open')
+  searchToggle.removeAttribute('data-active')
+  sessionStorage.removeItem(OPEN_KEY)
+}
+
+function handleInput(): void {
+  saveQuery(searchInput.value)
+  updateQuery(searchInput.value)
+}
+
+searchToggle.addEventListener('click', () => {
+  if (searchPanel.hasAttribute('data-open')) {
+    closePanel()
+  } else {
+    openPanel()
+  }
+})
+
+  searchInput.addEventListener('input', handleInput)
+
+
   const query = sessionStorage.getItem(QUERY_KEY)
   if (!query) {
     return
@@ -93,16 +97,4 @@ function restoreState(
   searchToggle.setAttribute('data-active', '')
   searchInput.value = query
   updateQuery(query)
-}
-
-export function initSearch(): void {
-  const searchInput = document.getElementById(
-    SEARCH_INPUT_ID,
-  ) as HTMLInputElement | null
-  const searchToggle = document.getElementById(SEARCH_TOGGLE_ID)
-  const searchPanel = document.getElementById(SEARCH_PANEL_ID)
-  if (!searchInput || !searchToggle || !searchPanel) return
-
-  addListener(searchInput, searchToggle, searchPanel)
-  restoreState(searchInput, searchToggle, searchPanel)
 }
