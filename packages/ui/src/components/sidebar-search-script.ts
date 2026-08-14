@@ -42,7 +42,7 @@ function saveQuery(query: string): void {
   }
 }
 
- function initSearch(): void {
+export function initSearch(): void {
   const searchInputElement = document.getElementById(
     SEARCH_INPUT_ID,
   ) as HTMLInputElement | null
