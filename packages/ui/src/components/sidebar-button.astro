@@ -11,9 +11,9 @@ const Element = Astro.props.href ? 'a' : 'button'
 <Element
   id={Astro.props.id}
   href={Astro.props.href}
-  class:list={['astrobook-sidebar-button']}
+  class="astrobook-sidebar-button astrobook-focus-ring"
   title={Astro.props.title}
 >
-  <span class=":uno: sr-only">{Astro.props.title}</span>
+  <span class="astrobook-visually-hidden">{Astro.props.title}</span>
   <slot />
 </Element>

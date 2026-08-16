@@ -1,6 +1,5 @@
 ---
 import '../style.css'
-import './layout.css'
 import Sidebar from './sidebar.astro'
 import SidebarResizeHandle from './sidebar-resize-handle.astro'
 import { ThemeScript } from 'astro-theme-toggle/components'
@@ -24,7 +23,6 @@ const DEFAULT_SIDEBAR_RESIZING = false
 
 <html
   lang="en"
-  class=":uno: box-border h-full max-h-screen overflow-hidden"
   data-astrobook-root
   data-active-story={Astro.props.story ?? ''}
   data-sidebar-width={DEFAULT_SIDEBAR_WIDTH}
@@ -42,20 +40,6 @@ const DEFAULT_SIDEBAR_RESIZING = false
     </script>
     <CustomHead />
     <ClientRouter fallback="none" />
-    <style is:global>
-      :root {
-        --astrobook-sidebar-width: attr(data-sidebar-width px);
-      }
-      :root[data-sidebar-resizing] {
-        cursor: ew-resize;
-        user-select: none;
-      }
-      #astrobook-sidebar {
-        width: var(--astrobook-sidebar-width);
-        min-width: 100px;
-        max-width: calc(100vw - 100px);
-      }
-    </style>
     <script is:inline>
       ;(() => {
         const STORAGE_KEY = 'astrobook-sidebar-width'
@@ -71,16 +55,11 @@ const DEFAULT_SIDEBAR_RESIZING = false
       })()
     </script>
   </head>
-  <body
-    class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
-  >
+  <body class="astrobook-layout">
     {
       hasSidebar && (
         <>
-          <div
-            id="astrobook-sidebar"
-            class=":uno: flex shrink-0 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900"
-          >
+          <div id="astrobook-sidebar">
             <Sidebar story={Astro.props.story} />
           </div>
           <SidebarResizeHandle />
@@ -94,7 +73,7 @@ const DEFAULT_SIDEBAR_RESIZING = false
       */
     }
     <main
-      class=":uno: box-border flex-1 overflow-auto"
+      class="astrobook-main"
       transition:name="astrobook-main"
       transition:animate="none"
     >
