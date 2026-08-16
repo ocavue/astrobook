@@ -11,3 +11,23 @@ import { buildPath } from './build-path'
 >
   {config.title}
 </a>
+
+<style is:global>
+  .astrobook-sidebar-title {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: var(--astrobook-radius);
+    padding: 0.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--astrobook-color-text-muted);
+    text-decoration: none;
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-sidebar-title:hover {
+    color: var(--astrobook-color-emphasis);
+  }
+</style>

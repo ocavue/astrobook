@@ -22,3 +22,32 @@ interface Props {
   <SidebarSearchPanel />
   <SidebarTree />
 </nav>
+
+<style is:global>
+  .astrobook-sidebar-nav {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100%;
+    overflow-y: hidden;
+    padding: 0;
+  }
+
+  /* A divider between the header, the search panel and the story tree */
+  .astrobook-sidebar-nav > * + * {
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: var(--astrobook-color-border);
+  }
+
+  .astrobook-sidebar-header {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  .astrobook-sidebar-spacer {
+    flex: 1 1 0%;
+  }
+</style>

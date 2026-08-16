@@ -1,6 +1,21 @@
 <astrobook-sidebar-resize-handle role="separator"
 ></astrobook-sidebar-resize-handle>
 
+<style is:global>
+  astrobook-sidebar-resize-handle {
+    position: relative;
+    left: -0.125rem;
+    display: block;
+    width: 0.25rem;
+    cursor: ew-resize;
+    transition: var(--astrobook-transition);
+  }
+
+  astrobook-sidebar-resize-handle:hover {
+    background-color: var(--astrobook-color-surface-active);
+  }
+</style>
+
 <script>
   const STORAGE_KEY = 'astrobook-sidebar-width'
   const DEFAULT_WIDTH = 300

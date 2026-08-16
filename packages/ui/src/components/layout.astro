@@ -8,9 +8,6 @@ import config from 'virtual:astrobook/global-config.mjs'
 
 import { ClientRouter } from 'astro:transitions'
 
-// Important that this is the last import so it can override built-in styles.
-import 'virtual:astrobook/user-css.mjs'
-
 interface Props {
   story: string | undefined
   hasSidebar: boolean
@@ -81,3 +78,63 @@ const DEFAULT_SIDEBAR_RESIZING = false
     </main>
   </body>
 </html>
+
+<style is:global>
+  html {
+    /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
+    font-family: var(--astrobook-font-family);
+
+    /* Correct the line height in all browsers. */
+    line-height: 1.15;
+
+    /* Prevent adjustments of font size after orientation changes in iOS. */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  [data-astrobook-root] {
+    box-sizing: border-box;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+
+    /* Kept in sync with `localStorage` by the sidebar resize handle */
+    --astrobook-sidebar-width: attr(data-sidebar-width px);
+  }
+
+  [data-astrobook-root][data-sidebar-resizing] {
+    cursor: ew-resize;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .astrobook-layout {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    max-height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #astrobook-sidebar {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: var(--astrobook-sidebar-width);
+    min-width: 100px;
+    max-width: calc(100vw - 100px);
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: var(--astrobook-color-border);
+    background-color: var(--astrobook-color-surface);
+  }
+
+  .astrobook-main {
+    box-sizing: border-box;
+    flex: 1 1 0%;
+    overflow: auto;
+  }
+</style>

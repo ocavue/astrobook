@@ -1,7 +1,11 @@
+---
+import Icon from './icon.astro'
+---
+
 <div id="astrobook-search-panel">
   <div class="astrobook-search-row">
     <div class="astrobook-search-field">
-      <span class="astrobook-icon astrobook-icon-search"></span>
+      <Icon name="search" />
       <input
         id="astrobook-search-input"
         type="text"
@@ -12,6 +16,62 @@
     </div>
   </div>
 </div>
+
+<style is:global>
+  #astrobook-search-panel {
+    /* Overlap the dividers above and below, so a closed panel stays invisible */
+    margin: -1px;
+    height: 0;
+    overflow: clip;
+    interpolate-size: allow-keywords;
+    transition: height var(--astrobook-duration) ease-out;
+  }
+
+  #astrobook-search-panel[data-open] {
+    height: max-content;
+  }
+
+  .astrobook-search-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .astrobook-search-field {
+    position: relative;
+    display: flex;
+    flex: 1 1 0%;
+    align-items: center;
+  }
+
+  .astrobook-search-field .astrobook-icon {
+    position: absolute;
+    left: 0.5rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    pointer-events: none;
+    color: var(--astrobook-color-text-subtle);
+  }
+
+  .astrobook-search-input {
+    width: 100%;
+    border-width: 0;
+    border-radius: var(--astrobook-radius);
+    background-color: transparent;
+    padding: 0.25rem 0.5rem 0.25rem 1.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--astrobook-color-text);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-search-input::placeholder {
+    color: var(--astrobook-color-text-subtle);
+  }
+</style>
 
 <script>
   import { initSearch } from './sidebar-search-script'

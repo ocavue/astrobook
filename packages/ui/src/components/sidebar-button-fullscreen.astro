@@ -2,6 +2,7 @@
 import '@astrobook/types'
 import config from 'virtual:astrobook/global-config.mjs'
 
+import Icon from './icon.astro'
 import SidebarButton from './sidebar-button.astro'
 import { buildPath } from './build-path'
 
@@ -16,7 +17,7 @@ interface Props {
       href={buildPath(config.storyBase, Astro.props.story)}
       title="Go full screen"
     >
-      <span class="astrobook-icon astrobook-icon-external-link" />
+      <Icon name="external-link" />
     </SidebarButton>
   ) : null
 }

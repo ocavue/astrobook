@@ -1,6 +1,8 @@
 ---
 import config from 'virtual:astrobook/global-config.mjs'
 
+import Icon from './icon.astro'
+
 const content = config.homeContent
 const showBadges = !!(content.version || content.repo)
 ---
@@ -38,7 +40,7 @@ const showBadges = !!(content.version || content.repo)
               rel="noopener noreferrer"
               class="astrobook-badge astrobook-badge-repo"
             >
-              <span class="astrobook-icon astrobook-icon-star" />
+              <Icon name="star" />
               <span>{content.repo.label}</span>
             </a>
           )}
@@ -47,3 +49,129 @@ const showBadges = !!(content.version || content.repo)
     }
   </div>
 </div>
+
+<style is:global>
+  .astrobook-home {
+    height: 100%;
+    width: 100%;
+    container-type: inline-size;
+  }
+
+  .astrobook-home-content {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+
+  .astrobook-home-title {
+    cursor: default;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--astrobook-color-text);
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-home-subtitle {
+    display: none;
+    margin-top: 0.75rem;
+    cursor: default;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: var(--astrobook-color-text-subtle);
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-home-badges {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .astrobook-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--astrobook-color-border);
+    border-radius: var(--astrobook-radius-pill);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--astrobook-color-badge-text);
+    text-decoration: none;
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-badge:hover {
+    border-color: var(--astrobook-color-border-hover);
+    color: var(--astrobook-color-badge-text-hover);
+  }
+
+  .astrobook-badge .astrobook-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .astrobook-badge-version {
+    font-family: var(--astrobook-font-family-mono);
+  }
+
+  .astrobook-badge-repo {
+    gap: 0.375rem;
+    font-weight: 500;
+  }
+
+  /* The home page is sized against the main area, not the viewport */
+  @container (min-width: 20rem) {
+    .astrobook-home-content {
+      padding: 0 1.5rem;
+    }
+
+    .astrobook-home-title {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    .astrobook-home-badges {
+      margin-top: 2rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .astrobook-badge {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .astrobook-badge .astrobook-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .astrobook-badge-repo {
+      gap: 0.5rem;
+    }
+  }
+
+  @container (min-width: 24rem) {
+    .astrobook-home-title {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .astrobook-home-subtitle {
+      display: block;
+    }
+  }
+</style>

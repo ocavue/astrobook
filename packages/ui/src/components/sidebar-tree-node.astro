@@ -1,6 +1,7 @@
 ---
 import type { TreeNode } from './build-tree'
 import config from 'virtual:astrobook/global-config.mjs'
+import Icon from './icon.astro'
 import { buildPath } from './build-path'
 import { getCollapseDuration } from './collapse-duration'
 
@@ -30,10 +31,7 @@ const collapseDuration = getCollapseDuration(node)
             'astrobook-focus-ring',
           ]}
         >
-          <span
-            data-astrobook-chevron
-            class="astrobook-icon astrobook-icon-chevron-down"
-          />
+          <Icon name="chevron-down" data-astrobook-chevron />
           <span>{node.name}</span>
         </summary>
         <div class="astrobook-sidebar-children">
@@ -63,7 +61,7 @@ const collapseDuration = getCollapseDuration(node)
             'astrobook-focus-ring',
           ]}
         >
-          <span class="astrobook-icon astrobook-icon-collection" />
+          <Icon name="collection" />
           <span>{node.name}</span>
         </summary>
         <div class="astrobook-sidebar-children">
@@ -91,8 +89,101 @@ const collapseDuration = getCollapseDuration(node)
         'astrobook-sidebar-story-link-inactive',
       ]}
     >
-      <span class="astrobook-icon astrobook-icon-story" />
+      <Icon name="story" />
       <span>{node.name}</span>
     </a>
   )
 }
+
+<style is:global>
+  astrobook-sidebar-node {
+    display: contents;
+  }
+
+  .astrobook-sidebar-children {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding-left: 0.75rem;
+  }
+
+  .astrobook-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    list-style-type: none;
+    border-radius: var(--astrobook-radius);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-decoration: none;
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-sidebar-link .astrobook-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    color: var(--astrobook-color-text-subtle);
+  }
+
+  .astrobook-sidebar-collapsible-link {
+    color: var(--astrobook-color-text-muted);
+  }
+
+  .astrobook-sidebar-collapsible-link:hover {
+    background-color: var(--astrobook-color-surface-hover);
+    color: var(--astrobook-color-text-muted-hover);
+  }
+
+  .astrobook-sidebar-story-link-inactive {
+    color: var(--astrobook-color-text-secondary);
+  }
+
+  .astrobook-sidebar-story-link-inactive:hover {
+    background-color: var(--astrobook-color-surface-hover);
+    color: var(--astrobook-color-text);
+  }
+
+  .astrobook-sidebar-story-link-active {
+    background-color: var(--astrobook-color-emphasis);
+    color: var(--astrobook-color-on-emphasis);
+  }
+
+  .astrobook-sidebar-story-link-active:hover {
+    background-color: var(--astrobook-color-emphasis-hover);
+    color: var(--astrobook-color-on-emphasis);
+  }
+
+  details[data-astrobook-collapsible] {
+    interpolate-size: allow-keywords;
+  }
+
+  details[data-astrobook-collapsible]::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height var(--astrobook-collapse-duration) var(--astrobook-easing-collapse),
+      content-visibility var(--astrobook-collapse-duration)
+        var(--astrobook-easing-collapse) allow-discrete;
+  }
+
+  details[data-astrobook-collapsible][open]::details-content {
+    height: auto;
+  }
+
+  [data-astrobook-chevron] {
+    transform: rotate(-90deg);
+    transition: transform var(--astrobook-collapse-duration)
+      var(--astrobook-easing-collapse);
+  }
+
+  details[data-astrobook-collapsible][open]
+    > summary
+    > [data-astrobook-chevron] {
+    transform: rotate(0deg);
+  }
+</style>

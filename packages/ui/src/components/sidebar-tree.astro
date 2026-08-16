@@ -13,6 +13,16 @@ const tree = buildTree(modules)
   {tree.map((node) => <SidebarTreeNode node={node} />)}
 </astrobook-sidebar-tree>
 
+<style is:global>
+  astrobook-sidebar-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    overflow-y: auto;
+    padding: 1rem 0.5rem 2rem;
+  }
+</style>
+
 <script is:inline>
   {
     class AstrobookSidebarTree extends HTMLElement {
