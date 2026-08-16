@@ -2,6 +2,10 @@
 import LayoutComponent from '@astrobook/ui/components/layout.astro'
 import type { ComponentProps } from 'astro/types'
 
+// Important that this is the last import, so that the user's CSS comes after
+// every built-in style and can override it.
+import 'virtual:astrobook/user-css.mjs'
+
 type Props = ComponentProps<typeof LayoutComponent>
 ---
 

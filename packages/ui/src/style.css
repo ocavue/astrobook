@@ -1,4 +1,90 @@
-/* 
-src/style.css is just a placeholder file so that the import works. 
-The actual styles will be placed in dist/style.css 
-*/
+/*
+ * The design tokens every Astrobook component is built from. Each component
+ * keeps its own rules next to its markup, in a `<style is:global>` block.
+ *
+ * Override any token from your own stylesheet to re-theme Astrobook.
+ */
+
+[data-astrobook-root] {
+  /* Surfaces */
+  --astrobook-color-surface: #f9fafb;
+  --astrobook-color-surface-hover: #e5e7eb;
+  --astrobook-color-surface-active: #d1d5db;
+
+  /* The strongest neutral: selected rows, and the hover color of muted text */
+  --astrobook-color-emphasis: #1f2937;
+  --astrobook-color-emphasis-hover: #374151;
+  --astrobook-color-on-emphasis: #ffffff;
+
+  /* Borders */
+  --astrobook-color-border: #e5e7eb;
+  --astrobook-color-border-hover: #d1d5db;
+
+  /* Text, from the most to the least prominent */
+  --astrobook-color-text: #111827;
+  --astrobook-color-text-secondary: #374151;
+  --astrobook-color-text-muted: #6b7280;
+  --astrobook-color-text-muted-hover: #374151;
+  --astrobook-color-text-subtle: #9ca3af;
+
+  /* Home page badges */
+  --astrobook-color-badge-text: #6b7280;
+  --astrobook-color-badge-text-hover: #4b5563;
+
+  --astrobook-font-family:
+    system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  --astrobook-font-family-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --astrobook-radius: 0.25rem;
+  --astrobook-radius-pill: 9999px;
+
+  --astrobook-duration: 150ms;
+  --astrobook-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --astrobook-easing-collapse: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Set per <details> by sidebar-tree-node.astro, based on how tall it is */
+  --astrobook-collapse-duration: var(--astrobook-duration);
+
+  --astrobook-transition:
+    color var(--astrobook-duration) var(--astrobook-easing),
+    background-color var(--astrobook-duration) var(--astrobook-easing),
+    border-color var(--astrobook-duration) var(--astrobook-easing),
+    transform var(--astrobook-duration) var(--astrobook-easing);
+}
+
+[data-astrobook-root].dark {
+  --astrobook-color-surface: #18181b;
+  --astrobook-color-surface-hover: #374151;
+  --astrobook-color-surface-active: #4b5563;
+
+  --astrobook-color-emphasis: #e5e7eb;
+  --astrobook-color-emphasis-hover: #e5e7eb;
+  --astrobook-color-on-emphasis: #111827;
+
+  --astrobook-color-border: #374151;
+  --astrobook-color-border-hover: #4b5563;
+
+  --astrobook-color-text: #f3f4f6;
+  --astrobook-color-text-secondary: #9ca3af;
+  --astrobook-color-text-muted: #9ca3af;
+  --astrobook-color-text-muted-hover: #d1d5db;
+  --astrobook-color-text-subtle: #6b7280;
+
+  --astrobook-color-badge-text: #6b7280;
+  --astrobook-color-badge-text-hover: #d1d5db;
+}
+
+/* Shared by every focusable control in the sidebar */
+.astrobook-focus-ring {
+  outline-width: 0;
+  outline-offset: -1px;
+  outline-color: var(--astrobook-color-text);
+}
+
+.astrobook-focus-ring:focus-visible {
+  z-index: 20;
+  outline-width: 2px;
+}

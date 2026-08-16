@@ -11,12 +11,10 @@ interface Props {
 }
 ---
 
-<nav
-  class=":uno: box-border flex max-h-full min-h-full flex-col divide-y divide-solid divide-gray-200 overflow-y-hidden p-0 dark:divide-gray-700"
->
-  <div class=":uno: inline-flex items-center px-2 py-4">
+<nav class="astrobook-sidebar-nav">
+  <div class="astrobook-sidebar-header">
     <SidebarTitle />
-    <span class=":uno: flex-1"></span>
+    <span class="astrobook-sidebar-spacer"></span>
     <SidebarButtonFullscreen story={Astro.props.story} />
     <SidebarButtonSearch />
     <SidebarButtonTheme />
@@ -24,3 +22,32 @@ interface Props {
   <SidebarSearchPanel />
   <SidebarTree />
 </nav>
+
+<style is:global>
+  .astrobook-sidebar-nav {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100%;
+    overflow-y: hidden;
+    padding: 0;
+  }
+
+  /* A divider between the header, the search panel and the story tree */
+  .astrobook-sidebar-nav > * + * {
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: var(--astrobook-color-border);
+  }
+
+  .astrobook-sidebar-header {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  .astrobook-sidebar-spacer {
+    flex: 1 1 0%;
+  }
+</style>

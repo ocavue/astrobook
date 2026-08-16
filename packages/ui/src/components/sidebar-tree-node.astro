@@ -1,6 +1,7 @@
 ---
 import type { TreeNode } from './build-tree'
 import config from 'virtual:astrobook/global-config.mjs'
+import Icon from './icon.astro'
 import { buildPath } from './build-path'
 import { getCollapseDuration } from './collapse-duration'
 
@@ -10,22 +11,18 @@ interface Props {
 
 const { node } = Astro.props
 
-// The inline script in sidebar-tree.astro updates the active state, but we need to set an initial state here so
-// that UnoCSS can scan both active and inactive class names.
-const active = false
-
 const collapseDuration = getCollapseDuration(node)
 ---
 
 {
   node.type === 'directory' && (
-    <astrobook-sidebar-node class=":uno: contents">
+    <astrobook-sidebar-node>
       <details
         open
         data-astrobook-collapsible
         data-id={`dir:${node.name}`}
         data-search-text={node.searchText}
-        style={`--collapse-duration: ${collapseDuration}ms`}
+        style={`--astrobook-collapse-duration: ${collapseDuration}ms`}
       >
         <summary
           class:list={[
@@ -34,13 +31,10 @@ const collapseDuration = getCollapseDuration(node)
             'astrobook-focus-ring',
           ]}
         >
-          <span
-            data-astrobook-chevron
-            class=":uno: i-fluent-chevron-down-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500"
-          />
+          <Icon name="chevron-down" data-astrobook-chevron />
           <span>{node.name}</span>
         </summary>
-        <div class=":uno: flex flex-col gap-0.5 pl-3">
+        <div class="astrobook-sidebar-children">
           {node.children.map((child) => (
             <Astro.self node={child} />
           ))}
@@ -52,13 +46,13 @@ const collapseDuration = getCollapseDuration(node)
 
 {
   node.type === 'module' && (
-    <astrobook-sidebar-node class=":uno: contents">
+    <astrobook-sidebar-node>
       <details
         open
         data-astrobook-collapsible
         data-id={`module:${node.id}`}
         data-search-text={node.searchText}
-        style={`--collapse-duration: ${collapseDuration}ms`}
+        style={`--astrobook-collapse-duration: ${collapseDuration}ms`}
       >
         <summary
           class:list={[
@@ -67,10 +61,10 @@ const collapseDuration = getCollapseDuration(node)
             'astrobook-focus-ring',
           ]}
         >
-          <span class=":uno: i-fluent-collections-empty-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+          <Icon name="collection" />
           <span>{node.name}</span>
         </summary>
-        <div class=":uno: flex flex-col gap-0.5 pl-3">
+        <div class="astrobook-sidebar-children">
           {node.children.map((child) => (
             <Astro.self node={child} />
           ))}
@@ -90,20 +84,81 @@ const collapseDuration = getCollapseDuration(node)
       class:list={[
         'astrobook-sidebar-link',
         'astrobook-focus-ring',
-        active
-          ? 'astrobook-sidebar-story-link-active'
-          : 'astrobook-sidebar-story-link-inactive',
+        // The inline script in sidebar-tree.astro swaps this for the active
+        // class when this story is the one being displayed.
+        'astrobook-sidebar-story-link-inactive',
       ]}
     >
-      <span class=":uno: i-fluent-diamond-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+      <Icon name="story" />
       <span>{node.name}</span>
     </a>
   )
 }
 
-<style>
+<style is:global>
+  astrobook-sidebar-node {
+    display: contents;
+  }
+
+  .astrobook-sidebar-children {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding-left: 0.75rem;
+  }
+
+  .astrobook-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    list-style-type: none;
+    border-radius: var(--astrobook-radius);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-decoration: none;
+    transition: var(--astrobook-transition);
+  }
+
+  .astrobook-sidebar-link .astrobook-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    color: var(--astrobook-color-text-subtle);
+  }
+
+  .astrobook-sidebar-collapsible-link {
+    color: var(--astrobook-color-text-muted);
+  }
+
+  .astrobook-sidebar-collapsible-link:hover {
+    background-color: var(--astrobook-color-surface-hover);
+    color: var(--astrobook-color-text-muted-hover);
+  }
+
+  .astrobook-sidebar-story-link-inactive {
+    color: var(--astrobook-color-text-secondary);
+  }
+
+  .astrobook-sidebar-story-link-inactive:hover {
+    background-color: var(--astrobook-color-surface-hover);
+    color: var(--astrobook-color-text);
+  }
+
+  .astrobook-sidebar-story-link-active {
+    background-color: var(--astrobook-color-emphasis);
+    color: var(--astrobook-color-on-emphasis);
+  }
+
+  .astrobook-sidebar-story-link-active:hover {
+    background-color: var(--astrobook-color-emphasis-hover);
+    color: var(--astrobook-color-on-emphasis);
+  }
+
   details[data-astrobook-collapsible] {
-    --collapse-ease: cubic-bezier(0, 0, 0.2, 1);
     interpolate-size: allow-keywords;
   }
 
@@ -111,9 +166,9 @@ const collapseDuration = getCollapseDuration(node)
     height: 0;
     overflow: clip;
     transition:
-      height var(--collapse-duration, 150ms) var(--collapse-ease),
-      content-visibility var(--collapse-duration, 150ms) var(--collapse-ease)
-        allow-discrete;
+      height var(--astrobook-collapse-duration) var(--astrobook-easing-collapse),
+      content-visibility var(--astrobook-collapse-duration)
+        var(--astrobook-easing-collapse) allow-discrete;
   }
 
   details[data-astrobook-collapsible][open]::details-content {
@@ -122,7 +177,8 @@ const collapseDuration = getCollapseDuration(node)
 
   [data-astrobook-chevron] {
     transform: rotate(-90deg);
-    transition: transform var(--collapse-duration, 150ms) var(--collapse-ease);
+    transition: transform var(--astrobook-collapse-duration)
+      var(--astrobook-easing-collapse);
   }
 
   details[data-astrobook-collapsible][open]

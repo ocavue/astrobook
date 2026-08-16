@@ -2,6 +2,10 @@
 import AppComponent from '@astrobook/ui/components/app.astro'
 import type { GetStaticPathsResult } from 'astro'
 
+// Important that this is the last import, so that the user's CSS comes after
+// every built-in style and can override it.
+import 'virtual:astrobook/user-css.mjs'
+
 export function getStaticPaths(): GetStaticPathsResult {
   return [
     {

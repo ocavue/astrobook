@@ -14,15 +14,15 @@
   "bugs": "https://github.com/ocavue/astrobook/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./dist/index.ts",
-  "module": "./dist/index.ts",
-  "types": "./dist/index.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "default": "./dist/index.ts"
+      "default": "./src/index.ts"
     },
     "./components/*": {
-      "default": "./dist/components/*"
+      "default": "./src/components/*"
     },
     "./package.json": {
       "default": "./package.json"
@@ -31,19 +31,16 @@
   "typesVersions": {
     "*": {
       ".": [
-        "./dist/index.ts"
+        "./src/index.ts"
       ],
       "./components/*": [
-        "./dist/components/*"
+        "./src/components/*"
       ]
     }
   },
   "files": [
-    "dist"
+    "src"
   ],
-  "scripts": {
-    "build": "tsx copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && tsx copy.ts temp dist"
-  },
   "dependencies": {
     "@astrobook/core": "workspace:*",
     "@astrobook/types": "workspace:*",
@@ -59,16 +56,9 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.54",
-    "@iconify-json/lucide": "^1.2.121",
-    "@iconify-json/mdi": "^1.2.3",
     "@types/node": "^22.19.17",
-    "@unocss/cli": "^66.7.5",
     "astro": "^7.2.1",
-    "prettier": "^3.9.6",
-    "tsx": "^4.23.12",
     "typescript": "^6.0.3",
-    "unocss": "^66.7.5",
     "vite": "^8.2.0",
     "vitest": "^4.1.10"
   }
