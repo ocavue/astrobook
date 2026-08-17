@@ -16,9 +16,6 @@ const config: unknown = defineConfig({
   transformers: [
     transformerCompileClass({
       classPrefix: 'astrobook-',
-      // The astrobook-icon-* classes in the :uno: strings are styled by
-      // icon.css, not compiled; they must survive as plain classes.
-      keepUnknown: true,
     }),
   ],
   shortcuts: {
