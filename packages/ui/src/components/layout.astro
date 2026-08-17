@@ -1,4 +1,7 @@
 ---
+// icon.css must come before style.css so the size utilities compiled into
+// style.css can override the default 1em icon size.
+import './icon.css'
 import '../style.css'
 import './layout.css'
 import Sidebar from './sidebar.astro'
