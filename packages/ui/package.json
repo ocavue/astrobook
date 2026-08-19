@@ -42,7 +42,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsx copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && tsx copy.ts temp dist"
+    "build": "tsx copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && tsx copy.ts temp dist",
+    "generate-icons": "tsx generate-icons.ts"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
@@ -62,6 +63,7 @@
     "@iconify-json/fluent": "^1.2.54",
     "@iconify-json/lucide": "^1.2.121",
     "@iconify-json/mdi": "^1.2.3",
+    "@iconify/utils": "^3.1.4",
     "@types/node": "^22.19.17",
     "@unocss/cli": "^66.7.5",
     "astro": "^7.2.1",

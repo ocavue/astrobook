@@ -16,7 +16,12 @@ interface Props {
       href={buildPath(config.storyBase, Astro.props.story)}
       title="Go full screen"
     >
-      <span class=":uno: i-lucide:square-arrow-out-up-right box-border block size-4" />
+      <span
+        class:list={[
+          ':uno: box-border block size-4',
+          'astrobook-icon--lucide--square-arrow-out-up-right',
+        ]}
+      />
     </SidebarButton>
   ) : null
 }

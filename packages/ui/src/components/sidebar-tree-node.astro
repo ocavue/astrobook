@@ -36,7 +36,10 @@ const collapseDuration = getCollapseDuration(node)
         >
           <span
             data-astrobook-chevron
-            class=":uno: i-fluent-chevron-down-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500"
+            class:list={[
+              ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+              'astrobook-icon--fluent--chevron-down-16-regular',
+            ]}
           />
           <span>{node.name}</span>
         </summary>
@@ -67,7 +70,12 @@ const collapseDuration = getCollapseDuration(node)
             'astrobook-focus-ring',
           ]}
         >
-          <span class=":uno: i-fluent-collections-empty-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+          <span
+            class:list={[
+              ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+              'astrobook-icon--fluent--collections-empty-16-regular',
+            ]}
+          />
           <span>{node.name}</span>
         </summary>
         <div class=":uno: flex flex-col gap-0.5 pl-3">
@@ -95,7 +103,12 @@ const collapseDuration = getCollapseDuration(node)
           : 'astrobook-sidebar-story-link-inactive',
       ]}
     >
-      <span class=":uno: i-fluent-diamond-16-regular inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500" />
+      <span
+        class:list={[
+          ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+          'astrobook-icon--fluent--diamond-16-regular',
+        ]}
+      />
       <span>{node.name}</span>
     </a>
   )
