@@ -16,6 +16,9 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - name: Generate icons
+        run: pnpm --filter @astrobook/ui generate-icons
+
       - name: Fix
         run: pnpm run fix
 
