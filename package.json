@@ -37,7 +37,7 @@
     "@manypkg/cli": "^0.25.1",
     "@ocavue/eslint-config": "^4.13.4",
     "@playwright/test": "^1.62.1",
-    "@types/node": "^22.19.17",
+    "@types/node": "^24.0.0",
     "eslint": "^10.8.1",
     "pkg-pr-new": "^0.0.87",
     "playwright": "^1.62.1",
