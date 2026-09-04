@@ -37,7 +37,7 @@
     "@sveltejs/acorn-typescript": "^1.0.12",
     "acorn": "^8.18.0",
     "fdir": "^6.5.0",
-    "picomatch": "^4.0.5",
+    "picomatch": "^4.0.7",
     "slash": "^5.1.0",
     "valibot": "^1.4.2",
     "yoctocolors": "^2.2.0"
@@ -54,13 +54,13 @@
     "@types/node": "^22.19.17",
     "@types/picomatch": "^4.0.3",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
+    "@types/react-dom": "^19.2.5",
     "astro": "^7.2.1",
     "just-kebab-case": "^4.2.0",
-    "tsdown": "^0.22.12",
+    "tsdown": "^0.22.14",
     "typescript": "^6.0.3",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   },
   "publishConfig": {
     "exports": {
