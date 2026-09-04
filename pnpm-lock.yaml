@@ -318,8 +318,8 @@ importers:
         specifier: workspace:*
         version: link:../types
       astro-theme-toggle:
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       just-group-by:
         specifier: ^2.2.0
         version: 2.2.0
@@ -2625,8 +2625,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro-theme-toggle@0.8.1:
-    resolution: {integrity: sha512-cUQDnMpRrGwWQ0C6dj1x3y3e3ULlikvoc6Tb6FkIQkL1Ropyd6jQ/IZ9GdhSogWEVpNodPckOKeItIh89EDwkg==}
+  astro-theme-toggle@0.8.2:
+    resolution: {integrity: sha512-x6DKMc4V5q47s5Wc3tvC11Yhd9VFVA8XQflD23GX+BpdEIv2wLN0592wIllrCtrMgiv6TgdiVSruhx18qg2Qtw==}
 
   astro@7.2.1:
     resolution: {integrity: sha512-ynyMTiyF//GLcd8+gRNbvcKgS1ht+qTgp/fkkHIpGYNILLseQqQRuPZ9PqXYKfsact4J1emZaXRDpg2bl35Pag==}
@@ -7810,7 +7810,7 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro-theme-toggle@0.8.1: {}
+  astro-theme-toggle@0.8.2: {}
 
   astro@7.2.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@types/node@22.20.0)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0):
     dependencies:
