@@ -11,7 +11,6 @@ const config: unknown = defineConfig({
   fixedExtension: false,
   deps: {
     neverBundle: [/^virtual:/],
-    onlyBundle: ['just-kebab-case'],
   },
 })
 
