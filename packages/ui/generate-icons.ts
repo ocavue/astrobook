@@ -49,7 +49,9 @@ async function loadIconSet(set: string): Promise<IconSet | null> {
 }
 
 async function main() {
-  const exclude = (entry: string) => { return entry.includes('node_modules') || entry.endsWith('icon.css') }
+  const exclude = (entry: string) => {
+    return entry.includes('node_modules') || entry.endsWith('icon.css')
+  }
 
   // "{set}--{name}" -> the source files using it, so errors can point at them.
   const usage = new Map<string, Set<string>>()

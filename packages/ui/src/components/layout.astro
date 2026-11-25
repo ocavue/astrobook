@@ -74,28 +74,22 @@ const DEFAULT_SIDEBAR_RESIZING = false
       })()
     </script>
   </head>
-  <body
-    class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0"
-  >
-    {
-      hasSidebar && (
-        <>
-          <div
-            id="astrobook-sidebar"
-            class=":uno: flex shrink-0 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900"
-          >
-            <Sidebar story={Astro.props.story} />
-          </div>
-          <SidebarResizeHandle />
-        </>
-      )
-    }
-    {
-      /*
+  <body class=":uno: m-0 box-border flex max-h-full min-h-full flex-row items-stretch justify-start p-0">
+    {hasSidebar && (
+      <>
+        <div
+          id="astrobook-sidebar"
+          class=":uno: flex shrink-0 flex-col border-0 border-r border-solid border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900"
+        >
+          <Sidebar story={Astro.props.story} />
+        </div>
+        <SidebarResizeHandle />
+      </>
+    )}
+    {/*
       Use `transition:animate="none"` here because we don't want the fade animation
       when switching between stories. Sadly this also removes the animation when toggling the light/dark theme.
-      */
-    }
+      */}
     <main
       class=":uno: box-border flex-1 overflow-auto"
       transition:name="astrobook-main"
