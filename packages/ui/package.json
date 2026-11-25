@@ -60,16 +60,16 @@
     }
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.54",
-    "@iconify-json/lucide": "^1.2.121",
+    "@iconify-json/fluent": "^1.2.62",
+    "@iconify-json/lucide": "^1.2.158",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify/utils": "^3.1.4",
-    "@types/node": "^22.19.17",
-    "@unocss/cli": "^66.7.5",
-    "astro": "^7.2.1",
+    "@iconify/utils": "^3.1.7",
+    "@types/node": "^22.20.5",
+    "@unocss/cli": "^66.13.0",
+    "astro": "^7.4.13",
     "prettier": "^3.10.1",
     "typescript": "^6.0.3",
-    "unocss": "^66.7.5",
+    "unocss": "^66.13.0",
     "vite": "^8.3.8",
     "vitest": "^4.1.12"
   }
