@@ -42,8 +42,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsx copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && tsx copy.ts temp dist",
-    "generate-icons": "tsx generate-icons.ts"
+    "build": "node copy.ts src temp && unocss --rewrite && prettier -w temp/style.css && node copy.ts temp dist",
+    "generate-icons": "node generate-icons.ts"
   },
   "dependencies": {
     "@astrobook/core": "workspace:*",
@@ -68,7 +68,6 @@
     "@unocss/cli": "^66.7.5",
     "astro": "^7.2.1",
     "prettier": "^3.10.1",
-    "tsx": "^4.23.12",
     "typescript": "^6.0.3",
     "unocss": "^66.7.5",
     "vite": "^8.3.8",

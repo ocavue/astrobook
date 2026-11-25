@@ -348,9 +348,6 @@ importers:
       prettier:
         specifier: ^3.10.1
         version: 3.10.1
-      tsx:
-        specifier: ^4.23.12
-        version: 4.23.12
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -10703,6 +10700,7 @@ snapshots:
       esbuild: 0.28.1
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   turbo@2.10.8:
     optionalDependencies:
