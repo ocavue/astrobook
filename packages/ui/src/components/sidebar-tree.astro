@@ -11,7 +11,9 @@ const tree = buildTree(modules)
   id="astrobook-sidebar-tree"
   transition:persist="astrobook-sidebar-tree"
 >
-  {tree.map((node) => <SidebarTreeNode node={node} />)}
+  {tree.map((node) => (
+    <SidebarTreeNode node={node} />
+  ))}
 </astrobook-sidebar-tree>
 
 <script is:inline>

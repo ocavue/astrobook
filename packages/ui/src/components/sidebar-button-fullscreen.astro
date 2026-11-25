@@ -10,18 +10,16 @@ interface Props {
 }
 ---
 
-{
-  Astro.props.story ? (
-    <SidebarButton
-      href={buildPath(config.storyBase, Astro.props.story)}
-      title="Go full screen"
-    >
-      <span
-        class:list={[
-          ':uno: box-border block size-4',
-          'astrobook-icon--lucide--square-arrow-out-up-right',
-        ]}
-      />
-    </SidebarButton>
-  ) : null
-}
+{Astro.props.story ? (
+  <SidebarButton
+    href={buildPath(config.storyBase, Astro.props.story)}
+    title="Go full screen"
+  >
+    <span
+      class:list={[
+        ':uno: box-border block size-4',
+        'astrobook-icon--lucide--square-arrow-out-up-right',
+      ]}
+    />
+  </SidebarButton>
+) : null}
