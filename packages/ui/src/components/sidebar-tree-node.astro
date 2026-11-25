@@ -17,102 +17,96 @@ const active = false
 const collapseDuration = getCollapseDuration(node)
 ---
 
-{
-  node.type === 'directory' && (
-    <astrobook-sidebar-node class=":uno: contents">
-      <details
-        open
-        data-astrobook-collapsible
-        data-id={`dir:${node.name}`}
-        data-search-text={node.searchText}
-        style={`--collapse-duration: ${collapseDuration}ms`}
-      >
-        <summary
-          class:list={[
-            'astrobook-sidebar-link',
-            'astrobook-sidebar-collapsible-link',
-            'astrobook-focus-ring',
-          ]}
-        >
-          <span
-            data-astrobook-chevron
-            class:list={[
-              ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
-              'astrobook-icon--fluent--chevron-down-16-regular',
-            ]}
-          />
-          <span>{node.name}</span>
-        </summary>
-        <div class=":uno: flex flex-col gap-0.5 pl-3">
-          {node.children.map((child) => (
-            <Astro.self node={child} />
-          ))}
-        </div>
-      </details>
-    </astrobook-sidebar-node>
-  )
-}
-
-{
-  node.type === 'module' && (
-    <astrobook-sidebar-node class=":uno: contents">
-      <details
-        open
-        data-astrobook-collapsible
-        data-id={`module:${node.id}`}
-        data-search-text={node.searchText}
-        style={`--collapse-duration: ${collapseDuration}ms`}
-      >
-        <summary
-          class:list={[
-            'astrobook-sidebar-link',
-            'astrobook-sidebar-collapsible-link',
-            'astrobook-focus-ring',
-          ]}
-        >
-          <span
-            class:list={[
-              ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
-              'astrobook-icon--fluent--collections-empty-16-regular',
-            ]}
-          />
-          <span>{node.name}</span>
-        </summary>
-        <div class=":uno: flex flex-col gap-0.5 pl-3">
-          {node.children.map((child) => (
-            <Astro.self node={child} />
-          ))}
-        </div>
-      </details>
-    </astrobook-sidebar-node>
-  )
-}
-
-{
-  node.type === 'story' && (
-    <a
-      href={buildPath(config.dashboardBase, node.id)}
-      data-astrobook-story-link
-      data-story-id={node.id}
+{node.type === 'directory' && (
+  <astrobook-sidebar-node class=":uno: contents">
+    <details
+      open
+      data-astrobook-collapsible
+      data-id={`dir:${node.name}`}
       data-search-text={node.searchText}
-      class:list={[
-        'astrobook-sidebar-link',
-        'astrobook-focus-ring',
-        active
-          ? 'astrobook-sidebar-story-link-active'
-          : 'astrobook-sidebar-story-link-inactive',
-      ]}
+      style={`--collapse-duration: ${collapseDuration}ms`}
     >
-      <span
+      <summary
         class:list={[
-          ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
-          'astrobook-icon--fluent--diamond-16-regular',
+          'astrobook-sidebar-link',
+          'astrobook-sidebar-collapsible-link',
+          'astrobook-focus-ring',
         ]}
-      />
-      <span>{node.name}</span>
-    </a>
-  )
-}
+      >
+        <span
+          data-astrobook-chevron
+          class:list={[
+            ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+            'astrobook-icon--fluent--chevron-down-16-regular',
+          ]}
+        />
+        <span>{node.name}</span>
+      </summary>
+      <div class=":uno: flex flex-col gap-0.5 pl-3">
+        {node.children.map((child) => (
+          <Astro.self node={child} />
+        ))}
+      </div>
+    </details>
+  </astrobook-sidebar-node>
+)}
+
+{node.type === 'module' && (
+  <astrobook-sidebar-node class=":uno: contents">
+    <details
+      open
+      data-astrobook-collapsible
+      data-id={`module:${node.id}`}
+      data-search-text={node.searchText}
+      style={`--collapse-duration: ${collapseDuration}ms`}
+    >
+      <summary
+        class:list={[
+          'astrobook-sidebar-link',
+          'astrobook-sidebar-collapsible-link',
+          'astrobook-focus-ring',
+        ]}
+      >
+        <span
+          class:list={[
+            ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+            'astrobook-icon--fluent--collections-empty-16-regular',
+          ]}
+        />
+        <span>{node.name}</span>
+      </summary>
+      <div class=":uno: flex flex-col gap-0.5 pl-3">
+        {node.children.map((child) => (
+          <Astro.self node={child} />
+        ))}
+      </div>
+    </details>
+  </astrobook-sidebar-node>
+)}
+
+{node.type === 'story' && (
+  <a
+    href={buildPath(config.dashboardBase, node.id)}
+    data-astrobook-story-link
+    data-story-id={node.id}
+    data-search-text={node.searchText}
+    class:list={[
+      'astrobook-sidebar-link',
+      'astrobook-focus-ring',
+      active
+        ? 'astrobook-sidebar-story-link-active'
+        : 'astrobook-sidebar-story-link-inactive',
+    ]}
+  >
+    <span
+      class:list={[
+        ':uno: inline-block size-3.5 shrink-0 text-gray-400 dark:text-gray-500',
+        'astrobook-icon--fluent--diamond-16-regular',
+      ]}
+    />
+    <span>{node.name}</span>
+  </a>
+)}
 
 <style>
   details[data-astrobook-collapsible] {
