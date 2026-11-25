@@ -9,8 +9,10 @@ const config: unknown = defineConfig({
   clean: true,
   dts: true,
   fixedExtension: false,
-  external: [/^virtual:/],
-  inlineOnly: ['just-kebab-case'],
+  deps: {
+    neverBundle: [/^virtual:/],
+    onlyBundle: ['just-kebab-case'],
+  },
 })
 
 export default config
