@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.21.0",
+  "packageManager": "pnpm@11.29.0",
   "description": "Astrobook monorepo",
   "license": "MIT",
   "scripts": {
@@ -32,21 +32,21 @@
     "ci:publish-dev": "pnpm run build:package && pkg-pr-new publish './packages/*' --template ./examples/playground --pnpm"
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.0",
+    "@changesets/cli": "^3.0.3",
     "@changesets/types": "^7.0.0",
     "@manypkg/cli": "^0.25.1",
-    "@ocavue/eslint-config": "^4.13.4",
-    "@playwright/test": "^1.62.1",
-    "@types/node": "^22.19.17",
-    "eslint": "^10.8.1",
+    "@ocavue/eslint-config": "^4.26.0",
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.15.0",
     "pkg-pr-new": "^0.0.87",
-    "playwright": "^1.62.1",
+    "playwright": "^1.65.1",
     "prettier": "^3.10.1",
     "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "turbo": "^2.10.8",
+    "turbo": "^2.11.13",
     "typescript": "^6.0.3",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.3.8",
+    "vitest": "^4.1.12"
   }
 }

@@ -81,11 +81,11 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^22.19.17",
-    "astro": "^7.2.1",
+    "@types/node": "^22.20.5",
+    "astro": "^7.4.13",
     "typescript": "^6.0.3",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.3.8",
+    "vitest": "^4.1.12"
   },
   "publishConfig": {
     "exports": {

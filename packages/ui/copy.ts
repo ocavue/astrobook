@@ -54,7 +54,7 @@ async function main() {
   const args = process.argv.slice(2)
 
   if (args.length !== 2) {
-    console.error('Usage: tsx copy.ts <source_dir> <destination_dir>')
+    console.error('Usage: node copy.ts <source_dir> <destination_dir>')
     process.exit(1)
   }
 
